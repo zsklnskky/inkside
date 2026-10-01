@@ -14,6 +14,8 @@
 <meta name="theme-color" content="#0b0b0c">
 <link rel="icon" href="img/icon.png">
 <link rel="canonical" href="https://zsklnskky.github.io/inkside/">
+<link rel="alternate" hreflang="ru" href="https://zsklnskky.github.io/inkside/">
+<link rel="alternate" hreflang="en" href="https://zsklnskky.github.io/inkside/?lang=en">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Ruslan+Display&family=Rubik+Glitch&family=Onest:wght@400;500;600;700&family=PT+Mono&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/mural.jpg">
@@ -760,12 +762,97 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
   .cursor,.loupe{display:none!important}
   .stamp svg.ring{animation:none}
 }
+
+
+/* ---------- v5: designer round 2 ---------- */
+.btn{line-height:1.2;text-align:center;justify-content:center}
+#sum{white-space:nowrap}
+.stamp{width:88px;height:88px;right:18px;bottom:18px}
+.stamp svg.ring text{font-size:10px}
+.contact{align-items:start}
+.addr dl{margin-top:28px!important}
+.tracklist .cass span{white-space:nowrap}
+.frame::before{content:"";position:absolute;inset:14px;border-radius:18px;background:url(img/stencil_w17.png) center/cover;opacity:.15;pointer-events:none}
+@media (max-width:760px){
+  .reel .track .slide{height:auto;width:82vw;aspect-ratio:3/4}
+  .slide .tag{left:12px;bottom:16px}
+  .slide .num{right:12px;font-size:44px}
+  h2.poster{font-size:clamp(30px,9vw,46px);line-height:1;text-shadow:2px 0 0 rgba(212,20,28,.75),0 6px 28px rgba(0,0,0,.95)}
+  .addr dl div{grid-template-columns:1fr;gap:4px}
+  #sum{font-size:clamp(36px,11vw,64px)}
+  .tracklist .cass span{font-size:12px}
+}
+@media (max-width:600px){.btn{font-size:13px;letter-spacing:.02em;padding:16px 18px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}.cursor,.loupe{display:none!important}}
+/* ---------- v5: marketer round 2 ---------- */
+.hero-mob{display:none}
+.toast{position:fixed;left:50%;bottom:24px;z-index:600;translate:-50% 20px;opacity:0;max-width:min(520px,92vw);padding:16px 22px;border-radius:16px;background:#0b0b0c;border:1px solid var(--red);color:#fff;font:15px/1.4 var(--f-body);box-shadow:0 20px 50px rgba(0,0,0,.6);transition:opacity .3s,translate .4s var(--out)}
+.toast.on{opacity:1;translate:-50% 0}
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:550;max-width:560px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px}
+.cookie p{flex:1 1 220px;font-size:14px;color:var(--dim)}
+@media (max-width:900px){
+  .hero-mob{display:block;margin:-6px 0 18px;border-radius:14px;overflow:hidden;height:34vh;border:1px solid rgba(255,255,255,.14)}
+  .hero-mob img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .hero .chromelogo{width:min(170px,46%);margin-bottom:10px}
+  .stencil-scene{height:auto!important}
+  .stencil-scene .pin{position:relative;height:auto;padding:70px 0}
+  .stencil-scene .wrap{display:flex;flex-direction:column}
+  .steps-text{min-height:0!important;order:2}
+  .st{position:relative!important;top:auto!important;bottom:auto!important;opacity:1!important;transform:none!important;margin-bottom:12px}
+  .frame{order:1;margin:0 auto 20px!important}
+  .frame .photo{opacity:1}.frame .stencil{opacity:.55;clip-path:none!important}
+  .frame .healed{opacity:1;transform:none}
+  .frame .bar{display:none}
+}
+
+/* ---------- v5: QA round 2 ---------- */
+.masters{grid-template-columns:repeat(2,minmax(0,1fr))}
+.masters>*{min-width:0}
+@media (max-width:900px){.masters{grid-template-columns:minmax(0,1fr)}}
+.flashsheet .go{overflow-wrap:anywhere}
+.prices{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.prices>*{min-width:0}
+@media (max-width:900px){.prices{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){#sum{font-size:clamp(32px,9.5vw,56px)}.tracklist .tr{grid-template-columns:36px minmax(0,1fr) auto;gap:10px}.tracklist .tr b{font-size:18px}}
+.pv h3{font-size:clamp(18px,5.4vw,26px);overflow-wrap:anywhere;hyphens:auto}
+.consent a{display:inline-block;padding:6px 0}
+.addr a[href^="tel:"]{white-space:nowrap}
+img{height:auto}
+.polaroid img,.slide img,.frame .layer,.cover-card img,.hero-mob img,.drop img,.flashsheet .ph img,.flashsheet .works img{height:100%}
+.flashsheet .works img,.flashsheet .ph img{height:auto}
+@media (max-width:760px){.gift h2{font-size:clamp(30px,9vw,60px)!important}}
+@media (max-width:400px){
+  .overlay .row{flex-direction:column}
+  .overlay .row .btn{flex:none;width:100%}
+  .stamp{display:none}
+}
+
+/* ---------- mobile polish: everything straight, readable, no orphans ---------- */
+@media (max-width:420px){.tracklist .cass{flex-wrap:wrap;gap:6px}.tracklist .cass span{font-size:11px}}
+@media (max-width:900px){
+  .hero-photos{display:none}
+  .hero{min-height:auto;padding:84px 0 30px}
+  .hero-sheet{padding:20px 18px 24px}
+  #h1 .row{white-space:nowrap;flex-wrap:nowrap}
+  #h1 .row .hand{white-space:normal;font-size:18px!important}
+  .hero .lead{font-size:16px;margin:16px 0 20px}
+  .hero .btns{gap:14px}
+  .hero .btns .btn{width:100%}
+  .addr .hand{font-size:20px!important}
+  .addr .big{font-size:clamp(26px,7.4vw,36px)!important}
+  .fact{padding:26px 6px}
+  .marquee{margin:18px 0}
+}
+@media (max-width:600px){
+  .hero h1{font-size:clamp(26px,8vw,38px)!important;line-height:1.08}
+  .vidword{width:1.3em;height:.58em}
+}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
 <a class="skip" href="#main" data-en="Skip to content">К содержанию</a>
-<div class="ink-wipe" aria-hidden="true"><img src="img/logo.webp" alt=""></div>
+<div class="ink-wipe" aria-hidden="true"><img src="img/logo.webp" alt="" width="900" height="624"></div>
 <div class="wall" aria-hidden="true"></div>
 <div class="shade" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -780,18 +867,18 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
       <li>
         <button aria-expanded="false" aria-controls="dd-works"><span data-en="Works">Работы</span><i class="caret"></i></button>
         <div class="drop" id="dd-works">
-          <a href="#works" data-ink data-go="bw"><img loading="lazy" src="img/w01.webp" alt=""><span><b data-en="Black &amp; grey">Ч/б реализм</b><small data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
-          <a href="#works" data-ink data-go="color"><img loading="lazy" src="img/w13.webp" alt=""><span><b data-en="Colour">Цвет</b><small data-en="colour realism">цветной реализм</small></span></a>
-          <a href="#works" data-ink data-go="big"><img loading="lazy" src="img/w05.webp" alt=""><span><b data-en="Sleeves">Рукава</b><small data-en="legs, backs">ноги, спины</small></span></a>
-          <a href="#works" data-ink data-go="graphic"><img loading="lazy" src="img/w15.webp" alt=""><span><b data-en="Graphic">Графика</b><small data-en="mini, ornament">мини, орнамент</small></span></a>
+          <a href="#works" data-ink data-go="bw"><img loading="lazy" src="img/w01.webp" alt="" width="1050" height="1400"><span><b data-en="Black &amp; grey">Ч/б реализм</b><small data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
+          <a href="#works" data-ink data-go="color"><img loading="lazy" src="img/w13.webp" alt="" width="1054" height="1400"><span><b data-en="Colour">Цвет</b><small data-en="colour realism">цветной реализм</small></span></a>
+          <a href="#works" data-ink data-go="big"><img loading="lazy" src="img/w05.webp" alt="" width="1050" height="1400"><span><b data-en="Sleeves">Рукава</b><small data-en="legs, backs">ноги, спины</small></span></a>
+          <a href="#works" data-ink data-go="graphic"><img loading="lazy" src="img/w15.webp" alt="" width="1100" height="1129"><span><b data-en="Graphic">Графика</b><small data-en="mini, ornament">мини, орнамент</small></span></a>
           <span class="hand" data-en="all works are ours, no stock">все работы наши, без стоков ✦</span>
         </div>
       </li>
       <li>
         <button aria-expanded="false" aria-controls="dd-masters"><span data-en="Artists">Мастера</span><i class="caret"></i></button>
         <div class="drop narrow" id="dd-masters">
-          <a href="#masters" data-ink><img loading="lazy" src="img/nadezhda.webp" alt=""><span><b data-en="Nadezhda">Надежда</b><small data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
-          <a href="#masters" data-ink><img loading="lazy" src="img/vitaliy.webp" alt=""><span><b data-en="Vitaliy">Виталий</b><small data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
+          <a href="#masters" data-ink><img loading="lazy" src="img/nadezhda.webp" alt="" width="788" height="1400"><span><b data-en="Nadezhda">Надежда</b><small data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
+          <a href="#masters" data-ink><img loading="lazy" src="img/vitaliy.webp" alt="" width="787" height="1400"><span><b data-en="Vitaliy">Виталий</b><small data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
         </div>
       </li>
       <li><a href="#prices" data-ink data-en="Prices">Цены</a></li>
@@ -825,9 +912,10 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
   <div class="wrap">
     <div class="hero-sheet sheet">
       <div class="vhs-ts" aria-hidden="true"><span class="rec">REC</span><span id="ts">00:00:00</span><span>INKSIDE · VOL.1</span></div>
+      <figure class="hero-mob" aria-hidden="true"><img src="img/w03.webp" alt="" width="780" height="1040" fetchpriority="high"></figure>
       <div class="chromelogo"><img src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
       <h1 class="poster" id="h1">
-        <span class="row"><span data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></span></span>
+        <span class="row"><span data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" muted loop playsinline preload="none" aria-hidden="true" data-lazyplay></video></span></span>
         <span class="row"><span data-en="you won't" data-seg="h1b">за которую</span></span>
         <span class="row"><span data-en="regret" data-seg="h1c">не стыдно</span></span>
         <span class="row"><span class="hand" data-en="even in 10 years ✦" data-seg="h1d">и через 10 лет ✦</span></span>
@@ -842,7 +930,7 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
     <div class="hero-photos" aria-hidden="true">
       <figure class="polaroid b"><img loading="lazy" src="img/w04.webp" alt="" width="520" height="560"><figcaption data-en="colour">цвет</figcaption></figure>
       <figure class="polaroid a"><img loading="lazy" src="img/w01.webp" alt="" width="780" height="1040"><figcaption data-en="b&amp;g realism">ч/б реализм</figcaption></figure>
-      <figure class="polaroid c"><img loading="lazy" src="img/w18.webp" alt=""><figcaption data-en="mini">мини</figcaption></figure>
+      <figure class="polaroid c"><img loading="lazy" src="img/w18.webp" alt="" width="736" height="865"><figcaption data-en="mini">мини</figcaption></figure>
       <span class="spark" style="--s:26px;left:46%;top:2%;--dl:.4s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
       <span class="spark" style="--s:14px;left:8%;top:30%;--dl:1.3s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
       <span class="spark" style="--s:18px;right:-2%;top:44%;--dl:2.1s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
@@ -863,12 +951,12 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
         <h2 class="poster split" data-en="One work. <span class='outline'>One screen.</span>">Одна работа. <span class="outline">Один экран.</span></h2>
         <p class="lead" style="margin-top:20px" data-en="No tiny Instagram squares. Hover to look at the skin up close.">Никаких мелких квадратиков. Наведите, чтобы рассмотреть кожу вблизи.</p>
       </div>
-      <figure class="slide" tabindex="0" role="button"><img src="img/w03.webp" alt="Рукав с космонавтом, первое место на баттле" loading="lazy"><span class="num">01</span><figcaption class="tag"><b data-en="Astronaut">Космонавт</b><span data-en="sleeve · 1st place">рукав · 1 место</span></figcaption></figure>
-      <figure class="slide" tabindex="0" role="button"><img src="img/w02.webp" alt="Нога целиком в чёрно-белом реализме" loading="lazy"><span class="num">02</span><figcaption class="tag"><b data-en="Full leg">Нога целиком</b><span data-en="2 days · 4 hands">2 дня · 4 руки</span></figcaption></figure>
-      <figure class="slide" tabindex="0" role="button"><img src="img/w13.webp" alt="Цветной реализм, портрет девушки" loading="lazy"><span class="num">03</span><figcaption class="tag"><b data-en="Colour realism">Цветной реализм</b><span data-en="forearm">предплечье</span></figcaption></figure>
-      <figure class="slide" tabindex="0" role="button"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><span class="num">04</span><figcaption class="tag"><b data-en="Full sleeve">Рукав</b><span data-en="b&amp;g realism">ч/б реализм</span></figcaption></figure>
-      <figure class="slide" tabindex="0" role="button"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><span class="num">05</span><figcaption class="tag"><b data-en="Owl">Сова</b><span data-en="shoulder">плечо</span></figcaption></figure>
-      <figure class="slide" tabindex="0" role="button"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><span class="num">06</span><figcaption class="tag"><b data-en="Ship">Корабль</b><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w03.webp" alt="Рукав с космонавтом, первое место на баттле" loading="lazy" width="1077" height="1400"><span class="num">01</span><figcaption class="tag"><b data-en="Astronaut">Космонавт</b><span data-en="sleeve · 1st place">рукав · 1 место</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w02.webp" alt="Нога целиком в чёрно-белом реализме" loading="lazy" width="1050" height="1400"><span class="num">02</span><figcaption class="tag"><b data-en="Full leg">Нога целиком</b><span data-en="2 days · 4 hands">2 дня · 4 руки</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w13.webp" alt="Цветной реализм, портрет девушки" loading="lazy" width="1054" height="1400"><span class="num">03</span><figcaption class="tag"><b data-en="Colour realism">Цветной реализм</b><span data-en="forearm">предплечье</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy" width="1050" height="1400"><span class="num">04</span><figcaption class="tag"><b data-en="Full sleeve">Рукав</b><span data-en="b&amp;g realism">ч/б реализм</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w07.webp" alt="Сова на плече" loading="lazy" width="1058" height="1400"><span class="num">05</span><figcaption class="tag"><b data-en="Owl">Сова</b><span data-en="shoulder">плечо</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy" width="1050" height="1400"><span class="num">06</span><figcaption class="tag"><b data-en="Ship">Корабль</b><span data-en="sleeve">рукав</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -884,8 +972,8 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
         <div class="st sheet"><span class="n">04</span><h3 data-en="Healed">Заживление</h3><p data-en="A day-by-day aftercare plan. Send a photo in a month and we check the result.">План ухода по дням. Через месяц присылаете фото, мы проверяем результат.</p></div>
       </div>
       <div class="frame" aria-hidden="true">
-        <img class="layer photo" src="img/w17.webp" alt="">
-        <img class="layer stencil" src="img/stencil_w17.png" alt="">
+        <img class="layer photo" src="img/w17.webp" alt="" width="1050" height="1400">
+        <img class="layer stencil" src="img/stencil_w17.png" alt="" width="1050" height="1400">
         <span class="healed" data-en="HEALED">ЗАЖИЛО</span>
         <span class="bar"><i></i></span>
       </div>
@@ -906,22 +994,22 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
       </div>
     </div>
     <div class="wallgrid" id="grid">
-      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w01.webp" alt="Чёрно-белый реализм: женский портрет" loading="lazy"><figcaption><span data-en="portrait">портрет</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="color" tabindex="0"><img src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy"><figcaption><span data-en="colour">в цвете</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w02.webp" alt="Нога целиком" loading="lazy"><figcaption><span data-en="full leg">нога целиком</span><span data-en="2 days">2 дня</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/w18.webp" alt="Мини-тату бабочка" loading="lazy"><figcaption><span data-en="butterfly">бабочка</span><span data-en="mini">мини</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w17.webp" alt="Ангел в короне" loading="lazy"><figcaption><span data-en="angel">ангел</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="color" tabindex="0"><img src="img/w04.webp" alt="Цветная тату: лягушка и цветы" loading="lazy"><figcaption><span data-en="frog &amp; flowers">лягушка</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w03.webp" alt="Рукав с космонавтом" loading="lazy"><figcaption><span data-en="astronaut">космонавт</span><span data-en="1st place">1 место</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/w15.webp" alt="Графика: колонна и геометрия" loading="lazy"><figcaption><span data-en="graphic">графика</span><span data-en="lines">линии</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><figcaption><span data-en="owl">сова</span><span data-en="shoulder">плечо</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="graphic big" tabindex="0"><img src="img/w19.webp" alt="Орнамент на груди и плече" loading="lazy"><figcaption><span data-en="ornament">орнамент</span><span data-en="chest">грудь</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><figcaption><span data-en="ship">корабль</span><span data-en="sleeve">рукав</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w20.webp" alt="Реализм на предплечье" loading="lazy"><figcaption><span data-en="forearm">предплечье</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w14.webp" alt="Тёмный рукав" loading="lazy"><figcaption><span data-en="dark sleeve">тёмный рукав</span><span data-en="sleeve">рукав</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w08.webp" alt="Сова крупным планом" loading="lazy"><figcaption><span data-en="owl detail">сова, деталь</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><figcaption><span data-en="full sleeve">рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/sketch.webp" alt="Эскиз на планшете" loading="lazy"><figcaption><span data-en="the sketch">эскиз</span><span data-en="custom">под вас</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w01.webp" alt="Чёрно-белый реализм: женский портрет" loading="lazy" width="1050" height="1400"><figcaption><span data-en="portrait">портрет</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="color" tabindex="0"><img src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy" width="1054" height="1400"><figcaption><span data-en="colour">в цвете</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w02.webp" alt="Нога целиком" loading="lazy" width="1050" height="1400"><figcaption><span data-en="full leg">нога целиком</span><span data-en="2 days">2 дня</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/w18.webp" alt="Мини-тату бабочка" loading="lazy" width="736" height="865"><figcaption><span data-en="butterfly">бабочка</span><span data-en="mini">мини</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w17.webp" alt="Ангел в короне" loading="lazy" width="1050" height="1400"><figcaption><span data-en="angel">ангел</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="color" tabindex="0"><img src="img/w04.webp" alt="Цветная тату: лягушка и цветы" loading="lazy" width="926" height="992"><figcaption><span data-en="frog &amp; flowers">лягушка</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w03.webp" alt="Рукав с космонавтом" loading="lazy" width="1077" height="1400"><figcaption><span data-en="astronaut">космонавт</span><span data-en="1st place">1 место</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/w15.webp" alt="Графика: колонна и геометрия" loading="lazy" width="1100" height="1129"><figcaption><span data-en="graphic">графика</span><span data-en="lines">линии</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w07.webp" alt="Сова на плече" loading="lazy" width="1058" height="1400"><figcaption><span data-en="owl">сова</span><span data-en="shoulder">плечо</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic big" tabindex="0"><img src="img/w19.webp" alt="Орнамент на груди и плече" loading="lazy" width="856" height="821"><figcaption><span data-en="ornament">орнамент</span><span data-en="chest">грудь</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy" width="1050" height="1400"><figcaption><span data-en="ship">корабль</span><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w20.webp" alt="Реализм на предплечье" loading="lazy" width="1100" height="1251"><figcaption><span data-en="forearm">предплечье</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w14.webp" alt="Тёмный рукав" loading="lazy" width="1050" height="1400"><figcaption><span data-en="dark sleeve">тёмный рукав</span><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w08.webp" alt="Сова крупным планом" loading="lazy" width="720" height="1280"><figcaption><span data-en="owl detail">сова, деталь</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy" width="1050" height="1400"><figcaption><span data-en="full sleeve">рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/sketch.webp" alt="Эскиз на планшете" loading="lazy" width="1100" height="1192"><figcaption><span data-en="the sketch">эскиз</span><span data-en="custom">под вас</span></figcaption></figure>
     </div>
     <div class="more"><a class="btn dark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener" data-en="More on Instagram">Ещё в Instagram</a></div>
   </div>
@@ -947,7 +1035,7 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
     <div class="masters">
       <article class="flashsheet">
         <div class="top">
-          <figure class="ph"><img src="img/nadezhda.webp" alt="Мастер Надежда" loading="lazy"><figcaption>Nadya</figcaption></figure>
+          <figure class="ph"><img src="img/nadezhda.webp" alt="Мастер Надежда" loading="lazy" width="788" height="1400"><figcaption>Nadya</figcaption></figure>
           <div>
             <h3 data-en="Nadezhda">Надежда</h3>
             <span class="hand" data-en="fine lines &amp; colour">тонкие линии и цвет</span>
@@ -955,12 +1043,12 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
           </div>
         </div>
         <p data-en="Turns a vague idea into a clean, careful sketch. Good choice for a first tattoo.">Превращает размытую идею в чистый аккуратный эскиз. Хороший выбор для первой тату.</p>
-        <div class="works"><img src="img/w13.webp" alt="" loading="lazy"><img src="img/w15.webp" alt="" loading="lazy"><img src="img/w18.webp" alt="" loading="lazy"></div>
+        <div class="works"><img src="img/w13.webp" alt="" loading="lazy" width="1054" height="1400"><img src="img/w15.webp" alt="" loading="lazy" width="1100" height="1129"><img src="img/w18.webp" alt="" loading="lazy" width="736" height="865"></div>
         <a class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo →</a>
       </article>
       <article class="flashsheet">
         <div class="top">
-          <figure class="ph"><img src="img/vitaliy.webp" alt="Мастер Виталий" loading="lazy"><figcaption>Vitaliy</figcaption></figure>
+          <figure class="ph"><img src="img/vitaliy.webp" alt="Мастер Виталий" loading="lazy" width="787" height="1400"><figcaption>Vitaliy</figcaption></figure>
           <div>
             <h3 data-en="Vitaliy">Виталий</h3>
             <span class="hand" data-en="realism &amp; sleeves">реализм и рукава</span>
@@ -968,7 +1056,7 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
           </div>
         </div>
         <p data-en="1st place at the Gomel tattoo battle. Takes on large projects and difficult cover-ups.">1 место на тату-баттле в Гомеле. Берётся за крупные проекты и сложные перекрытия.</p>
-        <div class="works"><img src="img/w20.webp" alt="" loading="lazy"><img src="img/w08.webp" alt="" loading="lazy"><img src="img/w14.webp" alt="" loading="lazy"></div>
+        <div class="works"><img src="img/w20.webp" alt="" loading="lazy" width="1100" height="1251"><img src="img/w08.webp" alt="" loading="lazy" width="720" height="1280"><img src="img/w14.webp" alt="" loading="lazy" width="1050" height="1400"></div>
         <a class="go mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk →</a>
       </article>
     </div>
@@ -1051,7 +1139,7 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
         <p class="lead" style="margin:22px 0 30px" data-en="A certificate for any amount. The person picks the idea and the date. Popular before New Year.">Сертификат на любую сумму. Человек сам выбирает идею и дату. Особенно популярно перед Новым годом.</p>
         <a class="btn magnet" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Order a certificate">Заказать сертификат</a>
       </div>
-      <div class="gcard" aria-hidden="true"><img src="img/logo.webp" alt=""><div><small data-en="GIFT CERTIFICATE">ПОДАРОЧНЫЙ СЕРТИФИКАТ</small><div class="sum">300 BYN</div></div></div>
+      <div class="gcard" aria-hidden="true"><img src="img/logo.webp" alt="" width="900" height="624"><div><small data-en="GIFT CERTIFICATE">ПОДАРОЧНЫЙ СЕРТИФИКАТ</small><div class="sum">300 BYN</div></div></div>
     </div>
   </div>
 </section>
@@ -1082,7 +1170,7 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
 <section id="contact">
   <div class="wrap contact">
     <div class="addr sheet">
-      <p class="big" data-en="Makayonka lane 4">пер. Макаёнка 4</p>
+      <p class="big" data-en="Makayonka&nbsp;lane&nbsp;4">пер. Макаёнка&nbsp;4</p>
       <span class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите внутрь ✦</span>
       <dl>
         <div><dt data-en="phone">телефон</dt><dd><a class="mark" href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
@@ -1143,8 +1231,12 @@ const desk=()=>innerWidth>900;
 const TG='https://t.me/+375445111912',IG='https://ig.me/m/inkside.minsk';
 /* ---------- analytics: paste IDs to enable (Meta Pixel / Yandex Metrika) ---------- */
 const CFG={metaPixel:'',ymCounter:''};
+function loadAnalytics(){
 if(CFG.metaPixel){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.metaPixel);fbq('track','PageView')}
 if(CFG.ymCounter){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(CFG.ymCounter,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true})}
+}
+let consent=null;try{consent=localStorage.getItem('consent')}catch(e){}
+if((CFG.metaPixel||CFG.ymCounter)&&consent==='yes')loadAnalytics();
 function track(ev,params={},std=true){try{if(window.fbq)std?fbq('track',ev,params):fbq('trackCustom',ev,params);if(window.ym)ym(CFG.ymCounter,'reachGoal',ev,params)}catch(e){}}
 const UTM=new URLSearchParams(location.search);
 const utmTag=['utm_source','utm_campaign'].map(k=>UTM.get(k)).filter(Boolean).join(' / ');
@@ -1152,18 +1244,27 @@ const STAR='<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
 
 /* ---------- language: applied once before animations; switching reloads ---------- */
 let lang='ru';try{lang=localStorage.getItem('lang')==='en'?'en':'ru'}catch(e){}
+const qLang=new URLSearchParams(location.search).get('lang');if(qLang==='en'||qLang==='ru')lang=qLang;
 if(lang==='en'){
   $$('[data-en]').forEach(el=>el.innerHTML=el.dataset.en);
   document.documentElement.lang='en';$('#lang').textContent='RU';
 }
 const SEG={
-  mini:{ru:{h1a:'Первая',h1b:'тату',h1c:'без страха',h1d:'мини от 180 BYN ✦',lead:'Тонкие линии и мини. Бесплатно обсудим идею, подберём место и назовём цену до сеанса. Одноразовые иглы при вас.'},en:{h1a:'Your first',h1b:'tattoo',h1c:'without fear',h1d:'mini from 180 BYN ✦',lead:'Fine line and mini. We discuss the idea for free, pick the placement and name the price before the session.'}},
-  sleeve:{ru:{h1a:'Рукав',h1b:'в реализме',h1c:'у чемпиона',h1d:'час работы 150 BYN ✦',lead:'Крупные проекты в ч/б и цвете. Ногу целиком делали за 2 дня в четыре руки. 1 место на тату-баттле в Гомеле.'},en:{h1a:'A realism',h1b:'sleeve',h1c:'by a champion',h1d:'150 BYN per hour ✦',lead:'Large black & grey and colour projects. A full leg in 2 days with four hands. 1st place at the Gomel tattoo battle.'}},
-  cover:{ru:{h1a:'Старая',h1b:'тату?',h1c:'перекроем',h1d:'и шрам тоже ✦',lead:'Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны, предложим варианты эскиза.'},en:{h1a:'Old',h1b:'tattoo?',h1c:'we cover it',h1d:'scars too ✦',lead:'Cover-ups of old tattoos and scars are our speciality. Send a photo, we suggest sketch options.'}}
+  mini:{ru:{h1a:'Первая',h1b:'тату',h1c:'без страха',h1d:'мини от 180 BYN ✦',cta:'Подобрать мини',img:'w18',lead:'Тонкие линии и мини. Бесплатно обсудим идею, подберём место и назовём цену до сеанса. Одноразовые иглы при вас.'},en:{h1a:'Your first',h1b:'tattoo',h1c:'without fear',h1d:'mini from 180 BYN ✦',cta:'Pick a mini',img:'w18',lead:'Fine line and mini. We discuss the idea for free, pick the placement and name the price before the session.'}},
+  sleeve:{ru:{h1a:'Рукав',h1b:'в реализме',h1c:'у чемпиона',h1d:'час работы 150 BYN ✦',cta:'Рассчитать рукав',img:'w02',lead:'Крупные проекты в ч/б и цвете. Ногу целиком делали за 2 дня в четыре руки. 1 место на тату-баттле в Гомеле.'},en:{h1a:'A realism',h1b:'sleeve',h1c:'by a champion',h1d:'150 BYN per hour ✦',cta:'Estimate a sleeve',img:'w02',lead:'Large black & grey and colour projects. A full leg in 2 days with four hands. 1st place at the Gomel tattoo battle.'}},
+  cover:{ru:{h1a:'Старая',h1b:'тату?',h1c:'перекроем',h1d:'и шрам тоже ✦',cta:'Прислать фото старой тату',img:'w19',lead:'Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны, предложим варианты эскиза.'},en:{h1a:'Old',h1b:'tattoo?',h1c:'we cover it',h1d:'scars too ✦',cta:'Send a photo of the old tattoo',img:'w19',lead:'Cover-ups of old tattoos and scars are our speciality. Send a photo, we suggest sketch options.'}}
 };
 const seg=SEG[UTM.get('s')];
-if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.dataset.seg;if(t[k])el.textContent=t[k]})}
+if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.dataset.seg;if(t[k])el.textContent=t[k]});
+  const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;$$('.hero-mob img,.hero-photos .a img').forEach(i=>i.src=`img/${t.img}.webp`)}
 $$('[data-en-alt]').forEach(el=>{if(lang==='en')el.alt=el.dataset.enAlt});
+if(lang==='en'){
+  const AL={'Главное меню':'Main menu','INKSIDE, наверх':'INKSIDE, back to top','Меню':'Menu','Записаться на сеанс':'Book a session','Фильтр работ':'Works filter','Просмотр работы':'Work preview','Закрыть':'Close','Калькулятор стоимости':'Price calculator','Запись на сеанс':'Book a session','Политика конфиденциальности':'Privacy policy','Вид карты':'Map view','Глобус с отметкой студии INKSIDE в Минске':'Globe with INKSIDE studio in Minsk','Карта: Минск, пер. Макаёнка 4':'Map: Minsk, Makayonka lane 4','Крупные работы':'Large works','Как рождается тату':'How a tattoo is made'};
+  $$('[aria-label]').forEach(el=>{const v=AL[el.getAttribute('aria-label')];if(v)el.setAttribute('aria-label',v)});
+  $$('iframe[title]').forEach(el=>{const v=AL[el.title];if(v)el.title=v});
+  $$('.pol,.slide').forEach(f=>{const c=f.querySelector('figcaption [data-en],figcaption b[data-en]'),i=f.querySelector('img');if(c&&i)i.alt=c.dataset.en.replace(/&amp;/g,'&')});
+  $$('img[alt]').forEach(i=>{if(/[А-Яа-яЁё]/.test(i.alt))i.alt='INKSIDE tattoo work'});
+}
 if(lang==='en'){document.title='INKSIDE - tattoo studio in Minsk | realism, sleeves, cover-ups';$('meta[name=description]').content='INKSIDE tattoo studio in Minsk. Black & grey and colour realism, sleeves, cover-ups, mini. From 180 BYN, free consultation. Daily 11:00-23:00.'}
 $('#lang').onclick=()=>{try{localStorage.setItem('lang',lang==='en'?'ru':'en')}catch(e){}location.reload()};
 
@@ -1201,7 +1302,7 @@ drops.forEach(b=>{
   const d=$('#'+b.getAttribute('aria-controls')),li=b.parentElement;
   const set=v=>{closeDrops(b);b.setAttribute('aria-expanded',v);d.classList.toggle('open',v)};
   let opened=0;
-  b.onclick=()=>{if(fine&&performance.now()-opened<600){set(true);return}set(b.getAttribute('aria-expanded')!=='true')};
+  b.onclick=()=>{if(fine){set(true);return}set(b.getAttribute('aria-expanded')!=='true')};
   if(fine){let t;li.onpointerenter=()=>{clearTimeout(t);if(b.getAttribute('aria-expanded')!=='true')opened=performance.now();set(true)};li.onpointerleave=()=>{t=setTimeout(()=>set(false),180)}}
 });
 document.addEventListener('click',e=>{if(!e.target.closest('.nav'))closeDrops()});
@@ -1256,10 +1357,17 @@ function withUtm(msg){return utmTag?msg+(lang==='en'?` (source: ${utmTag})`:` (�
 function bookMsg(){const z=$('input[name=zone]:checked',bf),sz=$('input[name=bsize]:checked',bf),n=bf.name.value.trim(),idea=bf.idea.value.trim();
   return lang==='en'?`Hi! My name is ${n}. I want a tattoo: ${idea}. Placement: ${z?z.nextElementSibling.querySelector('.tt').textContent:'-'}. Size: ${sz?sz.nextElementSibling.querySelector('.tt').textContent:'-'}. What's the price and free dates?`
     :`Здравствуйте! Меня зовут ${n}. Хочу тату: ${idea}. Место: ${z?z.value:'-'}. Размер: ${sz?sz.value:'-'}. Подскажите цену и свободные даты?`}
-function send(msg,via){msg=withUtm(msg);try{navigator.clipboard.writeText(msg)}catch(e){}window.open(via==='ig'?IG:TG+'?text='+encodeURIComponent(msg),'_blank','noopener')}
+function toast(t){const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.classList.add('on'),20);setTimeout(()=>{d.classList.remove('on');setTimeout(()=>d.remove(),400)},4200)}
+function send(msg,via){msg=withUtm(msg);if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
+  if(via==='ig')toast(lang==='en'?'Request text copied. Paste it into the Instagram chat.':'Текст заявки скопирован. Вставьте его в чат Instagram.');
+  window.open(via==='ig'?IG:TG+'?text='+encodeURIComponent(msg),'_blank','noopener')}
 $('#viaIg').onclick=()=>{if(step<2){show(step+1);return}if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
   send(bookMsg(),'ig');track('Lead',{value:180,currency:'BYN'});track('Contact',{method:'instagram'});book.close()};
-$$('a[href^="tel:"],a[href*="t.me"],a[href^="viber:"],a[href*="instagram.com"],a[href*="ig.me"]').forEach(a=>a.addEventListener('click',()=>track('Contact',{method:a.href.split(':')[0]})));
+const channel=h=>/t\.me/.test(h)?'telegram':/ig\.me|instagram/.test(h)?'instagram':/^viber/.test(h)?'viber':/^tel/.test(h)?'phone':'other';
+$$('a[href^="tel:"],a[href*="t.me"],a[href^="viber:"],a[href*="instagram.com"],a[href*="ig.me"]').forEach(a=>a.addEventListener('click',()=>track('Contact',{method:channel(a.href)})));
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){track('ViewContent',{content_name:'prices'});o.disconnect()}}),{threshold:.5}).observe($('#prices'));
+/* cookie consent bar: shown only when an analytics ID is configured */
+if((CFG.metaPixel||CFG.ymCounter)&&!consent){const c=document.createElement('div');c.className='cookie sheet';c.innerHTML=lang==='en'?'<p>We use cookies for anonymous visit statistics.</p><button class="btn sm" data-c="yes">OK</button><button class="btn sm dark" data-c="no">No</button>':'<p>Мы используем cookie для обезличенной статистики посещений.</p><button class="btn sm" data-c="yes">Хорошо</button><button class="btn sm dark" data-c="no">Нет</button>';document.body.appendChild(c);c.onclick=e=>{const v=e.target.dataset.c;if(!v)return;try{localStorage.setItem('consent',v)}catch(x){}if(v==='yes')loadAnalytics();c.remove()}}
 /* privacy dialog */
 const pv=$('#privacy');$$('.privacy-link').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();pv.showModal()}));$('.x',pv).onclick=()=>pv.close();pv.addEventListener('click',e=>{if(e.target===pv)pv.close()});
 
@@ -1404,7 +1512,7 @@ if(fine&&!reduce){
   });
 })();
 
-if(reduce)$$('video').forEach(v=>{v.removeAttribute('autoplay');v.pause()});
+if(!reduce)addEventListener('load',()=>$$('video[data-lazyplay]').forEach(v=>{v.preload='auto';v.play().catch(()=>{})}));
 /* floating vinyl hides over content it would cover */
 (function(){const st=$('.stamp'),seen=new Set();
   const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));st.classList.toggle('is-hidden',seen.size>0||book.open)},{threshold:.05});
@@ -1460,6 +1568,7 @@ if(window.gsap&&!reduce){
 
   // stencil scene: stencil draws, ink fills, healed stamp slams
   const sts=$$('.st'),fr='.frame';
+  if(innerWidth>900){
   const stl=gsap.timeline({scrollTrigger:{trigger:'.stencil-scene',start:'top top',end:'bottom bottom',scrub:.8}});
   stl.to(sts[0],{opacity:1,y:0,duration:.1})
      .to(sts[0],{opacity:0,y:-30,duration:.08},'+=.12')
@@ -1469,15 +1578,15 @@ if(window.gsap&&!reduce){
      .to(sts[2],{opacity:1,y:0,duration:.1})
      .to(fr+' .photo',{opacity:1,duration:.25},'<')
      .to(fr+' .stencil',{opacity:0,duration:.25},'<.05')
-     .to(fr,{rotate:-1.5,duration:.25},'<')
      .to(sts[2],{opacity:0,y:-30,duration:.08})
      .to(sts[3],{opacity:1,y:0,duration:.1})
      .to(fr+' .healed',{opacity:1,scale:1,duration:.08,ease:'back.out(3)'},'<')
      .to(fr+' .bar',{opacity:1,duration:.1});
   gsap.to(fr+' .bar i',{scaleX:1,ease:'none',scrollTrigger:{trigger:'.stencil-scene',start:'top top',end:'bottom bottom',scrub:true}});
+  }
 
   // polaroids slap onto the wall
-  ScrollTrigger.batch('.pol',{start:'top 92%',once:true,onEnter:b=>gsap.from(b,{y:-80,scale:1.18,rotate:()=>gsap.utils.random(-14,14),opacity:0,duration:.8,stagger:.08,ease:'back.out(1.6)'})});
+  ScrollTrigger.batch('.pol',{start:'top 92%',once:true,onEnter:b=>gsap.from(b,{y:-80,scale:innerWidth>900?1.18:1,rotate:()=>innerWidth>900?gsap.utils.random(-14,14):0,opacity:0,duration:.8,stagger:.08,ease:'back.out(1.6)'})});
 
   // facts count up + flash
   // plain-object tweens can't own a ScrollTrigger (it reverts styles), so start them from onEnter
@@ -1485,7 +1594,7 @@ if(window.gsap&&!reduce){
     ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>gsap.to(o,{v:to,duration:1.4,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)+suf,onComplete:()=>{const r=el.getBoundingClientRect();burst(r.right,r.top+20,8)}})})});
 
   // masters: sheets drop in, photo polaroid lands
-  $$('.flashsheet').forEach((f,i)=>gsap.from(f,{y:120,rotate:i?8:-8,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:f,start:'top 85%'}}));
+  $$('.flashsheet').forEach((f,i)=>gsap.from(f,{y:120,rotate:innerWidth>900?(i?8:-8):0,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:f,start:'top 85%'}}));
   $$('.flashsheet .works img').forEach(im=>gsap.from(im,{scale:0,rotate:30,duration:.6,ease:'back.out(2.4)',scrollTrigger:{trigger:im,start:'top 92%'}}));
 
   // receipt prints out of the slot
@@ -1514,7 +1623,8 @@ if(window.gsap&&!reduce){
   wipe.style.display='none';calc();
 }
 }
-(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fx);
+// load the display faces explicitly: SplitText must measure real glyphs
+(document.fonts?Promise.all(['400 1em "Dela Gothic One"','400 1em "Ruslan Display"','400 1em Onest','400 1em "PT Mono"','400 1em "Rubik Glitch"','600 1em Onest','700 1em Onest'].map(f=>document.fonts.load(f,"АЁЯаёя Az09"))).then(()=>document.fonts.ready):Promise.resolve()).catch(()=>{}).then(()=>new Promise(r=>{const t0=performance.now();(function c(){document.fonts.status!=='loading'||performance.now()-t0>3000?r():setTimeout(c,40)})()})).then(fx);
 </script>
 </body>
 </html>
