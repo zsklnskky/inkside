@@ -13,13 +13,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0b0b0c">
 <link rel="icon" href="img/icon.png">
+<link rel="canonical" href="https://zsklnskky.github.io/inkside/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Ruslan+Display&family=Rubik+Glitch&family=Onest:wght@400;500;600;700&family=PT+Mono&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/wall.jpg">
+<link rel="preload" as="image" href="img/mural.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TattooParlor","name":"INKSIDE","url":"https://zsklnskky.github.io/inkside/","image":"https://zsklnskky.github.io/inkside/img/og.jpg","telephone":"+375445111912",
 "address":{"@type":"PostalAddress","streetAddress":"пер. Макаёнка 4, пом. 64","addressLocality":"Минск","postalCode":"220114","addressCountry":"BY"},
-"openingHours":"Mo-Su 11:00-23:00","priceRange":"от 180 BYN","sameAs":["https://www.instagram.com/inkside.minsk/"]}
+"geo":{"@type":"GeoCoordinates","latitude":53.9134,"longitude":27.5946},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"23:00"}],"priceRange":"180-930 BYN","sameAs":["https://www.instagram.com/inkside.minsk/"]}
 </script>
 <style>
 :root{
@@ -622,6 +623,140 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
   .vhs-ts span:last-child{display:none}
 }
 @media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
+
+/* ===================== v4: review fixes (marketer + designer + QA) ===================== */
+/* new background: street mural */
+.wall{background:#111 url(img/mural.jpg) 60% 40%/cover;filter:grayscale(1) contrast(1.08) brightness(.55)}
+.overlay{background-image:url(img/mural.jpg)}
+@media (max-width:900px){.wall,.overlay{background-image:url(img/mural_tall.jpg),url(img/mural.jpg);background-position:center 30%}}
+#masters::before{display:none}
+
+/* red-only glitch, no cyan */
+h2.poster{text-shadow:3px 0 0 rgba(212,20,28,.75),-2px 0 0 rgba(255,255,255,.2),0 8px 40px rgba(0,0,0,.95)}
+h2.poster{position:relative;isolation:isolate}
+h2.poster::before{content:"";position:absolute;inset:-36px -60px;z-index:-1;background:radial-gradient(60% 75% at 30% 50%,rgba(8,8,9,.8),transparent 72%);pointer-events:none}
+@keyframes chroma{0%,90%,100%{text-shadow:none;transform:none}91%{text-shadow:5px 0 var(--red),-3px 0 rgba(255,255,255,.5);transform:translateX(3px) skewX(-4deg)}93%{text-shadow:-4px 0 var(--red),3px 0 rgba(255,255,255,.4);transform:translateX(-3px)}95%{text-shadow:2px 0 var(--red);transform:none}}
+@keyframes jit{0%{text-shadow:2px 0 #fff,-2px 0 var(--red);transform:translateX(1px)}50%{text-shadow:-2px 0 #fff,2px 0 var(--red);transform:translateX(-1px)}100%{text-shadow:none;transform:none}}
+
+/* one rule for every old-Slavic accent word: own line, no tilt, never overlaps */
+.hand,.h-note,h2 .hand,.hero h1 .hand,#h1 .row .hand{display:block;transform:none!important;rotate:0deg;margin:.14em 0 0;line-height:1.1;color:#ff3b3b;text-shadow:0 2px 0 #000,0 0 18px rgba(0,0,0,.9)}
+h2 .h-note,h2 .hand{font-size:max(.44em,24px)}
+#h1 .row .hand{font-size:.4em}
+.flashsheet .hand{font-size:22px}
+
+/* no tilted "paper" leftovers */
+.marquee{rotate:0deg;margin:30px 0;border-block:1px solid rgba(255,255,255,.22);box-shadow:0 0 40px rgba(212,20,28,.35)}
+.healed-stamp,.frame .healed{rotate:0deg!important;background:#0b0b0c;border:1.5px solid var(--red);color:#fff;border-radius:999px;letter-spacing:.06em}
+.healed-stamp{font-size:clamp(20px,1.8vw,28px);padding:12px 26px}
+.vidword{transform:none;vertical-align:.06em}
+.hero-photos .b{rotate:0deg}
+
+/* stencil scene: dark frame, never an empty first frame */
+.frame{background:#0d0d0e;border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 30px 80px rgba(0,0,0,.6)}
+.frame .stencil{clip-path:inset(0 0 58% 0)}
+.st:first-of-type{opacity:1;transform:none}
+
+/* numbers: glitch by effect, not by font */
+.st .n,.slide .num,.tracklist .tr i{font-family:var(--f-poster);text-shadow:2px 0 rgba(212,20,28,.8),-2px 0 rgba(255,255,255,.22)}
+.st .n{font-size:44px}
+
+/* facts straight on the wall, chrome numbers */
+.facts{background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border:0}
+.fact{border-right:1px dashed rgba(255,255,255,.22)!important;border-bottom:0}
+.fact b,.tracklist .tr b,.gcard .sum{background:linear-gradient(180deg,#fff 0%,#9a9a9a 45%,#f5f5f5 52%,#6a6a6a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #000)}
+.fact:nth-child(2) b{background:linear-gradient(180deg,#ff6a6a,#d4141c 50%,#ff8a8a 55%,#8a0c12);-webkit-background-clip:text;background-clip:text}
+
+/* tracklist as a cassette J-card */
+.tracklist{border-top:6px solid var(--red)}
+.tracklist .cass span{color:#ff5a5a;font-size:13px}
+.micro{margin-top:14px;font:13px var(--f-mono);color:var(--dim)}
+
+/* readable small mono */
+.cday b{color:#ff5a5a;font-size:14px}
+.addr dt{color:#b5b0a8}
+.addr dd a{display:inline-block;padding:6px 0;min-height:32px}
+
+/* contacts never wider than the screen */
+.contact{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:stretch}
+.addr{display:flex;flex-direction:column}.addr dl{margin-top:auto}
+#prices{padding-top:clamp(50px,6vw,96px)}
+
+/* FAQ aligned with the rest */
+#faq h2{text-align:left!important}
+.faq{margin:0;max-width:980px}
+
+/* new marketer blocks */
+.cover-sec{padding-top:0}
+.cover-card{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,60px);align-items:center;padding:clamp(28px,4vw,56px)}
+.cover-card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r)}
+.cover-card .lead{margin:18px 0 26px}
+.last-sec{padding-bottom:0}
+.last-card{padding:clamp(28px,4vw,56px);border-top:6px solid var(--red)}
+.last-card .lead{margin:18px 0 26px}
+.consent{font:12.5px/1.5 var(--f-mono);color:var(--dim);margin-top:18px}
+.consent a{color:#fff;text-decoration:underline}
+.acts-r{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.tiles span .tt{font-style:normal}
+dialog.privacy{margin:auto;border:0;background:transparent;width:min(680px,94vw);color:var(--text)}
+dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
+.pv{padding:clamp(24px,4vw,40px);position:relative;background:rgba(12,12,14,.96)}
+.pv h3{font:400 26px/1.1 var(--f-poster);margin-bottom:16px;padding-right:50px}
+.pv p{color:var(--dim);margin-bottom:12px;font-size:15px}
+.pv .x{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid var(--edge);color:#fff;font-size:22px}
+
+/* floating vinyl: smaller, hides where it would cover content */
+.stamp{width:104px;height:104px;transition:opacity .3s,scale .45s var(--spring),rotate .45s var(--spring)}
+.stamp.is-hidden{opacity:0;pointer-events:none;scale:.6}
+.stamp svg.ring{animation-duration:14s}
+
+/* section heat: wall glows red near prices and booking */
+.shade{transition:background .8s}
+.shade.heat{background:radial-gradient(70% 50% at 50% 112%,rgba(212,20,28,.45),transparent 70%),radial-gradient(110% 85% at 50% 35%,rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 70%,rgba(0,0,0,.88) 100%)}
+
+/* nav: burger up to 1100px so the Book button never squeezes */
+.nav .bar>.btn{flex-shrink:0;white-space:nowrap}
+@media (max-width:1100px){
+  .nav ul,.nav .bar>.btn{display:none}
+  .burger{display:block}
+  .open-sign span{display:none}
+}
+
+@media (max-width:900px){
+  .cover-card{grid-template-columns:1fr}
+  .cover-card img{aspect-ratio:4/3}
+  .stencil-scene .st{top:auto;bottom:0}
+  .steps-text{min-height:360px}
+  .steps-text h2{position:relative;z-index:2}
+}
+@media (max-width:760px){
+  .contact{grid-template-columns:minmax(0,1fr)}
+  .addr .big{white-space:normal;font-size:clamp(28px,8.6vw,40px);overflow-wrap:anywhere}
+  .addr dl div{grid-template-columns:78px minmax(0,1fr)}
+  .stamp{width:64px!important;height:64px!important;right:12px;bottom:calc(12px + env(safe-area-inset-bottom))}
+  .stamp svg.ring text{font-size:12px}
+  .stamp .star{width:14px;height:14px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;border-radius:999px;max-width:100%}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs .tab{flex:0 0 auto}
+  .overlay .row{flex-wrap:wrap}
+  .overlay .row .btn{flex:1 1 140px;justify-content:center;padding-inline:16px}
+  .book .acts{flex-wrap:wrap;gap:12px}
+  .book .acts-r{width:100%}
+  .book .acts-r .btn{flex:1 1 100%;justify-content:center;padding:18px 14px;font-size:14px}
+  #back{white-space:nowrap}
+  .cday h3{font-size:22px}
+  h2.poster{font-size:clamp(26px,8.2vw,48px)}
+  h2 .h-note,h2 .hand{font-size:max(.5em,18px)}
+  h2.poster::before{inset:-20px -24px}
+}
+@media (max-width:600px){
+  .hero h1{font-size:clamp(30px,8.8vw,46px)!important}
+  .vidword{width:1.5em;height:.62em;margin-left:.15em}
+}
+@media (prefers-reduced-motion:reduce){
+  .cursor,.loupe{display:none!important}
+  .stamp svg.ring{animation:none}
+}
 </style>
 </head>
 <body>
@@ -642,18 +777,18 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
       <li>
         <button aria-expanded="false" aria-controls="dd-works"><span data-en="Works">Работы</span><i class="caret"></i></button>
         <div class="drop" id="dd-works">
-          <a href="#works" data-ink data-go="bw"><img src="img/w01.webp" alt=""><span><b data-en="Black &amp; grey">Ч/б реализм</b><small data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
-          <a href="#works" data-ink data-go="color"><img src="img/w13.webp" alt=""><span><b data-en="Colour">Цвет</b><small data-en="colour realism">цветной реализм</small></span></a>
-          <a href="#works" data-ink data-go="big"><img src="img/w05.webp" alt=""><span><b data-en="Sleeves">Рукава</b><small data-en="legs, backs">ноги, спины</small></span></a>
-          <a href="#works" data-ink data-go="graphic"><img src="img/w15.webp" alt=""><span><b data-en="Graphic">Графика</b><small data-en="mini, ornament">мини, орнамент</small></span></a>
+          <a href="#works" data-ink data-go="bw"><img loading="lazy" src="img/w01.webp" alt=""><span><b data-en="Black &amp; grey">Ч/б реализм</b><small data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
+          <a href="#works" data-ink data-go="color"><img loading="lazy" src="img/w13.webp" alt=""><span><b data-en="Colour">Цвет</b><small data-en="colour realism">цветной реализм</small></span></a>
+          <a href="#works" data-ink data-go="big"><img loading="lazy" src="img/w05.webp" alt=""><span><b data-en="Sleeves">Рукава</b><small data-en="legs, backs">ноги, спины</small></span></a>
+          <a href="#works" data-ink data-go="graphic"><img loading="lazy" src="img/w15.webp" alt=""><span><b data-en="Graphic">Графика</b><small data-en="mini, ornament">мини, орнамент</small></span></a>
           <span class="hand" data-en="all works are ours, no stock">все работы наши, без стоков ✦</span>
         </div>
       </li>
       <li>
         <button aria-expanded="false" aria-controls="dd-masters"><span data-en="Artists">Мастера</span><i class="caret"></i></button>
         <div class="drop narrow" id="dd-masters">
-          <a href="#masters" data-ink><img src="img/nadezhda.webp" alt=""><span><b data-en="Nadezhda">Надежда</b><small data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
-          <a href="#masters" data-ink><img src="img/vitaliy.webp" alt=""><span><b data-en="Vitaliy">Виталий</b><small data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
+          <a href="#masters" data-ink><img loading="lazy" src="img/nadezhda.webp" alt=""><span><b data-en="Nadezhda">Надежда</b><small data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
+          <a href="#masters" data-ink><img loading="lazy" src="img/vitaliy.webp" alt=""><span><b data-en="Vitaliy">Виталий</b><small data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
         </div>
       </li>
       <li><a href="#prices" data-ink data-en="Prices">Цены</a></li>
@@ -689,21 +824,22 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
       <div class="vhs-ts" aria-hidden="true"><span class="rec">REC</span><span id="ts">00:00:00</span><span>INKSIDE · VOL.1</span></div>
       <div class="chromelogo"><img src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
       <h1 class="poster" id="h1">
-        <span class="row"><span data-en="Realism">Реализм</span></span>
-        <span class="row"><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></span><span data-en="that">который</span></span>
-        <span class="row"><span data-en="stays">остаётся</span></span>
-        <span class="row"><span class="hand" data-en="for life ✦">навсегда ✦</span></span>
+        <span class="row"><span data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></span></span>
+        <span class="row"><span data-en="you won't" data-seg="h1b">за которую</span></span>
+        <span class="row"><span data-en="regret" data-seg="h1c">не стыдно</span></span>
+        <span class="row"><span class="hand" data-en="even in 10 years ✦" data-seg="h1d">и через 10 лет ✦</span></span>
       </h1>
-      <p class="lead" data-en="Minsk tattoo studio. Sleeves, portraits, cover-ups and mini. Consultation is free, minimum 180 BYN.">Тату-студия в Минске. Рукава, портреты, перекрытия и мини. Консультация бесплатно, минимум 180 BYN.</p>
+      <p class="lead" data-seg="lead" data-en="Two artists, 8+ years, 1st place at the Gomel tattoo battle. We discuss your idea for free and name the price before the session. From 180 BYN.">Два мастера, 8+ лет опыта, 1 место на тату-баттле в Гомеле. Бесплатно обсудим идею и назовём цену до сеанса. От 180 BYN.</p>
       <div class="btns">
-        <button class="btn magnet" data-book data-en="Book">Записаться</button>
+        <button class="btn magnet" data-book data-en="Get my price">Узнать цену моей тату</button>
         <a class="link mark" href="#reel" data-ink data-en="See works ↓">Смотреть работы ↓</a>
       </div>
+      <p class="micro" data-en="3 quick questions. No obligation.">3 коротких вопроса. Ни к чему не обязывает.</p>
     </div>
     <div class="hero-photos" aria-hidden="true">
-      <figure class="polaroid b"><img src="img/w13.webp" alt=""><figcaption data-en="colour realism">цветной реализм</figcaption></figure>
-      <figure class="polaroid a"><img src="img/w03.webp" alt=""><figcaption data-en="1st place, Gomel ✦">1 место, Гомель ✦</figcaption></figure>
-      <figure class="polaroid c"><img src="img/w18.webp" alt=""><figcaption data-en="mini">мини</figcaption></figure>
+      <figure class="polaroid b"><img loading="lazy" src="img/w04.webp" alt="" width="520" height="560"><figcaption data-en="colour">цвет</figcaption></figure>
+      <figure class="polaroid a"><img loading="lazy" src="img/w01.webp" alt="" width="780" height="1040"><figcaption data-en="b&amp;g realism">ч/б реализм</figcaption></figure>
+      <figure class="polaroid c"><img loading="lazy" src="img/w18.webp" alt=""><figcaption data-en="mini">мини</figcaption></figure>
       <span class="spark" style="--s:26px;left:46%;top:2%;--dl:.4s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
       <span class="spark" style="--s:14px;left:8%;top:30%;--dl:1.3s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
       <span class="spark" style="--s:18px;right:-2%;top:44%;--dl:2.1s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
@@ -713,8 +849,8 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
 </header>
 
 <div class="marquee" aria-hidden="true"><div id="mq">
-  <span>Реализм</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Рукава</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Перекрытия</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Портреты</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Мини</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Чикано</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i>
-  <span>Реализм</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Рукава</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Перекрытия</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Портреты</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Мини</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Чикано</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i>
+  <span data-en="Realism">Реализм</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Sleeves">Рукава</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Cover-ups">Перекрытия</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Portraits">Портреты</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Mini">Мини</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Chicano">Чикано</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i>
+  <span data-en="Realism">Реализм</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Sleeves">Рукава</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Cover-ups">Перекрытия</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Portraits">Портреты</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Mini">Мини</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span data-en="Chicano">Чикано</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i>
 </div></div>
 
 <section class="reel" id="reel" aria-label="Крупные работы">
@@ -724,12 +860,12 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
         <h2 class="poster split" data-en="One work. <span class='outline'>One screen.</span>">Одна работа. <span class="outline">Один экран.</span></h2>
         <p class="lead" style="margin-top:20px" data-en="No tiny Instagram squares. Hover to look at the skin up close.">Никаких мелких квадратиков. Наведите, чтобы рассмотреть кожу вблизи.</p>
       </div>
-      <figure class="slide"><img src="img/w03.webp" alt="Рукав с космонавтом, первое место на баттле" loading="lazy"><span class="num">01</span><figcaption class="tag"><b data-en="Astronaut">Космонавт</b><span data-en="sleeve · 1st place">рукав · 1 место</span></figcaption></figure>
-      <figure class="slide"><img src="img/w02.webp" alt="Нога целиком в чёрно-белом реализме" loading="lazy"><span class="num">02</span><figcaption class="tag"><b data-en="Full leg">Нога целиком</b><span data-en="2 days · 4 hands">2 дня · 4 руки</span></figcaption></figure>
-      <figure class="slide"><img src="img/w13.webp" alt="Цветной реализм, портрет девушки" loading="lazy"><span class="num">03</span><figcaption class="tag"><b data-en="Colour realism">Цветной реализм</b><span data-en="forearm">предплечье</span></figcaption></figure>
-      <figure class="slide"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><span class="num">04</span><figcaption class="tag"><b data-en="Full sleeve">Рукав</b><span data-en="b&amp;g realism">ч/б реализм</span></figcaption></figure>
-      <figure class="slide"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><span class="num">05</span><figcaption class="tag"><b data-en="Owl">Сова</b><span data-en="shoulder">плечо</span></figcaption></figure>
-      <figure class="slide"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><span class="num">06</span><figcaption class="tag"><b data-en="Ship">Корабль</b><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w03.webp" alt="Рукав с космонавтом, первое место на баттле" loading="lazy"><span class="num">01</span><figcaption class="tag"><b data-en="Astronaut">Космонавт</b><span data-en="sleeve · 1st place">рукав · 1 место</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w02.webp" alt="Нога целиком в чёрно-белом реализме" loading="lazy"><span class="num">02</span><figcaption class="tag"><b data-en="Full leg">Нога целиком</b><span data-en="2 days · 4 hands">2 дня · 4 руки</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w13.webp" alt="Цветной реализм, портрет девушки" loading="lazy"><span class="num">03</span><figcaption class="tag"><b data-en="Colour realism">Цветной реализм</b><span data-en="forearm">предплечье</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><span class="num">04</span><figcaption class="tag"><b data-en="Full sleeve">Рукав</b><span data-en="b&amp;g realism">ч/б реализм</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><span class="num">05</span><figcaption class="tag"><b data-en="Owl">Сова</b><span data-en="shoulder">плечо</span></figcaption></figure>
+      <figure class="slide" tabindex="0" role="button"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><span class="num">06</span><figcaption class="tag"><b data-en="Ship">Корабль</b><span data-en="sleeve">рукав</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -767,28 +903,28 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
       </div>
     </div>
     <div class="wallgrid" id="grid">
-      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w01.webp" alt="Чёрно-белый реализм: женский портрет" loading="lazy"><figcaption><span data-en="portrait">портрет</span><span>ч/б</span></figcaption></figure>
-      <figure class="pol" data-c="color" tabindex="0"><img src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy"><figcaption><span data-en="colour">в цвете</span><span>цвет</span></figcaption></figure>
-      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w02.webp" alt="Нога целиком" loading="lazy"><figcaption><span data-en="full leg">нога целиком</span><span>2 дня</span></figcaption></figure>
-      <figure class="pol" data-c="graphic" tabindex="0"><img src="img/w18.webp" alt="Мини-тату бабочка" loading="lazy"><figcaption><span data-en="butterfly">бабочка</span><span>мини</span></figcaption></figure>
-      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w17.webp" alt="Ангел в короне" loading="lazy"><figcaption><span data-en="angel">ангел</span><span>ч/б</span></figcaption></figure>
-      <figure class="pol" data-c="color" tabindex="0"><img src="img/w04.webp" alt="Цветная тату: лягушка и цветы" loading="lazy"><figcaption><span data-en="frog &amp; flowers">лягушка</span><span>цвет</span></figcaption></figure>
-      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w03.webp" alt="Рукав с космонавтом" loading="lazy"><figcaption><span data-en="astronaut">космонавт</span><span>1 место</span></figcaption></figure>
-      <figure class="pol" data-c="graphic" tabindex="0"><img src="img/w15.webp" alt="Графика: колонна и геометрия" loading="lazy"><figcaption><span data-en="graphic">графика</span><span>линии</span></figcaption></figure>
-      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><figcaption><span data-en="owl">сова</span><span>плечо</span></figcaption></figure>
-      <figure class="pol" data-c="graphic big" tabindex="0"><img src="img/w19.webp" alt="Орнамент на груди и плече" loading="lazy"><figcaption><span data-en="ornament">орнамент</span><span>грудь</span></figcaption></figure>
-      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><figcaption><span data-en="ship">корабль</span><span>рукав</span></figcaption></figure>
-      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w20.webp" alt="Реализм на предплечье" loading="lazy"><figcaption><span data-en="forearm">предплечье</span><span>ч/б</span></figcaption></figure>
-      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w14.webp" alt="Тёмный рукав" loading="lazy"><figcaption><span data-en="dark sleeve">тёмный рукав</span><span>рукав</span></figcaption></figure>
-      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w08.webp" alt="Сова крупным планом" loading="lazy"><figcaption><span data-en="owl detail">сова, деталь</span><span>ч/б</span></figcaption></figure>
-      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><figcaption><span data-en="full sleeve">рукав</span><span>ч/б</span></figcaption></figure>
-      <figure class="pol" data-c="graphic" tabindex="0"><img src="img/sketch.webp" alt="Эскиз на планшете" loading="lazy"><figcaption><span data-en="the sketch">эскиз</span><span>под вас</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w01.webp" alt="Чёрно-белый реализм: женский портрет" loading="lazy"><figcaption><span data-en="portrait">портрет</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="color" tabindex="0"><img src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy"><figcaption><span data-en="colour">в цвете</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w02.webp" alt="Нога целиком" loading="lazy"><figcaption><span data-en="full leg">нога целиком</span><span data-en="2 days">2 дня</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/w18.webp" alt="Мини-тату бабочка" loading="lazy"><figcaption><span data-en="butterfly">бабочка</span><span data-en="mini">мини</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w17.webp" alt="Ангел в короне" loading="lazy"><figcaption><span data-en="angel">ангел</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="color" tabindex="0"><img src="img/w04.webp" alt="Цветная тату: лягушка и цветы" loading="lazy"><figcaption><span data-en="frog &amp; flowers">лягушка</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w03.webp" alt="Рукав с космонавтом" loading="lazy"><figcaption><span data-en="astronaut">космонавт</span><span data-en="1st place">1 место</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/w15.webp" alt="Графика: колонна и геометрия" loading="lazy"><figcaption><span data-en="graphic">графика</span><span data-en="lines">линии</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><figcaption><span data-en="owl">сова</span><span data-en="shoulder">плечо</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic big" tabindex="0"><img src="img/w19.webp" alt="Орнамент на груди и плече" loading="lazy"><figcaption><span data-en="ornament">орнамент</span><span data-en="chest">грудь</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><figcaption><span data-en="ship">корабль</span><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w20.webp" alt="Реализм на предплечье" loading="lazy"><figcaption><span data-en="forearm">предплечье</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w14.webp" alt="Тёмный рукав" loading="lazy"><figcaption><span data-en="dark sleeve">тёмный рукав</span><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw" tabindex="0"><img src="img/w08.webp" alt="Сова крупным планом" loading="lazy"><figcaption><span data-en="owl detail">сова, деталь</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="bw big" tabindex="0"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><figcaption><span data-en="full sleeve">рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" role="button" data-c="graphic" tabindex="0"><img src="img/sketch.webp" alt="Эскиз на планшете" loading="lazy"><figcaption><span data-en="the sketch">эскиз</span><span data-en="custom">под вас</span></figcaption></figure>
     </div>
     <div class="more"><a class="btn dark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener" data-en="More on Instagram">Ещё в Instagram</a></div>
   </div>
   <dialog class="lb" id="lb" aria-label="Просмотр работы">
     <button class="ctl x" aria-label="Закрыть">×</button>
-    <img alt="">
+    <img alt="" hidden>
     <span class="cap"></span>
   </dialog>
 </section>
@@ -816,7 +952,7 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
           </div>
         </div>
         <p data-en="Turns a vague idea into a clean, careful sketch. Good choice for a first tattoo.">Превращает размытую идею в чистый аккуратный эскиз. Хороший выбор для первой тату.</p>
-        <div class="works"><img src="img/w13.webp" alt="" loading="lazy"><img src="img/w04.webp" alt="" loading="lazy"><img src="img/w18.webp" alt="" loading="lazy"></div>
+        <div class="works"><img src="img/w13.webp" alt="" loading="lazy"><img src="img/w15.webp" alt="" loading="lazy"><img src="img/w18.webp" alt="" loading="lazy"></div>
         <a class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo →</a>
       </article>
       <article class="flashsheet">
@@ -829,7 +965,7 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
           </div>
         </div>
         <p data-en="1st place at the Gomel tattoo battle. Takes on large projects and difficult cover-ups.">1 место на тату-баттле в Гомеле. Берётся за крупные проекты и сложные перекрытия.</p>
-        <div class="works"><img src="img/w03.webp" alt="" loading="lazy"><img src="img/w07.webp" alt="" loading="lazy"><img src="img/w16.webp" alt="" loading="lazy"></div>
+        <div class="works"><img src="img/w20.webp" alt="" loading="lazy"><img src="img/w08.webp" alt="" loading="lazy"><img src="img/w14.webp" alt="" loading="lazy"></div>
         <a class="go mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk →</a>
       </article>
     </div>
@@ -852,8 +988,8 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
         <h3 data-en="Estimate yours">Посчитайте свою</h3>
         <fieldset><legend data-en="size">размер</legend><div class="opts">
           <label><input type="radio" name="size" value="1" checked><span data-en="up to 5 cm">до 5 см</span></label>
-          <label><input type="radio" name="size" value="1.5"><span>5-10 см</span></label>
-          <label><input type="radio" name="size" value="2.5"><span>10-20 см</span></label>
+          <label><input type="radio" name="size" value="1.5"><span data-en="5-10 cm">5-10 см</span></label>
+          <label><input type="radio" name="size" value="2.5"><span data-en="10-20 cm">10-20 см</span></label>
           <label><input type="radio" name="size" value="6"><span data-en="sleeve / leg (session)">рукав / нога (сеанс)</span></label>
         </div></fieldset>
         <fieldset><legend data-en="style">стиль</legend><div class="opts">
@@ -869,9 +1005,22 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
         </div></fieldset>
         <div class="result">
           <div><small data-en="approximate price">ориентир по цене</small><output id="sum" aria-live="polite">от 180 BYN</output><small id="hrs">≈ 1 ч работы</small></div>
-          <button class="btn magnet" type="submit" data-en="Send to Telegram">Отправить в Telegram</button>
+          <button class="btn magnet" type="submit" data-en="Get the exact price">Получить точную цену</button>
         </div>
       </form>
+    </div>
+  </div>
+</section>
+
+<section id="cover" class="cover-sec">
+  <div class="wrap">
+    <div class="cover-card sheet">
+      <div>
+        <h2 class="poster split" data-en="Old tattoo <span class='hand h-note'>you don't like?</span>">Старая тату <span class="hand h-note">не нравится?</span></h2>
+        <p class="lead" data-en="Cover-ups and scar work are our speciality. Send a daylight photo of the area and we'll suggest sketch options.">Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны при дневном свете, предложим варианты эскиза.</p>
+        <div class="btns"><a class="btn" data-contact="telegram" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Send a photo">Прислать фото</a><a class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a></div>
+      </div>
+      <img src="img/w19.webp" alt="Орнамент на груди и плече" data-en-alt="Ornamental chest and shoulder piece" loading="lazy" width="520" height="560">
     </div>
   </div>
 </section>
@@ -917,6 +1066,16 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
   </div>
 </section>
 
+<section id="last" class="last-sec">
+  <div class="wrap">
+    <div class="last-card sheet">
+      <h2 class="poster split" data-en="Still thinking? <span class='hand h-note'>just ask</span>">Ещё думаете? <span class="hand h-note">просто спросите</span></h2>
+      <p class="lead" data-en="Describe the idea in two words. The artist will honestly tell you whether it suits you and how much it costs.">Напишите идею в двух словах. Мастер честно скажет, подойдёт ли она вам и сколько будет стоить.</p>
+      <div class="btns"><button class="btn" data-book data-en="Get my price">Узнать цену моей тату</button><a class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a><a class="btn dark" data-contact="telegram" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a></div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap contact">
     <div class="addr sheet">
@@ -940,23 +1099,32 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
 
 <footer>
   <div class="wrap">
-    <div>© 2026 ООО «Инк Тату» · УНП 193954480<br><span data-en="Registered by Minsk City Executive Committee 16.01.2026 · household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026 · реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
-    <div data-en="220114, Minsk, Makayonka lane 4, room 64">220114, г. Минск, пер. Макаёнка 4, пом. 64</div>
+    <div><span data-en="© 2026 Ink Tattoo LLC · UNP 193954480">© 2026 ООО «Инк Тату» · УНП 193954480</span><br><span data-en="Registered by Minsk City Executive Committee 16.01.2026 · household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026 · реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
+    <div><span data-en="220114, Minsk, Makayonka lane 4, room 64">220114, г. Минск, пер. Макаёнка 4, пом. 64</span><br><a href="#privacy" class="privacy-link mark" data-en="Privacy policy">Политика конфиденциальности</a></div>
   </div>
 </footer>
+
+<dialog class="privacy" id="privacy" aria-label="Политика конфиденциальности">
+  <div class="sheet pv">
+    <button class="x" type="button" aria-label="Закрыть">×</button>
+    <h3 data-en="Privacy policy">Политика конфиденциальности</h3>
+    <div data-en="<p>Operator: Ink Tattoo LLC, UNP 193954480, 220114, Minsk, Makayonka lane 4, room 64.</p><p>The site does not store personal data. When you use the booking form, your name and message are passed to Telegram or Instagram only after you press the send button yourself, and are used solely to reply to your request.</p><p>If analytics counters are enabled, they collect anonymised visit statistics. You can ask us to delete your correspondence at any time: +375 44 511-19-12.</p><p>Processing is carried out in accordance with the Law of the Republic of Belarus No. 99-Z «On Personal Data Protection».</p>"><p>Оператор: ООО «Инк Тату», УНП 193954480, 220114, г. Минск, пер. Макаёнка 4, пом. 64.</p><p>Сайт не хранит персональные данные. Имя и сообщение из формы записи передаются в Telegram или Instagram только после того, как вы сами нажмёте кнопку отправки, и используются только для ответа на ваш запрос.</p><p>Если подключены счётчики аналитики, они собирают обезличенную статистику посещений. Попросить удалить переписку можно в любой момент: +375 44 511-19-12.</p><p>Обработка ведётся в соответствии с Законом Республики Беларусь № 99-З «О защите персональных данных».</p></div>
+  </div>
+</dialog>
 
 <dialog class="book" id="book" aria-label="Запись на сеанс">
   <form id="bookForm" novalidate>
     <div class="bk-bar" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     <div class="bk-top"><span class="bk-tag">● REC · INKSIDE</span><span class="stepnum" id="stepnum">01 / 03</span><button class="x" type="button" aria-label="Закрыть">×</button></div>
-    <fieldset class="on"><legend data-en="Where?">Где будет тату?</legend><div class="tiles"><label><input type="radio" name="zone" value="рука"><span><b>01</b>Рука<em>плечо, предплечье</em></span></label><label><input type="radio" name="zone" value="нога"><span><b>02</b>Нога<em>бедро, голень</em></span></label><label><input type="radio" name="zone" value="спина"><span><b>03</b>Спина<em>лопатки, вся спина</em></span></label><label><input type="radio" name="zone" value="грудь / рёбра"><span><b>04</b>Грудь / рёбра<em>чувствительная зона</em></span></label><label><input type="radio" name="zone" value="шея / кисть"><span><b>05</b>Шея / кисть<em>на виду</em></span></label><label><input type="radio" name="zone" value="перекрытие старой тату"><span><b>06</b>Перекрытие<em>старая тату или шрам</em></span></label></div></fieldset>
-    <fieldset><legend data-en="How big?">Какой размер?</legend><div class="tiles"><label><input type="radio" name="bsize" value="до 5 см"><span><b>01</b>До 5 см<em>от 180 BYN</em></span></label><label><input type="radio" name="bsize" value="5-10 см"><span><b>02</b>5-10 см<em>от 330 BYN</em></span></label><label><input type="radio" name="bsize" value="10-20 см"><span><b>03</b>10-20 см<em>от 480 BYN</em></span></label><label><input type="radio" name="bsize" value="рукав / большая зона"><span><b>04</b>Рукав / большая<em>сеанс от 930 BYN</em></span></label><label><input type="radio" name="bsize" value="пока не знаю"><span><b>05</b>Не знаю<em>решим на консультации</em></span></label></div></fieldset>
+    <fieldset class="on"><legend data-en="Where?">Где будет тату?</legend><div class="tiles"><label><input type="radio" name="zone" value="рука"><span><b>01</b><i class="tt" data-en="Arm">Рука</i><em data-en="shoulder, forearm">плечо, предплечье</em></span></label><label><input type="radio" name="zone" value="нога"><span><b>02</b><i class="tt" data-en="Leg">Нога</i><em data-en="thigh, calf">бедро, голень</em></span></label><label><input type="radio" name="zone" value="спина"><span><b>03</b><i class="tt" data-en="Back">Спина</i><em data-en="shoulder blades, full back">лопатки, вся спина</em></span></label><label><input type="radio" name="zone" value="грудь / рёбра"><span><b>04</b><i class="tt" data-en="Chest / ribs">Грудь / рёбра</i><em data-en="sensitive area">чувствительная зона</em></span></label><label><input type="radio" name="zone" value="шея / кисть"><span><b>05</b><i class="tt" data-en="Neck / hand">Шея / кисть</i><em data-en="visible">на виду</em></span></label><label><input type="radio" name="zone" value="перекрытие старой тату"><span><b>06</b><i class="tt" data-en="Cover-up">Перекрытие</i><em data-en="old tattoo or scar">старая тату или шрам</em></span></label></div></fieldset>
+    <fieldset><legend data-en="How big?">Какой размер?</legend><div class="tiles"><label><input type="radio" name="bsize" value="до 5 см"><span><b>01</b><i class="tt" data-en="Up to 5 cm">До 5 см</i><em data-en="from 180 BYN">от 180 BYN</em></span></label><label><input type="radio" name="bsize" value="5-10 см"><span><b>02</b><i class="tt" data-en="5-10 cm">5-10 см</i><em data-en="from 330 BYN">от 330 BYN</em></span></label><label><input type="radio" name="bsize" value="10-20 см"><span><b>03</b><i class="tt" data-en="10-20 cm">10-20 см</i><em data-en="from 480 BYN">от 480 BYN</em></span></label><label><input type="radio" name="bsize" value="рукав / большая зона"><span><b>04</b><i class="tt" data-en="Sleeve / large">Рукав / большая</i><em data-en="session from 930 BYN">сеанс от 930 BYN</em></span></label><label><input type="radio" name="bsize" value="пока не знаю"><span><b>05</b><i class="tt" data-en="Not sure">Не знаю</i><em data-en="we decide at the consultation">решим на консультации</em></span></label></div></fieldset>
     <fieldset><legend data-en="Name and idea">Имя и идея</legend>
       <label class="f"><span data-en="Your name">Ваше имя</span><input class="t" name="name" autocomplete="name" required></label>
       <label class="f"><span data-en="The idea in a few words">Идея в двух словах</span><textarea name="idea" required></textarea></label>
     </fieldset>
     <p class="err" id="bookErr" role="alert"></p>
-    <div class="acts"><button class="link" type="button" id="back">← Назад</button><button class="btn" type="submit" id="next">Дальше →</button></div>
+    <p class="consent" data-en="By sending you agree to the processing of your name and message to reply to you. <a href='#privacy' class='privacy-link'>Privacy</a>">Отправляя, вы соглашаетесь на обработку имени и сообщения, чтобы мы ответили. <a href="#privacy" class="privacy-link">Политика конфиденциальности</a></p>
+    <div class="acts"><button class="link" type="button" id="back" data-en="← Back">← Назад</button><span class="acts-r"><button class="btn dark" type="button" id="viaIg" data-en="Instagram Direct">Instagram Direct</button><button class="btn" type="submit" id="next">Дальше →</button></span></div>
   </form>
 </dialog>
 
@@ -969,7 +1137,14 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 const desk=()=>innerWidth>900;
-const TG='https://t.me/+375445111912';
+const TG='https://t.me/+375445111912',IG='https://ig.me/m/inkside.minsk';
+/* ---------- analytics: paste IDs to enable (Meta Pixel / Yandex Metrika) ---------- */
+const CFG={metaPixel:'',ymCounter:''};
+if(CFG.metaPixel){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.metaPixel);fbq('track','PageView')}
+if(CFG.ymCounter){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(CFG.ymCounter,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true})}
+function track(ev,params={},std=true){try{if(window.fbq)std?fbq('track',ev,params):fbq('trackCustom',ev,params);if(window.ym)ym(CFG.ymCounter,'reachGoal',ev,params)}catch(e){}}
+const UTM=new URLSearchParams(location.search);
+const utmTag=['utm_source','utm_campaign'].map(k=>UTM.get(k)).filter(Boolean).join(' / ');
 const STAR='<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
 
 /* ---------- language: applied once before animations; switching reloads ---------- */
@@ -978,6 +1153,15 @@ if(lang==='en'){
   $$('[data-en]').forEach(el=>el.innerHTML=el.dataset.en);
   document.documentElement.lang='en';$('#lang').textContent='RU';
 }
+const SEG={
+  mini:{ru:{h1a:'Первая',h1b:'тату',h1c:'без страха',h1d:'мини от 180 BYN ✦',lead:'Тонкие линии и мини. Бесплатно обсудим идею, подберём место и назовём цену до сеанса. Одноразовые иглы при вас.'},en:{h1a:'Your first',h1b:'tattoo',h1c:'without fear',h1d:'mini from 180 BYN ✦',lead:'Fine line and mini. We discuss the idea for free, pick the placement and name the price before the session.'}},
+  sleeve:{ru:{h1a:'Рукав',h1b:'в реализме',h1c:'у чемпиона',h1d:'час работы 150 BYN ✦',lead:'Крупные проекты в ч/б и цвете. Ногу целиком делали за 2 дня в четыре руки. 1 место на тату-баттле в Гомеле.'},en:{h1a:'A realism',h1b:'sleeve',h1c:'by a champion',h1d:'150 BYN per hour ✦',lead:'Large black & grey and colour projects. A full leg in 2 days with four hands. 1st place at the Gomel tattoo battle.'}},
+  cover:{ru:{h1a:'Старая',h1b:'тату?',h1c:'перекроем',h1d:'и шрам тоже ✦',lead:'Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны, предложим варианты эскиза.'},en:{h1a:'Old',h1b:'tattoo?',h1c:'we cover it',h1d:'scars too ✦',lead:'Cover-ups of old tattoos and scars are our speciality. Send a photo, we suggest sketch options.'}}
+};
+const seg=SEG[UTM.get('s')];
+if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.dataset.seg;if(t[k])el.textContent=t[k]})}
+$$('[data-en-alt]').forEach(el=>{if(lang==='en')el.alt=el.dataset.enAlt});
+if(lang==='en'){document.title='INKSIDE - tattoo studio in Minsk | realism, sleeves, cover-ups';$('meta[name=description]').content='INKSIDE tattoo studio in Minsk. Black & grey and colour realism, sleeves, cover-ups, mini. From 180 BYN, free consultation. Daily 11:00-23:00.'}
 $('#lang').onclick=()=>{try{localStorage.setItem('lang',lang==='en'?'ru':'en')}catch(e){}location.reload()};
 
 /* ---------- live open / closed sign + VHS clock (Minsk time) ---------- */
@@ -1013,8 +1197,9 @@ function closeDrops(ex){drops.forEach(b=>{if(b!==ex){b.setAttribute('aria-expand
 drops.forEach(b=>{
   const d=$('#'+b.getAttribute('aria-controls')),li=b.parentElement;
   const set=v=>{closeDrops(b);b.setAttribute('aria-expanded',v);d.classList.toggle('open',v)};
-  b.onclick=()=>set(b.getAttribute('aria-expanded')!=='true');
-  if(fine){let t;li.onpointerenter=()=>{clearTimeout(t);set(true)};li.onpointerleave=()=>{t=setTimeout(()=>set(false),180)}}
+  let opened=0;
+  b.onclick=()=>{if(fine&&performance.now()-opened<600){set(true);return}set(b.getAttribute('aria-expanded')!=='true')};
+  if(fine){let t;li.onpointerenter=()=>{clearTimeout(t);if(b.getAttribute('aria-expanded')!=='true')opened=performance.now();set(true)};li.onpointerleave=()=>{t=setTimeout(()=>set(false),180)}}
 });
 document.addEventListener('click',e=>{if(!e.target.closest('.nav'))closeDrops()});
 const burger=$('.burger'),overlay=$('#overlay');
@@ -1048,12 +1233,12 @@ $$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
 /* ---------- booking: 3-step brief -> Telegram message ---------- */
 const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
 function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`0${i+1} / 03`;$$('.bk-bar i').forEach((b,k)=>b.classList.toggle('on',k<=i));$('#back').style.visibility=i?'visible':'hidden';
-  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram →':'Отправить в Telegram →'):(lang==='en'?'Next →':'Дальше →');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
-$$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);show(0);book.showModal()}));
+  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram →':'Отправить в Telegram →'):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
+$$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);bf.reset();show(0);book.showModal();track('InitiateCheckout',{content_name:'booking'})}));
 $('.x',bf).onclick=()=>book.close();
 book.addEventListener('click',e=>{if(e.target===book)book.close()});
 $('#back').onclick=()=>show(Math.max(0,step-1));
-sets.slice(0,2).forEach((f,i)=>f.addEventListener('change',()=>setTimeout(()=>show(i+1),160)));
+sets.slice(0,2).forEach((f,i)=>f.addEventListener('change',()=>{track('BookingStep'+(i+1),{},false);setTimeout(()=>show(i+1),160)}));
 // keys 1-6 pick a tile on the current step
 book.addEventListener('keydown',e=>{if(step<2&&/^[1-6]$/.test(e.key)){const r=$$('input',sets[step])[+e.key-1];if(r){r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}))}}});
 bf.onsubmit=e=>{
@@ -1061,10 +1246,19 @@ bf.onsubmit=e=>{
   const need=lang==='en'?'Please pick an option':'Выберите вариант';
   if(step<2){if(!$('input:checked',sets[step])){$('#bookErr').textContent=need;return}show(step+1);return}
   if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
-  send(`Здравствуйте! Меня зовут ${bf.name.value.trim()}. Хочу тату: ${bf.idea.value.trim()}. Место: ${$('input[name=zone]:checked',bf).value}. Размер: ${$('input[name=bsize]:checked',bf).value}. Подскажите цену и свободные даты?`);
+  send(bookMsg());track('Lead',{value:180,currency:'BYN'});
   book.close();
 };
-function send(msg){try{navigator.clipboard.writeText(msg)}catch(e){}window.open(TG+'?text='+encodeURIComponent(msg),'_blank','noopener')}
+function withUtm(msg){return utmTag?msg+(lang==='en'?` (source: ${utmTag})`:` (источник: ${utmTag})`):msg}
+function bookMsg(){const z=$('input[name=zone]:checked',bf),sz=$('input[name=bsize]:checked',bf),n=bf.name.value.trim(),idea=bf.idea.value.trim();
+  return lang==='en'?`Hi! My name is ${n}. I want a tattoo: ${idea}. Placement: ${z?z.nextElementSibling.querySelector('.tt').textContent:'-'}. Size: ${sz?sz.nextElementSibling.querySelector('.tt').textContent:'-'}. What's the price and free dates?`
+    :`Здравствуйте! Меня зовут ${n}. Хочу тату: ${idea}. Место: ${z?z.value:'-'}. Размер: ${sz?sz.value:'-'}. Подскажите цену и свободные даты?`}
+function send(msg,via){msg=withUtm(msg);try{navigator.clipboard.writeText(msg)}catch(e){}window.open(via==='ig'?IG:TG+'?text='+encodeURIComponent(msg),'_blank','noopener')}
+$('#viaIg').onclick=()=>{if(step<2){show(step+1);return}if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
+  send(bookMsg(),'ig');track('Lead',{value:180,currency:'BYN'});track('Contact',{method:'instagram'});book.close()};
+$$('a[href^="tel:"],a[href*="t.me"],a[href^="viber:"],a[href*="instagram.com"],a[href*="ig.me"]').forEach(a=>a.addEventListener('click',()=>track('Contact',{method:a.href.split(':')[0]})));
+/* privacy dialog */
+const pv=$('#privacy');$$('.privacy-link').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();pv.showModal()}));$('.x',pv).onclick=()=>pv.close();pv.addEventListener('click',e=>{if(e.target===pv)pv.close()});
 
 /* ---------- calculator with "printing" digits ---------- */
 const form=$('#calc');let shown=180;
@@ -1077,9 +1271,10 @@ function calc(){
   if(reduce||!window.gsap){$('#sum').textContent=pre+sum+' BYN';shown=sum;return}
   const o={v:shown};gsap.to(o,{v:sum,duration:.7,ease:'power2.out',onUpdate:()=>$('#sum').textContent=pre+Math.round(o.v/10)*10+' BYN',onComplete:()=>{$('#sum').textContent=pre+sum+' BYN';shown=sum}});
 }
-form.onchange=calc;
+form.onchange=()=>{calc();track('CalculatorUse',{},false)};
 form.onsubmit=e=>{e.preventDefault();const p=n=>form.querySelector(`[name=${n}]:checked`).nextElementSibling.textContent;
-  send(`Здравствуйте! Хочу тату: размер ${p('size')}, стиль ${p('kind')}, место ${p('place')}. Калькулятор показал ${$('#sum').textContent}. Подскажите свободные даты?`)};
+  track('Lead',{value:180,currency:'BYN'});
+  send(lang==='en'?`Hi! I want a tattoo: size ${p('size')}, style ${p('kind')}, placement ${p('place')}. The calculator shows ${$('#sum').textContent}. Any free dates?`:`Здравствуйте! Хочу тату: размер ${p('size')}, стиль ${p('kind')}, место ${p('place')}. Калькулятор показал ${$('#sum').textContent}. Подскажите свободные даты?`)};
 
 /* ---------- portfolio filter + lightbox ---------- */
 function filter(f){
@@ -1090,12 +1285,12 @@ function filter(f){
 $$('.tab').forEach(t=>t.onclick=()=>filter(t.dataset.f));
 const lb=$('#lb'),lbImg=$('img',lb);let list=[],idx=0;
 function showLb(i){idx=(i+list.length)%list.length;const im=$('img',list[idx]);
-  const set=()=>{lbImg.src=im.src;lbImg.alt=im.alt;$('.cap',lb).textContent=im.alt};
+  const set=()=>{lbImg.hidden=false;lbImg.src=im.src;lbImg.alt=im.alt;$('.cap',lb).textContent=im.alt};
   document.startViewTransition&&lb.open&&!reduce?document.startViewTransition(set):set()}
 function openLb(el,all){list=all.filter(x=>!x.classList.contains('out'));showLb(list.indexOf(el));lb.showModal();lenis&&lenis.stop()}
 lb.addEventListener('close',()=>lenis&&lenis.start());
-$$('.pol').forEach(p=>{p.onclick=()=>openLb(p,$$('.pol'));p.onkeydown=e=>{if(e.key==='Enter')openLb(p,$$('.pol'))}});
-$$('.slide').forEach(p=>p.onclick=()=>openLb(p,$$('.slide')));
+$$('.pol').forEach(p=>{p.onclick=()=>openLb(p,$$('.pol'));p.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(p,$$('.pol'))}}});
+$$('.slide').forEach(p=>{p.onclick=()=>openLb(p,$$('.slide'));p.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(p,$$('.slide'))}}});
 $('.x',lb).onclick=()=>lb.close();
 lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
 lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')showLb(idx-1);if(e.key==='ArrowRight')showLb(idx+1)});
@@ -1172,7 +1367,7 @@ if(fine&&!reduce){
       ctx.strokeStyle=`rgba(255,59,59,${1-pulse})`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(mx,my,6+pulse*26,0,7);ctx.stroke();
       ctx.fillStyle='#fff';ctx.shadowColor='#d4141c';ctx.shadowBlur=18;ctx.beginPath();ctx.arc(mx,my,5.5,0,7);ctx.fill();ctx.shadowBlur=0;
       ctx.font='12px "PT Mono", monospace';const L=mx+14+ctx.measureText(W>520?'INKSIDE · Makayonka 4':'МИНСК').width>W-12;ctx.textAlign=L?'right':'left';const lx=L?mx-14:mx+14;
-      ctx.font='600 15px Oswald, sans-serif';ctx.fillStyle='#fff';ctx.fillText(lang==='en'?'MINSK':'МИНСК',lx,my-4);
+      ctx.font='15px "Dela Gothic One", sans-serif';ctx.fillStyle='#fff';ctx.fillText(lang==='en'?'MINSK':'МИНСК',lx,my-4);
       ctx.font='12px "PT Mono", monospace';ctx.fillStyle='rgba(233,227,214,.75)';if(W>520)ctx.fillText(lang==='en'?'INKSIDE · Makayonka 4':'INKSIDE · Макаёнка 4',lx,my+13);ctx.textAlign='left';
     }
   }
@@ -1206,8 +1401,15 @@ if(fine&&!reduce){
   });
 })();
 
+if(reduce)$$('video').forEach(v=>{v.removeAttribute('autoplay');v.pause()});
+/* floating vinyl hides over content it would cover */
+(function(){const st=$('.stamp'),seen=new Set();
+  const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));st.classList.toggle('is-hidden',seen.size>0||book.open)},{threshold:.05});
+  ['.hero .btns','#calc','#contact','footer','#last','#cover'].forEach(q=>{const el=$(q);el&&io.observe(el)});})();
+
 /* ---------- GSAP choreography ---------- */
 const nav=$('.nav');
+function fx(){
 if(window.gsap&&!reduce){
   gsap.registerPlugin(ScrollTrigger,SplitText);
   calc();
@@ -1216,7 +1418,7 @@ if(window.gsap&&!reduce){
   intro.to(wipe,{clipPath:'circle(0% at 50% 50%)',duration:1.1,ease:'power4.inOut'})
        .set(wipe,{display:'none'})
        .from('.hero-sheet',{y:60,rotate:-2,opacity:0,duration:1,ease:'expo.out'},'-=.55');
-  const h1=SplitText.create('#h1 .row > span:not(.vidword):not(.hand)',{type:'chars',mask:'chars'});
+  const h1=SplitText.create('#h1 .row > span:not(.vidword):not(.hand)',{type:'words,chars',mask:'chars'});
   intro.from(h1.chars,{yPercent:110,duration:.9,stagger:.025,ease:'expo.out'},'-=.7')
        .from('.vidword',{scale:0,rotate:-30,duration:.8,ease:'back.out(2)'},'-=.6')
        .from('#h1 .hand',{opacity:0,x:-20,rotate:-20,duration:.7,ease:'back.out(2)'},'-=.5')
@@ -1298,6 +1500,9 @@ if(window.gsap&&!reduce){
   $$('.gift,.faq,.addr,.geo').forEach(el=>gsap.from(el,{y:70,rotate:1.5,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
   gsap.from('.gcard',{rotate:-30,x:120,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.gcard',start:'top 85%'}});
 
+  // wall glows red near prices and booking blocks
+  ['#prices','#last','#cover'].forEach(q=>ScrollTrigger.create({trigger:q,start:'top 65%',end:'bottom 35%',toggleClass:{targets:'.shade',className:'heat'}}));
+  ScrollTrigger.create({trigger:'#top',start:'top top',end:'bottom 30%',onEnterBack:()=>$$('.nav ul a').forEach(a=>a.classList.remove('on')),onEnter:()=>$$('.nav ul a').forEach(a=>a.classList.remove('on'))});
   // active nav link
   $$('main section[id]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 50%',end:'bottom 50%',onToggle:t=>{if(t.isActive)$$('.nav ul a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+s.id))}}));
 
@@ -1305,6 +1510,8 @@ if(window.gsap&&!reduce){
 }else{
   wipe.style.display='none';calc();
 }
+}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fx);
 </script>
 </body>
 </html>
