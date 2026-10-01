@@ -847,6 +847,49 @@ img{height:auto}
   .hero h1{font-size:clamp(26px,8vw,38px)!important;line-height:1.08}
   .vidword{width:1.3em;height:.58em}
 }
+
+/* ---------- v6: round 3 ---------- */
+.addr dd.chan{display:flex;flex-wrap:wrap;gap:6px 18px}
+.ig-hint{font:13px/1.45 var(--f-mono);color:#fff;margin-top:16px;padding:10px 14px;border-radius:12px;background:rgba(212,20,28,.16);border:1px solid rgba(212,20,28,.45)}
+footer{background:linear-gradient(180deg,transparent,rgba(6,6,7,.9) 22%);color:#a9a9ad}
+.frame::before{opacity:.28}
+h2.poster{letter-spacing:.015em}
+.flashsheet .hand,.addr .hand,.lead,.cday p{text-wrap:balance}
+@media (max-width:900px){
+  /* CTA must be on the first mobile screen: logo sits on the photo */
+  .hero-mob{position:relative;height:30vh}
+  .hero .chromelogo{display:none}
+  .hero-mob .mob-logo{position:absolute;left:12px;bottom:10px;width:132px;height:auto;filter:drop-shadow(0 4px 12px #000)}
+  .hero-mob::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.7));pointer-events:none}
+  .hero h1{margin-top:6px}
+  /* prices right after the big works on mobile */
+  main{display:flex;flex-direction:column}
+  main>*{order:5}
+  main>.hero{order:0}main>.marquee{order:1}main>#reel{order:2}main>#prices{order:3}
+}
+@media (max-width:760px){
+  .tracklist .tr{grid-template-columns:44px minmax(0,1fr) auto}
+  .tracklist .tr i{font-size:20px}
+  .vidword{width:2.3em!important;height:.82em!important}
+  .geo-links{left:16px;right:16px;justify-content:center;flex-wrap:nowrap}
+  .geo-links a{padding:11px 12px}
+  .tabs .tab{padding:12px}
+}
+
+/* ---------- v6b: QA round 3 ---------- */
+dialog.book{overflow-y:auto;overscroll-behavior:contain}
+dialog.book::backdrop{background:rgba(5,5,6,.97)}
+.book form{min-height:auto;padding-bottom:24px}
+.book .acts{position:sticky;bottom:0;z-index:3;padding:14px 0 calc(14px + env(safe-area-inset-bottom));margin-top:20px;background:#060607;border-top:1px solid rgba(255,255,255,.12);box-shadow:0 -18px 24px #060607}
+@media (max-height:720px){.book legend{font-size:clamp(26px,7.5vw,40px);margin-bottom:16px}.tiles span{min-height:84px;padding:12px 14px;font-size:17px}.book form{padding-top:70px}.book input.t,.book textarea{padding:12px 14px;font-size:18px}.book textarea{min-height:70px}}
+footer a.privacy-link{display:inline-block;padding:8px 0}
+@media (max-width:600px){
+  .gcard{aspect-ratio:auto;min-height:200px;padding:22px}
+  .gcard img{width:clamp(96px,28vw,150px)}
+  .gcard .sum{font-size:clamp(30px,9vw,44px)}
+  .flashsheet h3{font-size:clamp(30px,10vw,56px)}
+}
+@media (max-width:440px){.stamp{display:none}}
 </style>
 </head>
 <body>
@@ -912,7 +955,7 @@ img{height:auto}
   <div class="wrap">
     <div class="hero-sheet sheet">
       <div class="vhs-ts" aria-hidden="true"><span class="rec">REC</span><span id="ts">00:00:00</span><span>INKSIDE · VOL.1</span></div>
-      <figure class="hero-mob" aria-hidden="true"><img src="img/w03.webp" alt="" width="780" height="1040" fetchpriority="high"></figure>
+      <figure class="hero-mob" aria-hidden="true"><img class="mob-logo" src="img/logo.webp" alt="" width="900" height="624"><img src="img/w03.webp" alt="" width="780" height="1040" fetchpriority="high"></figure>
       <div class="chromelogo"><img src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
       <h1 class="poster" id="h1">
         <span class="row"><span data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" muted loop playsinline preload="none" aria-hidden="true" data-lazyplay></video></span></span>
@@ -929,7 +972,7 @@ img{height:auto}
     </div>
     <div class="hero-photos" aria-hidden="true">
       <figure class="polaroid b"><img loading="lazy" src="img/w04.webp" alt="" width="520" height="560"><figcaption data-en="colour">цвет</figcaption></figure>
-      <figure class="polaroid a"><img loading="lazy" src="img/w01.webp" alt="" width="780" height="1040"><figcaption data-en="b&amp;g realism">ч/б реализм</figcaption></figure>
+      <figure class="polaroid a"><img fetchpriority="high" src="img/w01.webp" alt="" width="780" height="1040"><figcaption data-en="b&amp;g realism">ч/б реализм</figcaption></figure>
       <figure class="polaroid c"><img loading="lazy" src="img/w18.webp" alt="" width="736" height="865"><figcaption data-en="mini">мини</figcaption></figure>
       <span class="spark" style="--s:26px;left:46%;top:2%;--dl:.4s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
       <span class="spark" style="--s:14px;left:8%;top:30%;--dl:1.3s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
@@ -972,8 +1015,8 @@ img{height:auto}
         <div class="st sheet"><span class="n">04</span><h3 data-en="Healed">Заживление</h3><p data-en="A day-by-day aftercare plan. Send a photo in a month and we check the result.">План ухода по дням. Через месяц присылаете фото, мы проверяем результат.</p></div>
       </div>
       <div class="frame" aria-hidden="true">
-        <img class="layer photo" src="img/w17.webp" alt="" width="1050" height="1400">
-        <img class="layer stencil" src="img/stencil_w17.png" alt="" width="1050" height="1400">
+        <img loading="lazy" class="layer photo" src="img/w17.webp" alt="" width="1050" height="1400">
+        <img loading="lazy" class="layer stencil" src="img/stencil_w17.png" alt="" width="1050" height="1400">
         <span class="healed" data-en="HEALED">ЗАЖИЛО</span>
         <span class="bar"><i></i></span>
       </div>
@@ -1015,7 +1058,7 @@ img{height:auto}
   </div>
   <dialog class="lb" id="lb" aria-label="Просмотр работы">
     <button class="ctl x" aria-label="Закрыть">×</button>
-    <img alt="" hidden>
+    <img loading="lazy" alt="" hidden>
     <span class="cap"></span>
   </dialog>
 </section>
@@ -1071,7 +1114,7 @@ img{height:auto}
         <div class="cass"><b>INKSIDE</b><span data-en="SIDE A · PRICES">СТОРОНА A · ПРАЙС</span></div>
         <div class="tr"><i>01</i><span data-en="Minimum, up to 1 hour">Минимум, до 1 часа</span><b>180 BYN</b></div>
         <div class="tr"><i>02</i><span data-en="Each next hour">Каждый следующий час</span><b>150 BYN</b></div>
-        <div class="tr"><i>03</i><span data-en="Custom sketch">Эскиз под вас</span><b data-en="from 40">от 40</b></div>
+        <div class="tr"><i>03</i><span data-en="Custom sketch">Эскиз под вас</span><b data-en="from 40 BYN">от 40 BYN</b></div>
         <div class="tr"><i>04</i><span data-en="Consultation">Консультация</span><b>0 BYN</b></div>
         <p class="note" data-en="The final price is set after the sketch is approved: detail, size and placement matter.">Итоговую цену мастер называет после утверждения эскиза: важны детализация, размер и место.</p>
       </div>
@@ -1171,11 +1214,11 @@ img{height:auto}
   <div class="wrap contact">
     <div class="addr sheet">
       <p class="big" data-en="Makayonka&nbsp;lane&nbsp;4">пер. Макаёнка&nbsp;4</p>
-      <span class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите внутрь ✦</span>
+      <span class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите&nbsp;внутрь&nbsp;✦</span>
       <dl>
         <div><dt data-en="phone">телефон</dt><dd><a class="mark" href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
         <div><dt data-en="hours">часы</dt><dd data-en="daily 11:00-23:00, by appointment">ежедневно 11:00-23:00, по записи</dd></div>
-        <div><dt data-en="write">написать</dt><dd><a class="mark" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a> · <a class="mark" href="viber://chat?number=%2B375445111912">Viber</a> · <a class="mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a></dd></div>
+        <div><dt data-en="write">написать</dt><dd class="chan"><a class="mark" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a><a class="mark" href="viber://chat?number=%2B375445111912">Viber</a><a class="mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a></dd></div>
       </dl>
     </div>
     <div class="geo sheet" id="geo">
@@ -1214,6 +1257,7 @@ img{height:auto}
       <label class="f"><span data-en="The idea in a few words">Идея в двух словах</span><textarea name="idea" required></textarea></label>
     </fieldset>
     <p class="err" id="bookErr" role="alert"></p>
+    <p class="ig-hint" data-en="Instagram Direct: the request text is copied automatically, just paste it into the chat.">Instagram Direct: текст заявки скопируется сам, просто вставьте его в чат.</p>
     <p class="consent" data-en="By sending you agree to the processing of your name and message to reply to you. <a href='#privacy' class='privacy-link'>Privacy</a>">Отправляя, вы соглашаетесь на обработку имени и сообщения, чтобы мы ответили. <a href="#privacy" class="privacy-link">Политика конфиденциальности</a></p>
     <div class="acts"><button class="link" type="button" id="back" data-en="← Back">← Назад</button><span class="acts-r"><button class="btn dark" type="button" id="viaIg" data-en="Instagram Direct">Instagram Direct</button><button class="btn" type="submit" id="next">Дальше →</button></span></div>
   </form>
@@ -1250,13 +1294,16 @@ if(lang==='en'){
   document.documentElement.lang='en';$('#lang').textContent='RU';
 }
 const SEG={
-  mini:{ru:{h1a:'Первая',h1b:'тату',h1c:'без страха',h1d:'мини от 180 BYN ✦',cta:'Подобрать мини',img:'w18',lead:'Тонкие линии и мини. Бесплатно обсудим идею, подберём место и назовём цену до сеанса. Одноразовые иглы при вас.'},en:{h1a:'Your first',h1b:'tattoo',h1c:'without fear',h1d:'mini from 180 BYN ✦',cta:'Pick a mini',img:'w18',lead:'Fine line and mini. We discuss the idea for free, pick the placement and name the price before the session.'}},
-  sleeve:{ru:{h1a:'Рукав',h1b:'в реализме',h1c:'у чемпиона',h1d:'час работы 150 BYN ✦',cta:'Рассчитать рукав',img:'w02',lead:'Крупные проекты в ч/б и цвете. Ногу целиком делали за 2 дня в четыре руки. 1 место на тату-баттле в Гомеле.'},en:{h1a:'A realism',h1b:'sleeve',h1c:'by a champion',h1d:'150 BYN per hour ✦',cta:'Estimate a sleeve',img:'w02',lead:'Large black & grey and colour projects. A full leg in 2 days with four hands. 1st place at the Gomel tattoo battle.'}},
-  cover:{ru:{h1a:'Старая',h1b:'тату?',h1c:'перекроем',h1d:'и шрам тоже ✦',cta:'Прислать фото старой тату',img:'w19',lead:'Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны, предложим варианты эскиза.'},en:{h1a:'Old',h1b:'tattoo?',h1c:'we cover it',h1d:'scars too ✦',cta:'Send a photo of the old tattoo',img:'w19',lead:'Cover-ups of old tattoos and scars are our speciality. Send a photo, we suggest sketch options.'}}
+  mini:{ru:{h1a:'Первая',h1b:'тату',h1c:'без страха',h1d:'мини от 180 BYN ✦',cta:'Подобрать мини',img:'w18',cap:'мини',c:'w15',lead:'Тонкие линии и мини. Бесплатно обсудим идею, подберём место и назовём цену до сеанса. Одноразовые иглы при вас.'},en:{h1a:'Your first',h1b:'tattoo',h1c:'without fear',h1d:'mini from 180 BYN ✦',cta:'Pick a mini',img:'w18',cap:'mini',c:'w15',lead:'Fine line and mini. We discuss the idea for free, pick the placement and name the price before the session.'}},
+  sleeve:{ru:{h1a:'Рукав',h1b:'в реализме',h1c:'у чемпиона',h1d:'час работы 150 BYN ✦',cta:'Рассчитать рукав',img:'w02',cap:'нога за 2 дня',lead:'Крупные проекты в ч/б и цвете. Ногу целиком делали за 2 дня в четыре руки. 1 место на тату-баттле в Гомеле.'},en:{h1a:'A realism',h1b:'sleeve',h1c:'by a champion',h1d:'150 BYN per hour ✦',cta:'Estimate a sleeve',img:'w02',cap:'full leg in 2 days',lead:'Large black & grey and colour projects. A full leg in 2 days with four hands. 1st place at the Gomel tattoo battle.'}},
+  cover:{ru:{h1a:'Старая',h1b:'тату?',h1c:'перекроем',h1d:'и шрам тоже ✦',cta:'Отправить фото в Telegram',img:'w19',cap:'перекрытие',href:'#cover',tg:'Здравствуйте! Хочу перекрыть старую тату. Сейчас пришлю фото зоны при дневном свете.',lead:'Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны, предложим варианты эскиза.'},en:{h1a:'Old',h1b:'tattoo?',h1c:'we cover it',h1d:'scars too ✦',cta:'Send a photo in Telegram',img:'w19',cap:'cover-up',href:'#cover',tg:'Hi! I want to cover an old tattoo. I will send a daylight photo of the area now.',lead:'Cover-ups of old tattoos and scars are our speciality. Send a photo, we suggest sketch options.'}}
 };
 const seg=SEG[UTM.get('s')];
 if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.dataset.seg;if(t[k])el.textContent=t[k]});
-  const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;$$('.hero-mob img,.hero-photos .a img').forEach(i=>i.src=`img/${t.img}.webp`)}
+  const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;$$('.hero-mob img:not(.mob-logo),.hero-photos .a img').forEach(i=>i.src=`img/${t.img}.webp`);
+  if(t.cap)$('.hero-photos .a figcaption').textContent=t.cap;if(t.c)$('.hero-photos .c img').src=`img/${t.c}.webp`;
+  if(t.href)$('.hero .btns .link').setAttribute('href',t.href);
+  if(t.tg&&cta){const mc=$('.hero .micro');if(mc)mc.style.display='none';const n=cta.cloneNode(true);n.removeAttribute('data-book');cta.replaceWith(n);n.addEventListener('click',()=>{track('Contact',{method:'telegram'});send(t.tg)})}}
 $$('[data-en-alt]').forEach(el=>{if(lang==='en')el.alt=el.dataset.enAlt});
 if(lang==='en'){
   const AL={'Главное меню':'Main menu','INKSIDE, наверх':'INKSIDE, back to top','Меню':'Menu','Записаться на сеанс':'Book a session','Фильтр работ':'Works filter','Просмотр работы':'Work preview','Закрыть':'Close','Калькулятор стоимости':'Price calculator','Запись на сеанс':'Book a session','Политика конфиденциальности':'Privacy policy','Вид карты':'Map view','Глобус с отметкой студии INKSIDE в Минске':'Globe with INKSIDE studio in Minsk','Карта: Минск, пер. Макаёнка 4':'Map: Minsk, Makayonka lane 4','Крупные работы':'Large works','Как рождается тату':'How a tattoo is made'};
@@ -1265,7 +1312,7 @@ if(lang==='en'){
   $$('.pol,.slide').forEach(f=>{const c=f.querySelector('figcaption [data-en],figcaption b[data-en]'),i=f.querySelector('img');if(c&&i)i.alt=c.dataset.en.replace(/&amp;/g,'&')});
   $$('img[alt]').forEach(i=>{if(/[А-Яа-яЁё]/.test(i.alt))i.alt='INKSIDE tattoo work'});
 }
-if(lang==='en'){document.title='INKSIDE - tattoo studio in Minsk | realism, sleeves, cover-ups';$('meta[name=description]').content='INKSIDE tattoo studio in Minsk. Black & grey and colour realism, sleeves, cover-ups, mini. From 180 BYN, free consultation. Daily 11:00-23:00.'}
+if(lang==='en'){$('link[rel=canonical]').href='https://zsklnskky.github.io/inkside/?lang=en';$('meta[property="og:url"]').content='https://zsklnskky.github.io/inkside/?lang=en';document.title='INKSIDE - tattoo studio in Minsk | realism, sleeves, cover-ups';$('meta[name=description]').content='INKSIDE tattoo studio in Minsk. Black & grey and colour realism, sleeves, cover-ups, mini. From 180 BYN, free consultation. Daily 11:00-23:00.'}
 $('#lang').onclick=()=>{try{localStorage.setItem('lang',lang==='en'?'ru':'en')}catch(e){}location.reload()};
 
 /* ---------- live open / closed sign + VHS clock (Minsk time) ---------- */
@@ -1337,7 +1384,7 @@ $$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
 /* ---------- booking: 3-step brief -> Telegram message ---------- */
 const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
 function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`0${i+1} / 03`;$$('.bk-bar i').forEach((b,k)=>b.classList.toggle('on',k<=i));$('#back').style.visibility=i?'visible':'hidden';
-  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram →':'Отправить в Telegram →'):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
+  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram →':'Отправить в Telegram →'):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
 $$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);bf.reset();show(0);book.showModal();track('InitiateCheckout',{content_name:'booking'})}));
 $('.x',bf).onclick=()=>book.close();
 book.addEventListener('click',e=>{if(e.target===book)book.close()});
@@ -1478,6 +1525,7 @@ if(fine&&!reduce){
       ctx.strokeStyle=`rgba(255,59,59,${1-pulse})`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(mx,my,6+pulse*26,0,7);ctx.stroke();
       ctx.fillStyle='#fff';ctx.shadowColor='#d4141c';ctx.shadowBlur=18;ctx.beginPath();ctx.arc(mx,my,5.5,0,7);ctx.fill();ctx.shadowBlur=0;
       ctx.font='12px "PT Mono", monospace';const L=mx+14+ctx.measureText(W>520?'INKSIDE · Makayonka 4':'МИНСК').width>W-12;ctx.textAlign=L?'right':'left';const lx=L?mx-14:mx+14;
+      {ctx.font='12px "PT Mono", monospace';const tw=Math.max(ctx.measureText(W>520?'INKSIDE · Makayonka 4':'МИНСК').width,60)+16;ctx.fillStyle='rgba(8,8,10,.78)';ctx.beginPath();ctx.roundRect(L?lx-tw+8:lx-8,my-22,tw,W>520?42:26,8);ctx.fill()}
       ctx.font='15px "Dela Gothic One", sans-serif';ctx.fillStyle='#fff';ctx.fillText(lang==='en'?'MINSK':'МИНСК',lx,my-4);
       ctx.font='12px "PT Mono", monospace';ctx.fillStyle='rgba(233,227,214,.75)';if(W>520)ctx.fillText(lang==='en'?'INKSIDE · Makayonka 4':'INKSIDE · Макаёнка 4',lx,my+13);ctx.textAlign='left';
     }
