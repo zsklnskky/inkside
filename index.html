@@ -3,360 +3,549 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>INKSIDE - тату-студия в Минске | реализм, перекрытия, мини</title>
-<meta name="description" content="INKSIDE - тату-студия в Минске на пер. Макаёнка 4. Чёрно-белый и цветной реализм, рукава, перекрытия тату и шрамов, мини-тату. Бесплатная консультация, эскиз под вас. Ежедневно 11:00-23:00.">
+<title>INKSIDE - тату-студия в Минске | реализм, рукава, перекрытия</title>
+<meta name="description" content="INKSIDE - тату-студия в Минске, пер. Макаёнка 4. Чёрно-белый и цветной реализм, рукава, перекрытия тату и шрамов, мини. Цены от 180 BYN, бесплатная консультация. Ежедневно 11:00-23:00.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://zsklnskky.github.io/inkside/">
 <meta property="og:title" content="INKSIDE - тату-студия в Минске">
-<meta property="og:description" content="Реализм, рукава, перекрытия и мини. Бесплатная консультация. Пер. Макаёнка 4, ежедневно 11-23.">
+<meta property="og:description" content="Реализм, рукава, перекрытия и мини. Цены от 180 BYN. Пер. Макаёнка 4, ежедневно 11-23.">
 <meta property="og:image" content="https://zsklnskky.github.io/inkside/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#06080f">
+<meta name="theme-color" content="#0b0b0c">
 <link rel="icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;800&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=PT+Mono&family=Marck+Script&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/wall.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TattooParlor","name":"INKSIDE","image":"https://zsklnskky.github.io/inkside/img/og.jpg","url":"https://zsklnskky.github.io/inkside/","telephone":"+375445111912",
+{"@context":"https://schema.org","@type":"TattooParlor","name":"INKSIDE","url":"https://zsklnskky.github.io/inkside/","image":"https://zsklnskky.github.io/inkside/img/og.jpg","telephone":"+375445111912",
 "address":{"@type":"PostalAddress","streetAddress":"пер. Макаёнка 4, пом. 64","addressLocality":"Минск","postalCode":"220114","addressCountry":"BY"},
 "openingHours":"Mo-Su 11:00-23:00","priceRange":"от 180 BYN","sameAs":["https://www.instagram.com/inkside.minsk/"]}
 </script>
 <style>
 :root{
-  --ink:#06080f;--navy:#0a1222;--navy2:#0e1a33;
-  --glass:rgba(255,255,255,.055);--glass2:rgba(255,255,255,.09);--line:rgba(255,255,255,.11);
-  --text:#eaeef6;--dim:#a2abbd;--faint:#6f7a90;
-  --ice:#8ec5ff;--ice2:#5b8cff;
-  --chrome:linear-gradient(180deg,#ffffff 0%,#c9d0db 38%,#7d8798 52%,#eef2f7 70%,#9aa3b2 100%);
-  --r-xl:32px;--r-lg:24px;--r-md:18px;--r-sm:12px;
-  --spring:cubic-bezier(.34,1.56,.64,1);--out:cubic-bezier(.22,1,.36,1);
-  --wrap:min(1200px,100% - 32px);
+  --ink:#0b0b0c;--ink2:#151517;--paper:#e9e3d6;--paper2:#d9d1c0;--stencil:#6448b8;--stencil-l:#9b85e6;
+  --text:#f2f0eb;--dim:#c9c6bf;--mute:#8f8b84;
+  --glass:rgba(14,14,15,.5);--edge:rgba(255,255,255,.17);--blur:blur(16px) saturate(1.1);
+  --chrome:linear-gradient(180deg,#fff 0%,#d6d6d6 34%,#767676 50%,#f5f5f5 68%,#9d9d9d 100%);
+  --r:6px;--r-sm:4px;
+  --out:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1);
+  --wrap:min(1600px,100% - 56px);
+  --f-poster:Oswald,"Arial Narrow",sans-serif;--f-body:Onest,system-ui,sans-serif;--f-mono:"PT Mono",ui-monospace,monospace;--f-hand:"Marck Script",cursive;--f-spray:"Rubik Wet Paint",Oswald,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--ink);color:var(--text);font:400 16px/1.6 Manrope,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--ink);color:var(--text);font:400 17px/1.6 var(--f-body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
 img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-:focus-visible{outline:2px solid var(--ice);outline-offset:3px;border-radius:8px}
-.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--text);color:var(--ink);padding:8px 14px;border-radius:10px}
+:focus-visible{outline:2px solid var(--stencil-l);outline-offset:3px}
+::selection{background:var(--stencil);color:#fff}
+.skip{position:absolute;left:-999px;top:8px;z-index:500;background:var(--paper);color:var(--ink);padding:8px 14px}
 .skip:focus{left:8px}
 .wrap{width:var(--wrap);margin-inline:auto}
-h1,h2,h3{font-family:Unbounded,Manrope,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.05;text-wrap:balance}
-h2{font-size:clamp(34px,5.4vw,68px)}
-h3{font-size:clamp(18px,1.6vw,22px);letter-spacing:-.01em;line-height:1.2}
-p{text-wrap:pretty}
-.chrome{background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent}
-.serif{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;letter-spacing:0}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--ice)}
-.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
-.lead{color:var(--dim);font-size:clamp(16px,1.4vw,19px);max-width:58ch}
-section{position:relative;padding:clamp(80px,12vw,150px) 0}
+section{position:relative;padding:clamp(90px,10vw,170px) 0}
 
-/* ambient background: blurred navy orbs + grain */
-.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,var(--navy2) 0%,var(--navy) 40%,var(--ink) 100%)}
-.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:float 18s ease-in-out infinite alternate}
-.orb.a{width:46vw;height:46vw;left:-12vw;top:-8vw;background:#1d3d8f}
-.orb.b{width:38vw;height:38vw;right:-10vw;top:30vh;background:#123a6b;animation-duration:23s}
-.orb.c{width:30vw;height:30vw;left:30vw;bottom:-14vw;background:#2a2f7a;opacity:.35;animation-duration:27s}
-@keyframes float{to{transform:translate3d(6vw,4vh,0) scale(1.12)}}
-.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* ---------- type ---------- */
+.poster{font-family:var(--f-poster);font-weight:700;text-transform:uppercase;line-height:.9;letter-spacing:-.005em}
+.hand{font-family:var(--f-hand);font-weight:400;text-transform:none;letter-spacing:0;line-height:1.05;color:var(--stencil-l)}
+.mono{font-family:var(--f-mono);letter-spacing:.02em}
+h2.poster{font-size:clamp(52px,8vw,140px)}
+.h-note{display:inline-block;font-size:.42em;transform:rotate(-6deg) translateY(-.2em);margin-left:.15em;vertical-align:top}
+.lead{color:var(--dim);font-size:clamp(17px,1.35vw,20px);max-width:52ch;text-wrap:pretty}
+.outline{color:transparent;-webkit-text-stroke:1.5px var(--text)}
+.mark{background:linear-gradient(transparent 62%,rgba(100,72,184,.7) 62%,rgba(100,72,184,.7) 88%,transparent 88%) no-repeat 0 0/0% 100%;transition:background-size .6s var(--out)}
+a.mark:hover,.mark.on{background-size:100% 100%}
 
-/* nav */
-.nav{position:fixed;top:12px;left:50%;translate:-50% 0;z-index:50;width:min(1120px,100% - 24px);display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(10,16,30,.55);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 40px rgba(0,0,0,.35);transition:transform .5s var(--out)}
-.nav.hide{transform:translateY(-140%)}
-.nav .mono{width:34px;height:34px;object-fit:contain}
-.nav ul{display:flex;gap:2px;list-style:none;margin-inline:auto}
-.nav ul a{display:block;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--dim);transition:color .2s,background .2s}
-.nav ul a:hover,.nav ul a.on{color:var(--text);background:var(--glass2)}
-.lang{font:600 12px Manrope;letter-spacing:.08em;padding:9px 12px;border-radius:999px;border:1px solid var(--line);color:var(--dim)}
-.lang:hover{color:var(--text)}
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:15px;background:linear-gradient(180deg,#f4f7fb,#b9c2cf);color:#0a0f1a;box-shadow:inset 0 1px 0 #fff,0 8px 30px rgba(142,197,255,.25);transition:transform .35s var(--spring),box-shadow .3s}
-.btn:hover{box-shadow:inset 0 1px 0 #fff,0 12px 44px rgba(142,197,255,.45)}
-.btn:active{transform:scale(.97)}
-.btn.sm{padding:10px 18px;font-size:14px}
-.btn.ghost{background:var(--glass);color:var(--text);border:1px solid var(--line);box-shadow:none;backdrop-filter:blur(12px)}
-.btn.ghost:hover{background:var(--glass2)}
-.burger{display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line)}
-.burger span{display:block;width:16px;height:1.5px;background:var(--text);margin:4px auto;transition:.3s}
+/* SplitText masks clip diacritics (Ё, Й): give them headroom */
+[aria-hidden][style*="overflow: clip"]{padding-top:.16em;margin-top:-.16em}
 
-/* hero */
-.hero{min-height:100dvh;display:grid;align-items:center;padding:110px 0 60px}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,72px);align-items:center}
-.hero .logo{width:min(520px,100%);height:auto;filter:drop-shadow(0 18px 50px rgba(142,197,255,.18));margin:18px 0 8px;animation:breathe 7s ease-in-out infinite alternate}
-@keyframes breathe{to{transform:translateY(-8px)}}
-.hero h1{font-size:clamp(30px,4.2vw,56px);margin:10px 0 18px}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.phone-frame{position:relative;justify-self:center;width:min(360px,80vw);aspect-ratio:9/16;border-radius:44px;padding:10px;background:linear-gradient(160deg,#3a4152,#11151f 40%,#596273 70%,#141823);box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08),0 0 120px rgba(91,140,255,.18)}
-.phone-frame video{width:100%;height:100%;object-fit:cover;border-radius:36px;background:#000}
-.phone-frame .tag{position:absolute;left:-28px;bottom:70px;padding:12px 16px;border-radius:18px;background:rgba(12,20,38,.7);backdrop-filter:blur(16px);border:1px solid var(--line);font-size:13px;line-height:1.35;animation:breathe 5s ease-in-out infinite alternate}
-.phone-frame .tag b{display:block;font:700 18px Unbounded}
-.phone-frame .tag.t2{left:auto;right:-30px;top:60px;bottom:auto;animation-delay:-2s}
-.scroll-hint{position:absolute;left:50%;bottom:24px;translate:-50% 0;width:24px;height:38px;border:1.5px solid var(--faint);border-radius:14px}
-.scroll-hint::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:var(--dim);animation:wheel 1.8s ease-in-out infinite}
-@keyframes wheel{to{transform:translateY(12px);opacity:0}}
+/* ---------- b/w graffiti wall ---------- */
+.wall{position:fixed;inset:-8vh -2vw;z-index:-3;background:#151515 url(img/wall.jpg) center/cover;filter:grayscale(1) contrast(1.1) brightness(.5);will-change:transform}
+.shade{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(110% 85% at 50% 35%,rgba(0,0,0,.05) 0%,rgba(0,0,0,.55) 70%,rgba(0,0,0,.85) 100%)}
+.grain{position:fixed;inset:0;z-index:400;pointer-events:none;opacity:.1;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* identifiers (trust strip) */
-.ids{padding:0 0 40px}
-.ids .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.id{position:relative;padding:22px;border-radius:var(--r-lg);background:var(--glass);border:1px solid var(--line);overflow:hidden;backdrop-filter:blur(14px)}
-.id b{display:block;font:800 clamp(30px,3.6vw,46px)/1 Unbounded;letter-spacing:-.03em}
-.id span{display:block;margin-top:8px;color:var(--dim);font-size:14px;line-height:1.4}
-.id::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(142,197,255,.16),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none}
-.id:hover::after{opacity:1}
+/* ---------- sheets: semi-transparent blurred frames ---------- */
+.sheet{position:relative;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--edge);border-radius:var(--r);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 80px rgba(0,0,0,.5)}
+.tape::before,.tape::after{content:"";position:absolute;width:96px;height:28px;background:rgba(233,227,214,.55);box-shadow:0 2px 6px rgba(0,0,0,.25);z-index:3;backdrop-filter:blur(2px);
+  -webkit-mask:linear-gradient(90deg,transparent 0 3px,#000 3px calc(100% - 3px),transparent 0),repeating-linear-gradient(0deg,#000 0 3px,transparent 3px 5px);-webkit-mask-composite:source-over}
+.tape::before{top:-12px;left:22px;rotate:-7deg}
+.tape::after{top:-12px;right:22px;rotate:6deg}
+.tape.one::after{display:none}
+.paper{background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .35 0 0 0 0 .3 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");color:var(--ink)}
 
-/* marquee */
-.marquee{overflow:hidden;padding:26px 0;border-block:1px solid var(--line);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.marquee div{display:flex;gap:48px;width:max-content;animation:mq 38s linear infinite;font:500 clamp(22px,3vw,38px) Unbounded;color:var(--faint);white-space:nowrap}
-.marquee i{font-family:"Cormorant Garamond";color:var(--dim)}
-@keyframes mq{to{transform:translateX(-50%)}}
+/* ---------- sparkles ---------- */
+.spark{position:absolute;width:var(--s,16px);height:var(--s,16px);pointer-events:none;color:#fff;animation:twinkle var(--d,2.6s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+.spark svg,.burst svg{width:100%;height:100%;fill:currentColor;display:block}
+@keyframes twinkle{0%,100%{transform:scale(0) rotate(0);opacity:0}45%{transform:scale(1) rotate(45deg);opacity:1}60%{transform:scale(.85) rotate(60deg);opacity:.9}}
+.burst{position:fixed;z-index:450;width:12px;height:12px;pointer-events:none;color:#fff}
 
-/* sticky process scene */
-.process{padding:0;height:420vh}
-.process .scene{position:sticky;top:0;height:100dvh;display:grid;align-items:center;overflow:hidden}
-.process .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}
-.steps{position:relative;min-height:340px}
-.step{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(30px);transition:opacity .6s var(--out),transform .6s var(--out);pointer-events:none}
-.step.on{opacity:1;transform:none;pointer-events:auto}
-.step .n{font:800 15px Unbounded;color:var(--ice)}
-.step h3{font-size:clamp(28px,3.6vw,48px);margin:12px 0 16px;letter-spacing:-.03em}
-.step p{color:var(--dim);max-width:46ch;font-size:17px}
-.bar{display:flex;gap:6px;margin-top:28px}
-.bar i{flex:1;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
-.bar i::after{content:"";display:block;height:100%;width:calc(var(--f,0)*100%);background:var(--chrome)}
-.stack{position:relative;aspect-ratio:4/5;max-height:72dvh;justify-self:center;width:100%}
-.stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--r-xl);box-shadow:0 30px 80px rgba(0,0,0,.55);opacity:0;transform:scale(1.06);transition:opacity .8s var(--out),transform 1.2s var(--out)}
-.stack img.on{opacity:1;transform:none}
+/* ---------- buttons (stamp style, not pills) ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:18px 30px;border-radius:var(--r-sm);font:600 15px/1 var(--f-poster);letter-spacing:.16em;text-transform:uppercase;background:var(--paper);color:var(--ink);overflow:hidden;isolation:isolate;transition:transform .45s var(--spring),box-shadow .3s;box-shadow:4px 4px 0 var(--stencil)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);clip-path:circle(0 at var(--bx,50%) var(--by,50%));transition:clip-path .55s var(--out)}
+.btn:hover{color:var(--paper);box-shadow:6px 6px 0 var(--stencil)}
+.btn:hover::before{clip-path:circle(160% at var(--bx,50%) var(--by,50%))}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--stencil)}
+.btn.dark{background:var(--ink);color:var(--paper);border:1px solid var(--edge)}
+.btn.dark::before{background:var(--paper)}
+.btn.dark:hover{color:var(--ink)}
+.btn.sm{padding:13px 20px;font-size:13px}
+.link{font:600 15px/1 var(--f-poster);letter-spacing:.16em;text-transform:uppercase;padding:6px 2px}
+.btns{display:flex;flex-wrap:wrap;gap:22px;align-items:center}
 
-/* works */
-.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:14px;font-weight:600;color:var(--dim);transition:.25s}
-.chip:hover{color:var(--text)}
-.chip[aria-pressed=true]{background:var(--text);color:var(--ink);border-color:transparent}
-.masonry{columns:3 280px;column-gap:14px}
-.work{break-inside:avoid;margin-bottom:14px;border-radius:var(--r-lg);overflow:hidden;position:relative;cursor:zoom-in;transform:translateZ(0);transition:transform .5s var(--spring),opacity .4s}
-.work img{width:100%;transition:transform 1s var(--out),filter .5s}
-.work:hover img{transform:scale(1.05)}
-.work figcaption{position:absolute;left:12px;bottom:12px;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(8,12,22,.55);backdrop-filter:blur(10px);border:1px solid var(--line);opacity:0;transform:translateY(8px);transition:.35s var(--out)}
-.work:hover figcaption{opacity:1;transform:none}
-.work.out{display:none}
-dialog.lb{margin:auto;border:0;background:transparent;max-width:min(92vw,900px);max-height:92dvh;padding:0;overflow:visible}
-dialog.lb::backdrop{background:rgba(3,5,10,.82);backdrop-filter:blur(10px)}
-dialog.lb img{max-height:86dvh;width:auto;border-radius:var(--r-lg);margin:auto}
-dialog.lb button{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;background:var(--text);color:var(--ink);font-size:22px;font-weight:700}
+/* ---------- loader + ink transition ---------- */
+.ink-wipe{position:fixed;inset:0;z-index:480;pointer-events:none;background:var(--ink);clip-path:circle(150% at 50% 50%)}
+.ink-wipe img{position:absolute;left:50%;top:50%;width:min(380px,70vw);translate:-50% -50%}
 
-/* masters */
-.masters{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.master{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:560px;display:flex;align-items:end;border:1px solid var(--line);transform-style:preserve-3d;transition:transform .4s var(--out)}
-.master img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--out)}
-.master:hover img{transform:scale(1.04)}
-.master .info{position:relative;margin:14px;padding:22px;border-radius:var(--r-lg);background:rgba(10,16,30,.6);backdrop-filter:blur(18px);border:1px solid var(--line);width:100%}
-.master h3{font-size:28px}
-.master p{color:var(--dim);margin:8px 0 14px;font-size:15px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:var(--glass2);color:var(--text)}
-.master a.ig{font-size:14px;font-weight:700;color:var(--ice);display:inline-block;margin-top:14px}
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:300;transition:transform .5s var(--out)}
+.nav.hide{transform:translateY(-110%)}
+.nav .bar{width:var(--wrap);margin:12px auto 0;display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px}
+.nav .logo-s{width:38px;height:38px;object-fit:contain}
+.nav ul{display:flex;gap:2px;list-style:none;margin-left:22px}
+.nav li{position:relative}
+.nav ul>li>a,.nav ul>li>button{display:flex;align-items:center;gap:7px;padding:12px 14px;font:500 14px/1 var(--f-poster);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.nav ul>li>a:hover,.nav ul>li>button:hover,.nav ul>li>button[aria-expanded=true],.nav ul>li>a.on{color:#fff}
+.nav ul>li>a.on{background:linear-gradient(transparent 70%,var(--stencil) 70%,var(--stencil) 85%,transparent 85%)}
+.caret{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .4s var(--spring)}
+[aria-expanded=true] .caret{transform:rotate(225deg) translateY(-2px)}
+.open-sign{margin-left:auto;display:flex;align-items:center;gap:10px;font:500 13px var(--f-mono);color:var(--dim);padding:0 12px}
+.open-sign b{font:700 15px/1 var(--f-poster);letter-spacing:.14em;color:#fff;text-shadow:0 0 6px #fff,0 0 18px var(--stencil-l),0 0 34px var(--stencil);animation:neon 6s infinite}
+.open-sign.closed b{color:var(--mute);text-shadow:none;animation:none}
+@keyframes neon{0%,18%,22%,62%,64%,100%{opacity:1}20%,63%{opacity:.35}}
+.lang{font:600 12px var(--f-mono);padding:12px;border:1px solid var(--edge);border-radius:var(--r-sm);color:var(--dim)}
+.lang:hover{color:#fff}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--edge);border-radius:var(--r-sm)}
+.burger span{display:block;width:20px;height:1.5px;background:#fff;margin:5px auto;transition:.45s var(--out)}
+.burger[aria-expanded=true] span:first-child{transform:translateY(3.25px) rotate(45deg)}
+.burger[aria-expanded=true] span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
 
-/* bento */
-.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(180px,auto);gap:14px}
-.cell{position:relative;padding:26px;border-radius:var(--r-lg);background:var(--glass);border:1px solid var(--line);overflow:hidden;backdrop-filter:blur(14px)}
-.cell h3{margin-bottom:10px}
-.cell p{color:var(--dim);font-size:15px}
-.cell .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(160deg,rgba(142,197,255,.25),rgba(91,140,255,.08));border:1px solid var(--line);margin-bottom:18px}
-.cell .ico svg{width:22px;height:22px;stroke:var(--ice);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.c1{grid-column:span 4;grid-row:span 2;padding:0}
-.c1 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
-.c1 .ov{position:absolute;inset:auto 0 0 0;padding:30px;background:linear-gradient(transparent,rgba(6,8,15,.92))}
-.c1 h3{font-size:clamp(24px,2.6vw,34px)}
-.c2,.c3{grid-column:span 2}
-.c4,.c5,.c6{grid-column:span 2}
-.big{font:800 clamp(44px,5vw,64px)/1 Unbounded;letter-spacing:-.04em}
+/* dropdown = flash sheet falling from the nav */
+.drop{position:absolute;top:calc(100% + 18px);left:-20px;width:600px;padding:22px;border-radius:var(--r);display:grid;grid-template-columns:1fr 1fr;gap:14px;opacity:0;visibility:hidden;transform-origin:30% 0;transform:translateY(-14px) rotate(-3deg) scale(.96);transition:opacity .25s,transform .55s var(--spring),visibility .3s;box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.drop.open{opacity:1;visibility:visible;transform:rotate(-.6deg)}
+.drop a{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:8px;border-radius:var(--r-sm);transition:background .2s,transform .3s var(--spring)}
+.drop a:hover{background:rgba(11,11,12,.08);transform:rotate(1deg) scale(1.02)}
+.drop img{width:72px;height:72px;object-fit:cover;border:4px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.drop b{display:block;font:700 18px/1.1 var(--f-poster);text-transform:uppercase}
+.drop small{font:13px/1.3 var(--f-mono);color:#4a463f}
+.drop .hand{grid-column:1/-1;font-size:24px;color:var(--stencil);margin-top:-4px}
+.drop.narrow{width:380px;grid-template-columns:1fr}
 
-/* prices + calculator */
-.prices{display:grid;grid-template-columns:1fr 1.1fr;gap:20px;align-items:start}
-.spec{border-radius:var(--r-xl);background:var(--glass);border:1px solid var(--line);padding:10px 28px}
-.spec div{display:flex;justify-content:space-between;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.spec div:last-child{border:0}
-.spec dt{color:var(--dim)}
-.spec dd{font:700 20px Unbounded;white-space:nowrap;font-variant-numeric:tabular-nums}
-.note{color:var(--faint);font-size:13px;margin-top:14px;max-width:60ch}
-.calc{border-radius:var(--r-xl);padding:28px;background:linear-gradient(160deg,rgba(142,197,255,.12),rgba(255,255,255,.03) 60%);border:1px solid rgba(142,197,255,.25);box-shadow:0 30px 80px rgba(0,0,0,.35)}
-.calc fieldset{border:0;margin-bottom:20px}
-.calc legend{font-weight:700;font-size:14px;margin-bottom:10px;color:var(--text)}
+/* mobile full-screen menu */
+.overlay{position:fixed;inset:0;z-index:290;display:flex;flex-direction:column;justify-content:center;padding:100px 26px 40px;background:var(--ink) url(img/wall.jpg) center/cover;clip-path:circle(0 at calc(100% - 50px) 46px);transition:clip-path .8s var(--out);visibility:hidden}
+.overlay::before{content:"";position:absolute;inset:0;background:rgba(11,11,12,.82)}
+.overlay>*{position:relative}
+.overlay.open{clip-path:circle(160% at calc(100% - 50px) 46px);visibility:visible}
+.overlay a.big{font:700 clamp(46px,13vw,72px)/1 var(--f-poster);text-transform:uppercase;opacity:0;transform:translateX(-30px) rotate(-2deg);transition:opacity .4s,transform .6s var(--out);padding:4px 0}
+.overlay a.big:nth-child(even){font-family:var(--f-spray);font-weight:400}
+.overlay.open a.big{opacity:1;transform:none}
+.overlay.open a.big:nth-child(2){transition-delay:.08s}.overlay.open a.big:nth-child(3){transition-delay:.13s}.overlay.open a.big:nth-child(4){transition-delay:.18s}.overlay.open a.big:nth-child(5){transition-delay:.23s}.overlay.open a.big:nth-child(6){transition-delay:.28s}
+.overlay .row{display:flex;gap:12px;margin-top:34px}
+
+/* ---------- hero ---------- */
+.hero{min-height:100dvh;padding:96px 0 50px;display:grid;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(30px,4vw,80px);align-items:center}
+.hero-sheet{padding:clamp(30px,3.6vw,60px)}
+.chromelogo{position:relative;width:min(300px,58%);margin-bottom:18px}
+.chromelogo img{width:100%;height:auto;filter:drop-shadow(0 10px 30px rgba(0,0,0,.7))}
+.chromelogo::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.95) 48%,transparent 60%) no-repeat;background-size:250% 100%;background-position:150% 0;-webkit-mask:url(img/logo.webp) center/contain no-repeat;mask:url(img/logo.webp) center/contain no-repeat;animation:sheen 5.5s ease-in-out infinite;mix-blend-mode:screen}
+@keyframes sheen{0%,55%{background-position:150% 0}85%,100%{background-position:-60% 0}}
+.chromelogo .spark{--s:22px;right:4%;top:6%;--d:5.5s;--dl:2.6s}
+.hero h1{font-size:clamp(50px,6.4vw,116px);line-height:1.12}
+.hero h1 .row{display:flex;align-items:center;gap:.18em;white-space:nowrap}
+.vidword{display:inline-block;width:2.1em;height:.78em;border-radius:999px;overflow:hidden;vertical-align:middle;border:2px solid var(--paper);transform:rotate(-3deg)}
+.vidword video{width:100%;height:100%;object-fit:cover}
+.hero h1 .hand{font-size:.45em;transform:rotate(-7deg);margin-left:.1em}
+.hero .lead{margin:20px 0 28px}
+.hero-photos{position:relative;height:min(80dvh,780px)}
+.polaroid{position:absolute;background:#f4f1ea;padding:12px 12px 54px;box-shadow:0 30px 70px rgba(0,0,0,.6);will-change:transform}
+.polaroid img{width:100%;height:100%;object-fit:cover}
+.polaroid figcaption{position:absolute;left:14px;right:14px;bottom:12px;font:26px/1 var(--f-hand);color:var(--ink)}
+.hero-photos .a{right:2%;top:0;width:66%;height:78%;rotate:3deg;z-index:2}
+.hero-photos .b{left:0;bottom:2%;width:52%;height:56%;rotate:-7deg}
+.hero-photos .c{right:-2%;bottom:-2%;width:32%;height:30%;rotate:8deg;z-index:3;padding:8px 8px 34px}
+.hero-photos .c figcaption{font-size:19px;bottom:8px}
+.hero-photos .spark{z-index:4}
+
+/* ---------- stamp (single floating CTA) ---------- */
+.stamp{position:fixed;right:22px;bottom:22px;z-index:250;width:124px;height:124px;border-radius:50%;background:var(--paper);color:var(--ink);display:grid;place-items:center;box-shadow:5px 5px 0 var(--stencil),0 20px 40px rgba(0,0,0,.5);transition:scale .45s var(--spring),rotate .45s var(--spring)}
+.stamp:hover{scale:1.08;rotate:-8deg}
+.stamp svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 14s linear infinite}
+.stamp svg.ring text{font:600 12.5px var(--f-poster);letter-spacing:.24em;text-transform:uppercase;fill:var(--ink)}
+.stamp .star{width:34px;height:34px;color:var(--stencil)}
+.stamp .star svg{width:100%;height:100%;fill:currentColor}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- marquee (one per page) ---------- */
+.marquee{overflow:hidden;padding:20px 0;background:var(--paper);color:var(--ink);rotate:-2deg;margin:30px -3vw;box-shadow:0 20px 60px rgba(0,0,0,.6);position:relative;z-index:2}
+.marquee div{display:flex;align-items:center;gap:40px;width:max-content;font:400 clamp(30px,4vw,60px)/1 var(--f-spray);text-transform:uppercase;white-space:nowrap;will-change:transform}
+.marquee i{width:.5em;height:.5em;color:var(--stencil);display:inline-block}
+.marquee i svg{width:100%;height:100%;fill:currentColor}
+
+/* ---------- one work per screen (horizontal) ---------- */
+.reel{padding:0}
+.reel .pin{height:100dvh;display:flex;align-items:center;overflow:hidden}
+.reel .track{display:flex;gap:28px;align-items:center;padding-left:max(28px,calc((100vw - 1600px)/2));padding-right:10vw;will-change:transform}
+.reel .intro{flex:none;width:min(520px,82vw);padding:44px}
+.reel .intro h2{font-size:clamp(54px,6vw,104px)}
+.slide{flex:none;position:relative;height:min(86dvh,860px);aspect-ratio:3/4;cursor:zoom-in}
+.slide img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+.slide .tag{position:absolute;left:-14px;bottom:36px;padding:10px 14px;background:var(--paper);color:var(--ink);font:14px/1.3 var(--f-mono);rotate:-3deg;box-shadow:0 10px 20px rgba(0,0,0,.4)}
+.slide .tag b{display:block;font:700 22px/1 var(--f-poster);text-transform:uppercase}
+.slide .num{position:absolute;right:16px;top:10px;font:400 72px/1 var(--f-spray);color:#fff;mix-blend-mode:difference}
+.loupe{position:fixed;z-index:420;width:200px;height:200px;border-radius:50%;pointer-events:none;border:2px solid var(--paper);box-shadow:0 20px 50px rgba(0,0,0,.6);background-repeat:no-repeat;opacity:0;transform:scale(.6);transition:opacity .25s,transform .35s var(--spring)}
+.loupe.on{opacity:1;transform:scale(1)}
+
+/* ---------- stencil scene ---------- */
+.stencil-scene{padding:0;height:360vh}
+.stencil-scene .pin{position:sticky;top:0;height:100dvh;display:grid;align-items:center;overflow:hidden}
+.stencil-scene .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,90px);align-items:center}
+.steps-text{position:relative;min-height:420px}
+.steps-text h2{font-size:clamp(46px,5.4vw,92px);margin-bottom:34px}
+.st{position:absolute;left:0;right:0;top:calc(clamp(46px,5.4vw,92px)*2 + 40px);padding:30px 32px;opacity:0;transform:translateY(30px)}
+.st .n{font:400 64px/1 var(--f-spray);color:var(--stencil-l)}
+.st h3{font:700 clamp(30px,2.6vw,42px)/1 var(--f-poster);text-transform:uppercase;margin:6px 0 10px}
+.st p{color:var(--dim)}
+.frame{position:relative;justify-self:center;width:min(520px,100%);aspect-ratio:3/4;background:var(--paper);padding:14px;box-shadow:0 40px 90px rgba(0,0,0,.6);rotate:2deg}
+.frame .layer{position:absolute;inset:14px;width:calc(100% - 28px);height:calc(100% - 28px);object-fit:cover}
+.frame .photo{opacity:0}
+.frame .stencil{clip-path:inset(0 0 100% 0)}
+.frame .healed{position:absolute;right:-26px;top:30px;padding:10px 16px;border:3px solid var(--stencil);color:var(--stencil);font:400 34px/1 var(--f-spray);background:rgba(233,227,214,.85);rotate:12deg;opacity:0;transform:scale(2.2)}
+.frame .bar{position:absolute;left:14px;right:14px;bottom:-26px;height:3px;background:rgba(255,255,255,.18)}
+.frame .bar i{display:block;height:100%;background:var(--stencil-l);transform-origin:left;transform:scaleX(0)}
+
+/* ---------- polaroid wall ---------- */
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:8px}
+.tab{padding:12px 18px;font:500 13px/1 var(--f-poster);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);border-radius:var(--r-sm);transition:.3s var(--out)}
+.tab:hover{color:#fff}
+.tab[aria-pressed=true]{background:var(--paper);color:var(--ink);box-shadow:3px 3px 0 var(--stencil)}
+.wallgrid{columns:4 300px;column-gap:26px}
+.pol{break-inside:avoid;margin:0 0 30px;background:#f4f1ea;padding:10px 10px 46px;position:relative;cursor:zoom-in;rotate:var(--rot,0deg);box-shadow:0 18px 40px rgba(0,0,0,.5);transition:rotate .5s var(--spring),transform .5s var(--spring),box-shadow .4s}
+.pol::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:26px;translate:-50% 0;rotate:var(--trot,-3deg);background:rgba(233,227,214,.6);box-shadow:0 2px 5px rgba(0,0,0,.2);z-index:2}
+.pol:hover,.pol:focus-visible{rotate:0deg;transform:translateY(-8px) scale(1.02);box-shadow:0 34px 70px rgba(0,0,0,.6);z-index:3}
+.pol img{width:100%}
+.pol figcaption{position:absolute;left:12px;right:12px;bottom:10px;display:flex;justify-content:space-between;align-items:baseline;color:var(--ink)}
+.pol figcaption span:first-child{font:24px/1 var(--f-hand)}
+.pol figcaption span:last-child{font:12px var(--f-mono);color:#6a655d}
+.pol.out{display:none}
+.more{display:flex;justify-content:center;margin-top:30px}
+
+dialog.lb{margin:auto;border:0;background:transparent;width:min(94vw,1100px);height:94dvh;max-height:none;padding:0;overflow:visible;color:#fff}
+dialog.lb::backdrop{background:rgba(5,5,5,.9);backdrop-filter:blur(10px)}
+dialog.lb[open]{display:flex;align-items:center;justify-content:center}
+dialog.lb img{max-height:86dvh;max-width:100%;width:auto;border:12px solid #f4f1ea;border-bottom-width:56px;view-transition-name:lbimg}
+.lb .ctl{position:absolute;width:54px;height:54px;border-radius:var(--r-sm);background:var(--paper);color:var(--ink);font:700 22px/1 var(--f-poster);display:grid;place-items:center;z-index:2;box-shadow:3px 3px 0 var(--stencil)}
+.lb .x{top:0;right:0}.lb .prev{left:0;top:50%;translate:0 -50%}.lb .next{right:0;top:50%;translate:0 -50%}
+.lb .cap{position:absolute;bottom:calc(7dvh - 4px);left:50%;translate:-50% 0;font:28px/1 var(--f-hand);color:var(--ink);white-space:nowrap}
+
+/* ---------- masters as flash sheets ---------- */
+#masters::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/flash.jpg) center/cover;filter:grayscale(1) brightness(.4) contrast(1.1);-webkit-mask:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.masters{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px)}
+.flashsheet{padding:clamp(26px,3vw,44px);position:relative;rotate:-1deg;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.flashsheet:nth-child(2){rotate:1.2deg;margin-top:60px}
+.flashsheet .top{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.flashsheet .ph{position:relative;background:#fff;padding:8px 8px 40px;rotate:-3deg;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.flashsheet .ph img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .7s}
+.flashsheet:hover .ph img{filter:none}
+.flashsheet .ph figcaption{position:absolute;bottom:8px;left:10px;font:22px var(--f-hand);color:var(--ink)}
+.flashsheet h3{font:700 clamp(54px,5.4vw,96px)/.9 var(--f-poster);text-transform:uppercase}
+.flashsheet .hand{color:var(--stencil);font-size:30px;display:block;margin:8px 0 14px;rotate:-3deg}
+.flashsheet ul{list-style:none;font:15px/1.9 var(--f-mono);color:#3d3a34}
+.flashsheet ul li::before{content:"✦ ";color:var(--stencil)}
+.flashsheet p{margin-top:20px;color:#2e2b27;max-width:46ch}
+.flashsheet .works{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.flashsheet .works img{aspect-ratio:1;object-fit:cover;border:5px solid #fff;box-shadow:0 8px 16px rgba(0,0,0,.25);transition:transform .45s var(--spring)}
+.flashsheet .works img:nth-child(odd){rotate:-3deg}.flashsheet .works img:nth-child(even){rotate:3deg}
+.flashsheet .works img:hover{transform:scale(1.12) rotate(0)}
+.flashsheet .go{display:inline-block;margin-top:22px;font:700 15px var(--f-poster);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+
+/* ---------- facts strip (big numbers, no cards) ---------- */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge)}
+.fact{padding:44px 28px;border-right:1px solid var(--edge);position:relative;overflow:hidden}
+.fact:last-child{border-right:0}
+.fact b{display:block;white-space:nowrap;font:700 clamp(64px,7vw,124px)/.9 var(--f-poster);letter-spacing:-.02em}
+.fact>span{display:block;margin-top:14px;color:var(--dim);font-size:16px;max-width:24ch}
+.fact .spark{right:18px;top:18px}
+
+/* ---------- prices: receipt + calculator ---------- */
+.prices{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,3vw,56px);align-items:start}
+.receipt{padding:38px 34px 54px;font-family:var(--f-mono);rotate:-1.5deg;box-shadow:0 40px 90px rgba(0,0,0,.6);-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,conic-gradient(from -45deg at bottom,transparent 90deg,#000 0) bottom/22px 14px repeat-x;mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,conic-gradient(from -45deg at bottom,transparent 90deg,#000 0) bottom/22px 14px repeat-x}
+.receipt h3{font:700 34px/1 var(--f-poster);text-transform:uppercase;text-align:center}
+.receipt .sub{text-align:center;font-size:13px;color:#5d584f;margin:8px 0 22px}
+.receipt .ln{display:flex;gap:8px;padding:12px 0;font-size:16px;align-items:baseline}
+.receipt .ln i{flex:1;border-bottom:2px dotted #8d877c;translate:0 -4px}
+.receipt .ln b{font-weight:400;white-space:nowrap}
+.receipt hr{border:0;border-top:2px dashed #8d877c;margin:16px 0}
+.receipt .small{font-size:13px;color:#5d584f;line-height:1.5}
+.calc{padding:clamp(28px,3vw,44px)}
+.calc h3{font:700 clamp(34px,3vw,52px)/1 var(--f-poster);text-transform:uppercase;margin-bottom:26px}
+.calc fieldset{border:0;margin-bottom:22px}
+.calc legend{font:13px var(--f-mono);color:var(--dim);margin-bottom:10px}
 .opts{display:flex;flex-wrap:wrap;gap:8px}
 .opts label{position:relative}
-.opts input{position:absolute;opacity:0;inset:0;cursor:pointer}
-.opts span{display:block;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:14px;font-weight:600;color:var(--dim);transition:.25s}
-.opts input:checked+span{background:var(--text);color:var(--ink);border-color:transparent;transform:scale(1.03)}
-.opts input:focus-visible+span{outline:2px solid var(--ice);outline-offset:2px}
-.result{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line)}
-.result small{color:var(--dim);display:block;font-size:13px}
-.result output{font:800 clamp(36px,4vw,52px)/1.1 Unbounded;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.opts input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opts span{display:block;padding:12px 16px;border:1px solid var(--edge);border-radius:var(--r-sm);font-weight:600;font-size:15px;color:var(--dim);transition:.3s var(--spring)}
+.opts input:checked+span{background:var(--paper);color:var(--ink);border-color:var(--paper);box-shadow:3px 3px 0 var(--stencil);transform:translate(-2px,-2px)}
+.opts input:focus-visible+span{outline:2px solid var(--stencil-l);outline-offset:2px}
+.result{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px dashed var(--edge)}
+.result small{display:block;font:13px var(--f-mono);color:var(--dim)}
+.result output{display:block;font:700 clamp(54px,5vw,84px)/1.05 var(--f-poster);font-variant-numeric:tabular-nums}
 
-/* healing timeline */
-.heal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:d}
-.day{padding:24px;border-radius:var(--r-lg);border:1px solid var(--line);background:var(--glass);position:relative}
-.day b{font:700 13px Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--ice)}
-.day h3{margin:10px 0 8px}
-.day p{color:var(--dim);font-size:15px}
-.day::before{content:"";position:absolute;left:24px;right:24px;top:0;height:2px;background:var(--chrome);opacity:.5;border-radius:2px}
+/* ---------- aftercare timeline ---------- */
+.care-line{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:56px}
+.care-line::before{content:"";position:absolute;left:0;right:0;top:20px;height:2px;background:repeating-linear-gradient(90deg,var(--dim) 0 10px,transparent 10px 18px)}
+.care-line .fill{position:absolute;left:0;top:20px;height:2px;width:100%;background:var(--stencil-l);transform-origin:left;transform:scaleX(0)}
+.cday{position:relative;padding:28px 26px}
+.cday .dot{position:absolute;top:-48px;left:24px;width:26px;height:26px;color:#fff}
+.cday .dot svg{width:100%;height:100%;fill:currentColor}
+.cday b{font:13px var(--f-mono);color:var(--stencil-l)}
+.cday h3{font:700 32px/1 var(--f-poster);text-transform:uppercase;margin:10px 0}
+.cday p{color:var(--dim);font-size:15.5px}
+.healed-stamp{display:inline-block;margin-top:46px;padding:12px 22px;border:3px solid var(--stencil-l);color:var(--stencil-l);font:400 clamp(30px,3vw,46px)/1 var(--f-spray);rotate:-6deg}
 
-/* gift */
-.gift{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:clamp(28px,5vw,56px);border-radius:var(--r-xl);background:radial-gradient(120% 120% at 100% 0%,rgba(91,140,255,.25),transparent 55%),var(--glass);border:1px solid var(--line);overflow:hidden}
-.card3d{aspect-ratio:1.6;border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#1a2338,#0b1020 50%,#2b3550);border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.2);transform:rotate(-6deg);transition:transform .6s var(--spring);position:relative;overflow:hidden}
-.card3d:hover{transform:rotate(0) scale(1.03)}
-.card3d::after{content:"";position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);animation:shine 5s ease-in-out infinite}
-@keyframes shine{from{transform:translateX(-40%)}to{transform:translateX(40%)}}
-.card3d img{width:150px}
-.card3d .sum{font:800 34px Unbounded}
+/* ---------- gift ---------- */
+.gift{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:clamp(30px,4vw,64px)}
+.gcard{position:relative;aspect-ratio:1.6;border-radius:18px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#2d2d2f,#0b0b0c 50%,#3b3b3e);border:1px solid rgba(255,255,255,.28);box-shadow:0 40px 90px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.3);rotate:-6deg;transition:rotate .7s var(--spring),transform .7s var(--spring);overflow:hidden}
+.gcard:hover{rotate:0deg;transform:scale(1.04)}
+.gcard::after{content:"";position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.25) 50%,transparent 58%);animation:card 4.5s ease-in-out infinite}
+@keyframes card{from{transform:translateX(-45%)}to{transform:translateX(45%)}}
+.gcard img{width:170px}
+.gcard small{font:12px var(--f-mono);color:var(--dim);letter-spacing:.1em}
+.gcard .sum{font:700 52px/1 var(--f-poster);background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* faq */
-.faq{max-width:860px;margin:auto}
-details{border-bottom:1px solid var(--line)}
-summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;cursor:pointer;font:600 clamp(17px,1.6vw,20px) Manrope}
+/* ---------- faq ---------- */
+.faq{max-width:1080px;margin:auto;padding:14px clamp(22px,3vw,44px)}
+details{border-bottom:1px dashed var(--edge)}
+details:last-child{border:0}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:28px 0;cursor:pointer;font:600 clamp(20px,1.9vw,28px)/1.15 var(--f-poster);text-transform:uppercase}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font-size:20px;transition:transform .4s var(--spring)}
-details[open] summary::after{transform:rotate(45deg)}
-details p{color:var(--dim);padding:0 0 24px;max-width:70ch}
+summary .pm{flex:none;width:30px;height:30px;color:var(--stencil-l);transition:transform .5s var(--spring)}
+summary .pm svg{width:100%;height:100%;fill:currentColor}
+details[open] summary .pm{transform:rotate(135deg) scale(1.2)}
+details p{color:var(--dim);padding:0 0 28px;max-width:70ch}
 details[open] p{animation:drop .5s var(--out)}
-@keyframes drop{from{opacity:0;transform:translateY(-8px)}}
+@keyframes drop{from{opacity:0;transform:translateY(-10px)}}
 
-/* contacts */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.contact .box{padding:30px;border-radius:var(--r-xl);background:var(--glass);border:1px solid var(--line)}
-.contact dl div{padding:16px 0;border-bottom:1px solid var(--line)}
-.contact dl div:last-child{border:0}
-.contact dt{color:var(--faint);font-size:13px;text-transform:uppercase;letter-spacing:.1em}
-.contact dd{font-size:18px;font-weight:600;margin-top:4px}
-.msgs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.map{border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--line);min-height:420px}
-.map iframe{width:100%;height:100%;min-height:420px;border:0;filter:invert(.9) hue-rotate(185deg) saturate(.6) brightness(.95)}
+/* ---------- contact ---------- */
+.contact{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,3vw,48px);align-items:stretch}
+.addr{padding:clamp(28px,3vw,46px)}
+.addr .big{font:700 clamp(40px,4.4vw,74px)/.95 var(--f-poster);text-transform:uppercase}
+.addr dl{margin-top:30px;font-family:var(--f-mono)}
+.addr dl div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 0;border-top:1px dashed var(--edge)}
+.addr dt{color:var(--mute);font-size:13px;text-transform:uppercase}
+.addr dd{font-size:17px}
+.map{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--edge);min-height:480px}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.9) contrast(.95)}
 
-footer{padding:50px 0 110px;border-top:1px solid var(--line);color:var(--faint);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.dock{position:fixed;left:50%;bottom:14px;translate:-50% 0;z-index:40;display:none;gap:8px;padding:8px;border-radius:999px;background:rgba(10,16,30,.7);backdrop-filter:blur(18px);border:1px solid var(--line)}
+footer{padding:30px 0 160px;font:13px/1.6 var(--f-mono);color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px dashed var(--edge);padding-top:26px}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--out),transform .9s var(--out)}
-.rv.in{opacity:1;transform:none}
-.wipe{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s var(--out)}
-.wipe.in{clip-path:inset(0)}
+/* booking dialog: 3-step brief */
+dialog.book{margin:auto;border:0;padding:0;background:transparent;width:min(620px,94vw);color:var(--ink);overflow:visible}
+dialog.book::backdrop{background:rgba(5,5,5,.75);backdrop-filter:blur(8px)}
+.book form{position:relative;padding:clamp(26px,4vw,44px);box-shadow:0 40px 100px rgba(0,0,0,.7)}
+dialog.book[open] form{animation:slap .6s var(--spring)}
+@keyframes slap{from{opacity:0;transform:translateY(-40px) rotate(-6deg) scale(1.08)}}
+.book h3{font:700 clamp(40px,5vw,58px)/.95 var(--f-poster);text-transform:uppercase}
+.book .hand{color:var(--stencil);font-size:28px;display:block;rotate:-3deg;margin:4px 0 16px}
+.book .stepnum{font:13px var(--f-mono);color:#5d584f;margin-bottom:10px}
+.book fieldset{border:0;display:none}
+.book fieldset.on{display:block;animation:drop .4s var(--out)}
+.book legend{font:700 22px var(--f-poster);text-transform:uppercase;margin-bottom:14px}
+.book .opts span{color:var(--ink);border-color:rgba(11,11,12,.25);background:rgba(255,255,255,.4)}
+.book .opts input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.book label.f{display:block;margin-top:12px;font:13px var(--f-mono);color:#4a463f}
+.book input.t,.book textarea{display:block;width:100%;margin-top:6px;padding:14px;border:1.5px solid rgba(11,11,12,.3);border-radius:var(--r-sm);background:rgba(255,255,255,.55);font:16px var(--f-body);color:var(--ink)}
+.book textarea{min-height:96px;resize:vertical}
+.book .acts{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:24px}
+.book .x{position:absolute;top:14px;right:14px;width:44px;height:44px;border:1.5px solid rgba(11,11,12,.3);border-radius:var(--r-sm);font-size:22px}
+.book .btn{white-space:nowrap;padding:16px 20px}
+.book .err{color:#7b2a2a;font:13px var(--f-mono);margin-top:8px;min-height:1em}
 
 /* cursor */
-.cursor{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid rgba(234,238,246,.6);border-radius:50%;pointer-events:none;z-index:99;transition:width .3s var(--spring),height .3s var(--spring),margin .3s var(--spring),background .3s;mix-blend-mode:difference;display:none}
-.cursor.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(255,255,255,.12)}
-@media (hover:hover) and (pointer:fine){.cursor{display:block}}
+.cursor{position:fixed;left:0;top:0;z-index:460;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid #fff;border-radius:50%;pointer-events:none;display:none;align-items:center;justify-content:center;font:12px var(--f-mono);color:var(--ink);transition:width .35s var(--spring),height .35s var(--spring),margin .35s var(--spring),background .3s,border-color .3s;mix-blend-mode:difference}
+.cursor.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:#fff}
+.cursor.view{width:96px;height:96px;margin:-48px 0 0 -48px;background:var(--paper);border-color:var(--paper);mix-blend-mode:normal}
+.cursor.view::after{content:attr(data-t)}
+@media (hover:hover) and (pointer:fine){.cursor{display:flex}}
 
-@media (max-width:960px){
-  .nav ul{display:none}
-  .nav ul.open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:0;right:0;padding:10px;border-radius:24px;background:rgba(10,16,30,.92);backdrop-filter:blur(20px);border:1px solid var(--line)}
-  .nav ul.open a{padding:14px 16px;font-size:16px}
-  .burger{display:block;margin-left:auto}
-  .nav>.btn{display:none}
-  .hero .wrap,.process .wrap,.prices,.contact,.gift,.masters{grid-template-columns:1fr}
-  .hero{padding-top:100px}
-  .hero .logo{width:min(280px,75%)}
-  .phone-frame{width:min(300px,78vw)}
-  .phone-frame .tag{left:-8px}.phone-frame .tag.t2{right:-8px}
-  .ids .grid{grid-template-columns:1fr 1fr}
-  .process{height:auto}
-  .process .scene{position:relative;height:auto;padding:80px 0}
-  .steps{min-height:0}
-  .step{position:relative;opacity:1;transform:none;margin-bottom:34px}
-  .stack{display:none}
-  .bar{display:none}
-  .bento{grid-template-columns:1fr 1fr}
-  .c1{grid-column:span 2;min-height:360px}
-  .c2,.c3,.c4,.c5,.c6{grid-column:span 2}
-  .heal{grid-template-columns:1fr 1fr}
-  .master{min-height:480px}
-  .dock{display:flex}
+@media (max-width:1100px){
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(2){border-right:0}
+  .fact:nth-child(-n+2){border-bottom:1px solid var(--edge)}
+  .care-line{grid-template-columns:1fr 1fr;row-gap:70px}
+}
+@media (max-width:900px){
+  :root{--wrap:calc(100% - 32px)}
+  .nav ul,.nav .bar>.btn{display:none}
+  .burger{display:block}
+  .open-sign span{display:none}
+  .hero{padding-top:96px}
+  .hero .wrap,.stencil-scene .wrap,.prices,.contact,.gift,.masters{grid-template-columns:1fr}
+  .hero h1 .row{white-space:normal;flex-wrap:wrap}
+  .hero-photos{height:118vw}
+  .reel .pin{height:auto;padding:80px 0}
+  .reel .track{overflow-x:auto;scroll-snap-type:x mandatory;transform:none!important;scrollbar-width:none;padding-right:16px}
+  .reel .track::-webkit-scrollbar{display:none}
+  .slide{height:70vh;scroll-snap-align:center}
+  .reel .intro{width:84vw;padding:28px}
+  .stencil-scene{height:300vh}
+  .stencil-scene .wrap{gap:18px}
+  .steps-text{min-height:300px;order:2}
+  .steps-text h2{font-size:38px;margin-bottom:12px}
+  .st{top:60px;padding:20px}
+  .st .n{font-size:40px}
+  .frame{width:min(300px,70vw);order:1;margin-top:70px}
+  .flashsheet:nth-child(2){margin-top:0}
+  .flashsheet .top{grid-template-columns:1fr}
+  .wallgrid{columns:2 150px;column-gap:14px}
+  .pol{padding:6px 6px 34px;margin-bottom:18px}
+  .pol figcaption span:first-child{font-size:18px}
+  .pol figcaption span:last-child{display:none}
+  .stamp{width:96px;height:96px;right:14px;bottom:14px}
+  .stamp svg.ring text{font-size:11px}
+  .addr dl div{grid-template-columns:90px 1fr}
 }
 @media (max-width:560px){
-  .heal{grid-template-columns:1fr}
-  .id{padding:18px}
+  .facts{grid-template-columns:1fr}
+  .fact{border-right:0!important;border-bottom:1px solid var(--edge)}
+  .care-line{grid-template-columns:1fr}
+  .care-line::before,.care-line .fill{display:none}
+  .cday .dot{top:-14px;left:auto;right:16px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .rv,.wipe{opacity:1;transform:none;clip-path:none}
-  html{scroll-behavior:auto}
+  .stencil-scene{height:auto}.stencil-scene .pin{position:relative;height:auto;padding:80px 0}
+  .st{position:relative;top:0;opacity:1;transform:none;margin-bottom:14px}
+  .frame .photo{opacity:1}.frame .stencil{display:none}
 }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
 <a class="skip" href="#main" data-en="Skip to content">К содержанию</a>
-<div class="bg" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+<div class="ink-wipe" aria-hidden="true"><img src="img/logo.webp" alt=""></div>
+<div class="wall" aria-hidden="true"></div>
+<div class="shade" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"></div>
+<div class="loupe" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Главное меню">
-  <a href="#top" aria-label="INKSIDE, наверх"><img class="mono" src="img/mono.webp" alt="" width="34" height="34"></a>
-  <ul id="menu">
-    <li><a href="#works" data-en="Works">Работы</a></li>
-    <li><a href="#masters" data-en="Artists">Мастера</a></li>
-    <li><a href="#prices" data-en="Prices">Цены</a></li>
-    <li><a href="#care" data-en="Aftercare">Уход</a></li>
-    <li><a href="#faq" data-en="FAQ">Вопросы</a></li>
-    <li><a href="#contact" data-en="Contact">Контакты</a></li>
-  </ul>
-  <button class="lang" id="lang" aria-label="Switch language">EN</button>
-  <a class="btn sm" href="#prices" data-en="Book">Записаться</a>
-  <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  <div class="bar sheet">
+    <a href="#top" data-ink aria-label="INKSIDE, наверх"><img class="logo-s" src="img/mono.webp" alt="" width="38" height="38"></a>
+    <ul>
+      <li>
+        <button aria-expanded="false" aria-controls="dd-works"><span data-en="Works">Работы</span><i class="caret"></i></button>
+        <div class="drop paper tape" id="dd-works">
+          <a href="#works" data-ink data-go="bw"><img src="img/w01.webp" alt=""><span><b data-en="Black &amp; grey">Ч/б реализм</b><small data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
+          <a href="#works" data-ink data-go="color"><img src="img/w13.webp" alt=""><span><b data-en="Colour">Цвет</b><small data-en="colour realism">цветной реализм</small></span></a>
+          <a href="#works" data-ink data-go="big"><img src="img/w05.webp" alt=""><span><b data-en="Sleeves">Рукава</b><small data-en="legs, backs">ноги, спины</small></span></a>
+          <a href="#works" data-ink data-go="graphic"><img src="img/w15.webp" alt=""><span><b data-en="Graphic">Графика</b><small data-en="mini, ornament">мини, орнамент</small></span></a>
+          <span class="hand" data-en="all works are ours, no stock">все работы наши, без стоков ✦</span>
+        </div>
+      </li>
+      <li>
+        <button aria-expanded="false" aria-controls="dd-masters"><span data-en="Artists">Мастера</span><i class="caret"></i></button>
+        <div class="drop paper tape narrow" id="dd-masters">
+          <a href="#masters" data-ink><img src="img/nadezhda.webp" alt=""><span><b data-en="Nadezhda">Надежда</b><small data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
+          <a href="#masters" data-ink><img src="img/vitaliy.webp" alt=""><span><b data-en="Vitaliy">Виталий</b><small data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
+        </div>
+      </li>
+      <li><a href="#prices" data-ink data-en="Prices">Цены</a></li>
+      <li><a href="#care" data-ink data-en="Aftercare">Уход</a></li>
+      <li><a href="#contact" data-ink data-en="Contact">Контакты</a></li>
+    </ul>
+    <div class="open-sign" id="openSign"><b data-en="OPEN">ОТКРЫТО</b><span>11:00-23:00</span></div>
+    <button class="lang" id="lang" aria-label="Switch language">EN</button>
+    <button class="btn sm" data-book data-en="Book">Записаться</button>
+    <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="overlay"><span></span><span></span></button>
+  </div>
 </nav>
+
+<div class="overlay" id="overlay">
+  <a class="big" href="#works" data-ink data-en="Works">Работы</a>
+  <a class="big" href="#masters" data-ink data-en="Artists">Мастера</a>
+  <a class="big" href="#prices" data-ink data-en="Prices">Цены</a>
+  <a class="big" href="#care" data-ink data-en="Aftercare">Уход</a>
+  <a class="big" href="#faq" data-ink data-en="FAQ">Вопросы</a>
+  <a class="big" href="#contact" data-ink data-en="Contact">Контакты</a>
+  <div class="row"><button class="btn" data-book data-en="Book">Записаться</button><a class="btn dark" href="tel:+375445111912" data-en="Call">Позвонить</a></div>
+</div>
+
+<button class="stamp" data-book aria-label="Записаться на сеанс">
+  <svg class="ring" viewBox="0 0 124 124" aria-hidden="true"><defs><path id="circ" d="M62,62 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#circ" data-en="Book a session ✦ INKSIDE ✦">Записаться ✦ INKSIDE ✦ Минск ✦</textPath></text></svg>
+  <span class="star"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
+</button>
 
 <main id="main">
 <header class="hero" id="top">
   <div class="wrap">
-    <div>
-      <span class="eyebrow rv" data-en="Tattoo studio · Minsk">Тату-студия · Минск</span>
-      <img class="logo rv" src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high">
-      <h1 class="rv" data-en="Realism that <span class='serif chrome'>heals beautifully</span>">Реализм, который <span class="serif chrome">заживает красиво</span></h1>
-      <p class="lead rv" data-en="Black &amp; grey and colour realism, full sleeves, cover-ups of old tattoos and scars, mini tattoos. Free consultation and a sketch designed for you.">Чёрно-белый и цветной реализм, рукава, перекрытия старых тату и шрамов, мини. Бесплатная консультация и эскиз, нарисованный под вас.</p>
-      <div class="cta rv">
-        <a class="btn magnet" href="#prices" data-en="Estimate my tattoo →">Рассчитать тату →</a>
-        <a class="btn ghost magnet" href="#works" data-en="See works">Смотреть работы</a>
+    <div class="hero-sheet sheet tape">
+      <div class="chromelogo"><img src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
+      <h1 class="poster" id="h1">
+        <span class="row"><span data-en="Realism">Реализм</span></span>
+        <span class="row"><span class="vidword"><video src="img/process.mp4" poster="img/poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></span><span data-en="that">который</span></span>
+        <span class="row"><span data-en="stays">остаётся</span><span class="hand" data-en="for life ✦">навсегда ✦</span></span>
+      </h1>
+      <p class="lead" data-en="Minsk tattoo studio. Sleeves, portraits, cover-ups and mini. Consultation is free, minimum 180 BYN.">Тату-студия в Минске. Рукава, портреты, перекрытия и мини. Консультация бесплатно, минимум 180 BYN.</p>
+      <div class="btns">
+        <button class="btn magnet" data-book data-en="Book">Записаться</button>
+        <a class="link mark" href="#reel" data-ink data-en="See works ↓">Смотреть работы ↓</a>
       </div>
     </div>
-    <div class="phone-frame rv">
-      <video src="img/process.mp4" poster="img/poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Процесс работы в студии"></video>
-      <div class="tag" aria-hidden="true"><b>1 место</b><span data-en="tattoo battle, Gomel">тату-баттл, Гомель</span></div>
-      <div class="tag t2" aria-hidden="true"><b>11-23</b><span data-en="every day">каждый день</span></div>
+    <div class="hero-photos" aria-hidden="true">
+      <figure class="polaroid b"><img src="img/w13.webp" alt=""><figcaption data-en="colour realism">цветной реализм</figcaption></figure>
+      <figure class="polaroid a"><img src="img/w03.webp" alt=""><figcaption data-en="1st place, Gomel ✦">1 место, Гомель ✦</figcaption></figure>
+      <figure class="polaroid c"><img src="img/w18.webp" alt=""><figcaption data-en="mini">мини</figcaption></figure>
+      <span class="spark" style="--s:26px;left:46%;top:2%;--dl:.4s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
+      <span class="spark" style="--s:14px;left:8%;top:30%;--dl:1.3s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
+      <span class="spark" style="--s:18px;right:-2%;top:44%;--dl:2.1s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
+      <span class="spark" style="--s:12px;left:40%;bottom:6%;--dl:.9s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
     </div>
   </div>
-  <span class="scroll-hint" aria-hidden="true"></span>
 </header>
 
-<section class="ids" aria-label="Студия в цифрах">
-  <div class="wrap grid">
-    <div class="id rv"><b><span class="count" data-to="8">0</span>+</b><span data-en="years of experience">лет опыта мастеров</span></div>
-    <div class="id rv"><b>№<span class="count" data-to="1">0</span></b><span data-en="place at the Gomel tattoo battle">место на тату-баттле в Гомеле</span></div>
-    <div class="id rv"><b><span class="count" data-to="2">0</span></b><span data-en="days for a full leg, four hands">дня на ногу целиком в четыре руки</span></div>
-    <div class="id rv"><b><span class="count" data-to="7">0</span>/7</b><span data-en="open daily 11:00-23:00">ежедневно, 11:00-23:00</span></div>
+<div class="marquee" aria-hidden="true"><div id="mq">
+  <span>Реализм</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Рукава</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Перекрытия</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Портреты</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Мини</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Чикано</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i>
+  <span>Реализм</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Рукава</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Перекрытия</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Портреты</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Мини</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i><span>Чикано</span><i><svg viewBox="0 0 24 24"><use href="#star"/></svg></i>
+</div></div>
+
+<section class="reel" id="reel" aria-label="Крупные работы">
+  <div class="pin">
+    <div class="track">
+      <div class="intro sheet tape one">
+        <h2 class="poster split" data-en="One work. <span class='outline'>One screen.</span>">Одна работа. <span class="outline">Один экран.</span></h2>
+        <p class="lead" style="margin-top:20px" data-en="No tiny Instagram squares. Hover to look at the skin up close.">Никаких мелких квадратиков. Наведите, чтобы рассмотреть кожу вблизи.</p>
+      </div>
+      <figure class="slide"><img src="img/w03.webp" alt="Рукав с космонавтом, первое место на баттле" loading="lazy"><span class="num">01</span><figcaption class="tag"><b data-en="Astronaut">Космонавт</b><span data-en="sleeve · 1st place">рукав · 1 место</span></figcaption></figure>
+      <figure class="slide"><img src="img/w02.webp" alt="Нога целиком в чёрно-белом реализме" loading="lazy"><span class="num">02</span><figcaption class="tag"><b data-en="Full leg">Нога целиком</b><span data-en="2 days · 4 hands">2 дня · 4 руки</span></figcaption></figure>
+      <figure class="slide"><img src="img/w13.webp" alt="Цветной реализм, портрет девушки" loading="lazy"><span class="num">03</span><figcaption class="tag"><b data-en="Colour realism">Цветной реализм</b><span data-en="forearm">предплечье</span></figcaption></figure>
+      <figure class="slide"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><span class="num">04</span><figcaption class="tag"><b data-en="Full sleeve">Рукав</b><span data-en="b&amp;g realism">ч/б реализм</span></figcaption></figure>
+      <figure class="slide"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><span class="num">05</span><figcaption class="tag"><b data-en="Owl">Сова</b><span data-en="shoulder">плечо</span></figcaption></figure>
+      <figure class="slide"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><span class="num">06</span><figcaption class="tag"><b data-en="Ship">Корабль</b><span data-en="sleeve">рукав</span></figcaption></figure>
+    </div>
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div>
-  <span>Реализм</span><i>black &amp; grey</i><span>Рукава</span><i>colour</i><span>Перекрытия</span><i>fine line</i><span>Микрореализм</span><i>chicano</i><span>Графика</span><i>mini</i>
-  <span>Реализм</span><i>black &amp; grey</i><span>Рукава</span><i>colour</i><span>Перекрытия</span><i>fine line</i><span>Микрореализм</span><i>chicano</i><span>Графика</span><i>mini</i>
-</div></div>
-
-<section class="process" id="process" aria-label="Как проходит работа">
-  <div class="scene">
+<section class="stencil-scene" id="process" aria-label="Как рождается тату">
+  <div class="pin">
     <div class="wrap">
-      <div>
-        <span class="eyebrow" data-en="How it works">Как это происходит</span>
-        <div class="steps">
-          <div class="step on"><span class="n">01</span><h3 data-en="Idea">Идея</h3><p data-en="Send us a reference, a photo or just a thought. We discuss size, placement and style for free, in DM or in the studio.">Присылаете референс, фото или просто мысль. Бесплатно обсуждаем размер, место и стиль в директе или в студии.</p></div>
-          <div class="step"><span class="n">02</span><h3 data-en="Sketch">Эскиз</h3><p data-en="The artist draws a sketch for your body and your story. We tweak it until you love it. No ready-made templates.">Мастер рисует эскиз под ваше тело и вашу историю. Правим, пока не понравится. Никаких шаблонов из интернета.</p></div>
-          <div class="step"><span class="n">03</span><h3 data-en="Session">Сеанс</h3><p data-en="Single-use needles, sterile zone, a calm atmosphere. Big projects are split into comfortable sessions.">Одноразовые иглы, стерильная зона, спокойная атмосфера. Крупные проекты делим на комфортные сеансы.</p></div>
-          <div class="step"><span class="n">04</span><h3 data-en="Healing">Заживление</h3><p data-en="We give a day-by-day aftercare plan and stay in touch. Send a photo after healing and we'll check the result.">Даём план ухода по дням и остаёмся на связи. Присылаете фото после заживления, мы проверяем результат.</p></div>
-        </div>
-        <div class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="steps-text">
+        <h2 class="poster" data-en="From stencil <span class='hand h-note'>to skin</span>">От стенсила <span class="hand h-note">к коже</span></h2>
+        <div class="st sheet"><span class="n">01</span><h3 data-en="Idea">Идея</h3><p data-en="Send a reference or just a thought. We discuss size, placement and price for free.">Присылаете референс или просто мысль. Бесплатно обсуждаем размер, место и цену.</p></div>
+        <div class="st sheet"><span class="n">02</span><h3 data-en="Stencil">Эскиз и стенсил</h3><p data-en="The sketch is drawn for your body. The purple transfer shows exactly where every line goes.">Эскиз рисуется под ваше тело. Фиолетовый перевод показывает, где пройдёт каждая линия.</p></div>
+        <div class="st sheet"><span class="n">03</span><h3 data-en="Session">Сеанс</h3><p data-en="Single-use needles opened in front of you. Big projects are split into sessions.">Одноразовые иглы вскрываем при вас. Крупное делим на сеансы.</p></div>
+        <div class="st sheet"><span class="n">04</span><h3 data-en="Healed">Заживление</h3><p data-en="A day-by-day aftercare plan. Send a photo in a month and we check the result.">План ухода по дням. Через месяц присылаете фото, мы проверяем результат.</p></div>
       </div>
-      <div class="stack" aria-hidden="true">
-        <img class="on" src="img/w13.webp" alt="" loading="lazy">
-        <img src="img/sketch.webp" alt="" loading="lazy">
-        <img src="img/studio.webp" alt="" loading="lazy">
-        <img src="img/w03.webp" alt="" loading="lazy">
+      <div class="frame" aria-hidden="true">
+        <img class="layer photo" src="img/w17.webp" alt="">
+        <img class="layer stencil" src="img/stencil_w17.png" alt="">
+        <span class="healed" data-en="HEALED">ЗАЖИЛО</span>
+        <span class="bar"><i></i></span>
       </div>
     </div>
   </div>
@@ -365,112 +554,123 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 <section id="works">
   <div class="wrap">
     <div class="head">
-      <div><span class="eyebrow rv" data-en="Portfolio">Портфолио</span><h2 class="wipe" style="margin-top:14px" data-en="Works that <span class='serif chrome'>speak</span>">Работы, которые <span class="serif chrome">говорят</span></h2></div>
-      <div class="chips rv" role="group" aria-label="Фильтр работ">
-        <button class="chip" aria-pressed="true" data-f="all" data-en="All">Все</button>
-        <button class="chip" aria-pressed="false" data-f="bw" data-en="Black &amp; grey">Ч/б реализм</button>
-        <button class="chip" aria-pressed="false" data-f="color" data-en="Colour">Цвет</button>
-        <button class="chip" aria-pressed="false" data-f="big" data-en="Sleeves">Рукава и ноги</button>
-        <button class="chip" aria-pressed="false" data-f="graphic" data-en="Graphic &amp; mini">Графика и мини</button>
+      <h2 class="poster split" data-en="The <span class='hand h-note'>wall</span>">Стена <span class="hand h-note">работ</span></h2>
+      <div class="tabs sheet" role="group" aria-label="Фильтр работ">
+        <button class="tab" aria-pressed="true" data-f="all" data-en="All">Все</button>
+        <button class="tab" aria-pressed="false" data-f="bw" data-en="B&amp;G">Ч/б</button>
+        <button class="tab" aria-pressed="false" data-f="color" data-en="Colour">Цвет</button>
+        <button class="tab" aria-pressed="false" data-f="big" data-en="Sleeves">Рукава</button>
+        <button class="tab" aria-pressed="false" data-f="graphic" data-en="Graphic">Графика</button>
       </div>
     </div>
-    <div class="masonry" id="grid">
-      <figure class="work rv" data-c="bw"><img src="img/w01.webp" alt="Чёрно-белый реализм: женский портрет на голени" loading="lazy"><figcaption data-en="Portrait, b&amp;g">Портрет, ч/б</figcaption></figure>
-      <figure class="work rv" data-c="color"><img src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy"><figcaption data-en="Colour realism">Цветной реализм</figcaption></figure>
-      <figure class="work rv" data-c="bw big"><img src="img/w02.webp" alt="Нога целиком в чёрно-белом реализме" loading="lazy"><figcaption data-en="Full leg in 2 days">Нога за 2 дня</figcaption></figure>
-      <figure class="work rv" data-c="bw big"><img src="img/w03.webp" alt="Рукав с космонавтом, призовая работа" loading="lazy"><figcaption data-en="Astronaut, award work">Космонавт, призовая работа</figcaption></figure>
-      <figure class="work rv" data-c="bw"><img src="img/w07.webp" alt="Сова на плече, чёрно-белый реализм" loading="lazy"><figcaption data-en="Owl, shoulder">Сова, плечо</figcaption></figure>
-      <figure class="work rv" data-c="color"><img src="img/w04.webp" alt="Цветная тату: лягушка и цветы на плече" loading="lazy"><figcaption data-en="Frog &amp; flowers">Лягушка и цветы</figcaption></figure>
-      <figure class="work rv" data-c="bw big"><img src="img/w05.webp" alt="Рукав целиком, чёрно-белый реализм" loading="lazy"><figcaption data-en="Full sleeve">Рукав целиком</figcaption></figure>
-      <figure class="work rv" data-c="graphic"><img src="img/w15.webp" alt="Графика: античная колонна и геометрия" loading="lazy"><figcaption data-en="Graphic">Графика</figcaption></figure>
-      <figure class="work rv" data-c="bw"><img src="img/w17.webp" alt="Ангел в короне, реализм на предплечье" loading="lazy"><figcaption data-en="Angel, forearm">Ангел, предплечье</figcaption></figure>
-      <figure class="work rv" data-c="bw big"><img src="img/w16.webp" alt="Корабль, рукав в реализме" loading="lazy"><figcaption data-en="Ship sleeve">Корабль, рукав</figcaption></figure>
-      <figure class="work rv" data-c="graphic"><img src="img/w18.webp" alt="Мини-тату бабочка" loading="lazy"><figcaption data-en="Mini">Мини</figcaption></figure>
-      <figure class="work rv" data-c="bw big"><img src="img/w14.webp" alt="Тёмный рукав с существами" loading="lazy"><figcaption data-en="Dark sleeve">Тёмный рукав</figcaption></figure>
-      <figure class="work rv" data-c="graphic big"><img src="img/w19.webp" alt="Орнамент на груди и плече у двух клиентов" loading="lazy"><figcaption data-en="Ornamental">Орнамент</figcaption></figure>
-      <figure class="work rv" data-c="bw"><img src="img/w08.webp" alt="Сова крупным планом" loading="lazy"><figcaption data-en="Owl, detail">Сова, деталь</figcaption></figure>
-      <figure class="work rv" data-c="bw"><img src="img/w20.webp" alt="Реализм на предплечье" loading="lazy"><figcaption data-en="Forearm realism">Реализм, предплечье</figcaption></figure>
+    <div class="wallgrid" id="grid">
+      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w01.webp" alt="Чёрно-белый реализм: женский портрет" loading="lazy"><figcaption><span data-en="portrait">портрет</span><span>ч/б</span></figcaption></figure>
+      <figure class="pol" data-c="color" tabindex="0"><img src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy"><figcaption><span data-en="colour">в цвете</span><span>цвет</span></figcaption></figure>
+      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w02.webp" alt="Нога целиком" loading="lazy"><figcaption><span data-en="full leg">нога целиком</span><span>2 дня</span></figcaption></figure>
+      <figure class="pol" data-c="graphic" tabindex="0"><img src="img/w18.webp" alt="Мини-тату бабочка" loading="lazy"><figcaption><span data-en="butterfly">бабочка</span><span>мини</span></figcaption></figure>
+      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w17.webp" alt="Ангел в короне" loading="lazy"><figcaption><span data-en="angel">ангел</span><span>ч/б</span></figcaption></figure>
+      <figure class="pol" data-c="color" tabindex="0"><img src="img/w04.webp" alt="Цветная тату: лягушка и цветы" loading="lazy"><figcaption><span data-en="frog &amp; flowers">лягушка</span><span>цвет</span></figcaption></figure>
+      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w03.webp" alt="Рукав с космонавтом" loading="lazy"><figcaption><span data-en="astronaut">космонавт</span><span>1 место</span></figcaption></figure>
+      <figure class="pol" data-c="graphic" tabindex="0"><img src="img/w15.webp" alt="Графика: колонна и геометрия" loading="lazy"><figcaption><span data-en="graphic">графика</span><span>линии</span></figcaption></figure>
+      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w07.webp" alt="Сова на плече" loading="lazy"><figcaption><span data-en="owl">сова</span><span>плечо</span></figcaption></figure>
+      <figure class="pol" data-c="graphic big" tabindex="0"><img src="img/w19.webp" alt="Орнамент на груди и плече" loading="lazy"><figcaption><span data-en="ornament">орнамент</span><span>грудь</span></figcaption></figure>
+      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy"><figcaption><span data-en="ship">корабль</span><span>рукав</span></figcaption></figure>
+      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w20.webp" alt="Реализм на предплечье" loading="lazy"><figcaption><span data-en="forearm">предплечье</span><span>ч/б</span></figcaption></figure>
+      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w14.webp" alt="Тёмный рукав" loading="lazy"><figcaption><span data-en="dark sleeve">тёмный рукав</span><span>рукав</span></figcaption></figure>
+      <figure class="pol" data-c="bw" tabindex="0"><img src="img/w08.webp" alt="Сова крупным планом" loading="lazy"><figcaption><span data-en="owl detail">сова, деталь</span><span>ч/б</span></figcaption></figure>
+      <figure class="pol" data-c="bw big" tabindex="0"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy"><figcaption><span data-en="full sleeve">рукав</span><span>ч/б</span></figcaption></figure>
+      <figure class="pol" data-c="graphic" tabindex="0"><img src="img/sketch.webp" alt="Эскиз на планшете" loading="lazy"><figcaption><span data-en="the sketch">эскиз</span><span>под вас</span></figcaption></figure>
     </div>
-    <p class="note rv" data-en="More works and healed results on Instagram">Больше работ и зажившие результаты - в <a href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener" style="color:var(--ice)">Instagram @inkside.minsk</a></p>
+    <div class="more"><a class="btn dark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener" data-en="More on Instagram">Ещё в Instagram</a></div>
   </div>
-  <dialog class="lb" id="lb" aria-label="Просмотр работы"><button aria-label="Закрыть">×</button><img alt=""></dialog>
+  <dialog class="lb" id="lb" aria-label="Просмотр работы">
+    <button class="ctl x" aria-label="Закрыть">×</button>
+    <button class="ctl prev" aria-label="Предыдущая">←</button>
+    <img alt="">
+    <span class="cap"></span>
+    <button class="ctl next" aria-label="Следующая">→</button>
+  </dialog>
+</section>
+
+<section id="facts" style="padding-top:0">
+  <div class="wrap facts">
+    <div class="fact"><b data-count="8">8+</b><span data-en="years behind the machine">лет за машинкой</span></div>
+    <div class="fact"><b>№<span data-count="1">1</span></b><span data-en="place at the Gomel tattoo battle">место на тату-баттле в Гомеле</span><span class="spark" style="--s:20px"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
+    <div class="fact"><b data-count="2">2</b><span data-en="days for a full leg, four hands">дня на ногу целиком в четыре руки</span></div>
+    <div class="fact"><b>0 BYN</b><span data-en="for consultation and idea">за консультацию и подбор идеи</span></div>
+  </div>
 </section>
 
 <section id="masters">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow rv" data-en="Artists">Мастера</span><h2 class="wipe" style="margin-top:14px" data-en="Two artists. <span class='serif chrome'>Four hands.</span>">Два мастера. <span class="serif chrome">Четыре руки.</span></h2></div>
-    <p class="lead rv" data-en="Big projects are done together: a full leg was finished in two days.">Крупные проекты делаем вдвоём: ногу целиком закрыли за два дня.</p></div>
+    <div class="head"><h2 class="poster split" data-en="Two artists. <span class='outline'>Four hands.</span>">Два мастера. <span class="outline">Четыре руки.</span></h2></div>
     <div class="masters">
-      <article class="master tilt rv">
-        <img src="img/nadezhda.webp" alt="Мастер Надежда за работой" loading="lazy">
-        <div class="info">
-          <h3 data-en="Nadezhda">Надежда</h3>
-          <p data-en="Delicate lines, micro-realism and colour. Will turn your idea into a careful sketch.">Тонкие линии, микрореализм и цвет. Аккуратно превратит идею в эскиз.</p>
-          <div class="tags"><span data-en="Micro-realism">Микрореализм</span><span data-en="Colour">Цвет</span><span data-en="Mini">Мини</span></div>
-          <a class="ig" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo →</a>
+      <article class="flashsheet paper tape">
+        <div class="top">
+          <figure class="ph"><img src="img/nadezhda.webp" alt="Мастер Надежда" loading="lazy"><figcaption>Nadya</figcaption></figure>
+          <div>
+            <h3 data-en="Nadezhda">Надежда</h3>
+            <span class="hand" data-en="fine lines &amp; colour">тонкие линии и цвет</span>
+            <ul><li data-en="micro-realism">микрореализм</li><li data-en="colour realism">цветной реализм</li><li data-en="mini &amp; fine line">мини и fine line</li></ul>
+          </div>
         </div>
+        <p data-en="Turns a vague idea into a clean, careful sketch. Good choice for a first tattoo.">Превращает размытую идею в чистый аккуратный эскиз. Хороший выбор для первой тату.</p>
+        <div class="works"><img src="img/w13.webp" alt="" loading="lazy"><img src="img/w04.webp" alt="" loading="lazy"><img src="img/w18.webp" alt="" loading="lazy"></div>
+        <a class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo →</a>
       </article>
-      <article class="master tilt rv">
-        <img src="img/vitaliy.webp" alt="Мастер Виталий за работой" loading="lazy">
-        <div class="info">
-          <h3 data-en="Vitaliy">Виталий</h3>
-          <p data-en="Black &amp; grey realism, sleeves and cover-ups. 1st place at the Gomel tattoo battle.">Чёрно-белый реализм, рукава и перекрытия. 1 место на тату-баттле в Гомеле.</p>
-          <div class="tags"><span data-en="Realism">Реализм</span><span data-en="Sleeves">Рукава</span><span data-en="Cover-ups">Перекрытия</span></div>
-          <a class="ig" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk →</a>
+      <article class="flashsheet paper tape">
+        <div class="top">
+          <figure class="ph"><img src="img/vitaliy.webp" alt="Мастер Виталий" loading="lazy"><figcaption>Vitaliy</figcaption></figure>
+          <div>
+            <h3 data-en="Vitaliy">Виталий</h3>
+            <span class="hand" data-en="realism &amp; sleeves">реализм и рукава</span>
+            <ul><li data-en="b&amp;g realism">ч/б реализм</li><li data-en="sleeves &amp; legs">рукава и ноги</li><li data-en="cover-ups">перекрытия</li></ul>
+          </div>
         </div>
+        <p data-en="1st place at the Gomel tattoo battle. Takes on large projects and difficult cover-ups.">1 место на тату-баттле в Гомеле. Берётся за крупные проекты и сложные перекрытия.</p>
+        <div class="works"><img src="img/w03.webp" alt="" loading="lazy"><img src="img/w07.webp" alt="" loading="lazy"><img src="img/w16.webp" alt="" loading="lazy"></div>
+        <a class="go mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk →</a>
       </article>
-    </div>
-  </div>
-</section>
-
-<section id="why">
-  <div class="wrap">
-    <div class="head"><div><span class="eyebrow rv" data-en="Why INKSIDE">Почему INKSIDE</span><h2 class="wipe" style="margin-top:14px" data-en="Calm. Sterile. <span class='serif chrome'>For life.</span>">Спокойно. Стерильно. <span class="serif chrome">Навсегда.</span></h2></div></div>
-    <div class="bento">
-      <div class="cell c1 rv"><img src="img/w16.webp" alt="" loading="lazy"><div class="ov"><h3 data-en="Large projects are our thing">Крупные проекты - наша сильная сторона</h3><p data-en="Sleeves, legs, backs. We plan the composition for the whole body part, not just one picture.">Рукава, ноги, спины. Продумываем композицию на всю зону, а не одну картинку.</p></div></div>
-      <div class="cell c2 rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 data-en="Sterile by default">Стерильность по умолчанию</h3><p data-en="Single-use needles and consumables, opened in front of you.">Одноразовые иглы и расходники, вскрываем при вас.</p></div>
-      <div class="cell c3 rv"><span class="big chrome">0 BYN</span><h3 style="margin-top:10px" data-en="Consultation">Консультация</h3><p data-en="Discuss the idea, size and price for free.">Обсуждаем идею, размер и цену бесплатно.</p></div>
-      <div class="cell c4 rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20c4-1 6-4 7-8M11 12c1-4 4-7 9-8-1 5-4 8-8 9"/><circle cx="6" cy="18" r="2"/></svg></div><h3 data-en="Cover-ups">Перекрытия</h3><p data-en="We rework old tattoos and scars into a new design.">Переделываем старые тату и шрамы в новый рисунок.</p></div>
-      <div class="cell c5 rv"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 14l3-3 2 2 3-4"/></svg></div><h3 data-en="Custom sketch">Эскиз под вас</h3><p data-en="Drawn for your body and story. From 40 BYN.">Рисуем под тело и историю. От 40 BYN.</p></div>
-      <div class="cell c6 rv"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div><h3 data-en="Daily, 11:00-23:00">Каждый день, 11:00-23:00</h3><p data-en="Evening slots after work, by appointment.">Вечерние окна после работы, по записи.</p></div>
     </div>
   </div>
 </section>
 
 <section id="prices">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow rv" data-en="Prices">Цены</span><h2 class="wipe" style="margin-top:14px" data-en="Honest <span class='serif chrome'>numbers</span>">Честные <span class="serif chrome">цифры</span></h2></div></div>
+    <div class="head"><h2 class="poster split" data-en="Prices <span class='hand h-note'>no surprises</span>">Цены <span class="hand h-note">без сюрпризов</span></h2></div>
     <div class="prices">
-      <div class="rv">
-        <dl class="spec">
-          <div><dt data-en="Minimum (up to 1 hour)">Минимальная тату (до 1 часа)</dt><dd>180 BYN</dd></div>
-          <div><dt data-en="Each next hour">Каждый следующий час</dt><dd>150 BYN</dd></div>
-          <div><dt data-en="Custom sketch">Разработка эскиза</dt><dd data-en="from 40 BYN">от 40 BYN</dd></div>
-          <div><dt data-en="Consultation">Консультация</dt><dd data-en="free">бесплатно</dd></div>
-        </dl>
-        <p class="note" data-en="Final price is set by the artist after the sketch is approved and depends on detail, size and placement.">Окончательную стоимость мастер называет после утверждения эскиза: она зависит от детализации, размера и места.</p>
+      <div class="receipt paper">
+        <h3>INKSIDE</h3>
+        <p class="sub" data-en="Minsk · Makayonka lane 4">Минск · пер. Макаёнка 4</p>
+        <div class="ln"><span data-en="Minimum (up to 1 h)">Минимум (до 1 ч)</span><i></i><b>180 BYN</b></div>
+        <div class="ln"><span data-en="Each next hour">Каждый след. час</span><i></i><b>150 BYN</b></div>
+        <div class="ln"><span data-en="Custom sketch">Эскиз под вас</span><i></i><b data-en="from 40 BYN">от 40 BYN</b></div>
+        <div class="ln"><span data-en="Consultation">Консультация</span><i></i><b data-en="0 BYN">0 BYN</b></div>
+        <hr>
+        <p class="small" data-en="The final price is set after the sketch is approved: detail, size and placement matter. Thank you for choosing us ✦">Итоговую цену мастер называет после утверждения эскиза: важны детализация, размер и место. Спасибо, что выбираете нас ✦</p>
       </div>
-      <form class="calc rv" id="calc" aria-label="Калькулятор стоимости">
-        <fieldset><legend data-en="1. Size">1. Размер</legend><div class="opts">
+      <form class="calc sheet" id="calc" aria-label="Калькулятор стоимости">
+        <h3 data-en="Estimate yours">Посчитайте свою</h3>
+        <fieldset><legend data-en="size">размер</legend><div class="opts">
           <label><input type="radio" name="size" value="1" checked><span data-en="up to 5 cm">до 5 см</span></label>
           <label><input type="radio" name="size" value="1.5"><span>5-10 см</span></label>
           <label><input type="radio" name="size" value="2.5"><span>10-20 см</span></label>
-          <label><input type="radio" name="size" value="6"><span data-en="sleeve / leg (per session)">рукав / нога (за сеанс)</span></label>
+          <label><input type="radio" name="size" value="6"><span data-en="sleeve / leg (session)">рукав / нога (сеанс)</span></label>
         </div></fieldset>
-        <fieldset><legend data-en="2. Style">2. Стиль</legend><div class="opts">
-          <label><input type="radio" name="style" value="1" checked><span data-en="lines / graphic">линии / графика</span></label>
-          <label><input type="radio" name="style" value="1.3"><span data-en="realism b&amp;g">реализм ч/б</span></label>
-          <label><input type="radio" name="style" value="1.5"><span data-en="colour realism">цветной реализм</span></label>
-          <label><input type="radio" name="style" value="1.4"><span data-en="cover-up">перекрытие</span></label>
+        <fieldset><legend data-en="style">стиль</legend><div class="opts">
+          <label><input type="radio" name="kind" value="1" checked><span data-en="lines / graphic">линии / графика</span></label>
+          <label><input type="radio" name="kind" value="1.3"><span data-en="b&amp;g realism">реализм ч/б</span></label>
+          <label><input type="radio" name="kind" value="1.5"><span data-en="colour realism">цветной реализм</span></label>
+          <label><input type="radio" name="kind" value="1.4"><span data-en="cover-up">перекрытие</span></label>
         </div></fieldset>
-        <fieldset><legend data-en="3. Placement">3. Место</legend><div class="opts">
+        <fieldset><legend data-en="placement">место</legend><div class="opts">
           <label><input type="radio" name="place" value="1" checked><span data-en="arm / leg">рука / нога</span></label>
           <label><input type="radio" name="place" value="1.15"><span data-en="back / chest">спина / грудь</span></label>
           <label><input type="radio" name="place" value="1.25"><span data-en="ribs / neck / hand">рёбра / шея / кисть</span></label>
         </div></fieldset>
         <div class="result">
-          <div><small data-en="Approximate price">Ориентир по цене</small><output id="sum" aria-live="polite">180 BYN</output><small id="hrs">≈ 1 ч работы</small></div>
-          <button class="btn magnet" type="submit" data-en="Send to Telegram →">Отправить в Telegram →</button>
+          <div><small data-en="approximate price">ориентир по цене</small><output id="sum" aria-live="polite">от 180 BYN</output><small id="hrs">≈ 1 ч работы</small></div>
+          <button class="btn magnet" type="submit" data-en="Send to Telegram">Отправить в Telegram</button>
         </div>
       </form>
     </div>
@@ -479,161 +679,355 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 
 <section id="care">
   <div class="wrap">
-    <div class="head"><div><span class="eyebrow rv" data-en="Aftercare">Уход после сеанса</span><h2 class="wipe" style="margin-top:14px" data-en="Healing <span class='serif chrome'>day by day</span>">Заживление <span class="serif chrome">по дням</span></h2></div>
-    <p class="lead rv" data-en="Autumn and winter are the best time: less sun, the tattoo is under clothes and fully healed by summer.">Осень и зима - лучшее время: меньше солнца, тату под одеждой и полностью заживёт к лету.</p></div>
-    <div class="heal">
-      <div class="day rv"><b data-en="Day 1-3">День 1-3</b><h3 data-en="Protect">Защита</h3><p data-en="Keep the film on as the artist said. Gently wash with mild soap, pat dry, thin layer of ointment.">Плёнку держите столько, сколько сказал мастер. Мягко промывайте, промакивайте, тонкий слой мази.</p></div>
-      <div class="day rv"><b data-en="Day 4-10">День 4-10</b><h3 data-en="Don't scratch">Не трогать</h3><p data-en="Peeling and itching are normal. No scratching, no sauna, pool or sea.">Шелушение и зуд - норма. Не чесать, без бани, бассейна и моря.</p></div>
-      <div class="day rv"><b data-en="Day 11-30">День 11-30</b><h3 data-en="Moisturise">Увлажнение</h3><p data-en="Light cream twice a day. Keep the tattoo away from direct sun.">Лёгкий крем дважды в день. Тату прячем от прямого солнца.</p></div>
-      <div class="day rv"><b data-en="1 month+">Через месяц</b><h3 data-en="Check">Проверка</h3><p data-en="Send us a photo of the healed tattoo. If needed, we'll book a touch-up.">Присылаете фото зажившей тату. Если нужно, записываем на коррекцию.</p></div>
+    <h2 class="poster split" data-en="Healing <span class='hand h-note'>day by day</span>">Заживление <span class="hand h-note">по дням</span></h2>
+    <p class="lead" style="margin-top:22px" data-en="Autumn and winter are the best time: less sun, and by summer it's fully healed.">Осень и зима - лучшее время: меньше солнца, а к лету всё заживёт.</p>
+    <div class="care-line">
+      <span class="fill"></span>
+      <div class="cday sheet"><span class="dot"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span><b data-en="day 1-3">день 1-3</b><h3 data-en="Protect">Защита</h3><p data-en="Keep the film as long as the artist said. Wash gently, thin layer of ointment.">Плёнку держите столько, сколько сказал мастер. Мягко промывайте, тонкий слой мази.</p></div>
+      <div class="cday sheet"><span class="dot"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span><b data-en="day 4-10">день 4-10</b><h3 data-en="Hands off">Не трогать</h3><p data-en="Peeling and itching are normal. No scratching, sauna, pool or sea.">Шелушение и зуд - норма. Не чесать, без бани, бассейна и моря.</p></div>
+      <div class="cday sheet"><span class="dot"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span><b data-en="day 11-30">день 11-30</b><h3 data-en="Moisturise">Увлажнять</h3><p data-en="Light cream twice a day. Keep it out of direct sun.">Лёгкий крем дважды в день. Прячем от прямого солнца.</p></div>
+      <div class="cday sheet"><span class="dot"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span><b data-en="1 month+">через месяц</b><h3 data-en="Check-up">Проверка</h3><p data-en="Send a photo of the healed tattoo. If needed, we book a touch-up.">Присылаете фото зажившей тату. Если нужно, записываем на коррекцию.</p></div>
     </div>
+    <span class="healed-stamp" id="healedStamp" data-en="healed ✦">зажило ✦</span>
   </div>
 </section>
 
 <section id="gift" style="padding-top:0">
   <div class="wrap">
-    <div class="gift rv">
+    <div class="gift sheet tape">
       <div>
-        <span class="eyebrow" data-en="Gift certificate">Подарочный сертификат</span>
-        <h2 style="margin:14px 0 16px" data-en="A tattoo <span class='serif chrome'>as a gift</span>">Тату <span class="serif chrome">в подарок</span></h2>
-        <p class="lead" data-en="Any amount, nicely designed. The person chooses the idea and the date. Perfect for New Year and birthdays.">На любую сумму, в красивом оформлении. Человек сам выбирает идею и дату. Идеально к Новому году и дню рождения.</p>
-        <a class="btn magnet" style="margin-top:26px" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Order a certificate">Заказать сертификат</a>
+        <h2 class="poster" style="font-size:clamp(52px,6.4vw,110px)" data-en="A tattoo <span class='hand h-note'>as a gift</span>">Тату <span class="hand h-note">в подарок</span></h2>
+        <p class="lead" style="margin:22px 0 30px" data-en="A certificate for any amount. The person picks the idea and the date. Popular before New Year.">Сертификат на любую сумму. Человек сам выбирает идею и дату. Особенно популярно перед Новым годом.</p>
+        <a class="btn magnet" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Order a certificate">Заказать сертификат</a>
       </div>
-      <div class="card3d" aria-hidden="true"><img src="img/logo.webp" alt=""><div><small style="color:var(--dim)" data-en="gift certificate">подарочный сертификат</small><div class="sum chrome">300 BYN</div></div></div>
+      <div class="gcard" aria-hidden="true"><img src="img/logo.webp" alt=""><div><small data-en="GIFT CERTIFICATE">ПОДАРОЧНЫЙ СЕРТИФИКАТ</small><div class="sum">300 BYN</div></div></div>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <div class="head" style="justify-content:center;text-align:center"><div><span class="eyebrow rv" data-en="Questions">Вопросы</span><h2 class="wipe" style="margin-top:14px" data-en="Before your <span class='serif chrome'>first</span> tattoo">Перед <span class="serif chrome">первой</span> тату</h2></div></div>
-    <div class="faq rv">
-      <details><summary data-en="Does it hurt?">Это больно?</summary><p data-en="It depends on the area: arms and calves are easier, ribs and hands are more sensitive. We take breaks whenever you need.">Зависит от зоны: руки и икры терпимо, рёбра и кисти чувствительнее. Делаем паузы, когда нужно.</p></details>
-      <details><summary data-en="Will fine lines blur over time?">Расплывутся ли тонкие линии?</summary><p data-en="With correct depth and spacing between details - no. That's why the artist adapts the sketch to size and placement.">При правильной глубине и расстоянии между деталями - нет. Поэтому мастер адаптирует эскиз под размер и место.</p></details>
-      <details><summary data-en="How do I book?">Как записаться?</summary><p data-en="Use the calculator above or write in Telegram, Viber or Instagram. Send an idea, size and placement - we'll reply with a price and dates.">Через калькулятор выше или в Telegram, Viber, Instagram. Пришлите идею, размер и место - ответим ценой и датами.</p></details>
-      <details><summary data-en="Can you cover an old tattoo or a scar?">Можно перекрыть старую тату или шрам?</summary><p data-en="Yes, it's one of our specialities. Send a photo of the area in daylight and we'll suggest options.">Да, это одна из наших специализаций. Пришлите фото зоны при дневном свете, предложим варианты.</p></details>
-      <details><summary data-en="How to prepare for the session?">Как подготовиться к сеансу?</summary><p data-en="Sleep well, eat before you come, no alcohol the day before. Wear comfortable clothes that open the area.">Выспаться, поесть перед сеансом, без алкоголя накануне. Удобная одежда, которая открывает зону.</p></details>
+    <h2 class="poster split" style="text-align:center;margin-bottom:50px" data-en="Before the <span class='hand h-note'>first one</span>">Перед <span class="hand h-note">первой</span></h2>
+    <div class="faq sheet">
+      <details><summary><span data-en="Does it hurt?">Это больно?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-en="Depends on the area: arms and calves are easier, ribs and hands are more sensitive. We take breaks whenever you need.">Зависит от зоны: руки и икры терпимо, рёбра и кисти чувствительнее. Делаем паузы, когда нужно.</p></details>
+      <details><summary><span data-en="Will fine lines blur?">Расплывутся ли тонкие линии?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-en="With the right depth and spacing - no. That's why the artist adapts the sketch to size and placement.">При правильной глубине и расстоянии между деталями - нет. Поэтому мастер подгоняет эскиз под размер и место.</p></details>
+      <details><summary><span data-en="How do I book?">Как записаться?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-en="Press the round stamp in the corner: three quick questions and a ready message to Telegram. Or call +375 44 511-19-12.">Нажмите круглый штамп в углу: три коротких вопроса и готовое сообщение в Telegram. Или позвоните +375 44 511-19-12.</p></details>
+      <details><summary><span data-en="Can you cover an old tattoo or a scar?">Можно перекрыть старую тату или шрам?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-en="Yes, it's one of our specialities. Send a daylight photo of the area and we'll suggest options.">Да, это наша специализация. Пришлите фото зоны при дневном свете, предложим варианты.</p></details>
+      <details><summary><span data-en="How to prepare?">Как подготовиться к сеансу?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-en="Sleep well, eat before you come, no alcohol the day before. Wear clothes that open the area.">Выспаться, поесть перед сеансом, без алкоголя накануне. Одежда, которая открывает зону.</p></details>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="wrap">
-    <div class="head"><div><span class="eyebrow rv" data-en="Contact">Контакты</span><h2 class="wipe" style="margin-top:14px" data-en="Come <span class='serif chrome'>in</span>">Заходите <span class="serif chrome">внутрь</span></h2></div></div>
-    <div class="contact">
-      <div class="box rv">
-        <dl>
-          <div><dt data-en="Phone">Телефон</dt><dd><a href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
-          <div><dt data-en="Address">Адрес</dt><dd data-en="Minsk, Makayonka lane 4, room 64">Минск, пер. Макаёнка 4, пом. 64</dd></div>
-          <div><dt data-en="Hours">Режим</dt><dd data-en="Daily 11:00-23:00, by appointment">Ежедневно 11:00-23:00, по записи</dd></div>
-        </dl>
-        <div class="msgs">
-          <a class="btn sm magnet" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a>
-          <a class="btn sm ghost magnet" href="viber://chat?number=%2B375445111912">Viber</a>
-          <a class="btn sm ghost magnet" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-      <div class="map rv"><iframe title="Карта: Минск, пер. Макаёнка 4" loading="lazy" src="https://maps.google.com/maps?q=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%BF%D0%B5%D1%80.%20%D0%9C%D0%B0%D0%BA%D0%B0%D1%91%D0%BD%D0%BA%D0%B0%204&z=16&output=embed"></iframe></div>
+  <div class="wrap contact">
+    <div class="addr sheet tape">
+      <p class="big" data-en="Makayonka lane 4">пер. Макаёнка 4</p>
+      <span class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите внутрь ✦</span>
+      <dl>
+        <div><dt data-en="phone">телефон</dt><dd><a class="mark" href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
+        <div><dt data-en="hours">часы</dt><dd data-en="daily 11:00-23:00, by appointment">ежедневно 11:00-23:00, по записи</dd></div>
+        <div><dt data-en="write">написать</dt><dd><a class="mark" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a> · <a class="mark" href="viber://chat?number=%2B375445111912">Viber</a> · <a class="mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a></dd></div>
+      </dl>
     </div>
+    <div class="map"><iframe title="Карта: Минск, пер. Макаёнка 4" loading="lazy" src="https://maps.google.com/maps?q=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%BF%D0%B5%D1%80.%20%D0%9C%D0%B0%D0%BA%D0%B0%D1%91%D0%BD%D0%BA%D0%B0%204&z=16&output=embed"></iframe></div>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div>© 2026 ООО «Инк Тату» · УНП 193954480<br><span data-en="Registered by Minsk City Executive Committee on 16.01.2026. Household services registry mark № 000000102965 of 26.03.2026.">Свидетельство о гос. регистрации выдано Минским горисполкомом 16.01.2026. Знак реестра бытовых услуг № 000000102965 от 26.03.2026.</span></div>
+    <div>© 2026 ООО «Инк Тату» · УНП 193954480<br><span data-en="Registered by Minsk City Executive Committee 16.01.2026 · household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026 · реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
     <div data-en="220114, Minsk, Makayonka lane 4, room 64">220114, г. Минск, пер. Макаёнка 4, пом. 64</div>
   </div>
 </footer>
 
-<div class="dock"><a class="btn sm" href="#prices" data-en="Estimate">Рассчитать</a><a class="btn sm ghost" href="tel:+375445111912" data-en="Call">Позвонить</a></div>
+<dialog class="book" id="book" aria-label="Запись на сеанс">
+  <form class="paper tape" id="bookForm" novalidate>
+    <button class="x" type="button" aria-label="Закрыть">×</button>
+    <h3 data-en="Book">Запись</h3>
+    <span class="hand" data-en="three questions, one minute">три вопроса, одна минута</span>
+    <p class="stepnum" id="stepnum">1 / 3</p>
+    <fieldset class="on"><legend data-en="Where?">Где будет тату?</legend><div class="opts">
+      <label><input type="radio" name="zone" value="рука"><span data-en="arm">рука</span></label>
+      <label><input type="radio" name="zone" value="нога"><span data-en="leg">нога</span></label>
+      <label><input type="radio" name="zone" value="спина"><span data-en="back">спина</span></label>
+      <label><input type="radio" name="zone" value="грудь / рёбра"><span data-en="chest / ribs">грудь / рёбра</span></label>
+      <label><input type="radio" name="zone" value="шея / кисть"><span data-en="neck / hand">шея / кисть</span></label>
+      <label><input type="radio" name="zone" value="перекрытие старой тату"><span data-en="cover-up">перекрытие</span></label>
+    </div></fieldset>
+    <fieldset><legend data-en="How big?">Какой размер?</legend><div class="opts">
+      <label><input type="radio" name="bsize" value="до 5 см"><span data-en="up to 5 cm">до 5 см</span></label>
+      <label><input type="radio" name="bsize" value="5-10 см"><span>5-10 см</span></label>
+      <label><input type="radio" name="bsize" value="10-20 см"><span>10-20 см</span></label>
+      <label><input type="radio" name="bsize" value="рукав / большая зона"><span data-en="sleeve / large">рукав / большая зона</span></label>
+      <label><input type="radio" name="bsize" value="пока не знаю"><span data-en="not sure yet">пока не знаю</span></label>
+    </div></fieldset>
+    <fieldset><legend data-en="Idea and name">Идея и имя</legend>
+      <label class="f" data-en="Your name">Ваше имя<input class="t" name="name" autocomplete="name" required></label>
+      <label class="f" data-en="The idea in a few words">Идея в двух словах<textarea name="idea" required></textarea></label>
+    </fieldset>
+    <p class="err" id="bookErr" role="alert"></p>
+    <div class="acts">
+      <button class="link" type="button" id="back" data-en="← back">← назад</button>
+      <button class="btn" type="submit" id="next" data-en="Next">Дальше</button>
+    </div>
+  </form>
+</dialog>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
 <script>
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const desk=()=>innerWidth>900;
+const TG='https://t.me/+375445111912';
+const STAR='<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
 
-// i18n: RU in markup, EN in data-en
-let lang='ru';
-try{if(localStorage.getItem('lang')==='en')setTimeout(()=>$('#lang').click())}catch(e){}
-$('#lang').onclick=()=>{
-  lang=lang==='ru'?'en':'ru';
-  $$('[data-en]').forEach(el=>{if(!el.dataset.ru)el.dataset.ru=el.innerHTML;el.innerHTML=lang==='en'?el.dataset.en:el.dataset.ru});
-  document.documentElement.lang=lang;$('#lang').textContent=lang==='en'?'RU':'EN';calc();
-  try{localStorage.setItem('lang',lang)}catch(e){}
-};
-
-// mobile menu
-const burger=$('.burger'),menu=$('#menu');
-burger.onclick=()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)};
-$$('#menu a').forEach(a=>a.onclick=()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false)});
-
-// reveal + counters
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');$$('.wipe',e.target).forEach(w=>w.classList.add('in'));io.unobserve(e.target);
-  $$('.count',e.target).forEach(c=>{const to=+c.dataset.to,t0=performance.now();const tick=t=>{const k=Math.min(1,(t-t0)/1200);c.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)})
-}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-// clip-path:inset(100%) has zero intersection area, so watch the wipe's parent
-$$('.rv,.wipe').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el.classList.contains('wipe')?el.parentElement:el)});
-
-// active nav link
-const navIo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#menu a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
-$$('main section[id]').forEach(s=>navIo.observe(s));
-
-// damped scroll loop: nav hide + sticky process scene
-const nav=$('.nav'),proc=$('#process'),steps=$$('.step'),imgs=$$('.stack img'),bars=$$('.bar i');
-let sy=scrollY,lastY=scrollY,cur=-1;
-function loop(){
-  sy+=(scrollY-sy)*.12;
-  nav.classList.toggle('hide',scrollY>lastY&&scrollY>400&&!menu.classList.contains('open'));lastY=scrollY;
-  if(innerWidth>960){
-    const r=proc.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
-    const i=Math.min(3,Math.floor(p*4));
-    bars.forEach((b,k)=>b.style.setProperty('--f',Math.min(1,Math.max(0,p*4-k))));
-    if(i!==cur){cur=i;steps.forEach((s,k)=>s.classList.toggle('on',k===i));imgs.forEach((m,k)=>m.classList.toggle('on',k===i))}
-  }
-  requestAnimationFrame(loop);
+/* ---------- language: applied once before animations; switching reloads ---------- */
+let lang='ru';try{lang=localStorage.getItem('lang')==='en'?'en':'ru'}catch(e){}
+if(lang==='en'){
+  $$('[data-en]').forEach(el=>el.innerHTML=el.dataset.en);
+  document.documentElement.lang='en';$('#lang').textContent='RU';
 }
-requestAnimationFrame(loop);
+$('#lang').onclick=()=>{try{localStorage.setItem('lang',lang==='en'?'ru':'en')}catch(e){}location.reload()};
 
-// portfolio filter + lightbox
-$$('.chip').forEach(c=>c.onclick=()=>{
-  $$('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));
-  const f=c.dataset.f;
-  const run=()=>$$('.work').forEach(w=>w.classList.toggle('out',f!=='all'&&!w.dataset.c.split(' ').includes(f)));
-  document.startViewTransition&&!reduce?document.startViewTransition(run):run();
+/* ---------- open / closed sign by Minsk time (UTC+3) ---------- */
+(function(){const h=(new Date().getUTCHours()+3)%24,open=h>=11&&h<23;const s=$('#openSign');
+  if(!open){s.classList.add('closed');$('b',s).textContent=lang==='en'?'CLOSED':'ЗАКРЫТО'}})();
+
+/* ---------- polaroid wall: random tilt like real prints ---------- */
+$$('.pol').forEach((p,i)=>{const r=((i*37)%7-3)*1.1;p.style.setProperty('--rot',r+'deg');p.style.setProperty('--trot',(-r*1.4)+'deg')});
+
+/* ---------- sparkle bursts (small flashes) ---------- */
+function burst(x,y,n=7){
+  if(reduce)return;
+  for(let i=0;i<n;i++){
+    const s=document.createElement('span');s.className='burst';s.innerHTML=STAR;
+    s.style.left=x-6+'px';s.style.top=y-6+'px';document.body.appendChild(s);
+    const a=Math.random()*Math.PI*2,d=30+Math.random()*50,sc=.5+Math.random()*.9;
+    s.animate([{transform:'translate(0,0) scale(0) rotate(0)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(${sc}) rotate(90deg)`,opacity:1,offset:.6},{transform:`translate(${Math.cos(a)*d*1.3}px,${Math.sin(a)*d*1.3}px) scale(0) rotate(140deg)`,opacity:0}],{duration:700+Math.random()*300,easing:'cubic-bezier(.22,1,.36,1)'}).onfinish=()=>s.remove();
+  }
+}
+$$('.btn,.stamp,.tab').forEach(b=>{
+  b.addEventListener('pointerenter',e=>{const r=b.getBoundingClientRect();b.style.setProperty('--bx',e.clientX-r.left+'px');b.style.setProperty('--by',e.clientY-r.top+'px');if(fine)burst(e.clientX,e.clientY,5)});
+  b.addEventListener('click',e=>burst(e.clientX||innerWidth/2,e.clientY||innerHeight/2,10));
 });
-const lb=$('#lb');
-$$('.work').forEach(w=>w.onclick=()=>{const i=$('img',w);$('img',lb).src=i.src;$('img',lb).alt=i.alt;lb.showModal()});
-lb.onclick=e=>{if(e.target!==$('img',lb))lb.close()};
 
-// calculator -> prefilled message to Telegram (no bot tokens on the client)
-const form=$('#calc');
+/* ---------- dropdown flash sheets + mobile overlay ---------- */
+const drops=$$('.nav ul>li>button');
+function closeDrops(ex){drops.forEach(b=>{if(b!==ex){b.setAttribute('aria-expanded','false');$('#'+b.getAttribute('aria-controls')).classList.remove('open')}})}
+drops.forEach(b=>{
+  const d=$('#'+b.getAttribute('aria-controls')),li=b.parentElement;
+  const set=v=>{closeDrops(b);b.setAttribute('aria-expanded',v);d.classList.toggle('open',v)};
+  b.onclick=()=>set(b.getAttribute('aria-expanded')!=='true');
+  if(fine){let t;li.onpointerenter=()=>{clearTimeout(t);set(true)};li.onpointerleave=()=>{t=setTimeout(()=>set(false),180)}}
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.nav'))closeDrops()});
+const burger=$('.burger'),overlay=$('#overlay');
+function menu(v){overlay.classList.toggle('open',v);burger.setAttribute('aria-expanded',v);document.body.classList.toggle('lock',v);v?lenis&&lenis.stop():lenis&&lenis.start()}
+burger.onclick=()=>menu(!overlay.classList.contains('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDrops();menu(false)}});
+
+/* ---------- smooth scroll ---------- */
+let lenis=null;
+if(!reduce&&window.Lenis){lenis=new Lenis({lerp:.09,wheelMultiplier:1});
+  if(window.gsap){lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0)}
+  else{(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0)}}
+
+/* ---------- ink-blot transition for in-page links ---------- */
+const wipe=$('.ink-wipe');
+function go(hash,x,y){
+  const t=$(hash);if(!t)return;
+  if(reduce||!window.gsap){t.scrollIntoView();return}
+  gsap.timeline()
+    .set(wipe,{clipPath:`circle(0% at ${x}px ${y}px)`,display:'block'})
+    .to(wipe,{clipPath:`circle(150% at ${x}px ${y}px)`,duration:.55,ease:'power3.in'})
+    .add(()=>{lenis?lenis.scrollTo(t,{immediate:true,offset:-10}):t.scrollIntoView();ScrollTrigger.refresh()})
+    .to(wipe,{clipPath:`circle(0% at ${innerWidth/2}px ${innerHeight/2}px)`,duration:.7,ease:'power3.out'});
+}
+$$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();closeDrops();if(overlay.classList.contains('open'))menu(false);
+  if(a.dataset.go)filter(a.dataset.go);
+  go(a.getAttribute('href'),e.clientX||innerWidth/2,e.clientY||innerHeight/2);
+}));
+
+/* ---------- booking: 3-step brief -> Telegram message ---------- */
+const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
+function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`${i+1} / 3`;$('#back').style.visibility=i?'visible':'hidden';
+  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram':'Отправить в Telegram'):(lang==='en'?'Next':'Дальше');$('#bookErr').textContent=''}
+$$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);show(0);book.showModal()}));
+$('.x',bf).onclick=()=>book.close();
+book.addEventListener('click',e=>{if(e.target===book)book.close()});
+$('#back').onclick=()=>show(Math.max(0,step-1));
+sets.slice(0,2).forEach((f,i)=>f.addEventListener('change',()=>setTimeout(()=>show(i+1),250)));
+bf.onsubmit=e=>{
+  e.preventDefault();
+  const need=lang==='en'?'Please pick an option':'Выберите вариант';
+  if(step<2){if(!$('input:checked',sets[step])){$('#bookErr').textContent=need;return}show(step+1);return}
+  if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
+  send(`Здравствуйте! Меня зовут ${bf.name.value.trim()}. Хочу тату: ${bf.idea.value.trim()}. Место: ${$('input[name=zone]:checked',bf).value}. Размер: ${$('input[name=bsize]:checked',bf).value}. Подскажите цену и свободные даты?`);
+  book.close();
+};
+function send(msg){try{navigator.clipboard.writeText(msg)}catch(e){}window.open(TG+'?text='+encodeURIComponent(msg),'_blank','noopener')}
+
+/* ---------- calculator with "printing" digits ---------- */
+const form=$('#calc');let shown=180;
 function calc(){
   const v=n=>+form.querySelector(`[name=${n}]:checked`).value;
   // sleeve/leg is priced per ~6h session regardless of style
-  const h=v('size')===6?6:Math.max(1,Math.round(v('size')*v('style')*v('place')*2)/2);
-  const sum=180+Math.ceil(h-1)*150;
-  $('#sum').textContent=(lang==='en'?'from ':'от ')+sum+' BYN';
+  const h=v('size')===6?6:Math.max(1,Math.round(v('size')*v('kind')*v('place')*2)/2);
+  const sum=180+Math.ceil(h-1)*150,pre=lang==='en'?'from ':'от ';
   $('#hrs').textContent=lang==='en'?`≈ ${h} h of work${v('size')===6?' per session':''}`:`≈ ${h} ч работы${v('size')===6?' за сеанс':''}`;
-  return sum;
+  if(reduce||!window.gsap){$('#sum').textContent=pre+sum+' BYN';shown=sum;return}
+  const o={v:shown};gsap.to(o,{v:sum,duration:.7,ease:'power2.out',onUpdate:()=>$('#sum').textContent=pre+Math.round(o.v/10)*10+' BYN',onComplete:()=>{$('#sum').textContent=pre+sum+' BYN';shown=sum}});
 }
-form.onchange=calc;calc();
-form.onsubmit=e=>{
-  e.preventDefault();
-  const pick=n=>form.querySelector(`[name=${n}]:checked`).nextElementSibling.textContent;
-  const msg=`Здравствуйте! Хочу тату: размер ${pick('size')}, стиль ${pick('style')}, место ${pick('place')}. Калькулятор показал ${$('#sum').textContent}. Подскажите свободные даты?`;
-  try{navigator.clipboard.writeText(msg)}catch(e){}
-  window.open('https://t.me/+375445111912?text='+encodeURIComponent(msg),'_blank','noopener');
-};
+form.onchange=calc;
+form.onsubmit=e=>{e.preventDefault();const p=n=>form.querySelector(`[name=${n}]:checked`).nextElementSibling.textContent;
+  send(`Здравствуйте! Хочу тату: размер ${p('size')}, стиль ${p('kind')}, место ${p('place')}. Калькулятор показал ${$('#sum').textContent}. Подскажите свободные даты?`)};
 
-// desktop polish: cursor ring, magnetic buttons, tilt, spotlight
-if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!reduce){
-  const cur=$('.cursor');let cx=0,cy=0,tx=0,ty=0;
-  addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY});
-  (function f(){cx+=(tx-cx)*.2;cy+=(ty-cy)*.2;cur.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(f)})();
-  $$('a,button,.work,label').forEach(el=>{el.addEventListener('pointerenter',()=>cur.classList.add('big'));el.addEventListener('pointerleave',()=>cur.classList.remove('big'))});
-  $$('.magnet').forEach(b=>{b.onpointermove=e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.25}px)`};b.onpointerleave=()=>b.style.transform=''});
-  $$('.tilt').forEach(t=>{t.onpointermove=e=>{const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`perspective(1000px) rotateY(${x*7}deg) rotateX(${-y*7}deg)`};t.onpointerleave=()=>t.style.transform=''});
-  $$('.id').forEach(c=>c.onpointermove=e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')});
+/* ---------- portfolio filter + lightbox ---------- */
+function filter(f){
+  $$('.tab').forEach(x=>x.setAttribute('aria-pressed',x.dataset.f===f));
+  const run=()=>{$$('.pol').forEach(w=>w.classList.toggle('out',f!=='all'&&!w.dataset.c.split(' ').includes(f)));window.ScrollTrigger&&ScrollTrigger.refresh()};
+  document.startViewTransition&&!reduce?document.startViewTransition(run):run();
+}
+$$('.tab').forEach(t=>t.onclick=()=>filter(t.dataset.f));
+const lb=$('#lb'),lbImg=$('img',lb);let list=[],idx=0;
+function showLb(i){idx=(i+list.length)%list.length;const im=$('img',list[idx]);
+  const set=()=>{lbImg.src=im.src;lbImg.alt=im.alt;$('.cap',lb).textContent=im.alt};
+  document.startViewTransition&&lb.open&&!reduce?document.startViewTransition(set):set()}
+function openLb(el,all){list=all.filter(x=>!x.classList.contains('out'));showLb(list.indexOf(el));lb.showModal();lenis&&lenis.stop()}
+lb.addEventListener('close',()=>lenis&&lenis.start());
+$$('.pol').forEach(p=>{p.onclick=()=>openLb(p,$$('.pol'));p.onkeydown=e=>{if(e.key==='Enter')openLb(p,$$('.pol'))}});
+$$('.slide').forEach(p=>p.onclick=()=>openLb(p,$$('.slide')));
+$('.prev',lb).onclick=e=>{e.stopPropagation();showLb(idx-1)};
+$('.next',lb).onclick=e=>{e.stopPropagation();showLb(idx+1)};
+$('.x',lb).onclick=()=>lb.close();
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')showLb(idx-1);if(e.key==='ArrowRight')showLb(idx+1)});
+
+/* ---------- desktop: cursor, loupe, sparkle trail, magnets, tilt ---------- */
+if(fine&&!reduce){
+  const cur=$('.cursor'),loupe=$('.loupe');let cx=0,cy=0,tx=0,ty=0,lx=0,ly=0,last=0;
+  addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;
+    const now=performance.now();if(now-last>110&&Math.hypot(tx-lx,ty-ly)>60){last=now;lx=tx;ly=ty;burst(tx,ty,1)}});
+  (function f(){cx+=(tx-cx)*.22;cy+=(ty-cy)*.22;cur.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(f)})();
+  $$('a,button,label,summary').forEach(el=>{el.addEventListener('pointerenter',()=>cur.classList.add('big'));el.addEventListener('pointerleave',()=>cur.classList.remove('big'))});
+  $$('.pol').forEach(el=>{el.addEventListener('pointerenter',()=>{cur.dataset.t=lang==='en'?'open':'открыть';cur.classList.add('view')});el.addEventListener('pointerleave',()=>cur.classList.remove('view'))});
+  // loupe: look at the skin up close on the big slides
+  $$('.slide img').forEach(img=>{
+    img.addEventListener('pointerenter',()=>{loupe.style.backgroundImage=`url(${img.src})`;loupe.classList.add('on');cur.style.opacity=0});
+    img.addEventListener('pointerleave',()=>{loupe.classList.remove('on');cur.style.opacity=1});
+    img.addEventListener('pointermove',e=>{const r=img.getBoundingClientRect(),z=2.6;
+      loupe.style.left=e.clientX-100+'px';loupe.style.top=e.clientY-100+'px';
+      loupe.style.backgroundSize=`${r.width*z}px ${r.height*z}px`;
+      loupe.style.backgroundPosition=`${-(e.clientX-r.left)*z+100}px ${-(e.clientY-r.top)*z+100}px`});
+  });
+  $$('.magnet').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.translate=`${(e.clientX-r.left-r.width/2)*.2}px ${(e.clientY-r.top-r.height/2)*.3}px`});b.addEventListener('pointerleave',()=>b.style.translate='')});
+  $$('.flashsheet').forEach(t=>{t.onpointermove=e=>{const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`perspective(1400px) rotateY(${x*5}deg) rotateX(${-y*5}deg)`};t.onpointerleave=()=>t.style.transform=''});
+}
+
+/* ---------- GSAP choreography ---------- */
+const nav=$('.nav');
+if(window.gsap&&!reduce){
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+  calc();
+  // loader: ink circle opens, then hero assembles
+  const intro=gsap.timeline({delay:.15});
+  intro.to(wipe,{clipPath:'circle(0% at 50% 50%)',duration:1.1,ease:'power4.inOut'})
+       .set(wipe,{display:'none'})
+       .from('.hero-sheet',{y:60,rotate:-2,opacity:0,duration:1,ease:'expo.out'},'-=.55');
+  const h1=SplitText.create('#h1 .row > span:not(.vidword):not(.hand)',{type:'chars',mask:'chars'});
+  intro.from(h1.chars,{yPercent:110,duration:.9,stagger:.025,ease:'expo.out'},'-=.7')
+       .from('.vidword',{scale:0,rotate:-30,duration:.8,ease:'back.out(2)'},'-=.6')
+       .from('#h1 .hand',{opacity:0,x:-20,rotate:-20,duration:.7,ease:'back.out(2)'},'-=.5')
+       .from('.hero-sheet .lead,.hero-sheet .btns',{y:24,opacity:0,stagger:.1,duration:.7,ease:'power3.out'},'-=.5')
+       .from('.hero-photos .polaroid',{y:-120,scale:1.25,rotate:i=>[-22,18,30][i],opacity:0,duration:.9,stagger:.14,ease:'back.out(1.4)'},'-=.9')
+       .from('.stamp',{scale:0,rotate:-180,duration:.9,ease:'back.out(1.8)'},'-=.4');
+
+  // parallax on the graffiti wall + hero photos drift
+  gsap.to('.wall',{yPercent:-6,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:true}});
+  gsap.to('.hero-photos .a',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-photos .b',{yPercent:-22,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  // nav hides on scroll down
+  ScrollTrigger.create({start:0,end:'max',onUpdate:s=>nav.classList.toggle('hide',s.direction===1&&s.scroll()>500&&!overlay.classList.contains('open'))});
+
+  // marquee speeds up with scroll velocity and reverses direction
+  const mq=$('#mq');let mx=0,dir=-1;
+  gsap.ticker.add(()=>{const v=lenis?lenis.velocity:0;if(v)dir=v>0?-1:1;mx+=dir*(1.2+Math.min(Math.abs(v),40)*.25);const w=mq.scrollWidth/2;if(mx<=-w)mx+=w;if(mx>0)mx-=w;mq.style.transform=`translateX(${mx}px)`});
+
+  // headings: masked char rise, outline words fill in
+  $$('.split').forEach(h=>{const s=SplitText.create(h,{type:'words,chars',mask:'words'});
+    gsap.from(s.chars,{yPercent:115,rotate:6,duration:1,stagger:.018,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 85%'}})});
+  $$('h2 .hand').forEach(n=>gsap.from(n,{opacity:0,scale:.4,rotate:-30,duration:.8,ease:'back.out(2.2)',scrollTrigger:{trigger:n,start:'top 85%'}}));
+  $$('.outline').forEach(o=>gsap.to(o,{color:'#f2f0eb',duration:1.2,ease:'power2.out',scrollTrigger:{trigger:o,start:'top 70%'}}));
+
+  // horizontal reel: one work per screen
+  const mmH=gsap.matchMedia();
+  mmH.add('(min-width: 901px)',()=>{
+    const track=$('.reel .track');
+    const tw=gsap.to(track,{x:()=>-(track.scrollWidth-innerWidth),ease:'none',scrollTrigger:{trigger:'.reel',start:'top top',end:()=>'+='+(track.scrollWidth-innerWidth),pin:'.reel .pin',scrub:1,invalidateOnRefresh:true}});
+    $$('.slide').forEach(s=>{
+      gsap.from(s,{rotate:4,scale:.9,opacity:.3,ease:'none',scrollTrigger:{trigger:s,containerAnimation:tw,start:'left right',end:'center center',scrub:true}});
+      gsap.from($('.tag',s),{x:-40,opacity:0,duration:.6,ease:'back.out(2)',scrollTrigger:{trigger:s,containerAnimation:tw,start:'left 70%'}});
+    });
+  });
+
+  // stencil scene: stencil draws, ink fills, healed stamp slams
+  const sts=$$('.st'),fr='.frame';
+  const stl=gsap.timeline({scrollTrigger:{trigger:'.stencil-scene',start:'top top',end:'bottom bottom',scrub:.8}});
+  stl.to(sts[0],{opacity:1,y:0,duration:.1})
+     .to(sts[0],{opacity:0,y:-30,duration:.08},'+=.12')
+     .to(sts[1],{opacity:1,y:0,duration:.1})
+     .to(fr+' .stencil',{clipPath:'inset(0 0 0% 0)',duration:.3,ease:'none'},'<')
+     .to(sts[1],{opacity:0,y:-30,duration:.08})
+     .to(sts[2],{opacity:1,y:0,duration:.1})
+     .to(fr+' .photo',{opacity:1,duration:.25},'<')
+     .to(fr+' .stencil',{opacity:0,duration:.25},'<.05')
+     .to(fr,{rotate:-1.5,duration:.25},'<')
+     .to(sts[2],{opacity:0,y:-30,duration:.08})
+     .to(sts[3],{opacity:1,y:0,duration:.1})
+     .to(fr+' .healed',{opacity:1,scale:1,duration:.08,ease:'back.out(3)'},'<')
+     .to(fr+' .bar',{opacity:1,duration:.1});
+  gsap.to(fr+' .bar i',{scaleX:1,ease:'none',scrollTrigger:{trigger:'.stencil-scene',start:'top top',end:'bottom bottom',scrub:true}});
+
+  // polaroids slap onto the wall
+  ScrollTrigger.batch('.pol',{start:'top 92%',once:true,onEnter:b=>gsap.from(b,{y:-80,scale:1.18,rotate:()=>gsap.utils.random(-14,14),opacity:0,duration:.8,stagger:.08,ease:'back.out(1.6)'})});
+
+  // facts count up + flash
+  // plain-object tweens can't own a ScrollTrigger (it reverts styles), so start them from onEnter
+  $$('[data-count]').forEach(el=>{const to=+el.dataset.count,suf=el.textContent.replace(/[0-9]/g,'');const o={v:0};el.textContent='0'+suf;
+    ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>gsap.to(o,{v:to,duration:1.4,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)+suf,onComplete:()=>{const r=el.getBoundingClientRect();burst(r.right,r.top+20,8)}})})});
+
+  // masters: sheets drop in, photo polaroid lands
+  $$('.flashsheet').forEach((f,i)=>gsap.from(f,{y:120,rotate:i?8:-8,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:f,start:'top 85%'}}));
+  $$('.flashsheet .works img').forEach(im=>gsap.from(im,{scale:0,rotate:30,duration:.6,ease:'back.out(2.4)',scrollTrigger:{trigger:im,start:'top 92%'}}));
+
+  // receipt prints out of the slot
+  gsap.from('.receipt',{clipPath:'inset(0 0 100% 0)',y:-40,duration:1.4,ease:'power2.out',scrollTrigger:{trigger:'.receipt',start:'top 80%'}});
+  gsap.from('.receipt .ln',{opacity:0,x:-14,stagger:.12,duration:.4,delay:.5,scrollTrigger:{trigger:'.receipt',start:'top 80%'}});
+  gsap.from('.calc',{x:80,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.calc',start:'top 85%'}});
+
+  // aftercare: dotted line fills, stars pop, stamp slams
+  gsap.to('.care-line .fill',{scaleX:1,ease:'none',scrollTrigger:{trigger:'.care-line',start:'top 75%',end:'bottom 55%',scrub:true}});
+  $$('.cday').forEach((d,i)=>gsap.from(d,{y:50,opacity:0,duration:.8,delay:i*.08,ease:'expo.out',scrollTrigger:{trigger:'.care-line',start:'top 80%'}}));
+  $$('.cday .dot').forEach(d=>gsap.from(d,{scale:0,rotate:-180,duration:.7,ease:'back.out(2.5)',scrollTrigger:{trigger:d,start:'top 80%'}}));
+  gsap.from('#healedStamp',{scale:3,opacity:0,rotate:-30,duration:.45,ease:'back.out(2.2)',scrollTrigger:{trigger:'#healedStamp',start:'top 88%',onEnter:()=>{const r=$('#healedStamp').getBoundingClientRect();setTimeout(()=>burst(r.left+r.width/2,r.top+r.height/2,12),350)}}});
+
+  // generic panels: rise with a slight tilt (each family gets its own entrance above)
+  $$('.gift,.faq,.addr,.map').forEach(el=>gsap.from(el,{y:70,rotate:1.5,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
+  gsap.from('.gcard',{rotate:-30,x:120,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.gcard',start:'top 85%'}});
+
+  // active nav link
+  $$('main section[id]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 50%',end:'bottom 50%',onToggle:t=>{if(t.isActive)$$('.nav ul a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+s.id))}}));
+
+  addEventListener('load',()=>ScrollTrigger.refresh());
+}else{
+  wipe.style.display='none';calc();
 }
 </script>
 </body>
