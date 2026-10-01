@@ -889,6 +889,8 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
 @media (max-width:440px){.stamp{display:none}}
 
 /* ---------- v7: round 4 ---------- */
+.hero-mob.cover .mob-logo{left:auto;right:10px;top:10px;bottom:auto;width:96px}
+.hero-mob.cover::after{background:linear-gradient(200deg,rgba(0,0,0,.6),transparent 40%)}
 .hero-photos .a.contain img{object-fit:contain;background:#0b0b0c}
 .frame::before{opacity:.32;background-size:contain;background-repeat:no-repeat}
 .bk-top{background:#060607;z-index:4}
@@ -1321,7 +1323,7 @@ const SEG={
 const seg=SEG[UTM.get('s')];
 if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.dataset.seg;if(t[k])el.textContent=t[k]});
   const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;
-  if(t.cap)$('.hero-photos .a figcaption').textContent=t.cap;if(t.img==='w19')$('.hero-photos .a').classList.add('contain');if(t.c&&!MOB)$('.hero-photos .c img').src=`img/${t.c}.webp`;
+  if(t.cap)$('.hero-photos .a figcaption').textContent=t.cap;if(t.img==='w19'){$('.hero-photos .a').classList.add('contain');$('.hero-mob').classList.add('cover')}if(t.c&&!MOB)$('.hero-photos .c img').src=`img/${t.c}.webp`;
   if(t.href){const l=$('.hero .btns .link');l.setAttribute('href',t.href);l.textContent=lang==='en'?'See cover-ups ↓':'Смотреть перекрытия ↓'}
   if(t.tg&&cta){const mc=$('.hero .micro');if(mc)mc.style.display='none';const n=cta.cloneNode(true);n.removeAttribute('data-book');cta.replaceWith(n);n.addEventListener('click',()=>{track('Lead',{value:180,currency:'BYN',content_name:'cover'});track('Contact',{method:'telegram'});send(t.tg)})}}
 $$('[data-en-alt]').forEach(el=>{if(lang==='en')el.alt=el.dataset.enAlt});
