@@ -609,7 +609,8 @@ lb.onclick=e=>{if(e.target!==$('img',lb))lb.close()};
 const form=$('#calc');
 function calc(){
   const v=n=>+form.querySelector(`[name=${n}]:checked`).value;
-  const h=Math.max(1,Math.round(v('size')*v('style')*v('place')*2)/2);
+  // sleeve/leg is priced per ~6h session regardless of style
+  const h=v('size')===6?6:Math.max(1,Math.round(v('size')*v('style')*v('place')*2)/2);
   const sum=180+Math.ceil(h-1)*150;
   $('#sum').textContent=(lang==='en'?'from ':'от ')+sum+' BYN';
   $('#hrs').textContent=lang==='en'?`≈ ${h} h of work${v('size')===6?' per session':''}`:`≈ ${h} ч работы${v('size')===6?' за сеанс':''}`;
