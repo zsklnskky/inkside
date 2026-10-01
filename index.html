@@ -14,7 +14,7 @@
 <meta name="theme-color" content="#0b0b0c">
 <link rel="icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=PT+Mono&family=Marck+Script&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Ruslan+Display&family=Rubik+Glitch&family=Onest:wght@400;500;600;700&family=PT+Mono&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/wall.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TattooParlor","name":"INKSIDE","url":"https://zsklnskky.github.io/inkside/","image":"https://zsklnskky.github.io/inkside/img/og.jpg","telephone":"+375445111912",
@@ -23,14 +23,14 @@
 </script>
 <style>
 :root{
-  --ink:#0b0b0c;--ink2:#151517;--paper:#e9e3d6;--paper2:#d9d1c0;--stencil:#6448b8;--stencil-l:#9b85e6;
+  --ink:#0b0b0c;--ink2:#151517;--paper:#e9e3d6;--paper2:#d9d1c0;--stencil:#d4141c;--stencil-l:#ff3b3b;--red:#d4141c;
   --text:#f2f0eb;--dim:#c9c6bf;--mute:#8f8b84;
   --glass:rgba(14,14,15,.5);--edge:rgba(255,255,255,.17);--blur:blur(16px) saturate(1.1);
   --chrome:linear-gradient(180deg,#fff 0%,#d6d6d6 34%,#767676 50%,#f5f5f5 68%,#9d9d9d 100%);
-  --r:28px;--r-md:20px;--r-sm:14px;--pill:999px;
+  --r:18px;--r-md:20px;--r-sm:14px;--pill:999px;
   --out:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1);
   --wrap:min(1600px,100% - 56px);
-  --f-poster:Oswald,"Arial Narrow",sans-serif;--f-body:Onest,system-ui,sans-serif;--f-mono:"PT Mono",ui-monospace,monospace;--f-hand:"Marck Script",cursive;--f-spray:"Rubik Wet Paint",Oswald,sans-serif;
+  --f-poster:"Dela Gothic One",Impact,sans-serif;--f-body:Onest,system-ui,sans-serif;--f-mono:"PT Mono",ui-monospace,monospace;--f-hand:"Ruslan Display",serif;--f-spray:"Rubik Glitch","Dela Gothic One",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;overflow-x:clip}
@@ -434,6 +434,190 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
   .st{position:relative;top:0;opacity:1;transform:none;margin-bottom:14px}
   .frame .photo{opacity:1}.frame .stencil{display:none}
 }
+
+/* ===================== PHONK LAYER: black / white / blood red, VHS, chrome ===================== */
+.vhs-lines{position:fixed;inset:0;z-index:401;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);opacity:.5}
+.grain{opacity:.14}
+.shade{background:radial-gradient(70% 45% at 50% 115%,rgba(212,20,28,.28),transparent 70%),radial-gradient(110% 85% at 50% 35%,rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 70%,rgba(0,0,0,.88) 100%)}
+.sheet{background:rgba(10,10,11,.62);border-color:rgba(255,255,255,.14)}
+.poster{line-height:1;letter-spacing:0}
+h2.poster{font-size:clamp(38px,5.4vw,92px);text-shadow:3px 0 rgba(212,20,28,.7),-2px 0 rgba(0,229,255,.18)}
+.hand{color:var(--red);line-height:1.1}
+.h-note{font-size:.56em;transform:rotate(-4deg) translateY(-.1em)}
+.reel .intro h2{font-size:clamp(34px,3.4vw,62px)}
+h2.poster,.book legend{overflow-wrap:normal;word-break:normal;hyphens:none}
+.addr .big{white-space:nowrap}
+.outline{-webkit-text-stroke:1.5px #fff}
+.mark{background-image:linear-gradient(transparent 62%,rgba(212,20,28,.85) 62%,rgba(212,20,28,.85) 90%,transparent 90%)}
+
+/* hero */
+.hero h1{font-size:clamp(40px,5.2vw,96px);line-height:1.12;animation:chroma 6s infinite}
+.hero h1 .hand{font-size:.5em;transform:rotate(-5deg)}
+@keyframes chroma{0%,90%,100%{text-shadow:none;transform:none}91%{text-shadow:5px 0 var(--red),-4px 0 #00e5ff;transform:translateX(3px) skewX(-4deg)}93%{text-shadow:-4px 0 var(--red),4px 0 #00e5ff;transform:translateX(-3px)}95%{text-shadow:2px 0 var(--red);transform:none}}
+.vhs-ts{display:flex;gap:16px;align-items:center;font:12px var(--f-mono);letter-spacing:.12em;color:var(--dim);margin-bottom:18px}
+.vhs-ts .rec{color:#fff}
+.vhs-ts .rec::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);margin-right:7px;box-shadow:0 0 10px var(--red);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.vidword{border-color:var(--red)}
+.polaroid{background:#111113;border:1px solid rgba(255,255,255,.14);rotate:0deg!important;border-radius:16px;padding:10px 10px 44px}
+.polaroid figcaption{font:12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.polaroid figcaption::before{content:"▶ ";color:var(--red)}
+.hero-photos .a{rotate:0deg}.hero-photos .b{left:2%}.hero-photos .c{right:0;bottom:0}
+
+/* buttons: solid red, hard, glitch on hover */
+.btn{background:var(--red);color:#fff;border:1px solid #ff4a4a;border-radius:12px;box-shadow:0 10px 30px rgba(212,20,28,.35);font:400 15px/1 var(--f-poster);letter-spacing:.04em;padding:18px 28px}
+.btn::before{background:#f2f0eb}
+.btn:hover{color:var(--ink);box-shadow:0 14px 40px rgba(212,20,28,.55);animation:jit .28s steps(2) 2}
+.btn:active{transform:scale(.97);box-shadow:none}
+.btn.dark{background:rgba(0,0,0,.35);color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:none}
+.btn.dark::before{background:var(--red)}
+.btn.dark:hover{color:#fff}
+@keyframes jit{0%{text-shadow:2px 0 #00e5ff,-2px 0 #fff;transform:translateX(1px)}50%{text-shadow:-2px 0 #00e5ff,2px 0 #fff;transform:translateX(-1px)}100%{text-shadow:none;transform:none}}
+.link{font:400 14px var(--f-poster);letter-spacing:.04em}
+
+/* nav */
+.nav ul>li>a,.nav ul>li>button{font:400 13px/1 var(--f-poster);letter-spacing:.04em}
+.nav ul>li>a.on{background:rgba(212,20,28,.35)}
+.open-sign{font:12px var(--f-mono)}
+.open-sign b{font:400 15px/1 var(--f-poster);letter-spacing:.06em;color:#fff;text-shadow:0 0 6px #fff,0 0 16px rgba(255,255,255,.6),0 0 30px rgba(212,20,28,.7)}
+.open-sign.closed b{color:#ff2a2a;text-shadow:0 0 6px #ff2a2a,0 0 18px var(--red),0 0 36px var(--red);animation:neon 4s infinite}
+.open-sign.closed span{color:#ff8a8a}
+.drop{background:rgba(12,12,14,.95)!important;color:var(--text);border:1px solid rgba(255,255,255,.14);transform:translateY(-12px) scale(.97)}
+.drop.open{transform:none}
+.drop b{font:400 16px/1.1 var(--f-poster)}
+.drop small{color:var(--mute)}
+.drop img{border:1px solid rgba(255,255,255,.2)}
+.drop a:hover{background:rgba(212,20,28,.18);transform:none}
+.drop .hand{font-size:18px}
+.overlay a.big{font:400 clamp(36px,10vw,60px)/1.05 var(--f-poster)}
+.overlay a.big:nth-child(even){font-family:var(--f-spray)}
+
+/* vinyl record = the one floating CTA */
+.stamp{width:122px;height:122px;background:radial-gradient(circle,var(--red) 0 22px,#0b0b0c 23px 25px,transparent 26px),repeating-radial-gradient(circle,#101012 0 2px,#1c1c1f 2px 3px);color:#fff;box-shadow:0 0 0 2px #2b2b2e,0 20px 50px rgba(0,0,0,.75),0 0 34px rgba(212,20,28,.4)}
+.stamp::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 40deg,rgba(255,255,255,.14) 55deg,transparent 75deg 220deg,rgba(255,255,255,.08) 235deg,transparent 250deg);pointer-events:none}
+.stamp svg.ring{animation:spin 6s linear infinite}
+.stamp svg.ring text{font:400 9.5px var(--f-poster);letter-spacing:.12em;fill:#f2f0eb}
+.stamp .star{width:18px;height:18px;color:#fff;position:relative;z-index:1}
+
+/* marquee */
+.marquee{background:var(--red);color:#0b0b0c;rotate:-1.5deg}
+.marquee div{font:400 clamp(30px,3.6vw,56px)/1 var(--f-spray)}
+.marquee i{color:#fff}
+
+/* reel */
+.slide .tag{background:#0b0b0c;color:#fff;border:1px solid var(--red);rotate:0deg;font-family:var(--f-mono)}
+.slide .tag b{font:400 18px/1.1 var(--f-poster)}
+.slide .num{font:400 64px/1 var(--f-spray);color:#fff;mix-blend-mode:normal;text-shadow:3px 0 var(--red)}
+
+/* stencil scene */
+.frame{rotate:0deg}
+.frame .healed{border-color:var(--red);color:var(--red);font:400 30px/1 var(--f-poster)}
+.st .n{font:400 54px/1 var(--f-spray);color:var(--red)}
+.st h3{font:400 clamp(26px,2.2vw,36px)/1.05 var(--f-poster)}
+
+/* polaroid wall -> dark VHS frames */
+.tabs .tab{font:400 12px/1 var(--f-poster);letter-spacing:.04em}
+.tab[aria-pressed=true]{background:var(--red);color:#fff;box-shadow:none}
+.pol{background:#111113;border:1px solid rgba(255,255,255,.12);rotate:0deg!important;padding:8px 8px 40px;border-radius:16px}
+.pol::before{display:none}
+.pol:hover,.pol:focus-visible{transform:translateY(-6px);border-color:var(--red);box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px var(--red)}
+.pol figcaption span:first-child{font:12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.pol figcaption span:first-child::before{content:"▶ ";color:var(--red)}
+.pol figcaption span:last-child{color:var(--mute)}
+dialog.lb img{border-color:#111113}
+.lb .ctl{background:var(--red);color:#fff;box-shadow:none}
+.lb .cap{font:13px var(--f-mono);color:#fff;letter-spacing:.1em;text-transform:uppercase}
+
+/* facts */
+.fact b{font:400 clamp(52px,5.6vw,100px)/.95 var(--f-poster)}
+.fact:nth-child(2) b{color:var(--red)}
+
+/* artists: dark sheets instead of paper */
+.flashsheet{background:rgba(12,12,14,.82)!important;color:var(--text)!important;rotate:0deg!important;border:1px solid rgba(255,255,255,.14);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
+.flashsheet:nth-child(2){margin-top:0}
+.flashsheet h3{font:400 clamp(40px,4vw,72px)/.95 var(--f-poster)}
+.flashsheet .hand{font-size:24px}
+.flashsheet ul{color:var(--dim)}
+.flashsheet ul li::before{content:"● ";color:var(--red)}
+.flashsheet p{color:var(--dim)}
+.flashsheet .ph{background:#1a1a1d;rotate:0deg}
+.flashsheet .ph figcaption{font:12px var(--f-mono);color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.flashsheet .works img{border:1px solid rgba(255,255,255,.18);rotate:0deg!important}
+.flashsheet .go{color:#fff;font:400 14px var(--f-poster)}
+
+/* prices: tracklist + calculator */
+.tracklist{padding:clamp(26px,3vw,40px);font-family:var(--f-mono)}
+.tracklist .cass{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:18px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,.14)}
+.tracklist .cass b{font:400 28px var(--f-poster)}
+.tracklist .cass span{color:var(--red);font-size:12px;letter-spacing:.14em}
+.tracklist .tr{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:baseline;padding:18px 0;border-bottom:1px dashed rgba(255,255,255,.14);font-size:16px;transition:background .25s,padding .25s}
+.tracklist .tr:hover{background:rgba(212,20,28,.12);padding-inline:10px;border-radius:10px}
+.tracklist .tr i{font:400 24px var(--f-spray);font-style:normal;color:var(--red)}
+.tracklist .tr b{font:400 clamp(20px,1.8vw,26px) var(--f-poster);white-space:nowrap}
+.tracklist .note{color:var(--mute);font-size:13px;margin-top:18px;line-height:1.5}
+.calc h3{font:400 clamp(28px,2.4vw,40px)/1 var(--f-poster)}
+.opts span{font-family:var(--f-body)}
+.opts input:checked+span{background:var(--red);color:#fff;border-color:var(--red);box-shadow:none;transform:none}
+.result output{font:400 clamp(44px,4vw,68px)/1.05 var(--f-poster)}
+
+/* care, gift, faq, contacts */
+.cday h3{font:400 26px/1.05 var(--f-poster)}
+.cday b{color:var(--red)}
+.cday .dot{color:var(--red)}
+.care-line .fill{background:var(--red)}
+.healed-stamp{border-color:var(--red);color:var(--red);font:400 clamp(26px,2.6vw,40px)/1 var(--f-poster)}
+.gcard .sum{font:400 44px/1 var(--f-poster)}
+summary{font:400 clamp(17px,1.5vw,22px)/1.2 var(--f-poster)}
+summary .pm{color:var(--red)}
+details[open]{background:rgba(40,8,10,.55);border-color:rgba(212,20,28,.55)}
+.addr .big{font:400 clamp(32px,3.4vw,58px)/1 var(--f-poster)}
+.geo-tabs button{font:400 12px/1 var(--f-poster);letter-spacing:.04em}
+.geo-tabs button[aria-pressed=true]{background:var(--red);color:#fff}
+.geo-links a{font:400 12px/1 var(--f-poster);letter-spacing:.04em}
+
+/* cursor */
+.cursor.view{background:var(--red);border-color:var(--red);color:#fff}
+
+/* booking: full screen, big tiles, one decision per screen */
+dialog.book{width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;color:#fff;background:transparent}
+dialog.book::backdrop{background:rgba(5,5,6,.94);backdrop-filter:blur(6px)}
+.book form{min-height:100dvh;width:min(1100px,100% - 32px);margin:0 auto;padding:92px 0 40px;display:flex;flex-direction:column;justify-content:center;background:none;box-shadow:none;border-radius:0}
+dialog.book[open] form{animation:bkin .45s var(--out)}
+@keyframes bkin{from{opacity:0;transform:translateY(30px)}}
+.bk-bar{position:fixed;top:0;left:0;right:0;height:5px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.bk-bar i{background:rgba(255,255,255,.12);transition:background .3s}
+.bk-bar i.on{background:var(--red);box-shadow:0 0 12px var(--red)}
+.bk-top{position:fixed;top:5px;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px clamp(16px,3vw,32px);font:13px var(--f-mono);letter-spacing:.12em;color:var(--dim)}
+.bk-tag{color:#fff}.bk-tag::first-letter{color:var(--red)}
+.book .x{position:static;width:48px;height:48px;border:1px solid rgba(255,255,255,.3);border-radius:50%;color:#fff;font-size:24px}
+.book fieldset{border:0}
+.book legend{font:400 clamp(34px,5.4vw,80px)/1 var(--f-poster);text-transform:uppercase;margin-bottom:30px;text-shadow:3px 0 rgba(212,20,28,.75)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tiles label{position:relative;cursor:pointer}
+.tiles input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.tiles span{display:flex;flex-direction:column;gap:8px;min-height:132px;padding:20px 22px;border:1px solid rgba(255,255,255,.18);border-radius:18px;background:rgba(255,255,255,.04);font:400 clamp(20px,2vw,30px)/1.05 var(--f-poster);text-transform:uppercase;transition:background .2s,border-color .2s,transform .2s}
+.tiles span b{font:400 13px var(--f-mono);color:var(--red);letter-spacing:.1em}
+.tiles span em{margin-top:auto;font:13px/1.3 var(--f-mono);font-style:normal;color:var(--dim);text-transform:none}
+.tiles label:hover span{border-color:#fff;background:rgba(255,255,255,.08);transform:translateY(-3px)}
+.tiles input:checked+span{background:var(--red);border-color:var(--red)}
+.tiles input:checked+span b,.tiles input:checked+span em{color:#fff}
+.tiles input:focus-visible+span{outline:2px solid #fff;outline-offset:3px}
+.book label.f{display:block;margin-top:18px;font:13px var(--f-mono);letter-spacing:.08em;color:var(--dim)}
+.book input.t,.book textarea{display:block;width:100%;margin-top:8px;padding:18px 20px;border:1px solid rgba(255,255,255,.22);border-radius:16px;background:rgba(255,255,255,.06);color:#fff;font:400 22px var(--f-body)}
+.book input.t:focus,.book textarea:focus{border-color:var(--red);outline:none;box-shadow:0 0 0 3px rgba(212,20,28,.35)}
+.book .acts{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
+.book .link{color:#fff}
+.book .btn{font-size:17px;padding:20px 32px}
+.book .err{color:#ff5a5a;font:14px var(--f-mono);margin-top:14px;min-height:1.2em}
+@media (max-width:700px){
+  .tiles{grid-template-columns:1fr 1fr;gap:8px}
+  .tiles span{min-height:100px;padding:16px;font-size:19px}
+  .book form{padding-top:84px}
+  .book legend{margin-bottom:20px}
+  .hero h1{font-size:clamp(34px,10vw,52px)}
+  .vhs-ts span:last-child{display:none}
+}
+@media (prefers-reduced-motion:reduce){.hero h1{animation:none}}
 </style>
 </head>
 <body>
@@ -443,6 +627,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
 <div class="wall" aria-hidden="true"></div>
 <div class="shade" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
+<div class="vhs-lines" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"></div>
 <div class="loupe" aria-hidden="true"></div>
 
@@ -452,7 +637,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
     <ul>
       <li>
         <button aria-expanded="false" aria-controls="dd-works"><span data-en="Works">Работы</span><i class="caret"></i></button>
-        <div class="drop paper tape" id="dd-works">
+        <div class="drop" id="dd-works">
           <a href="#works" data-ink data-go="bw"><img src="img/w01.webp" alt=""><span><b data-en="Black &amp; grey">Ч/б реализм</b><small data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
           <a href="#works" data-ink data-go="color"><img src="img/w13.webp" alt=""><span><b data-en="Colour">Цвет</b><small data-en="colour realism">цветной реализм</small></span></a>
           <a href="#works" data-ink data-go="big"><img src="img/w05.webp" alt=""><span><b data-en="Sleeves">Рукава</b><small data-en="legs, backs">ноги, спины</small></span></a>
@@ -462,7 +647,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
       </li>
       <li>
         <button aria-expanded="false" aria-controls="dd-masters"><span data-en="Artists">Мастера</span><i class="caret"></i></button>
-        <div class="drop paper tape narrow" id="dd-masters">
+        <div class="drop narrow" id="dd-masters">
           <a href="#masters" data-ink><img src="img/nadezhda.webp" alt=""><span><b data-en="Nadezhda">Надежда</b><small data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
           <a href="#masters" data-ink><img src="img/vitaliy.webp" alt=""><span><b data-en="Vitaliy">Виталий</b><small data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
         </div>
@@ -471,7 +656,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
       <li><a href="#care" data-ink data-en="Aftercare">Уход</a></li>
       <li><a href="#contact" data-ink data-en="Contact">Контакты</a></li>
     </ul>
-    <div class="open-sign" id="openSign"><b data-en="OPEN">ОТКРЫТО</b><span>11:00-23:00</span></div>
+    <div class="open-sign" id="openSign" aria-live="polite"><b>ОТКРЫТО</b><span>до 23:00</span></div>
     <button class="lang" id="lang" aria-label="Switch language">EN</button>
     <button class="btn sm" data-book data-en="Book">Записаться</button>
     <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="overlay"><span></span><span></span></button>
@@ -489,14 +674,15 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
 </div>
 
 <button class="stamp" data-book aria-label="Записаться на сеанс">
-  <svg class="ring" viewBox="0 0 124 124" aria-hidden="true"><defs><path id="circ" d="M62,62 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#circ" data-en="Book a session ✦ INKSIDE ✦">Записаться ✦ INKSIDE ✦ Минск ✦</textPath></text></svg>
+  <svg class="ring" viewBox="0 0 124 124" aria-hidden="true"><defs><path id="circ" d="M62,62 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs><text><textPath href="#circ" data-en="BOOK NOW ● INKSIDE ● MINSK ●">ЗАПИСАТЬСЯ ● INKSIDE ● МИНСК ●</textPath></text></svg>
   <span class="star"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
 </button>
 
 <main id="main">
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-sheet sheet tape">
+    <div class="hero-sheet sheet">
+      <div class="vhs-ts" aria-hidden="true"><span class="rec">REC</span><span id="ts">00:00:00</span><span>INKSIDE · VOL.1</span></div>
       <div class="chromelogo"><img src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
       <h1 class="poster" id="h1">
         <span class="row"><span data-en="Realism">Реализм</span></span>
@@ -529,7 +715,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
 <section class="reel" id="reel" aria-label="Крупные работы">
   <div class="pin">
     <div class="track">
-      <div class="intro sheet tape one">
+      <div class="intro sheet">
         <h2 class="poster split" data-en="One work. <span class='outline'>One screen.</span>">Одна работа. <span class="outline">Один экран.</span></h2>
         <p class="lead" style="margin-top:20px" data-en="No tiny Instagram squares. Hover to look at the skin up close.">Никаких мелких квадратиков. Наведите, чтобы рассмотреть кожу вблизи.</p>
       </div>
@@ -549,7 +735,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
       <div class="steps-text">
         <h2 class="poster" data-en="From stencil <span class='hand h-note'>to skin</span>">От стенсила <span class="hand h-note">к коже</span></h2>
         <div class="st sheet"><span class="n">01</span><h3 data-en="Idea">Идея</h3><p data-en="Send a reference or just a thought. We discuss size, placement and price for free.">Присылаете референс или просто мысль. Бесплатно обсуждаем размер, место и цену.</p></div>
-        <div class="st sheet"><span class="n">02</span><h3 data-en="Stencil">Эскиз и стенсил</h3><p data-en="The sketch is drawn for your body. The purple transfer shows exactly where every line goes.">Эскиз рисуется под ваше тело. Фиолетовый перевод показывает, где пройдёт каждая линия.</p></div>
+        <div class="st sheet"><span class="n">02</span><h3 data-en="Stencil">Эскиз и стенсил</h3><p data-en="The sketch is drawn for your body. The transfer on the skin shows where every line goes.">Эскиз рисуется под ваше тело. Перевод на коже показывает, где пройдёт каждая линия.</p></div>
         <div class="st sheet"><span class="n">03</span><h3 data-en="Session">Сеанс</h3><p data-en="Single-use needles opened in front of you. Big projects are split into sessions.">Одноразовые иглы вскрываем при вас. Крупное делим на сеансы.</p></div>
         <div class="st sheet"><span class="n">04</span><h3 data-en="Healed">Заживление</h3><p data-en="A day-by-day aftercare plan. Send a photo in a month and we check the result.">План ухода по дням. Через месяц присылаете фото, мы проверяем результат.</p></div>
       </div>
@@ -617,7 +803,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
   <div class="wrap">
     <div class="head"><h2 class="poster split" data-en="Two artists. <span class='outline'>Four hands.</span>">Два мастера. <span class="outline">Четыре руки.</span></h2></div>
     <div class="masters">
-      <article class="flashsheet paper tape">
+      <article class="flashsheet">
         <div class="top">
           <figure class="ph"><img src="img/nadezhda.webp" alt="Мастер Надежда" loading="lazy"><figcaption>Nadya</figcaption></figure>
           <div>
@@ -630,7 +816,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
         <div class="works"><img src="img/w13.webp" alt="" loading="lazy"><img src="img/w04.webp" alt="" loading="lazy"><img src="img/w18.webp" alt="" loading="lazy"></div>
         <a class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo →</a>
       </article>
-      <article class="flashsheet paper tape">
+      <article class="flashsheet">
         <div class="top">
           <figure class="ph"><img src="img/vitaliy.webp" alt="Мастер Виталий" loading="lazy"><figcaption>Vitaliy</figcaption></figure>
           <div>
@@ -651,15 +837,13 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
   <div class="wrap">
     <div class="head"><h2 class="poster split" data-en="Prices <span class='hand h-note'>no surprises</span>">Цены <span class="hand h-note">без сюрпризов</span></h2></div>
     <div class="prices">
-      <div class="receipt paper">
-        <h3>INKSIDE</h3>
-        <p class="sub" data-en="Minsk · Makayonka lane 4">Минск · пер. Макаёнка 4</p>
-        <div class="ln"><span data-en="Minimum (up to 1 h)">Минимум (до 1 ч)</span><i></i><b>180 BYN</b></div>
-        <div class="ln"><span data-en="Each next hour">Каждый след. час</span><i></i><b>150 BYN</b></div>
-        <div class="ln"><span data-en="Custom sketch">Эскиз под вас</span><i></i><b data-en="from 40 BYN">от 40 BYN</b></div>
-        <div class="ln"><span data-en="Consultation">Консультация</span><i></i><b data-en="0 BYN">0 BYN</b></div>
-        <hr>
-        <p class="small" data-en="The final price is set after the sketch is approved: detail, size and placement matter. Thank you for choosing us ✦">Итоговую цену мастер называет после утверждения эскиза: важны детализация, размер и место. Спасибо, что выбираете нас ✦</p>
+      <div class="tracklist sheet">
+        <div class="cass"><b>INKSIDE</b><span data-en="SIDE A · PRICES">СТОРОНА A · ПРАЙС</span></div>
+        <div class="tr"><i>01</i><span data-en="Minimum, up to 1 hour">Минимум, до 1 часа</span><b>180 BYN</b></div>
+        <div class="tr"><i>02</i><span data-en="Each next hour">Каждый следующий час</span><b>150 BYN</b></div>
+        <div class="tr"><i>03</i><span data-en="Custom sketch">Эскиз под вас</span><b data-en="from 40">от 40</b></div>
+        <div class="tr"><i>04</i><span data-en="Consultation">Консультация</span><b>0 BYN</b></div>
+        <p class="note" data-en="The final price is set after the sketch is approved: detail, size and placement matter.">Итоговую цену мастер называет после утверждения эскиза: важны детализация, размер и место.</p>
       </div>
       <form class="calc sheet" id="calc" aria-label="Калькулятор стоимости">
         <h3 data-en="Estimate yours">Посчитайте свою</h3>
@@ -706,7 +890,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
 
 <section id="gift" style="padding-top:0">
   <div class="wrap">
-    <div class="gift sheet tape">
+    <div class="gift sheet">
       <div>
         <h2 class="poster" style="font-size:clamp(52px,6.4vw,110px)" data-en="A tattoo <span class='hand h-note'>as a gift</span>">Тату <span class="hand h-note">в подарок</span></h2>
         <p class="lead" style="margin:22px 0 30px" data-en="A certificate for any amount. The person picks the idea and the date. Popular before New Year.">Сертификат на любую сумму. Человек сам выбирает идею и дату. Особенно популярно перед Новым годом.</p>
@@ -732,7 +916,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
 
 <section id="contact">
   <div class="wrap contact">
-    <div class="addr sheet tape">
+    <div class="addr sheet">
       <p class="big" data-en="Makayonka lane 4">пер. Макаёнка 4</p>
       <span class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите внутрь ✦</span>
       <dl>
@@ -759,35 +943,17 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
 </footer>
 
 <dialog class="book" id="book" aria-label="Запись на сеанс">
-  <form class="paper tape" id="bookForm" novalidate>
-    <button class="x" type="button" aria-label="Закрыть">×</button>
-    <h3 data-en="Book">Запись</h3>
-    <span class="hand" data-en="three questions, one minute">три вопроса, одна минута</span>
-    <p class="stepnum" id="stepnum">1 / 3</p>
-    <fieldset class="on"><legend data-en="Where?">Где будет тату?</legend><div class="opts">
-      <label><input type="radio" name="zone" value="рука"><span data-en="arm">рука</span></label>
-      <label><input type="radio" name="zone" value="нога"><span data-en="leg">нога</span></label>
-      <label><input type="radio" name="zone" value="спина"><span data-en="back">спина</span></label>
-      <label><input type="radio" name="zone" value="грудь / рёбра"><span data-en="chest / ribs">грудь / рёбра</span></label>
-      <label><input type="radio" name="zone" value="шея / кисть"><span data-en="neck / hand">шея / кисть</span></label>
-      <label><input type="radio" name="zone" value="перекрытие старой тату"><span data-en="cover-up">перекрытие</span></label>
-    </div></fieldset>
-    <fieldset><legend data-en="How big?">Какой размер?</legend><div class="opts">
-      <label><input type="radio" name="bsize" value="до 5 см"><span data-en="up to 5 cm">до 5 см</span></label>
-      <label><input type="radio" name="bsize" value="5-10 см"><span>5-10 см</span></label>
-      <label><input type="radio" name="bsize" value="10-20 см"><span>10-20 см</span></label>
-      <label><input type="radio" name="bsize" value="рукав / большая зона"><span data-en="sleeve / large">рукав / большая зона</span></label>
-      <label><input type="radio" name="bsize" value="пока не знаю"><span data-en="not sure yet">пока не знаю</span></label>
-    </div></fieldset>
-    <fieldset><legend data-en="Idea and name">Идея и имя</legend>
-      <label class="f" data-en="Your name">Ваше имя<input class="t" name="name" autocomplete="name" required></label>
-      <label class="f" data-en="The idea in a few words">Идея в двух словах<textarea name="idea" required></textarea></label>
+  <form id="bookForm" novalidate>
+    <div class="bk-bar" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    <div class="bk-top"><span class="bk-tag">● REC · INKSIDE</span><span class="stepnum" id="stepnum">01 / 03</span><button class="x" type="button" aria-label="Закрыть">×</button></div>
+    <fieldset class="on"><legend data-en="Where?">Где будет тату?</legend><div class="tiles"><label><input type="radio" name="zone" value="рука"><span><b>01</b>Рука<em>плечо, предплечье</em></span></label><label><input type="radio" name="zone" value="нога"><span><b>02</b>Нога<em>бедро, голень</em></span></label><label><input type="radio" name="zone" value="спина"><span><b>03</b>Спина<em>лопатки, вся спина</em></span></label><label><input type="radio" name="zone" value="грудь / рёбра"><span><b>04</b>Грудь / рёбра<em>чувствительная зона</em></span></label><label><input type="radio" name="zone" value="шея / кисть"><span><b>05</b>Шея / кисть<em>на виду</em></span></label><label><input type="radio" name="zone" value="перекрытие старой тату"><span><b>06</b>Перекрытие<em>старая тату или шрам</em></span></label></div></fieldset>
+    <fieldset><legend data-en="How big?">Какой размер?</legend><div class="tiles"><label><input type="radio" name="bsize" value="до 5 см"><span><b>01</b>До 5 см<em>от 180 BYN</em></span></label><label><input type="radio" name="bsize" value="5-10 см"><span><b>02</b>5-10 см<em>от 330 BYN</em></span></label><label><input type="radio" name="bsize" value="10-20 см"><span><b>03</b>10-20 см<em>от 480 BYN</em></span></label><label><input type="radio" name="bsize" value="рукав / большая зона"><span><b>04</b>Рукав / большая<em>сеанс от 930 BYN</em></span></label><label><input type="radio" name="bsize" value="пока не знаю"><span><b>05</b>Не знаю<em>решим на консультации</em></span></label></div></fieldset>
+    <fieldset><legend data-en="Name and idea">Имя и идея</legend>
+      <label class="f"><span data-en="Your name">Ваше имя</span><input class="t" name="name" autocomplete="name" required></label>
+      <label class="f"><span data-en="The idea in a few words">Идея в двух словах</span><textarea name="idea" required></textarea></label>
     </fieldset>
     <p class="err" id="bookErr" role="alert"></p>
-    <div class="acts">
-      <button class="link" type="button" id="back" data-en="← back">← назад</button>
-      <button class="btn" type="submit" id="next" data-en="Next">Дальше</button>
-    </div>
+    <div class="acts"><button class="link" type="button" id="back">← Назад</button><button class="btn" type="submit" id="next">Дальше →</button></div>
   </form>
 </dialog>
 
@@ -811,9 +977,14 @@ if(lang==='en'){
 }
 $('#lang').onclick=()=>{try{localStorage.setItem('lang',lang==='en'?'ru':'en')}catch(e){}location.reload()};
 
-/* ---------- open / closed sign by Minsk time (UTC+3) ---------- */
-(function(){const h=(new Date().getUTCHours()+3)%24,open=h>=11&&h<23;const s=$('#openSign');
-  if(!open){s.classList.add('closed');$('b',s).textContent=lang==='en'?'CLOSED':'ЗАКРЫТО'}})();
+/* ---------- live open / closed sign + VHS clock (Minsk time) ---------- */
+function minskNow(){const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Minsk',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(new Date());
+  const g=t=>+p.find(x=>x.type===t).value;return{h:g('hour')%24,m:g('minute'),s:g('second')}}
+function sign(){const {h}=minskNow(),open=h>=11&&h<23,el=$('#openSign');el.classList.toggle('closed',!open);
+  $('b',el).textContent=open?(lang==='en'?'OPEN':'ОТКРЫТО'):(lang==='en'?'CLOSED':'ЗАКРЫТО');
+  $('span',el).textContent=open?(lang==='en'?'till 23:00':'до 23:00'):(lang==='en'?'opens 11:00':'откроемся в 11:00')}
+sign();setInterval(sign,20000);
+setInterval(()=>{const t=minskNow(),z=n=>String(n).padStart(2,'0');$('#ts').textContent=`${z(t.h)}:${z(t.m)}:${z(t.s)}`},1000);
 
 /* ---------- polaroid wall: random tilt like real prints ---------- */
 $$('.pol').forEach((p,i)=>{const r=((i*37)%7-3)*1.1;p.style.setProperty('--rot',r+'deg');p.style.setProperty('--trot',(-r*1.4)+'deg')});
@@ -873,13 +1044,15 @@ $$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
 
 /* ---------- booking: 3-step brief -> Telegram message ---------- */
 const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
-function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`${i+1} / 3`;$('#back').style.visibility=i?'visible':'hidden';
-  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram':'Отправить в Telegram'):(lang==='en'?'Next':'Дальше');$('#bookErr').textContent=''}
+function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`0${i+1} / 03`;$$('.bk-bar i').forEach((b,k)=>b.classList.toggle('on',k<=i));$('#back').style.visibility=i?'visible':'hidden';
+  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram →':'Отправить в Telegram →'):(lang==='en'?'Next →':'Дальше →');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
 $$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);show(0);book.showModal()}));
 $('.x',bf).onclick=()=>book.close();
 book.addEventListener('click',e=>{if(e.target===book)book.close()});
 $('#back').onclick=()=>show(Math.max(0,step-1));
-sets.slice(0,2).forEach((f,i)=>f.addEventListener('change',()=>setTimeout(()=>show(i+1),250)));
+sets.slice(0,2).forEach((f,i)=>f.addEventListener('change',()=>setTimeout(()=>show(i+1),160)));
+// keys 1-6 pick a tile on the current step
+book.addEventListener('keydown',e=>{if(step<2&&/^[1-6]$/.test(e.key)){const r=$$('input',sets[step])[+e.key-1];if(r){r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}))}}});
 bf.onsubmit=e=>{
   e.preventDefault();
   const need=lang==='en'?'Please pick an option':'Выберите вариант';
@@ -973,12 +1146,12 @@ if(fine&&!reduce){
     const g=ctx.createRadialGradient(W/2-R*.3,H/2-R*.35,R*.1,W/2,H/2,R);
     g.addColorStop(0,'#1d1d22');g.addColorStop(1,'#060607');
     ctx.beginPath();ctx.arc(W/2,H/2,R,0,7);ctx.fillStyle=g;ctx.fill();
-    ctx.save();ctx.shadowColor='rgba(155,133,230,.55)';ctx.shadowBlur=40;ctx.lineWidth=2.5;ctx.strokeStyle='rgba(220,218,230,.45)';ctx.stroke();ctx.restore();
+    ctx.save();ctx.shadowColor='rgba(212,20,28,.6)';ctx.shadowBlur=40;ctx.lineWidth=2.5;ctx.strokeStyle='rgba(220,218,230,.45)';ctx.stroke();ctx.restore();
     // land dots
     for(let i=0;i<dots.length;i+=2){
       const v=vec(dots[i],dots[i+1]),[x,y,z]=proj(v);if(z<=0)continue;
       const near=Math.abs(dots[i]-MINSK[0])<4.5&&Math.abs(dots[i+1]-MINSK[1])<7;
-      ctx.fillStyle=near?`rgba(170,150,240,${.35+z*.6})`:`rgba(233,227,214,${.1+z*.55})`;
+      ctx.fillStyle=near?`rgba(255,70,70,${.35+z*.6})`:`rgba(233,227,214,${.1+z*.55})`;
       const r=.8+z*1.5;ctx.fillRect(x-r/2,y-r/2,r,r);
     }
     // routes: lifted great-circle arcs with a travelling spark
@@ -995,8 +1168,8 @@ if(fine&&!reduce){
     const [mx,my,mz]=proj(M);
     if(mz>0){
       const pulse=(t%2)/2;
-      ctx.strokeStyle=`rgba(155,133,230,${1-pulse})`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(mx,my,6+pulse*26,0,7);ctx.stroke();
-      ctx.fillStyle='#fff';ctx.shadowColor='#9b85e6';ctx.shadowBlur=18;ctx.beginPath();ctx.arc(mx,my,5.5,0,7);ctx.fill();ctx.shadowBlur=0;
+      ctx.strokeStyle=`rgba(255,59,59,${1-pulse})`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(mx,my,6+pulse*26,0,7);ctx.stroke();
+      ctx.fillStyle='#fff';ctx.shadowColor='#d4141c';ctx.shadowBlur=18;ctx.beginPath();ctx.arc(mx,my,5.5,0,7);ctx.fill();ctx.shadowBlur=0;
       ctx.font='12px "PT Mono", monospace';const L=mx+14+ctx.measureText(W>520?'INKSIDE · Makayonka 4':'МИНСК').width>W-12;ctx.textAlign=L?'right':'left';const lx=L?mx-14:mx+14;
       ctx.font='600 15px Oswald, sans-serif';ctx.fillStyle='#fff';ctx.fillText(lang==='en'?'MINSK':'МИНСК',lx,my-4);
       ctx.font='12px "PT Mono", monospace';ctx.fillStyle='rgba(233,227,214,.75)';if(W>520)ctx.fillText(lang==='en'?'INKSIDE · Makayonka 4':'INKSIDE · Макаёнка 4',lx,my+13);ctx.textAlign='left';
@@ -1110,8 +1283,8 @@ if(window.gsap&&!reduce){
   $$('.flashsheet .works img').forEach(im=>gsap.from(im,{scale:0,rotate:30,duration:.6,ease:'back.out(2.4)',scrollTrigger:{trigger:im,start:'top 92%'}}));
 
   // receipt prints out of the slot
-  gsap.from('.receipt',{clipPath:'inset(0 0 100% 0)',y:-40,duration:1.4,ease:'power2.out',scrollTrigger:{trigger:'.receipt',start:'top 80%'}});
-  gsap.from('.receipt .ln',{opacity:0,x:-14,stagger:.12,duration:.4,delay:.5,scrollTrigger:{trigger:'.receipt',start:'top 80%'}});
+  gsap.from('.tracklist',{x:-80,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.tracklist',start:'top 85%'}});
+  gsap.from('.tracklist .tr',{opacity:0,x:-24,stagger:.1,duration:.45,delay:.35,ease:'power3.out',scrollTrigger:{trigger:'.tracklist',start:'top 85%'}});
   gsap.from('.calc',{x:80,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.calc',start:'top 85%'}});
 
   // aftercare: dotted line fills, stars pop, stamp slams
