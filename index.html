@@ -863,9 +863,6 @@ h2.poster{letter-spacing:.015em}
   .hero-mob::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.7));pointer-events:none}
   .hero h1{margin-top:6px}
   /* prices right after the big works on mobile */
-  main{display:flex;flex-direction:column}
-  main>*{order:5}
-  main>.hero{order:0}main>.marquee{order:1}main>#reel{order:2}main>#prices{order:3}
 }
 @media (max-width:760px){
   .tracklist .tr{grid-template-columns:44px minmax(0,1fr) auto}
@@ -890,6 +887,26 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
   .flashsheet h3{font-size:clamp(30px,10vw,56px)}
 }
 @media (max-width:440px){.stamp{display:none}}
+
+/* ---------- v7: round 4 ---------- */
+.hero-photos .a.contain img{object-fit:contain;background:#0b0b0c}
+.frame::before{opacity:.32;background-size:contain;background-repeat:no-repeat}
+.bk-top{background:#060607;z-index:4}
+.tabs{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+.flashsheet .hand,.st p,.fact>span{text-wrap:balance}
+@media (min-width:761px){.tabs{-webkit-mask-image:none;mask-image:none}}
+@media (max-width:760px){h2.poster{letter-spacing:.03em;line-height:.98;word-spacing:.08em}}
+@media (max-width:400px){
+  .geo-links a{white-space:nowrap;font-size:11px;padding:10px 12px}
+  .tracklist .tr{grid-template-columns:40px 1fr}
+  .tracklist .tr b{grid-column:2;justify-self:start}
+}
+/* in-app browsers that shrink the viewport for the keyboard: nothing sticky */
+@media (max-width:600px) and (max-height:520px){
+  .book .acts{position:static;box-shadow:none}
+  .bk-top,.bk-bar{position:absolute}
+  .book form{padding-top:64px}
+}
 </style>
 </head>
 <body>
@@ -955,7 +972,8 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
   <div class="wrap">
     <div class="hero-sheet sheet">
       <div class="vhs-ts" aria-hidden="true"><span class="rec">REC</span><span id="ts">00:00:00</span><span>INKSIDE · VOL.1</span></div>
-      <figure class="hero-mob" aria-hidden="true"><img class="mob-logo" src="img/logo.webp" alt="" width="900" height="624"><img src="img/w03.webp" alt="" width="780" height="1040" fetchpriority="high"></figure>
+      <script>var Q=new URLSearchParams(location.search).get('s'),M={mini:'w18',sleeve:'w02',cover:'w19'},MOB=innerWidth<=900;window.__heroImg=function(i,def,mob){if(mob===MOB)i.src="img/"+((M[Q])||def)+".webp"}</script>
+      <figure class="hero-mob" aria-hidden="true"><img class="mob-logo" src="img/logo.webp" alt="" width="900" height="624"><img onerror="this.remove()" data-hero="w03" data-mob="1" alt="" width="780" height="1040" fetchpriority="high"><script>__heroImg(document.currentScript.previousElementSibling,"w03",true)</script></figure>
       <div class="chromelogo"><img src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
       <h1 class="poster" id="h1">
         <span class="row"><span data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" muted loop playsinline preload="none" aria-hidden="true" data-lazyplay></video></span></span>
@@ -971,9 +989,9 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
       <p class="micro" data-en="3 quick questions. No obligation.">3 коротких вопроса. Ни к чему не обязывает.</p>
     </div>
     <div class="hero-photos" aria-hidden="true">
-      <figure class="polaroid b"><img loading="lazy" src="img/w04.webp" alt="" width="520" height="560"><figcaption data-en="colour">цвет</figcaption></figure>
-      <figure class="polaroid a"><img fetchpriority="high" src="img/w01.webp" alt="" width="780" height="1040"><figcaption data-en="b&amp;g realism">ч/б реализм</figcaption></figure>
-      <figure class="polaroid c"><img loading="lazy" src="img/w18.webp" alt="" width="736" height="865"><figcaption data-en="mini">мини</figcaption></figure>
+      <figure class="polaroid b"><img loading="lazy" data-hero="w04" alt="" width="520" height="560"><script>(function(i){if(!MOB)i.src="img/"+("w04")+".webp"})(document.currentScript.previousElementSibling)</script><figcaption data-en="colour">цвет</figcaption></figure>
+      <figure class="polaroid a"><img fetchpriority="high" data-hero="w01" alt="" width="780" height="1040"><script>(function(i){if(!MOB)i.src="img/"+((M[Q])||"w01")+".webp"})(document.currentScript.previousElementSibling)</script><figcaption data-en="b&amp;g realism">ч/б реализм</figcaption></figure>
+      <figure class="polaroid c"><img loading="lazy" data-hero="w18" alt="" width="736" height="865"><script>(function(i){if(!MOB)i.src="img/"+("w18")+".webp"})(document.currentScript.previousElementSibling)</script><figcaption data-en="mini">мини</figcaption></figure>
       <span class="spark" style="--s:26px;left:46%;top:2%;--dl:.4s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
       <span class="spark" style="--s:14px;left:8%;top:30%;--dl:1.3s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
       <span class="spark" style="--s:18px;right:-2%;top:44%;--dl:2.1s"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
@@ -1000,6 +1018,46 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
       <figure class="slide" tabindex="0" role="button"><img src="img/w05.webp" alt="Рукав целиком" loading="lazy" width="1050" height="1400"><span class="num">04</span><figcaption class="tag"><b data-en="Full sleeve">Рукав</b><span data-en="b&amp;g realism">ч/б реализм</span></figcaption></figure>
       <figure class="slide" tabindex="0" role="button"><img src="img/w07.webp" alt="Сова на плече" loading="lazy" width="1058" height="1400"><span class="num">05</span><figcaption class="tag"><b data-en="Owl">Сова</b><span data-en="shoulder">плечо</span></figcaption></figure>
       <figure class="slide" tabindex="0" role="button"><img src="img/w16.webp" alt="Корабль, рукав" loading="lazy" width="1050" height="1400"><span class="num">06</span><figcaption class="tag"><b data-en="Ship">Корабль</b><span data-en="sleeve">рукав</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="prices">
+  <div class="wrap">
+    <div class="head"><h2 class="poster split" data-en="Prices <span class='hand h-note'>no surprises</span>">Цены <span class="hand h-note">без сюрпризов</span></h2></div>
+    <div class="prices">
+      <div class="tracklist sheet">
+        <div class="cass"><b>INKSIDE</b><span data-en="SIDE A · PRICES">СТОРОНА A · ПРАЙС</span></div>
+        <div class="tr"><i>01</i><span data-en="Minimum, up to 1 hour">Минимум, до&nbsp;1&nbsp;часа</span><b>180 BYN</b></div>
+        <div class="tr"><i>02</i><span data-en="Each next hour">Каждый следующий час</span><b>150 BYN</b></div>
+        <div class="tr"><i>03</i><span data-en="Custom sketch">Эскиз под вас</span><b data-en="from 40 BYN">от 40 BYN</b></div>
+        <div class="tr"><i>04</i><span data-en="Consultation">Консультация</span><b>0 BYN</b></div>
+        <p class="note" data-en="The final price is set after the sketch is approved: detail, size and placement matter.">Итоговую цену мастер называет после утверждения эскиза: важны детализация, размер и место.</p>
+      </div>
+      <form class="calc sheet" id="calc" aria-label="Калькулятор стоимости">
+        <h3 data-en="Estimate yours">Посчитайте свою</h3>
+        <fieldset><legend data-en="size">размер</legend><div class="opts">
+          <label><input type="radio" name="size" value="1" checked><span data-en="up to 5 cm">до 5 см</span></label>
+          <label><input type="radio" name="size" value="1.5"><span data-en="5-10 cm">5-10 см</span></label>
+          <label><input type="radio" name="size" value="2.5"><span data-en="10-20 cm">10-20 см</span></label>
+          <label><input type="radio" name="size" value="6"><span data-en="sleeve / leg (session)">рукав / нога (сеанс)</span></label>
+        </div></fieldset>
+        <fieldset><legend data-en="style">стиль</legend><div class="opts">
+          <label><input type="radio" name="kind" value="1" checked><span data-en="lines / graphic">линии / графика</span></label>
+          <label><input type="radio" name="kind" value="1.3"><span data-en="b&amp;g realism">реализм ч/б</span></label>
+          <label><input type="radio" name="kind" value="1.5"><span data-en="colour realism">цветной реализм</span></label>
+          <label><input type="radio" name="kind" value="1.4"><span data-en="cover-up">перекрытие</span></label>
+        </div></fieldset>
+        <fieldset><legend data-en="placement">место</legend><div class="opts">
+          <label><input type="radio" name="place" value="1" checked><span data-en="arm / leg">рука / нога</span></label>
+          <label><input type="radio" name="place" value="1.15"><span data-en="back / chest">спина / грудь</span></label>
+          <label><input type="radio" name="place" value="1.25"><span data-en="ribs / neck / hand">рёбра / шея / кисть</span></label>
+        </div></fieldset>
+        <div class="result">
+          <div><small data-en="approximate price">ориентир по цене</small><output id="sum" aria-live="polite">от 180 BYN</output><small id="hrs">≈ 1 ч работы</small></div>
+          <button class="btn magnet" type="submit" data-en="Get the exact price">Получить точную цену</button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -1067,7 +1125,7 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
   <div class="wrap facts">
     <div class="fact"><b data-count="8">8+</b><span data-en="years behind the machine">лет за машинкой</span></div>
     <div class="fact"><b>№<span data-count="1">1</span></b><span data-en="place at the Gomel tattoo battle">место на тату-баттле в Гомеле</span><span class="spark" style="--s:20px"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
-    <div class="fact"><b data-count="2">2</b><span data-en="days for a full leg, four hands">дня на ногу целиком в четыре руки</span></div>
+    <div class="fact"><b data-count="2">2</b><span data-en="days for a full leg, four hands">дня на ногу целиком в&nbsp;четыре&nbsp;руки</span></div>
     <div class="fact"><b>0 BYN</b><span data-en="for consultation and idea">за консультацию и подбор идеи</span></div>
   </div>
 </section>
@@ -1106,45 +1164,7 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
   </div>
 </section>
 
-<section id="prices">
-  <div class="wrap">
-    <div class="head"><h2 class="poster split" data-en="Prices <span class='hand h-note'>no surprises</span>">Цены <span class="hand h-note">без сюрпризов</span></h2></div>
-    <div class="prices">
-      <div class="tracklist sheet">
-        <div class="cass"><b>INKSIDE</b><span data-en="SIDE A · PRICES">СТОРОНА A · ПРАЙС</span></div>
-        <div class="tr"><i>01</i><span data-en="Minimum, up to 1 hour">Минимум, до 1 часа</span><b>180 BYN</b></div>
-        <div class="tr"><i>02</i><span data-en="Each next hour">Каждый следующий час</span><b>150 BYN</b></div>
-        <div class="tr"><i>03</i><span data-en="Custom sketch">Эскиз под вас</span><b data-en="from 40 BYN">от 40 BYN</b></div>
-        <div class="tr"><i>04</i><span data-en="Consultation">Консультация</span><b>0 BYN</b></div>
-        <p class="note" data-en="The final price is set after the sketch is approved: detail, size and placement matter.">Итоговую цену мастер называет после утверждения эскиза: важны детализация, размер и место.</p>
-      </div>
-      <form class="calc sheet" id="calc" aria-label="Калькулятор стоимости">
-        <h3 data-en="Estimate yours">Посчитайте свою</h3>
-        <fieldset><legend data-en="size">размер</legend><div class="opts">
-          <label><input type="radio" name="size" value="1" checked><span data-en="up to 5 cm">до 5 см</span></label>
-          <label><input type="radio" name="size" value="1.5"><span data-en="5-10 cm">5-10 см</span></label>
-          <label><input type="radio" name="size" value="2.5"><span data-en="10-20 cm">10-20 см</span></label>
-          <label><input type="radio" name="size" value="6"><span data-en="sleeve / leg (session)">рукав / нога (сеанс)</span></label>
-        </div></fieldset>
-        <fieldset><legend data-en="style">стиль</legend><div class="opts">
-          <label><input type="radio" name="kind" value="1" checked><span data-en="lines / graphic">линии / графика</span></label>
-          <label><input type="radio" name="kind" value="1.3"><span data-en="b&amp;g realism">реализм ч/б</span></label>
-          <label><input type="radio" name="kind" value="1.5"><span data-en="colour realism">цветной реализм</span></label>
-          <label><input type="radio" name="kind" value="1.4"><span data-en="cover-up">перекрытие</span></label>
-        </div></fieldset>
-        <fieldset><legend data-en="placement">место</legend><div class="opts">
-          <label><input type="radio" name="place" value="1" checked><span data-en="arm / leg">рука / нога</span></label>
-          <label><input type="radio" name="place" value="1.15"><span data-en="back / chest">спина / грудь</span></label>
-          <label><input type="radio" name="place" value="1.25"><span data-en="ribs / neck / hand">рёбра / шея / кисть</span></label>
-        </div></fieldset>
-        <div class="result">
-          <div><small data-en="approximate price">ориентир по цене</small><output id="sum" aria-live="polite">от 180 BYN</output><small id="hrs">≈ 1 ч работы</small></div>
-          <button class="btn magnet" type="submit" data-en="Get the exact price">Получить точную цену</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
+
 
 <section id="cover" class="cover-sec">
   <div class="wrap">
@@ -1217,7 +1237,7 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
       <span class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите&nbsp;внутрь&nbsp;✦</span>
       <dl>
         <div><dt data-en="phone">телефон</dt><dd><a class="mark" href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
-        <div><dt data-en="hours">часы</dt><dd data-en="daily 11:00-23:00, by appointment">ежедневно 11:00-23:00, по записи</dd></div>
+        <div><dt data-en="hours">часы</dt><dd data-en="daily 11:00-23:00, by appointment">ежедневно 11:00-23:00, по&nbsp;записи</dd></div>
         <div><dt data-en="write">написать</dt><dd class="chan"><a class="mark" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a><a class="mark" href="viber://chat?number=%2B375445111912">Viber</a><a class="mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a></dd></div>
       </dl>
     </div>
@@ -1300,10 +1320,10 @@ const SEG={
 };
 const seg=SEG[UTM.get('s')];
 if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.dataset.seg;if(t[k])el.textContent=t[k]});
-  const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;$$('.hero-mob img:not(.mob-logo),.hero-photos .a img').forEach(i=>i.src=`img/${t.img}.webp`);
-  if(t.cap)$('.hero-photos .a figcaption').textContent=t.cap;if(t.c)$('.hero-photos .c img').src=`img/${t.c}.webp`;
-  if(t.href)$('.hero .btns .link').setAttribute('href',t.href);
-  if(t.tg&&cta){const mc=$('.hero .micro');if(mc)mc.style.display='none';const n=cta.cloneNode(true);n.removeAttribute('data-book');cta.replaceWith(n);n.addEventListener('click',()=>{track('Contact',{method:'telegram'});send(t.tg)})}}
+  const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;
+  if(t.cap)$('.hero-photos .a figcaption').textContent=t.cap;if(t.img==='w19')$('.hero-photos .a').classList.add('contain');if(t.c&&!MOB)$('.hero-photos .c img').src=`img/${t.c}.webp`;
+  if(t.href){const l=$('.hero .btns .link');l.setAttribute('href',t.href);l.textContent=lang==='en'?'See cover-ups ↓':'Смотреть перекрытия ↓'}
+  if(t.tg&&cta){const mc=$('.hero .micro');if(mc)mc.style.display='none';const n=cta.cloneNode(true);n.removeAttribute('data-book');cta.replaceWith(n);n.addEventListener('click',()=>{track('Lead',{value:180,currency:'BYN',content_name:'cover'});track('Contact',{method:'telegram'});send(t.tg)})}}
 $$('[data-en-alt]').forEach(el=>{if(lang==='en')el.alt=el.dataset.enAlt});
 if(lang==='en'){
   const AL={'Главное меню':'Main menu','INKSIDE, наверх':'INKSIDE, back to top','Меню':'Menu','Записаться на сеанс':'Book a session','Фильтр работ':'Works filter','Просмотр работы':'Work preview','Закрыть':'Close','Калькулятор стоимости':'Price calculator','Запись на сеанс':'Book a session','Политика конфиденциальности':'Privacy policy','Вид карты':'Map view','Глобус с отметкой студии INKSIDE в Минске':'Globe with INKSIDE studio in Minsk','Карта: Минск, пер. Макаёнка 4':'Map: Minsk, Makayonka lane 4','Крупные работы':'Large works','Как рождается тату':'How a tattoo is made'};
