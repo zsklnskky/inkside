@@ -934,6 +934,7 @@ html.api .consent-box{display:flex}
   .pol figcaption span:last-child{display:block;font-size:10px}
 }
 @media (max-height:720px){.book form{padding-top:92px}}
+.promo:not([hidden]){display:inline-block;margin:0 0 16px;padding:9px 18px;border-radius:16px;background:var(--red);color:#fff;font:700 13px/1.35 var(--f-poster);letter-spacing:.08em;text-transform:uppercase;max-width:100%}
 </style>
 </head>
 <body>
@@ -1004,13 +1005,14 @@ html.api .consent-box{display:flex}
       <script>var Q=new URLSearchParams(location.search).get('s'),M={mini:'w15',sleeve:'w02',cover:'w19'},MOB=innerWidth<=900;window.__heroImg=function(i,def,mob){if(mob===MOB)i.src="img/"+((M[Q])||def)+".webp"}</script>
       <figure class="hero-mob" aria-hidden="true"><script>if(!Q||!M[Q])document.currentScript.parentElement.classList.add("logo-only")</script><img class="mob-logo" src="img/logo.webp" alt="" width="900" height="624"><img onerror="this.remove()" data-hero="o3316" data-mob="1" alt="" width="780" height="1040" fetchpriority="high"><script>__heroImg(document.currentScript.previousElementSibling,"o3316",true)</script></figure>
       <div class="chromelogo"><img src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
+      <p id="promo" class="promo" data-k="promo" hidden></p>
       <h1 class="poster" id="h1">
         <span class="row"><span data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" muted loop playsinline preload="none" aria-hidden="true" data-lazyplay></video></span></span>
         <span class="row"><span data-en="you won't" data-seg="h1b">за которую</span></span>
         <span class="row"><span data-en="regret" data-seg="h1c">не стыдно</span></span>
         <span class="row"><span class="hand" data-en="even in 10 years ✦" data-seg="h1d">и через 10 лет ✦</span></span>
       </h1>
-      <p class="lead" data-seg="lead" data-en="Two artists, 8+ years of experience. We discuss your idea for free and name the price before the session.">Два мастера, 8+ лет опыта. Бесплатно обсудим идею и назовём цену до сеанса.</p>
+      <p class="lead" data-seg="lead" data-k="lead" data-en="Two artists, 8+ years of experience. We discuss your idea for free and name the price before the session.">Два мастера, 8+ лет опыта. Бесплатно обсудим идею и назовём цену до сеанса.</p>
       <div class="btns">
         <button class="btn magnet" data-book data-en="Get my price">Узнать цену моей тату</button>
         <a class="link mark" href="#works" data-ink data-en="See works ↓">Смотреть работы ↓</a>
@@ -1104,9 +1106,9 @@ html.api .consent-box{display:flex}
     <div class="prices">
       <div class="tracklist sheet">
         <div class="cass"><b>INKSIDE</b><span data-en="SIDE A · PRICES">СТОРОНА A · ПРАЙС</span></div>
-        <div class="tr"><i>01</i><span data-en="Minimum, up to 1 hour">Минимум, до&nbsp;1&nbsp;часа</span><b>180 BYN</b></div>
-        <div class="tr"><i>02</i><span data-en="Each next hour">Каждый следующий час</span><b>150 BYN</b></div>
-        <div class="tr"><i>03</i><span data-en="Custom sketch">Эскиз под вас</span><b data-en="from 40 BYN">от 40 BYN</b></div>
+        <div class="tr"><i>01</i><span data-en="Minimum, up to 1 hour">Минимум, до&nbsp;1&nbsp;часа</span><b data-k="p_min">180 BYN</b></div>
+        <div class="tr"><i>02</i><span data-en="Each next hour">Каждый следующий час</span><b data-k="p_hour">150 BYN</b></div>
+        <div class="tr"><i>03</i><span data-en="Custom sketch">Эскиз под вас</span><b data-k="p_sketch" data-en="from 40 BYN">от 40 BYN</b></div>
         <div class="tr"><i>04</i><span data-en="Consultation">Консультация</span><b>0 BYN</b></div>
         <p class="note" data-en="The final price is set after the sketch is approved: detail, size and placement matter.">Итоговую цену мастер называет после утверждения эскиза: важны детализация, размер и место.</p>
       </div>
@@ -1175,27 +1177,27 @@ html.api .consent-box{display:flex}
     <div class="masters">
       <article class="flashsheet">
         <div class="top">
-          <figure class="ph"><img src="img/nadezhda.webp" alt="Мастер Надежда" loading="lazy" width="788" height="1400"><figcaption>Nadya</figcaption></figure>
+          <figure class="ph"><img data-k="img_nadya" src="img/nadezhda.webp" alt="Мастер Надежда" loading="lazy" width="788" height="1400"><figcaption>Nadya</figcaption></figure>
           <div>
             <h3 data-en="Nadezhda">Надежда</h3>
             <span class="hand" data-en="fine lines &amp; colour">тонкие линии и цвет</span>
             <ul><li data-en="micro-realism">микрореализм</li><li data-en="colour realism">цветной реализм</li><li data-en="b&amp;g realism">ч/б реализм</li><li data-en="large projects">большие проекты</li><li data-en="cover-ups of old tattoos">перекрытие старых татуировок</li><li data-en="correction of old work">коррекция старых работ</li><li data-en="mini &amp; fine line">мини и fine line</li></ul>
           </div>
         </div>
-        <p data-en="Turns a vague idea into a clean, careful sketch. Good choice for a first tattoo.">Превращает размытую идею в чистый аккуратный эскиз. Хороший выбор для первой тату.</p>
+        <p data-k="bio_nadya" data-en="Turns a vague idea into a clean, careful sketch. Good choice for a first tattoo.">Превращает размытую идею в чистый аккуратный эскиз. Хороший выбор для первой тату.</p>
         <div class="works"><img src="img/w13.webp" alt="" loading="lazy" width="1054" height="1400"><img src="img/w15.webp" alt="" loading="lazy" width="1100" height="1129"><img src="img/w01.webp" alt="" loading="lazy" width="736" height="865"></div>
         <span class="go-row"><a class="go mark" href="https://www.instagram.com/st.nadya_tattoo/" target="_blank" rel="noopener">Instagram @st.nadya_tattoo →</a><a class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo →</a></span>
       </article>
       <article class="flashsheet">
         <div class="top">
-          <figure class="ph"><img src="img/vitaliy.webp" alt="Мастер Виталий" loading="lazy" width="787" height="1400"><figcaption>Vitaliy</figcaption></figure>
+          <figure class="ph"><img data-k="img_vitaliy" src="img/vitaliy.webp" alt="Мастер Виталий" loading="lazy" width="787" height="1400"><figcaption>Vitaliy</figcaption></figure>
           <div>
             <h3 data-en="Vitaliy">Виталий</h3>
             <span class="hand" data-en="realism &amp; sleeves">реализм и рукава</span>
             <ul><li data-en="b&amp;g realism">ч/б реализм</li><li data-en="sleeves &amp; legs">рукава и ноги</li><li data-en="cover-ups of old tattoos">перекрытие старых татуировок</li><li data-en="mini tattoos">мини тату</li></ul>
           </div>
         </div>
-        <p data-en="Takes on large projects and difficult cover-ups of old tattoos.">Берётся за крупные проекты и сложные перекрытия старых татуировок.</p>
+        <p data-k="bio_vitaliy" data-en="Takes on large projects and difficult cover-ups of old tattoos.">Берётся за крупные проекты и сложные перекрытия старых татуировок.</p>
         <div class="works"><img src="img/w20.webp" alt="" loading="lazy" width="1100" height="1251"><img src="img/w08.webp" alt="" loading="lazy" width="720" height="1280"><img src="img/w14.webp" alt="" loading="lazy" width="1050" height="1400"></div>
         <span class="go-row"><a class="go mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk →</a></span>
       </article>
@@ -1213,7 +1215,7 @@ html.api .consent-box{display:flex}
         <p class="lead" data-en="Cover-ups and scar work are our speciality. Send a daylight photo of the area and we'll suggest sketch options.">Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны при дневном свете, предложим варианты эскиза.</p>
         <div class="btns"><a class="btn" data-contact="telegram" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Send a photo">Прислать фото</a><a class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a></div>
       </div>
-      <img src="img/o9886.webp" alt="Перекрытие старой тату на руке: до и после" data-en-alt="Cover-up of an old arm tattoo: before and after" loading="lazy" width="1100" height="1112">
+      <img data-k="img_cover" src="img/o9886.webp" alt="Перекрытие старой тату на руке: до и после" data-en-alt="Cover-up of an old arm tattoo: before and after" loading="lazy" width="1100" height="1112">
     </div>
   </div>
 </section>
@@ -1238,7 +1240,7 @@ html.api .consent-box{display:flex}
     <div class="gift sheet">
       <div>
         <h2 class="poster" style="font-size:clamp(52px,6.4vw,110px)" data-en="A tattoo <span class='hand h-note'>as a gift</span>">Тату <span class="hand h-note">в подарок</span></h2>
-        <p class="lead" style="margin:22px 0 30px" data-en="A certificate for any amount. The person picks the idea and the date. Popular before New Year.">Сертификат на любую сумму. Человек сам выбирает идею и дату. Особенно популярно перед Новым годом.</p>
+        <p class="lead" style="margin:22px 0 30px" data-k="gift" data-en="A certificate for any amount. The person picks the idea and the date. Popular before New Year.">Сертификат на любую сумму. Человек сам выбирает идею и дату. Особенно популярно перед Новым годом.</p>
         <a class="btn magnet" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Order a certificate">Заказать сертификат</a>
       </div>
       <div class="gcard" aria-hidden="true"><img src="img/logo.webp" alt="" width="900" height="624"><div><small data-en="GIFT CERTIFICATE">ПОДАРОЧНЫЙ СЕРТИФИКАТ</small><div class="sum">300 BYN</div></div></div>
@@ -1276,7 +1278,7 @@ html.api .consent-box{display:flex}
       <span class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите&nbsp;внутрь&nbsp;✦</span>
       <dl>
         <div><dt data-en="phone">телефон</dt><dd><a class="mark" href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
-        <div><dt data-en="hours">часы</dt><dd data-en="daily 11:00-23:00, by prior appointment">ежедневно 11:00-23:00, по&nbsp;предварительной записи</dd></div>
+        <div><dt data-en="hours">часы</dt><dd data-k="hours" data-en="daily 11:00-23:00, by prior appointment">ежедневно 11:00-23:00, по&nbsp;предварительной записи</dd></div>
         <div><dt data-en="write">написать</dt><dd class="chan"><a class="mark" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a><a class="mark" href="viber://chat?number=%2B375445111912">Viber</a><a class="mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a></dd></div>
       </dl>
     </div>
@@ -1319,6 +1321,7 @@ html.api .consent-box{display:flex}
   </form>
 </dialog>
 
+<script src="/api/content.js"></script><!-- texts, prices and photos edited by the artists in the bot; 404 on GitHub Pages is fine -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
@@ -1343,6 +1346,21 @@ if(CFG.api)document.documentElement.classList.add('api');
 const utmTag=['utm_source','utm_campaign'].map(k=>UTM.get(k)).filter(Boolean).join(' / ');
 const STAR='<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
 
+/* ---------- content edited by the artists in the Telegram bot (window.SITE from /api/content.js) ---------- */
+const S=window.SITE||{},P={min:+S.p_min||180,hour:+S.p_hour||150,sketch:+S.p_sketch||40},HO=[+S.open||11,+S.close||23];
+{const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const put=(k,ru,en)=>{const el=$(`[data-k="${k}"]`);if(!el)return;el.textContent=ru;if(en)el.dataset.en=esc(en)};
+  for(const k of ['lead','bio_nadya','bio_vitaliy','gift'])if(S[k])put(k,S[k],S[k+'_en']);
+  if(S.promo)put('promo',S.promo,S.promo_en),$('#promo').hidden=false;
+  if(S.p_min)put('p_min',P.min+' BYN');if(S.p_hour)put('p_hour',P.hour+' BYN');if(S.p_sketch)put('p_sketch','от '+P.sketch+' BYN','from '+P.sketch+' BYN');
+  if(S.open)put('hours',`ежедневно ${HO[0]}:00-${HO[1]}:00, по предварительной записи`,`daily ${HO[0]}:00-${HO[1]}:00, by prior appointment`);
+  for(const k of ['img_nadya','img_vitaliy','img_cover'])if(S[k]){const i=$(`[data-k="${k}"]`);i.onload=()=>{i.width=i.naturalWidth;i.height=i.naturalHeight};i.src=S[k]}
+  const CAT={bw:['ч/б','b&amp;g'],color:['цвет','colour'],big:['рукава','sleeves'],graphic:['графика','graphic'],cover:['перекрытие','cover-up'],fix:['коррекция','correction']};
+  (S.works||[]).slice().reverse().forEach(w=>{const c=CAT[w.cat]||CAT.bw,f=document.createElement('figure');
+    f.className='pol';f.setAttribute('role','button');f.tabIndex=0;f.dataset.c=w.cat;
+    f.innerHTML=`<img src="${esc(w.url)}" alt="${esc(c[0]+(w.caption?': '+w.caption:''))}" loading="lazy"><figcaption>${w.caption?`<span>${esc(w.caption)}</span>`:''}<span data-en="${c[1]}">${c[0]}</span></figcaption>`;
+    $('#grid').prepend(f)})}
+
 /* ---------- language: applied once before animations; switching reloads ---------- */
 let lang='ru';try{lang=localStorage.getItem('lang')==='en'?'en':'ru'}catch(e){}
 const qLang=new URLSearchParams(location.search).get('lang');if(qLang==='en'||qLang==='ru')lang=qLang;
@@ -1351,8 +1369,8 @@ if(lang==='en'){
   document.documentElement.lang='en';$('#lang').textContent='RU';
 }
 const SEG={
-  mini:{ru:{h1a:'Первая',h1b:'тату',h1c:'без страха',h1d:'мини от 180 BYN ✦',cta:'Подобрать мини',img:'w15',cap:'мини',c:'w20',lead:'Тонкие линии и мини. Бесплатно обсудим идею, подберём место и назовём цену до сеанса. Одноразовые иглы при вас.'},en:{h1a:'Your first',h1b:'tattoo',h1c:'without fear',h1d:'mini from 180 BYN ✦',cta:'Pick a mini',img:'w15',cap:'mini',c:'w20',lead:'Fine line and mini. We discuss the idea for free, pick the placement and name the price before the session.'}},
-  sleeve:{ru:{h1a:'Рукав',h1b:'в реализме',h1c:'и большие проекты',h1d:'час работы 150 BYN ✦',cta:'Рассчитать рукав',img:'w02',cap:'нога за 2 дня',lead:'Крупные проекты в ч/б и цвете. Ногу целиком делали за 2 дня в четыре руки.'},en:{h1a:'A realism',h1b:'sleeve',h1c:'and big projects',h1d:'150 BYN per hour ✦',cta:'Estimate a sleeve',img:'w02',cap:'full leg in 2 days',lead:'Large black & grey and colour projects. A full leg in 2 days with four hands.'}},
+  mini:{ru:{h1a:'Первая',h1b:'тату',h1c:'без страха',h1d:`мини от ${P.min} BYN ✦`,cta:'Подобрать мини',img:'w15',cap:'мини',c:'w20',lead:'Тонкие линии и мини. Бесплатно обсудим идею, подберём место и назовём цену до сеанса. Одноразовые иглы при вас.'},en:{h1a:'Your first',h1b:'tattoo',h1c:'without fear',h1d:`mini from ${P.min} BYN ✦`,cta:'Pick a mini',img:'w15',cap:'mini',c:'w20',lead:'Fine line and mini. We discuss the idea for free, pick the placement and name the price before the session.'}},
+  sleeve:{ru:{h1a:'Рукав',h1b:'в реализме',h1c:'и большие проекты',h1d:`час работы ${P.hour} BYN ✦`,cta:'Рассчитать рукав',img:'w02',cap:'нога за 2 дня',lead:'Крупные проекты в ч/б и цвете. Ногу целиком делали за 2 дня в четыре руки.'},en:{h1a:'A realism',h1b:'sleeve',h1c:'and big projects',h1d:`${P.hour} BYN per hour ✦`,cta:'Estimate a sleeve',img:'w02',cap:'full leg in 2 days',lead:'Large black & grey and colour projects. A full leg in 2 days with four hands.'}},
   cover:{ru:{h1a:'Старая',h1b:'тату?',h1c:'перекроем',h1d:'и шрам тоже ✦',cta:'Отправить фото в Telegram',img:'w19',cap:'перекрытие',href:'#cover',tg:'Здравствуйте! Хочу перекрыть старую тату. Сейчас пришлю фото зоны при дневном свете.',lead:'Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны, предложим варианты эскиза.'},en:{h1a:'Old',h1b:'tattoo?',h1c:'we cover it',h1d:'scars too ✦',cta:'Send a photo in Telegram',img:'w19',cap:'cover-up',href:'#cover',tg:'Hi! I want to cover an old tattoo. I will send a daylight photo of the area now.',lead:'Cover-ups of old tattoos and scars are our speciality. Send a photo, we suggest sketch options.'}}
 };
 const seg=SEG[UTM.get('s')];
@@ -1375,9 +1393,9 @@ $('#lang').onclick=()=>{try{localStorage.setItem('lang',lang==='en'?'ru':'en')}c
 /* ---------- live open / closed sign + VHS clock (Minsk time) ---------- */
 function minskNow(){const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Minsk',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(new Date());
   const g=t=>+p.find(x=>x.type===t).value;return{h:g('hour')%24,m:g('minute'),s:g('second')}}
-function sign(){const {h}=minskNow(),open=h>=11&&h<23,el=$('#openSign');el.classList.toggle('closed',!open);
+function sign(){const {h}=minskNow(),open=h>=HO[0]&&h<HO[1],el=$('#openSign');el.classList.toggle('closed',!open);
   $('b',el).textContent=open?(lang==='en'?'OPEN':'ОТКРЫТО'):(lang==='en'?'CLOSED':'ЗАКРЫТО');
-  $('span',el).textContent=open?(lang==='en'?'till 23:00':'до 23:00'):(lang==='en'?'opens 11:00':'откроемся в 11:00')}
+  $('span',el).textContent=open?(lang==='en'?`till ${HO[1]}:00`:`до ${HO[1]}:00`):(lang==='en'?`opens ${HO[0]}:00`:`откроемся в ${HO[0]}:00`)}
 sign();setInterval(sign,20000);
 setInterval(()=>{const t=minskNow(),z=n=>String(n).padStart(2,'0');$('#ts').textContent=`${z(t.h)}:${z(t.m)}:${z(t.s)}`},1000);
 
@@ -1491,12 +1509,12 @@ if((CFG.metaPixel||CFG.ymCounter)&&!consent){const c=document.createElement('div
 
 
 /* ---------- calculator with "printing" digits ---------- */
-const form=$('#calc');let shown=180;
+const form=$('#calc');let shown=P.min;
 function calc(){
   const v=n=>+form.querySelector(`[name=${n}]:checked`).value;
   // sleeve/leg is priced per ~6h session regardless of style
   const h=v('size')===6?6:Math.max(1,Math.round(v('size')*v('kind')*v('place')*2)/2);
-  const sum=180+Math.ceil(h-1)*150,pre=lang==='en'?'from ':'от ';
+  const sum=P.min+Math.ceil(h-1)*P.hour,pre=lang==='en'?'from ':'от ';
   $('#hrs').textContent=lang==='en'?`≈ ${h} h of work${v('size')===6?' per session':''}`:`≈ ${h} ч работы${v('size')===6?' за сеанс':''}`;
   if(reduce||!window.gsap){$('#sum').textContent=pre+sum+' BYN';shown=sum;return}
   const o={v:shown};gsap.to(o,{v:sum,duration:.7,ease:'power2.out',onUpdate:()=>$('#sum').textContent=pre+Math.round(o.v/10)*10+' BYN',onComplete:()=>{$('#sum').textContent=pre+sum+' BYN';shown=sum}});
