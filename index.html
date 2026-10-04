@@ -1275,17 +1275,11 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
 <footer>
   <div class="wrap">
     <div><span data-en="© 2026 Ink Tattoo LLC · UNP 193954480">© 2026 ООО «Инк Тату» · УНП 193954480</span><br><span data-en="Registered by Minsk City Executive Committee 16.01.2026 · household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026 · реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
-    <div><span data-en="220114, Minsk, Makayonka lane 4, room 64">220114, г. Минск, пер. Макаёнка 4, пом. 64</span><br><a href="#privacy" class="privacy-link mark" data-en="Privacy policy">Политика конфиденциальности</a></div>
+    <div><span data-en="220114, Minsk, Makayonka lane 4, room 64">220114, г. Минск, пер. Макаёнка 4, пом. 64</span><br><a href="privacy.html" class="privacy-link mark" data-en="Privacy policy">Политика конфиденциальности</a></div>
   </div>
 </footer>
 
-<dialog class="privacy" id="privacy" aria-label="Политика конфиденциальности">
-  <div class="sheet pv">
-    <button class="x" type="button" aria-label="Закрыть">×</button>
-    <h3 data-en="Privacy policy">Политика конфиденциальности</h3>
-    <div data-en="<p>Operator: Ink Tattoo LLC, UNP 193954480, 220114, Minsk, Makayonka lane 4, room 64.</p><p>The site does not store personal data. When you use the booking form, your name and message are passed to Telegram or Instagram only after you press the send button yourself, and are used solely to reply to your request.</p><p>If analytics counters are enabled, they collect anonymised visit statistics. You can ask us to delete your correspondence at any time: +375 44 511-19-12.</p><p>Processing is carried out in accordance with the Law of the Republic of Belarus No. 99-Z «On Personal Data Protection».</p>"><p>Оператор: ООО «Инк Тату», УНП 193954480, 220114, г. Минск, пер. Макаёнка 4, пом. 64.</p><p>Сайт не хранит персональные данные. Имя и сообщение из формы записи передаются в Telegram или Instagram только после того, как вы сами нажмёте кнопку отправки, и используются только для ответа на ваш запрос.</p><p>Если подключены счётчики аналитики, они собирают обезличенную статистику посещений. Попросить удалить переписку можно в любой момент: +375 44 511-19-12.</p><p>Обработка ведётся в соответствии с Законом Республики Беларусь № 99-З «О защите персональных данных».</p></div>
-  </div>
-</dialog>
+
 
 <dialog class="book" id="book" aria-label="Запись на сеанс">
   <form id="bookForm" novalidate>
@@ -1299,7 +1293,7 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
     </fieldset>
     <p class="err" id="bookErr" role="alert"></p>
     <p class="ig-hint" data-en="Instagram Direct: the request text is copied automatically, just paste it into the chat.">Instagram Direct: текст заявки скопируется сам, просто вставьте его в чат.</p>
-    <p class="consent" data-en="By sending you agree to the processing of your name and message to reply to you. <a href='#privacy' class='privacy-link'>Privacy</a>">Отправляя, вы соглашаетесь на обработку имени и сообщения, чтобы мы ответили. <a href="#privacy" class="privacy-link">Политика конфиденциальности</a></p>
+    <p class="consent" data-en="By sending you agree to the processing of your name and message to reply to you. <a href='privacy.html' target='_blank' rel='noopener' class='privacy-link'>Privacy</a>">Отправляя, вы соглашаетесь на обработку имени и сообщения, чтобы мы ответили. <a href="privacy.html" target="_blank" rel="noopener" class="privacy-link">Политика конфиденциальности</a></p>
     <div class="acts"><button class="link" type="button" id="back" data-en="← Back">← Назад</button><span class="acts-r"><button class="btn dark" type="button" id="viaIg" data-en="Instagram Direct">Instagram Direct</button><button class="btn" type="submit" id="next">Дальше →</button></span></div>
   </form>
 </dialog>
@@ -1455,9 +1449,9 @@ const channel=h=>/t\.me/.test(h)?'telegram':/ig\.me|instagram/.test(h)?'instagra
 $$('a[href^="tel:"],a[href*="t.me"],a[href^="viber:"],a[href*="instagram.com"],a[href*="ig.me"]').forEach(a=>a.addEventListener('click',()=>track('Contact',{method:channel(a.href)})));
 new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){track('ViewContent',{content_name:'prices'});o.disconnect()}}),{threshold:.5}).observe($('#prices'));
 /* cookie consent bar: shown only when an analytics ID is configured */
-if((CFG.metaPixel||CFG.ymCounter)&&!consent){const c=document.createElement('div');c.className='cookie sheet';c.innerHTML=lang==='en'?'<p>We use cookies for anonymous visit statistics.</p><button class="btn sm" data-c="yes">OK</button><button class="btn sm dark" data-c="no">No</button>':'<p>Мы используем cookie для обезличенной статистики посещений.</p><button class="btn sm" data-c="yes">Хорошо</button><button class="btn sm dark" data-c="no">Нет</button>';document.body.appendChild(c);c.onclick=e=>{const v=e.target.dataset.c;if(!v)return;try{localStorage.setItem('consent',v)}catch(x){}if(v==='yes')loadAnalytics();c.remove()}}
+if((CFG.metaPixel||CFG.ymCounter)&&!consent){const c=document.createElement('div');c.className='cookie sheet';c.innerHTML=lang==='en'?'<p>We use cookies for anonymous visit statistics. <a href="privacy.html">Privacy</a></p><button class="btn sm" data-c="yes">OK</button><button class="btn sm dark" data-c="no">No</button>':'<p>Мы используем cookie для обезличенной статистики посещений. <a href="privacy.html">Подробнее</a></p><button class="btn sm" data-c="yes">Хорошо</button><button class="btn sm dark" data-c="no">Нет</button>';document.body.appendChild(c);c.onclick=e=>{const v=e.target.dataset.c;if(!v)return;try{localStorage.setItem('consent',v)}catch(x){}if(v==='yes')loadAnalytics();c.remove()}}
 /* privacy dialog */
-const pv=$('#privacy');$$('.privacy-link').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();pv.showModal()}));$('.x',pv).onclick=()=>pv.close();pv.addEventListener('click',e=>{if(e.target===pv)pv.close()});
+
 
 /* ---------- calculator with "printing" digits ---------- */
 const form=$('#calc');let shown=180;
