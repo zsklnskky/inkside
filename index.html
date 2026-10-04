@@ -918,6 +918,13 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
 }
 
 /* ---------- round 6 ---------- */
+.api-only{display:none}html.api .api-only{display:block}
+html.api .book .consent,html.api .book .ig-hint{display:none}
+.consent-box{margin-top:14px;font:13px/1.45 var(--f-mono);color:var(--dim);display:none;gap:10px;align-items:flex-start}
+html.api .consent-box{display:flex}
+.consent-box input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:#d4141c}
+.consent-box a{color:#fff;text-decoration:underline}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .hero-mob.logo-only img:not(.mob-logo){object-fit:cover;object-position:center 50%}
 @media (max-width:900px){
   dialog.lb[open]{flex-direction:column}
@@ -1301,6 +1308,9 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
     <fieldset><legend data-en="Name and idea">Имя и идея</legend>
       <label class="f"><span data-en="Your name">Ваше имя</span><input class="t" name="name" autocomplete="name" required></label>
       <label class="f"><span data-en="The idea in a few words">Идея в двух словах</span><textarea name="idea" required></textarea></label>
+      <label class="f api-only"><span data-en="Phone for contact">Телефон для связи</span><input class="t" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+375 29 123-45-67"></label>
+      <label class="consent-box api-only"><input type="checkbox" name="agree"><span data-en="I agree to the processing of my personal data under the <a href='privacy.html' target='_blank' rel='noopener'>Privacy Policy</a>">Согласен(на) на обработку персональных данных по <a href="privacy.html" target="_blank" rel="noopener">Политике</a></span></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     </fieldset>
     <p class="err" id="bookErr" role="alert"></p>
     <p class="ig-hint" data-en="Instagram Direct: the request text is copied automatically, just paste it into the chat.">Instagram Direct: текст заявки скопируется сам, просто вставьте его в чат.</p>
@@ -1320,7 +1330,7 @@ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 const desk=()=>innerWidth>900;
 const TG='https://t.me/+375445111912',IG='https://ig.me/m/inkside.minsk';
 /* ---------- analytics: paste IDs to enable (Meta Pixel / Yandex Metrika) ---------- */
-const CFG={metaPixel:'',ymCounter:''};
+const CFG={metaPixel:'',ymCounter:'',api:''}; // api: e.g. 'https://api.inkside.by' (server in Belarus)
 function loadAnalytics(){
 if(CFG.metaPixel){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.metaPixel);fbq('track','PageView')}
 if(CFG.ymCounter){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(CFG.ymCounter,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true})}
@@ -1329,6 +1339,7 @@ let consent=null;try{consent=localStorage.getItem('consent')}catch(e){}
 if((CFG.metaPixel||CFG.ymCounter)&&consent==='yes')loadAnalytics();
 function track(ev,params={},std=true){try{if(window.fbq)std?fbq('track',ev,params):fbq('trackCustom',ev,params);if(window.ym)ym(CFG.ymCounter,'reachGoal',ev,params)}catch(e){}}
 const UTM=new URLSearchParams(location.search);
+if(CFG.api)document.documentElement.classList.add('api');
 const utmTag=['utm_source','utm_campaign'].map(k=>UTM.get(k)).filter(Boolean).join(' / ');
 const STAR='<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
 
@@ -1430,7 +1441,7 @@ $$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
 /* ---------- booking: 3-step brief -> Telegram message ---------- */
 const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
 function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`0${i+1} / 03`;$$('.bk-bar i').forEach((b,k)=>b.classList.toggle('on',k<=i));$('#back').style.visibility=i?'visible':'hidden';
-  $('#next').textContent=i===2?(lang==='en'?'Send to Telegram →':'Отправить в Telegram →'):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
+  $('#next').textContent=i===2?(CFG.api?(lang==='en'?'Send request →':'Отправить заявку →'):(lang==='en'?'Send to Telegram →':'Отправить в Telegram →')):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
 $$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);bf.reset();show(0);book.showModal();track('InitiateCheckout',{content_name:'booking'})}));
 $('.x',bf).onclick=()=>book.close();
 book.addEventListener('click',e=>{if(e.target===book)book.close()});
@@ -1443,6 +1454,21 @@ bf.onsubmit=e=>{
   const need=lang==='en'?'Please pick an option':'Выберите вариант';
   if(step<2){if(!$('input:checked',sets[step])){$('#bookErr').textContent=need;return}show(step+1);return}
   if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
+  if(CFG.api){
+    const ph=bf.phone.value.trim();
+    if(ph&&!/^\+?[\d\s()\-]{7,20}$/.test(ph)){$('#bookErr').textContent=lang==='en'?'Check the phone number':'Проверьте номер телефона';return}
+    if(!bf.agree.checked){$('#bookErr').textContent=lang==='en'?'Please confirm consent':'Подтвердите согласие на обработку данных';return}
+    const z=$('input[name=zone]:checked',bf),sz=$('input[name=bsize]:checked',bf);
+    $('#next').disabled=true;
+    fetch(CFG.api+'/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:bf.name.value.trim(),phone:ph,idea:bf.idea.value.trim(),zone:z?z.value:'',size:sz?sz.value:'',
+      kind:bf.dataset.kind||'',source:bf.dataset.src||'site',utm:utmTag,lang,consent:true,website:bf.website.value})})
+    .then(r=>r.json()).then(r=>{if(!r.ok)throw r;track('Lead',{value:180,currency:'BYN'});book.close();
+      toast(lang==='en'?`Request #${r.id} sent. The artist will contact you soon.`:`Заявка #${r.id} отправлена. Мастер скоро свяжется с вами.`)})
+    .catch(()=>{send(bookMsg());book.close()})   // backend down: never lose the request
+    .finally(()=>{$('#next').disabled=false;delete bf.dataset.kind;delete bf.dataset.src});
+    return;
+  }
   send(bookMsg());track('Lead',{value:180,currency:'BYN'});
   book.close();
 };
@@ -1477,6 +1503,7 @@ function calc(){
 }
 form.onchange=()=>{calc();track('CalculatorUse',{},false)};
 form.onsubmit=e=>{e.preventDefault();const p=n=>form.querySelector(`[name=${n}]:checked`).nextElementSibling.textContent;
+  if(CFG.api){bf.reset();show(2);bf.idea.value=(lang==='en'?'Calculator: ':'Калькулятор: ')+`${p('size')}, ${p('kind')}, ${p('place')}, ${$('#sum').textContent}`;bf.dataset.kind=p('kind');bf.dataset.src='calc';book.showModal();return}
   track('Lead',{value:180,currency:'BYN'});
   send(lang==='en'?`Hi! I want a tattoo: size ${p('size')}, style ${p('kind')}, placement ${p('place')}. The calculator shows ${$('#sum').textContent}. Any free dates?`:`Здравствуйте! Хочу тату: размер ${p('size')}, стиль ${p('kind')}, место ${p('place')}. Калькулятор показал ${$('#sum').textContent}. Подскажите свободные даты?`)};
 
