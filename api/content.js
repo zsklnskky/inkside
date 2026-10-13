@@ -1,1 +1,1 @@
-window.SITE={};
+window.SITE={"works": []};
