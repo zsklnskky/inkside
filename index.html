@@ -471,7 +471,6 @@ h2.poster,.book legend{overflow-wrap:normal;word-break:normal;hyphens:none}
 .vidword{border-color:var(--red)}
 .polaroid{background:#111113;border:1px solid rgba(255,255,255,.14);rotate:0deg!important;border-radius:16px;padding:10px 10px 44px}
 .polaroid figcaption{font:12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.polaroid figcaption::before{content:"▶ ";color:var(--red)}
 .hero-photos .a{rotate:0deg}.hero-photos .b{left:2%}.hero-photos .c{right:0;bottom:0}
 
 /* buttons: solid red, hard, glitch on hover */
@@ -532,7 +531,6 @@ h2.poster,.book legend{overflow-wrap:normal;word-break:normal;hyphens:none}
 .pol::before{display:none}
 .pol:hover,.pol:focus-visible{transform:translateY(-6px);border-color:var(--red);box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px var(--red)}
 .pol figcaption span:first-child{font:12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:#fff}
-.pol figcaption span:first-child::before{content:"▶ ";color:var(--red)}
 .pol figcaption span:last-child{color:var(--mute)}
 dialog.lb img{border-color:#111113}
 .lb .ctl{background:var(--red);color:var(--on-acc);box-shadow:none}
@@ -927,7 +925,7 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
 .hero-photos .a.contain img{object-fit:contain;background:#0b0b0c}
 .frame::before{opacity:.32;background-size:contain;background-repeat:no-repeat}
 .bk-top{background:#060607;z-index:4}
-.tabs{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+.tabs{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent)}
 .flashsheet .hand,.st p,.fact>span{text-wrap:balance}
 @media (min-width:761px){.tabs{-webkit-mask-image:none;mask-image:none}}
 @media (max-width:760px){h2.poster{letter-spacing:.03em;line-height:.98;word-spacing:.08em}}
@@ -964,20 +962,42 @@ html.api .consent-box{display:flex}
 @media (max-height:720px){.book form{padding-top:92px}}
 .promo:not([hidden]){display:inline-block;margin:0 0 16px;padding:9px 18px;border-radius:16px;background:var(--red);color:var(--on-acc);font:700 13px/1.35 var(--f-poster);letter-spacing:.08em;text-transform:uppercase;max-width:100%}
 
-/* hero: liquid glass panel whose bottom edge drips like wet paint; headline sized by the panel, not the window */
+/* hero: liquid glass panel with moving water caustics; headline sized by the panel, not the window */
 .hero-sheet{container-type:inline-size;overflow:visible;background:linear-gradient(160deg,rgba(70,48,18,.42),rgba(14,11,8,.62) 55%,rgba(30,26,20,.45));border-color:rgba(255,210,150,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 40px rgba(232,163,58,.14),0 30px 90px rgba(0,0,0,.55),0 0 60px rgba(232,163,58,.18)}
 .hero h1{font-size:clamp(26px,10.4cqi,104px)!important}
 .hero-sheet .sheen{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,230,190,.12) 47%,rgba(255,245,225,.08) 52%,transparent 64%) 0 0/260% 100%;animation:sheen 9s ease-in-out infinite}
 @keyframes sheen{0%{background-position:120% 0}55%,100%{background-position:-60% 0}}
-.hero-sheet .paint{position:absolute;left:0;right:0;top:calc(100% - 1px);height:0;pointer-events:none;z-index:2}
-.hero-sheet .paint i{position:absolute;left:var(--x);top:0;width:var(--w);height:var(--h);translate:-50% 0;border-radius:0 0 calc(var(--w)/2) calc(var(--w)/2);background:linear-gradient(180deg,rgba(30,22,12,.9),rgba(140,92,24,.85));box-shadow:inset 2px 0 0 rgba(255,230,190,.25);animation:ooze var(--t) ease-in-out infinite alternate;transform-origin:top}
-.hero-sheet .paint i::before{content:"";position:absolute;top:-1px;left:calc(var(--w) * -.6);right:calc(var(--w) * -.6);height:calc(var(--w) * .7);background:radial-gradient(circle at 0 100%,transparent calc(var(--w) * .6),rgba(30,22,12,.9) calc(var(--w) * .6 + 1px)) left/50% 100% no-repeat,radial-gradient(circle at 100% 100%,transparent calc(var(--w) * .6),rgba(30,22,12,.9) calc(var(--w) * .6 + 1px)) right/50% 100% no-repeat}
-.hero-sheet .paint i::after{content:"";position:absolute;left:50%;bottom:calc(var(--w) * -.35);width:calc(var(--w) * 1.25);aspect-ratio:1;translate:-50% 0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f3c066,#b8761f 70%);box-shadow:0 0 18px rgba(232,163,58,.6)}
-@keyframes ooze{from{scale:1 .55}to{scale:1 1.08}}
-@media (prefers-reduced-motion:reduce){.hero-sheet .sheen,.hero-sheet .paint i{animation:none}}
+@media (prefers-reduced-motion:reduce){.hero-sheet .sheen{animation:none}}
+
+/* ---------- round 7: QA ---------- */
+/* hero panel as liquid glass: caustics ripple under the content, the .sheen glint sweeps, the rim glistens */
+@property --rim{syntax:"<angle>";inherits:false;initial-value:0deg}
+.hero-sheet .water{position:absolute;inset:0;border-radius:inherit;overflow:hidden;z-index:-1;pointer-events:none}
+.hero-sheet .water i{position:absolute;inset:-25%;opacity:.42;filter:url(#water);background:radial-gradient(28% 22% at 24% 30%,rgba(255,214,150,.55),transparent 70%),radial-gradient(22% 30% at 70% 62%,rgba(232,163,58,.5),transparent 70%),radial-gradient(18% 16% at 52% 20%,rgba(255,244,220,.45),transparent 70%),radial-gradient(26% 20% at 36% 82%,rgba(255,190,90,.4),transparent 70%);animation:caustic 22s ease-in-out infinite alternate;will-change:transform}
+.hero-sheet .water i::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 38% 42%,transparent 0 22px,rgba(255,226,170,.26) 25px,transparent 29px),repeating-radial-gradient(circle at 72% 30%,transparent 0 30px,rgba(255,200,120,.2) 33px,transparent 38px);mix-blend-mode:screen;animation:caustic 15s ease-in-out infinite alternate-reverse}
+.hero-sheet .water::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--rim),transparent 0deg,rgba(255,226,170,.9) 40deg,transparent 90deg,transparent 180deg,rgba(232,163,58,.8) 220deg,transparent 270deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rim 7s linear infinite}
+@keyframes caustic{0%{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(4%,-3%) rotate(8deg) scale(1.08)}100%{transform:translate(-4%,3%) rotate(-6deg) scale(1.03)}}
+@keyframes rim{to{--rim:360deg}}
+@media (max-width:700px){.hero-sheet .water i{filter:none;opacity:.34}.hero-sheet .water i::before{display:none}}
+@media (prefers-reduced-motion:reduce){.hero-sheet .water i{filter:none}.hero-sheet .water i::before{display:none}}
+/* works: collapsed wall is a full 3x2 on desktop */
+@media (min-width:901px){.wallgrid:not(.all):not(.filtered){grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* facts: dark glass so captions read over the mural; less air before the artists */
+.facts{background:rgba(10,10,11,.62);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid rgba(255,255,255,.14)}
+.facts .fact:last-child{border-right:0!important}
+@media (max-width:1100px) and (min-width:561px){.facts .fact:nth-child(2){border-right:0!important}}
+#facts{padding-bottom:clamp(20px,3vw,40px)}
+#masters{padding-top:clamp(60px,6vw,100px)}
+/* booking tiles: equal height in a row */
+.tiles{align-items:stretch}.tiles label{display:grid}
+.micro{text-wrap:balance}
+@media (max-width:700px){.frame .healed{scale:.6;transform-origin:top right}}
+/* address on one line in both languages: sized by its card */
+.addr{container-type:inline-size}.addr .big{font-size:min(7.2cqi,58px)!important;overflow-wrap:normal}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="water" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".011 .017" numOctaves="2" seed="7"><animate attributeName="baseFrequency" dur="16s" values=".011 .017;.016 .012;.011 .017" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="70" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
 <a data-k="page.1" class="skip" href="#main" data-en="Skip to content">К содержанию</a>
 <div class="ink-wipe" aria-hidden="true"><img data-k="page.2" src="img/logo.webp" alt="" width="900" height="624"></div>
@@ -1040,7 +1060,7 @@ html.api .consent-box{display:flex}
 <main id="main">
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-sheet sheet"><span class="sheen" aria-hidden="true"></span><span class="paint" aria-hidden="true"><i style="--x:9%;--w:18px;--h:46px;--t:9s"></i><i style="--x:23%;--w:26px;--h:88px;--t:12s"></i><i style="--x:41%;--w:14px;--h:34px;--t:8s"></i><i style="--x:58%;--w:30px;--h:110px;--t:14s"></i><i style="--x:74%;--w:16px;--h:58px;--t:10s"></i><i style="--x:88%;--w:22px;--h:76px;--t:13s"></i></span>
+    <div class="hero-sheet sheet"><span class="sheen" aria-hidden="true"></span><span class="water" aria-hidden="true"><i></i></span>
       <script>var Q=new URLSearchParams(location.search).get('s'),M={mini:'w15',sleeve:'w02',cover:'w19'},MOB=innerWidth<=900;window.__heroImg=function(i,def,mob){if(mob===MOB)i.src="img/"+((M[Q])||def)+".webp"}</script>
       <figure class="hero-mob" aria-hidden="true"><script>if(!Q||!M[Q])document.currentScript.parentElement.classList.add("logo-only")</script><img data-k="top.1" class="mob-logo" src="img/logo.webp" alt="" width="900" height="624"><img data-k="top.2" onerror="this.remove()" data-hero="o3316" data-mob="1" alt="" width="780" height="1040" fetchpriority="high"><script>__heroImg(document.currentScript.previousElementSibling,"o3316",true)</script></figure>
       <div class="chromelogo"><img data-k="top.3" src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
@@ -1054,9 +1074,9 @@ html.api .consent-box{display:flex}
       <p class="lead" data-seg="lead" data-k="lead" data-en="Two artists, 8+ years of experience. We discuss your idea for free and name the price before the session.">Два мастера, 8+ лет опыта. Бесплатно обсудим идею и назовём цену до сеанса.</p>
       <div class="btns">
         <button data-k="top.8" class="btn magnet" data-book data-en="Get my price">Узнать цену моей тату</button>
-        <a data-k="top.9" class="link mark" href="#works" data-ink data-en="See works ↓">Смотреть работы ↓</a>
+        <a data-k="top.9" class="link mark" href="#works" data-ink data-en="See works">Смотреть работы</a>
       </div>
-      <p data-k="top.10" class="micro" data-en="3 quick questions. No obligation.">3 коротких вопроса. Ни к чему не обязывает.</p>
+      <p data-k="top.10" class="micro" data-en="3 quick questions. No&nbsp;obligation.">3 коротких вопроса. Ни к&nbsp;чему не&nbsp;обязывает.</p>
     </div>
     <div class="hero-photos" aria-hidden="true">
       <figure class="polaroid b"><img data-k="top.11" loading="lazy" data-hero="w04" alt="" width="520" height="560"><script>(function(i){if(!MOB)i.src="img/"+("w04")+".webp"})(document.currentScript.previousElementSibling)</script><figcaption data-en="colour">цвет</figcaption></figure>
@@ -1144,7 +1164,7 @@ html.api .consent-box{display:flex}
     <div class="head"><h2 data-k="prices.1" class="poster split" data-en="Prices <span class='hand h-note'>no surprises</span>">Цены <span class="hand h-note">без сюрпризов</span></h2></div>
     <div class="prices">
       <div class="tracklist sheet">
-        <div class="cass"><b data-k="prices.2">INKSIDE</b><span data-k="prices.3" data-en="SIDE A · PRICES">Прайс</span></div>
+        <div class="cass"><b data-k="prices.2">INKSIDE</b><span data-k="prices.3" data-en="Prices">Прайс</span></div>
         <div class="tr"><i data-k="prices.4">01</i><span data-k="prices.5" data-en="Minimum, up to 1 hour">Минимум, до&nbsp;1&nbsp;часа</span><b data-k="p_min">180 BYN</b></div>
         <div class="tr"><i data-k="prices.6">02</i><span data-k="prices.7" data-en="Each next hour">Каждый следующий час</span><b data-k="p_hour">150 BYN</b></div>
         <div class="tr"><i data-k="prices.8">03</i><span data-k="prices.9" data-en="Custom sketch">Эскиз под вас</span><b data-k="p_sketch" data-en="from 40 BYN">от 40 BYN</b></div>
@@ -1204,7 +1224,7 @@ html.api .consent-box{display:flex}
 <section id="facts" style="padding-top:0">
   <div class="wrap facts">
     <div class="fact"><b data-k="facts.1" data-count="8">8+</b><span data-k="facts.2" data-en="years behind the machine">лет за машинкой</span></div>
-    <div class="fact"><b data-k="facts.3">№<span data-count="1">1</span></b><span data-k="facts.4" data-en="sterility and safety come first">стерильность и безопасность на первом месте</span><span class="spark" style="--s:20px"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
+    <div class="fact"><b data-k="facts.3">№1</b><span data-k="facts.4" data-en="sterility and safety come first">стерильность и безопасность на первом месте</span><span class="spark" style="--s:20px"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
     <div class="fact"><b data-k="facts.5" data-count="2">2</b><span data-k="facts.6" data-en="days for a full leg, four hands">дня на ногу целиком в&nbsp;четыре&nbsp;руки</span></div>
     <div class="fact"><b data-k="facts.7">0 BYN</b><span data-k="facts.8" data-en="for consultation and idea">за консультацию и подбор идеи</span></div>
   </div>
@@ -1313,7 +1333,7 @@ html.api .consent-box{display:flex}
 <section id="contact">
   <div class="wrap contact">
     <div class="addr sheet">
-      <p data-k="contact.1" class="big" data-en="Makayonka&nbsp;lane&nbsp;4">пер. Макаёнка&nbsp;4</p>
+      <p data-k="contact.1" class="big" data-en="Makayonka&nbsp;lane&nbsp;4">пер.&nbsp;Макаёнка&nbsp;4</p>
       <span data-k="contact.2" class="hand" style="font-size:30px;display:block;margin-top:10px" data-en="room 64, come inside ✦">пом. 64, заходите&nbsp;внутрь&nbsp;✦</span>
       <dl>
         <div><dt data-k="contact.3" data-en="phone">телефон</dt><dd><a data-k="contact.4" class="mark" href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
@@ -1333,7 +1353,7 @@ html.api .consent-box{display:flex}
 
 <footer>
   <div class="wrap">
-    <div><span data-k="footer.1" data-en="© 2026 Ink Tattoo LLC · UNP 193954480">© 2026 ООО «Инк Тату», УНП 193954480</span><br><span data-k="footer.2" data-en="Registered by Minsk City Executive Committee 16.01.2026 · household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026 · реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
+    <div><span data-k="footer.1" data-en="© 2026 Ink Tattoo LLC, UNP 193954480">© 2026 ООО «Инк Тату», УНП 193954480</span><br><span data-k="footer.2" data-en="Registered by Minsk City Executive Committee 16.01.2026, household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026, реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
     <div><span data-k="footer.3" data-en="220114, Minsk, Makayonka lane 4, room 64">220114, г. Минск, пер. Макаёнка 4, пом. 64</span><br><a data-k="footer.4" href="privacy.html" class="privacy-link mark" data-en="Privacy policy">Политика конфиденциальности</a></div>
   </div>
 </footer>
@@ -1357,7 +1377,7 @@ html.api .consent-box{display:flex}
     <p class="err" id="bookErr" role="alert"></p>
     <p class="ig-hint" data-en="Instagram Direct: the request text is copied automatically, just paste it into the chat.">Instagram Direct: текст заявки скопируется сам, просто вставьте его в чат.</p>
     <p class="consent" data-en="By sending you agree to the processing of your name and message to reply to you. <a href='privacy.html' target='_blank' rel='noopener' class='privacy-link'>Privacy</a>">Отправляя, вы соглашаетесь на обработку имени и сообщения, чтобы мы ответили. <a href="privacy.html" target="_blank" rel="noopener" class="privacy-link">Политика конфиденциальности</a></p>
-    <div class="acts"><button class="link" type="button" id="back" data-en="← Back">← Назад</button><span class="acts-r"><button class="btn dark" type="button" id="viaIg" data-en="Instagram Direct">Instagram Direct</button><button class="btn" type="submit" id="next">Дальше</button></span></div>
+    <div class="acts"><button class="link" type="button" id="back" data-en="Back">Назад</button><span class="acts-r"><button class="btn dark" type="button" id="viaIg" data-en="Instagram Direct">Instagram Direct</button><button class="btn" type="submit" id="next">Дальше</button></span></div>
   </form>
 </dialog>
 
@@ -1422,7 +1442,7 @@ const seg=SEG[UTM.get('s')];
 if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.dataset.seg;if(t[k])el.textContent=t[k]});
   const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;
   if(t.cap)$('.hero-photos .a figcaption').textContent=t.cap;if(t.img==='w19'){$('.hero-photos .a').classList.add('contain');$('.hero-mob').classList.add('cover')}if(t.c&&!MOB)$('.hero-photos .c img').src=`img/${t.c}.webp`;
-  if(t.href){const l=$('.hero .btns .link');l.setAttribute('href',t.href);l.textContent=lang==='en'?'See cover-ups ↓':'Смотреть перекрытия ↓'}
+  if(t.href){const l=$('.hero .btns .link');l.setAttribute('href',t.href);l.textContent=lang==='en'?'See cover-ups':'Смотреть перекрытия'}
   if(t.tg&&cta){const mc=$('.hero .micro');if(mc)mc.style.display='none';const n=cta.cloneNode(true);n.removeAttribute('data-book');cta.replaceWith(n);n.addEventListener('click',()=>{track('Lead',{value:180,currency:'BYN',content_name:'cover'});track('Contact',{method:'telegram'});send(null,null,'cover')})}}
 $$('[data-en-alt]').forEach(el=>{if(lang==='en')el.alt=el.dataset.enAlt});
 if(lang==='en'){
@@ -1503,9 +1523,13 @@ $$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
 
 /* ---------- booking: 3-step brief -> Telegram message ---------- */
 const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
+if(!CFG.api)$('legend',sets[2]).textContent=lang==='en'?'One step left':'Остался один шаг';
 function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`0${i+1} / 03`;$$('.bk-bar i').forEach((b,k)=>b.classList.toggle('on',k<=i));$('#back').style.visibility=i?'visible':'hidden';
   $('#next').textContent=i===2?(CFG.api?(lang==='en'?'Send request':'Отправить заявку'):(lang==='en'?'Continue in Telegram':'Продолжить в Telegram')):(lang==='en'?'Next':'Дальше');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
-$$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);bf.reset();show(0);book.showModal();track('InitiateCheckout',{content_name:'booking'})}));
+// no server: every booking button opens the bot right away (synchronously, so popup blockers allow it)
+$$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);track('InitiateCheckout',{content_name:'booking'});
+  if(!CFG.api){track('Lead',{value:180,currency:'BYN'});send(null,null,'site');return}
+  bf.reset();show(0);book.showModal()}));
 $('.x',bf).onclick=()=>book.close();
 book.addEventListener('click',e=>{if(e.target===book)book.close()});
 $('#back').onclick=()=>show(Math.max(0,step-1));
@@ -1586,7 +1610,7 @@ function setMore(open){grid.classList.toggle('all',open);moreBtn.setAttribute('a
   const n=$$('.pol',grid).length;moreBtn.textContent=open?(lang==='en'?'Show less':'Свернуть'):(lang==='en'?`All works (${n})`:`Все работы (${n})`);
   moreBtn.hidden=n<=6||grid.classList.contains('filtered')}
 moreBtn.onclick=()=>{const open=!grid.classList.contains('all');setMore(open);
-  if(open&&window.gsap&&!reduce)gsap.from($$('.pol.extra',grid),{opacity:0,y:30,duration:.5,stagger:.04,ease:'power2.out'});
+  if(open&&window.gsap&&!reduce){const ex=$$('.pol.extra',grid);gsap.killTweensOf(ex);gsap.fromTo(ex,{opacity:0,y:30},{opacity:1,y:0,scale:1,rotate:0,duration:.5,stagger:.04,ease:'power2.out',clearProps:'opacity,transform'})}
   if(!open)(lenis?lenis.scrollTo('#works',{offset:-20}):$('#works').scrollIntoView());
   window.ScrollTrigger&&ScrollTrigger.refresh()};
 setMore(false);
@@ -1679,10 +1703,10 @@ if(fine&&!reduce){
       const pulse=(t%2)/2;
       ctx.strokeStyle=`rgba(246,197,110,${1-pulse})`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(mx,my,6+pulse*26,0,7);ctx.stroke();
       ctx.fillStyle='#fff';ctx.shadowColor='#e8a33a';ctx.shadowBlur=18;ctx.beginPath();ctx.arc(mx,my,5.5,0,7);ctx.fill();ctx.shadowBlur=0;
-      ctx.font='12px "PT Mono", monospace';const L=mx+14+ctx.measureText(W>520?'INKSIDE · Makayonka 4':'МИНСК').width>W-12;ctx.textAlign=L?'right':'left';const lx=L?mx-14:mx+14;
-      {ctx.font='12px "PT Mono", monospace';const tw=Math.max(ctx.measureText(W>520?'INKSIDE · Makayonka 4':'МИНСК').width,60)+16;ctx.fillStyle='rgba(8,8,10,.78)';ctx.beginPath();ctx.roundRect(L?lx-tw+8:lx-8,my-22,tw,W>520?42:26,8);ctx.fill()}
+      ctx.font='12px "PT Mono", monospace';const L=mx+14+ctx.measureText(W>520?'INKSIDE, Makayonka 4':'МИНСК').width>W-12;ctx.textAlign=L?'right':'left';const lx=L?mx-14:mx+14;
+      {ctx.font='12px "PT Mono", monospace';const tw=Math.max(ctx.measureText(W>520?'INKSIDE, Makayonka 4':'МИНСК').width,60)+16;ctx.fillStyle='rgba(8,8,10,.78)';ctx.beginPath();ctx.roundRect(L?lx-tw+8:lx-8,my-22,tw,W>520?42:26,8);ctx.fill()}
       ctx.font='15px "Dela Gothic One", sans-serif';ctx.fillStyle='#fff';ctx.fillText(lang==='en'?'MINSK':'МИНСК',lx,my-4);
-      ctx.font='12px "PT Mono", monospace';ctx.fillStyle='rgba(233,227,214,.75)';if(W>520)ctx.fillText(lang==='en'?'INKSIDE · Makayonka 4':'INKSIDE · Макаёнка 4',lx,my+13);ctx.textAlign='left';
+      ctx.font='12px "PT Mono", monospace';ctx.fillStyle='rgba(233,227,214,.75)';if(W>520)ctx.fillText(lang==='en'?'INKSIDE, Makayonka 4':'INKSIDE, Макаёнка 4',lx,my+13);ctx.textAlign='left';
     }
   }
   let raf=0,last=0;
@@ -1789,11 +1813,11 @@ if(window.gsap&&!reduce){
   }
 
   // polaroids slap onto the wall
-  ScrollTrigger.batch('.pol',{start:'top 92%',once:true,onEnter:b=>gsap.from(b,{y:-80,scale:innerWidth>900?1.18:1,rotate:()=>innerWidth>900?gsap.utils.random(-14,14):0,opacity:0,duration:.8,stagger:.08,ease:'back.out(1.6)'})});
+  ScrollTrigger.batch('.pol',{start:'top 92%',once:true,onEnter:b=>{gsap.killTweensOf(b);gsap.fromTo(b,{y:-80,scale:innerWidth>900?1.06:1,rotate:()=>innerWidth>900?gsap.utils.random(-6,6):0,opacity:0},{y:0,scale:1,rotate:0,opacity:1,duration:.8,stagger:.08,ease:'back.out(1.6)',clearProps:'opacity,transform'})}});
 
   // facts count up + flash
   // plain-object tweens can't own a ScrollTrigger (it reverts styles), so start them from onEnter
-  $$('[data-count]').forEach(el=>{const to=+el.dataset.count,suf=el.textContent.replace(/[0-9]/g,'');const o={v:0};el.textContent='0'+suf;
+  $$('[data-count]').forEach(el=>{const to=parseInt(el.textContent)||+el.dataset.count,suf=el.textContent.replace(/[0-9]/g,'');const o={v:0};
     ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>gsap.to(o,{v:to,duration:1.4,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)+suf,onComplete:()=>{const r=el.getBoundingClientRect();burst(r.right,r.top+20,8)}})})});
 
   // masters: sheets drop in, photo polaroid lands
@@ -1826,8 +1850,8 @@ if(window.gsap&&!reduce){
   wipe.style.display='none';calc();
 }
 }
-// load the display faces explicitly: SplitText must measure real glyphs
-(document.fonts?Promise.all(['400 1em "Dela Gothic One"','400 1em "Ruslan Display"','400 1em Onest','400 1em "PT Mono"','400 1em "Rubik Glitch"','600 1em Onest','700 1em Onest'].map(f=>document.fonts.load(f,"АЁЯаёя Az09"))).then(()=>document.fonts.ready):Promise.resolve()).catch(()=>{}).then(()=>new Promise(r=>{const t0=performance.now();(function c(){document.fonts.status!=='loading'||performance.now()-t0>3000?r():setTimeout(c,40)})()})).then(fx);
+// load the display faces explicitly (incl. the symbol subset with ●): SplitText must measure real glyphs
+(document.fonts?Promise.all(['400 1em "Dela Gothic One"','400 1em "Ruslan Display"','400 1em Onest','400 1em "PT Mono"','400 1em "Rubik Glitch"','600 1em Onest','700 1em Onest'].map(f=>document.fonts.load(f,"АЁЯаёя Az09●=^"))).then(()=>document.fonts.ready):Promise.resolve()).catch(()=>{}).then(()=>new Promise(r=>{const t0=performance.now();(function c(){document.fonts.status!=='loading'||performance.now()-t0>3000?r():setTimeout(c,40)})()})).then(fx);
 </script>
 </body>
 </html>
