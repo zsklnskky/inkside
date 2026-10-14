@@ -17,6 +17,7 @@
 <link rel="alternate" hreflang="ru" href="https://inkside.by/">
 <link rel="alternate" hreflang="en" href="https://inkside.by/?lang=en">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&family=Rubik+Spray+Paint&text=INKSIDEMNBYX%2B&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Ruslan+Display&family=Rubik+Glitch&family=Onest:wght@400;500;600;700&family=PT+Mono&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TattooParlor","name":"INKSIDE","url":"https://inkside.by/","image":"https://inkside.by/img/og.jpg","telephone":"+375445111912",
@@ -628,8 +629,18 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
 
 /* ===================== v4: review fixes (marketer + designer + QA) ===================== */
 /* background: animated violet and blue light orbs */
-.wall{background:linear-gradient(180deg,rgba(8,6,18,.5),rgba(8,6,18,.74)),url(img/mural.jpg) center/cover,linear-gradient(135deg,#3a2a99,#123a66);background-blend-mode:normal,luminosity,normal;filter:saturate(1.15);overflow:hidden}
-@media (max-width:900px){.wall{background-image:linear-gradient(180deg,rgba(8,6,18,.5),rgba(8,6,18,.74)),url(img/mural_tall.jpg),linear-gradient(135deg,#3a2a99,#123a66)}}
+.wall{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .48 0 0 0 0 .6 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E"),radial-gradient(120% 80% at 50% 0%,#16122e 0%,#0a0912 60%,#07060c 100%);filter:none;overflow:hidden}
+.wall .graf{position:absolute;inset:0;width:100%;height:100%;opacity:.62}
+.graf .draw{stroke-dasharray:2600;stroke-dashoffset:2600;animation:sprayDraw 24s ease-in-out infinite;animation-delay:var(--d)}
+.graf .piece{animation-delay:var(--d)}.graf .piece .draw,.graf .piece .fillin{animation-delay:inherit}
+.graf .fillin{opacity:0;animation:sprayFill 24s ease-in-out infinite;animation-delay:inherit}
+.graf .drip{stroke-dasharray:220;stroke-dashoffset:220;animation:drip 24s ease-in infinite;animation-delay:calc(var(--d) + 4s)}
+.graf .splat circle{animation:twinkle 5s ease-in-out infinite alternate}.graf .splat circle:nth-child(3n){animation-delay:-2s}.graf .splat circle:nth-child(4n){animation-delay:-3.5s}
+@keyframes sprayDraw{0%{stroke-dashoffset:2600}28%,80%{stroke-dashoffset:0;opacity:1}95%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes sprayFill{0%,18%{opacity:0}34%,80%{opacity:.85}95%,100%{opacity:0}}
+@keyframes drip{0%,10%{stroke-dashoffset:220}60%,85%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes twinkle{from{opacity:.25}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.graf *{animation:none!important;stroke-dashoffset:0!important;opacity:.8}}
 .wall::before,.wall::after,.wall i{content:"";position:absolute;border-radius:50%;pointer-events:none;will-change:transform;mix-blend-mode:screen}
 .wall::before{width:80vmax;height:80vmax;left:-25vmax;top:-30vmax;background:radial-gradient(circle,rgba(124,108,255,.7) 0%,rgba(124,108,255,.22) 35%,transparent 65%);animation:orbA 22s ease-in-out infinite alternate}
 .wall::after{width:80vmax;height:80vmax;right:-30vmax;bottom:-35vmax;background:radial-gradient(circle,rgba(49,196,255,.55) 0%,rgba(49,196,255,.16) 38%,transparent 66%);animation:orbB 27s ease-in-out infinite alternate}
@@ -947,13 +958,52 @@ html.api .consent-box{display:flex}
 }
 @media (max-height:720px){.book form{padding-top:92px}}
 .promo:not([hidden]){display:inline-block;margin:0 0 16px;padding:9px 18px;border-radius:16px;background:var(--red);color:#fff;font:700 13px/1.35 var(--f-poster);letter-spacing:.08em;text-transform:uppercase;max-width:100%}
+
+/* hero: liquid glass panel whose bottom edge drips like wet paint; headline sized by the panel, not the window */
+.hero-sheet{container-type:inline-size;overflow:visible;background:linear-gradient(160deg,rgba(40,32,96,.42),rgba(10,10,18,.62) 55%,rgba(18,40,70,.45));border-color:rgba(170,160,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 40px rgba(124,108,255,.14),0 30px 90px rgba(0,0,0,.55),0 0 60px rgba(124,108,255,.18)}
+.hero h1{font-size:clamp(26px,10.4cqi,104px)!important}
+.hero-sheet .sheen{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(200,190,255,.12) 47%,rgba(150,220,255,.08) 52%,transparent 64%) 0 0/260% 100%;animation:sheen 9s ease-in-out infinite}
+@keyframes sheen{0%{background-position:120% 0}55%,100%{background-position:-60% 0}}
+.hero-sheet .paint{position:absolute;left:0;right:0;top:calc(100% - 1px);height:0;pointer-events:none;z-index:2}
+.hero-sheet .paint i{position:absolute;left:var(--x);top:0;width:var(--w);height:var(--h);translate:-50% 0;border-radius:0 0 calc(var(--w)/2) calc(var(--w)/2);background:linear-gradient(180deg,rgba(26,22,58,.9),rgba(70,56,170,.85));box-shadow:inset 2px 0 0 rgba(200,190,255,.25);animation:ooze var(--t) ease-in-out infinite alternate;transform-origin:top}
+.hero-sheet .paint i::before{content:"";position:absolute;top:-1px;left:calc(var(--w) * -.6);right:calc(var(--w) * -.6);height:calc(var(--w) * .7);background:radial-gradient(circle at 0 100%,transparent calc(var(--w) * .6),rgba(26,22,58,.9) calc(var(--w) * .6 + 1px)) left/50% 100% no-repeat,radial-gradient(circle at 100% 100%,transparent calc(var(--w) * .6),rgba(26,22,58,.9) calc(var(--w) * .6 + 1px)) right/50% 100% no-repeat}
+.hero-sheet .paint i::after{content:"";position:absolute;left:50%;bottom:calc(var(--w) * -.35);width:calc(var(--w) * 1.25);aspect-ratio:1;translate:-50% 0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a99dff,#5a48d8 70%);box-shadow:0 0 18px rgba(124,108,255,.6)}
+@keyframes ooze{from{scale:1 .55}to{scale:1 1.08}}
+@media (prefers-reduced-motion:reduce){.hero-sheet .sheen,.hero-sheet .paint i{animation:none}}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
 <a data-k="page.1" class="skip" href="#main" data-en="Skip to content">К содержанию</a>
 <div class="ink-wipe" aria-hidden="true"><img data-k="page.2" src="img/logo.webp" alt="" width="900" height="624"></div>
-<div class="wall" aria-hidden="true"><i></i><i></i></div>
+<div class="wall" aria-hidden="true"><svg class="graf" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="gV" x1="0" x2="1"><stop offset="0" stop-color="#7c6cff"/><stop offset=".55" stop-color="#b48cff"/><stop offset="1" stop-color="#4fd1ff"/></linearGradient>
+    <linearGradient id="gC" x1="0" x2="1"><stop offset="0" stop-color="#4fd1ff"/><stop offset="1" stop-color="#8b7dff"/></linearGradient>
+    <filter id="spray" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g filter="url(#spray)">
+    <g class="piece" style="--d:0s" transform="rotate(-9 600 400)">
+      <text class="fillin" x="600" y="470" text-anchor="middle" font-family="Rubik Wet Paint" font-size="250" fill="url(#gV)" filter="url(#glow)">INKSIDE</text>
+      <text class="draw" x="600" y="470" text-anchor="middle" font-family="Rubik Wet Paint" font-size="250" fill="none" stroke="#e9e4ff" stroke-width="3">INKSIDE</text>
+    </g>
+    <g class="piece" style="--d:6s" transform="rotate(6 880 860)">
+      <text class="fillin" x="880" y="900" text-anchor="middle" font-family="Rubik Spray Paint" font-size="170" fill="url(#gC)" filter="url(#glow)">MINSK</text>
+      <text class="draw" x="880" y="900" text-anchor="middle" font-family="Rubik Spray Paint" font-size="170" fill="none" stroke="#dff6ff" stroke-width="2.5">MINSK</text>
+    </g>
+    <g class="piece" style="--d:3s" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path class="draw" d="M120 900 l40-90 l40 60 l40-80 l40 80 l40-60 l40 90 z" stroke="#d27bff" stroke-width="7"/>
+      <path class="draw" d="M980 170 l22 52 l56 4 l-44 34 l16 54 l-50-30 l-50 30 l16-54 l-44-34 l56-4 z" stroke="#4fd1ff" stroke-width="6"/>
+      <path class="draw" d="M90 160 q120-70 240 0 t240 0" stroke="#8b7dff" stroke-width="8"/>
+      <path class="draw" d="M1060 600 l70 0 m-28-28 l28 28 l-28 28" stroke="#e9e4ff" stroke-width="7"/>
+      <circle class="draw" cx="420" cy="1040" r="46" stroke="#4fd1ff" stroke-width="6"/>
+      <path class="draw" d="M396 1016 l48 48 m0-48 l-48 48" stroke="#4fd1ff" stroke-width="6"/>
+    </g>
+    <g class="drips"><line class="drip" style="--d:0.0s" x1="210" y1="505" x2="210" y2="625" stroke="#8b7dff" stroke-width="7" stroke-linecap="round"/><line class="drip" style="--d:0.9s" x1="395" y1="490" x2="395" y2="680" stroke="#8b7dff" stroke-width="9" stroke-linecap="round"/><line class="drip" style="--d:1.8s" x1="610" y1="470" x2="610" y2="560" stroke="#a99dff" stroke-width="6" stroke-linecap="round"/><line class="drip" style="--d:2.7s" x1="820" y1="445" x2="820" y2="595" stroke="#8b7dff" stroke-width="8" stroke-linecap="round"/><line class="drip" style="--d:3.6s" x1="700" y1="905" x2="700" y2="1015" stroke="#4fd1ff" stroke-width="6" stroke-linecap="round"/><line class="drip" style="--d:4.5s" x1="905" y1="915" x2="905" y2="1085" stroke="#4fd1ff" stroke-width="8" stroke-linecap="round"/><line class="drip" style="--d:5.4s" x1="1090" y1="895" x2="1090" y2="975" stroke="#4fd1ff" stroke-width="5" stroke-linecap="round"/></g>
+    <g class="splat"><circle cx="215" cy="364" r="1.5" fill="#8b7dff"/><circle cx="321" cy="211" r="1.5" fill="#8b7dff"/><circle cx="171" cy="370" r="1.5" fill="#8b7dff"/><circle cx="304" cy="318" r="3" fill="#8b7dff"/><circle cx="356" cy="332" r="4" fill="#8b7dff"/><circle cx="308" cy="333" r="2" fill="#8b7dff"/><circle cx="235" cy="281" r="4" fill="#8b7dff"/><circle cx="243" cy="309" r="2" fill="#8b7dff"/><circle cx="320" cy="313" r="2" fill="#8b7dff"/><circle cx="185" cy="286" r="4" fill="#8b7dff"/><circle cx="249" cy="320" r="4" fill="#8b7dff"/><circle cx="197" cy="279" r="2" fill="#8b7dff"/><circle cx="231" cy="321" r="1.5" fill="#8b7dff"/><circle cx="251" cy="294" r="3" fill="#8b7dff"/><circle cx="220" cy="241" r="4" fill="#8b7dff"/><circle cx="301" cy="285" r="2.5" fill="#8b7dff"/><circle cx="244" cy="334" r="2" fill="#8b7dff"/><circle cx="416" cy="362" r="2.5" fill="#8b7dff"/><circle cx="124" cy="285" r="2.5" fill="#8b7dff"/><circle cx="154" cy="239" r="1.5" fill="#8b7dff"/><circle cx="390" cy="383" r="2" fill="#8b7dff"/><circle cx="351" cy="272" r="3" fill="#8b7dff"/><circle cx="357" cy="317" r="4" fill="#8b7dff"/><circle cx="303" cy="179" r="2.5" fill="#8b7dff"/><circle cx="216" cy="349" r="3" fill="#8b7dff"/><circle cx="363" cy="333" r="1.5" fill="#8b7dff"/><circle cx="424" cy="258" r="1.5" fill="#8b7dff"/><circle cx="257" cy="280" r="2.5" fill="#8b7dff"/><circle cx="126" cy="176" r="2.5" fill="#8b7dff"/><circle cx="258" cy="293" r="6" fill="#8b7dff"/><circle cx="200" cy="360" r="4" fill="#8b7dff"/><circle cx="290" cy="319" r="1.5" fill="#8b7dff"/><circle cx="269" cy="331" r="3" fill="#8b7dff"/><circle cx="112" cy="385" r="3" fill="#8b7dff"/><circle cx="386" cy="349" r="2" fill="#8b7dff"/><circle cx="280" cy="270" r="4" fill="#8b7dff"/><circle cx="243" cy="367" r="3" fill="#8b7dff"/><circle cx="315" cy="289" r="2" fill="#8b7dff"/><circle cx="349" cy="336" r="1.5" fill="#8b7dff"/><circle cx="117" cy="309" r="4" fill="#8b7dff"/><circle cx="935" cy="888" r="4" fill="#4fd1ff"/><circle cx="889" cy="911" r="4" fill="#4fd1ff"/><circle cx="866" cy="978" r="4" fill="#4fd1ff"/><circle cx="843" cy="791" r="6" fill="#4fd1ff"/><circle cx="1076" cy="916" r="6" fill="#4fd1ff"/><circle cx="963" cy="804" r="3" fill="#4fd1ff"/><circle cx="850" cy="921" r="3" fill="#4fd1ff"/><circle cx="1002" cy="901" r="1.5" fill="#4fd1ff"/><circle cx="979" cy="877" r="4" fill="#4fd1ff"/><circle cx="948" cy="884" r="1.5" fill="#4fd1ff"/><circle cx="691" cy="806" r="4" fill="#4fd1ff"/><circle cx="990" cy="887" r="2" fill="#4fd1ff"/><circle cx="892" cy="857" r="2.5" fill="#4fd1ff"/><circle cx="876" cy="852" r="3" fill="#4fd1ff"/><circle cx="1075" cy="979" r="3" fill="#4fd1ff"/><circle cx="650" cy="904" r="2.5" fill="#4fd1ff"/><circle cx="999" cy="909" r="2.5" fill="#4fd1ff"/><circle cx="870" cy="886" r="6" fill="#4fd1ff"/><circle cx="1071" cy="1039" r="4" fill="#4fd1ff"/><circle cx="905" cy="901" r="6" fill="#4fd1ff"/><circle cx="802" cy="855" r="6" fill="#4fd1ff"/><circle cx="945" cy="868" r="6" fill="#4fd1ff"/><circle cx="1065" cy="742" r="2.5" fill="#4fd1ff"/><circle cx="934" cy="861" r="4" fill="#4fd1ff"/><circle cx="779" cy="852" r="4" fill="#4fd1ff"/><circle cx="931" cy="878" r="2" fill="#4fd1ff"/><circle cx="956" cy="831" r="2" fill="#4fd1ff"/><circle cx="981" cy="989" r="3" fill="#4fd1ff"/><circle cx="914" cy="894" r="2.5" fill="#4fd1ff"/><circle cx="925" cy="881" r="2" fill="#4fd1ff"/><circle cx="889" cy="804" r="6" fill="#4fd1ff"/><circle cx="962" cy="878" r="2.5" fill="#4fd1ff"/><circle cx="1017" cy="914" r="2.5" fill="#4fd1ff"/><circle cx="951" cy="930" r="4" fill="#4fd1ff"/><circle cx="935" cy="880" r="6" fill="#4fd1ff"/><circle cx="928" cy="883" r="6" fill="#4fd1ff"/><circle cx="1041" cy="926" r="6" fill="#4fd1ff"/><circle cx="930" cy="737" r="3" fill="#4fd1ff"/><circle cx="1040" cy="816" r="1.5" fill="#4fd1ff"/><circle cx="950" cy="838" r="6" fill="#4fd1ff"/><circle cx="193" cy="838" r="6" fill="#d27bff"/><circle cx="798" cy="835" r="2" fill="#d27bff"/><circle cx="841" cy="650" r="6" fill="#d27bff"/><circle cx="695" cy="707" r="4" fill="#d27bff"/><circle cx="732" cy="609" r="4" fill="#d27bff"/><circle cx="408" cy="578" r="1.5" fill="#d27bff"/><circle cx="969" cy="643" r="4" fill="#d27bff"/><circle cx="600" cy="572" r="2" fill="#d27bff"/><circle cx="292" cy="715" r="2" fill="#d27bff"/><circle cx="945" cy="663" r="2" fill="#d27bff"/><circle cx="595" cy="634" r="2.5" fill="#d27bff"/><circle cx="268" cy="554" r="2" fill="#d27bff"/><circle cx="633" cy="629" r="6" fill="#d27bff"/><circle cx="120" cy="426" r="4" fill="#d27bff"/><circle cx="366" cy="709" r="4" fill="#d27bff"/><circle cx="688" cy="707" r="4" fill="#d27bff"/><circle cx="753" cy="633" r="1.5" fill="#d27bff"/><circle cx="610" cy="578" r="2" fill="#d27bff"/><circle cx="793" cy="875" r="4" fill="#d27bff"/><circle cx="664" cy="638" r="6" fill="#d27bff"/><circle cx="175" cy="586" r="1.5" fill="#d27bff"/><circle cx="715" cy="547" r="1.5" fill="#d27bff"/><circle cx="601" cy="673" r="4" fill="#d27bff"/><circle cx="179" cy="711" r="1.5" fill="#d27bff"/><circle cx="615" cy="452" r="4" fill="#d27bff"/><circle cx="745" cy="603" r="4" fill="#d27bff"/><circle cx="500" cy="615" r="4" fill="#d27bff"/><circle cx="694" cy="445" r="4" fill="#d27bff"/><circle cx="756" cy="578" r="2.5" fill="#d27bff"/><circle cx="1047" cy="455" r="2" fill="#d27bff"/></g>
+  </g>
+</svg><i></i><i></i></div>
 <div class="shade" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="vhs-lines" aria-hidden="true"></div>
@@ -1012,8 +1062,7 @@ html.api .consent-box{display:flex}
 <main id="main">
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-sheet sheet">
-      <div class="vhs-ts" aria-hidden="true"><span class="rec">REC</span><span id="ts">00:00:00</span><span>INKSIDE · VOL.1</span></div>
+    <div class="hero-sheet sheet"><span class="sheen" aria-hidden="true"></span><span class="paint" aria-hidden="true"><i style="--x:9%;--w:18px;--h:46px;--t:9s"></i><i style="--x:23%;--w:26px;--h:88px;--t:12s"></i><i style="--x:41%;--w:14px;--h:34px;--t:8s"></i><i style="--x:58%;--w:30px;--h:110px;--t:14s"></i><i style="--x:74%;--w:16px;--h:58px;--t:10s"></i><i style="--x:88%;--w:22px;--h:76px;--t:13s"></i></span>
       <script>var Q=new URLSearchParams(location.search).get('s'),M={mini:'w15',sleeve:'w02',cover:'w19'},MOB=innerWidth<=900;window.__heroImg=function(i,def,mob){if(mob===MOB)i.src="img/"+((M[Q])||def)+".webp"}</script>
       <figure class="hero-mob" aria-hidden="true"><script>if(!Q||!M[Q])document.currentScript.parentElement.classList.add("logo-only")</script><img data-k="top.1" class="mob-logo" src="img/logo.webp" alt="" width="900" height="624"><img data-k="top.2" onerror="this.remove()" data-hero="o3316" data-mob="1" alt="" width="780" height="1040" fetchpriority="high"><script>__heroImg(document.currentScript.previousElementSibling,"o3316",true)</script></figure>
       <div class="chromelogo"><img data-k="top.3" src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
@@ -1117,7 +1166,7 @@ html.api .consent-box{display:flex}
     <div class="head"><h2 data-k="prices.1" class="poster split" data-en="Prices <span class='hand h-note'>no surprises</span>">Цены <span class="hand h-note">без сюрпризов</span></h2></div>
     <div class="prices">
       <div class="tracklist sheet">
-        <div class="cass"><b data-k="prices.2">INKSIDE</b><span data-k="prices.3" data-en="SIDE A · PRICES">СТОРОНА A · ПРАЙС</span></div>
+        <div class="cass"><b data-k="prices.2">INKSIDE</b><span data-k="prices.3" data-en="SIDE A · PRICES">Прайс</span></div>
         <div class="tr"><i data-k="prices.4">01</i><span data-k="prices.5" data-en="Minimum, up to 1 hour">Минимум, до&nbsp;1&nbsp;часа</span><b data-k="p_min">180 BYN</b></div>
         <div class="tr"><i data-k="prices.6">02</i><span data-k="prices.7" data-en="Each next hour">Каждый следующий час</span><b data-k="p_hour">150 BYN</b></div>
         <div class="tr"><i data-k="prices.8">03</i><span data-k="prices.9" data-en="Custom sketch">Эскиз под вас</span><b data-k="p_sketch" data-en="from 40 BYN">от 40 BYN</b></div>
@@ -1198,7 +1247,7 @@ html.api .consent-box{display:flex}
         </div>
         <p data-k="bio_nadya" data-en="Turns a vague idea into a clean, careful sketch. Good choice for a first tattoo.">Превращает размытую идею в чистый аккуратный эскиз. Хороший выбор для первой тату.</p>
         <div class="works"><img data-k="masters.12" src="img/w13.webp" alt="" loading="lazy" width="1054" height="1400"><img data-k="masters.13" src="img/w15.webp" alt="" loading="lazy" width="1100" height="1129"><img data-k="masters.14" src="img/w01.webp" alt="" loading="lazy" width="736" height="865"></div>
-        <span class="go-row"><a data-k="masters.15" class="go mark" href="https://www.instagram.com/st.nadya_tattoo/" target="_blank" rel="noopener">Instagram @st.nadya_tattoo →</a><a data-k="masters.16" class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo →</a></span>
+        <span class="go-row"><a data-k="masters.15" class="go mark" href="https://www.instagram.com/st.nadya_tattoo/" target="_blank" rel="noopener">Instagram @st.nadya_tattoo</a><a data-k="masters.16" class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo</a></span>
       </article>
       <article class="flashsheet">
         <div class="top">
@@ -1211,7 +1260,7 @@ html.api .consent-box{display:flex}
         </div>
         <p data-k="bio_vitaliy" data-en="Takes on large projects and difficult cover-ups of old tattoos.">Берётся за крупные проекты и сложные перекрытия старых татуировок.</p>
         <div class="works"><img data-k="masters.24" src="img/w20.webp" alt="" loading="lazy" width="1100" height="1251"><img data-k="masters.25" src="img/w08.webp" alt="" loading="lazy" width="720" height="1280"><img data-k="masters.26" src="img/w14.webp" alt="" loading="lazy" width="1050" height="1400"></div>
-        <span class="go-row"><a data-k="masters.27" class="go mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk →</a></span>
+        <span class="go-row"><a data-k="masters.27" class="go mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk</a></span>
       </article>
     </div>
   </div>
@@ -1306,7 +1355,7 @@ html.api .consent-box{display:flex}
 
 <footer>
   <div class="wrap">
-    <div><span data-k="footer.1" data-en="© 2026 Ink Tattoo LLC · UNP 193954480">© 2026 ООО «Инк Тату» · УНП 193954480</span><br><span data-k="footer.2" data-en="Registered by Minsk City Executive Committee 16.01.2026 · household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026 · реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
+    <div><span data-k="footer.1" data-en="© 2026 Ink Tattoo LLC · UNP 193954480">© 2026 ООО «Инк Тату», УНП 193954480</span><br><span data-k="footer.2" data-en="Registered by Minsk City Executive Committee 16.01.2026 · household services registry № 000000102965 of 26.03.2026">Свидетельство о гос. регистрации: Минский горисполком, 16.01.2026 · реестр бытовых услуг № 000000102965 от 26.03.2026</span></div>
     <div><span data-k="footer.3" data-en="220114, Minsk, Makayonka lane 4, room 64">220114, г. Минск, пер. Макаёнка 4, пом. 64</span><br><a data-k="footer.4" href="privacy.html" class="privacy-link mark" data-en="Privacy policy">Политика конфиденциальности</a></div>
   </div>
 </footer>
@@ -1316,7 +1365,7 @@ html.api .consent-box{display:flex}
 <dialog class="book" id="book" aria-label="Запись на сеанс">
   <form id="bookForm" novalidate>
     <div class="bk-bar" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
-    <div class="bk-top"><span class="bk-tag">● REC · INKSIDE</span><span class="stepnum" id="stepnum">01 / 03</span><button class="x" type="button" aria-label="Закрыть">×</button></div>
+    <div class="bk-top"><span class="bk-tag">INKSIDE</span><span class="stepnum" id="stepnum">01 / 03</span><button class="x" type="button" aria-label="Закрыть">×</button></div>
     <fieldset class="on"><legend data-en="Where?">Где будет тату?</legend><div class="tiles"><label><input type="radio" name="zone" value="рука"><span><b>01</b><i class="tt" data-en="Arm">Рука</i><em data-en="shoulder, forearm">плечо, предплечье</em></span></label><label><input type="radio" name="zone" value="нога"><span><b>02</b><i class="tt" data-en="Leg">Нога</i><em data-en="thigh, calf">бедро, голень</em></span></label><label><input type="radio" name="zone" value="спина"><span><b>03</b><i class="tt" data-en="Back">Спина</i><em data-en="shoulder blades, full back">лопатки, вся спина</em></span></label><label><input type="radio" name="zone" value="грудь / рёбра"><span><b>04</b><i class="tt" data-en="Chest / ribs">Грудь / рёбра</i><em data-en="sensitive area">чувствительная зона</em></span></label><label><input type="radio" name="zone" value="шея / кисть"><span><b>05</b><i class="tt" data-en="Neck / hand">Шея / кисть</i><em data-en="visible">на виду</em></span></label><label><input type="radio" name="zone" value="перекрытие старой тату"><span><b>06</b><i class="tt" data-en="Cover-up">Перекрытие</i><em data-en="old tattoo or scar">старая тату или шрам</em></span></label></div></fieldset>
     <fieldset><legend data-en="How big?">Какой размер?</legend><div class="tiles"><label><input type="radio" name="bsize" value="до 5 см"><span><b>01</b><i class="tt" data-en="Up to 5 cm">До 5 см</i><em data-en="from 180 BYN">от 180 BYN</em></span></label><label><input type="radio" name="bsize" value="5-10 см"><span><b>02</b><i class="tt" data-en="5-10 cm">5-10 см</i><em data-en="from 330 BYN">от 330 BYN</em></span></label><label><input type="radio" name="bsize" value="10-20 см"><span><b>03</b><i class="tt" data-en="10-20 cm">10-20 см</i><em data-en="from 480 BYN">от 480 BYN</em></span></label><label><input type="radio" name="bsize" value="рукав / большая зона"><span><b>04</b><i class="tt" data-en="Sleeve / large">Рукав / большая</i><em data-en="session from 930 BYN">сеанс от 930 BYN</em></span></label><label><input type="radio" name="bsize" value="пока не знаю"><span><b>05</b><i class="tt" data-en="Not sure">Не знаю</i><em data-en="we decide at the consultation">решим на консультации</em></span></label></div></fieldset>
     <fieldset><legend data-en="Name and idea">Имя и идея</legend>
@@ -1330,7 +1379,7 @@ html.api .consent-box{display:flex}
     <p class="err" id="bookErr" role="alert"></p>
     <p class="ig-hint" data-en="Instagram Direct: the request text is copied automatically, just paste it into the chat.">Instagram Direct: текст заявки скопируется сам, просто вставьте его в чат.</p>
     <p class="consent" data-en="By sending you agree to the processing of your name and message to reply to you. <a href='privacy.html' target='_blank' rel='noopener' class='privacy-link'>Privacy</a>">Отправляя, вы соглашаетесь на обработку имени и сообщения, чтобы мы ответили. <a href="privacy.html" target="_blank" rel="noopener" class="privacy-link">Политика конфиденциальности</a></p>
-    <div class="acts"><button class="link" type="button" id="back" data-en="← Back">← Назад</button><span class="acts-r"><button class="btn dark" type="button" id="viaIg" data-en="Instagram Direct">Instagram Direct</button><button class="btn" type="submit" id="next">Дальше →</button></span></div>
+    <div class="acts"><button class="link" type="button" id="back" data-en="← Back">← Назад</button><span class="acts-r"><button class="btn dark" type="button" id="viaIg" data-en="Instagram Direct">Instagram Direct</button><button class="btn" type="submit" id="next">Дальше</button></span></div>
   </form>
 </dialog>
 
@@ -1415,7 +1464,7 @@ function sign(){const {h}=minskNow(),open=h>=HO[0]&&h<HO[1],el=$('#openSign');el
   $('b',el).textContent=open?(lang==='en'?'OPEN':'ОТКРЫТО'):(lang==='en'?'CLOSED':'ЗАКРЫТО');
   $('span',el).textContent=open?(lang==='en'?`till ${HO[1]}:00`:`до ${HO[1]}:00`):(lang==='en'?`opens ${HO[0]}:00`:`откроемся в ${HO[0]}:00`)}
 sign();setInterval(sign,20000);
-setInterval(()=>{const t=minskNow(),z=n=>String(n).padStart(2,'0');$('#ts').textContent=`${z(t.h)}:${z(t.m)}:${z(t.s)}`},1000);
+
 
 /* ---------- polaroid wall: random tilt like real prints ---------- */
 $$('.pol').forEach((p,i)=>{const r=((i*37)%7-3)*1.1;p.style.setProperty('--rot',r+'deg');p.style.setProperty('--trot',(-r*1.4)+'deg')});
@@ -1477,7 +1526,7 @@ $$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
 /* ---------- booking: 3-step brief -> Telegram message ---------- */
 const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
 function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`0${i+1} / 03`;$$('.bk-bar i').forEach((b,k)=>b.classList.toggle('on',k<=i));$('#back').style.visibility=i?'visible':'hidden';
-  $('#next').textContent=i===2?(CFG.api?(lang==='en'?'Send request →':'Отправить заявку →'):(lang==='en'?'Continue in Telegram →':'Продолжить в Telegram →')):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
+  $('#next').textContent=i===2?(CFG.api?(lang==='en'?'Send request':'Отправить заявку'):(lang==='en'?'Continue in Telegram':'Продолжить в Telegram')):(lang==='en'?'Next':'Дальше');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
 $$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);bf.reset();show(0);book.showModal();track('InitiateCheckout',{content_name:'booking'})}));
 $('.x',bf).onclick=()=>book.close();
 book.addEventListener('click',e=>{if(e.target===book)book.close()});
