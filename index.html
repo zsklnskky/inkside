@@ -229,7 +229,8 @@ a.mark:hover,.mark.on{background-size:100% 100%}
 .tab{padding:12px 18px;font:500 13px/1 var(--f-poster);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);border-radius:var(--pill);transition:.3s var(--out)}
 .tab:hover{color:#fff}
 .tab[aria-pressed=true]{background:var(--paper);color:var(--ink);box-shadow:3px 3px 0 var(--stencil)}
-.wallgrid{columns:4 300px;column-gap:26px}
+.wallgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px;align-items:start}
+.wallgrid .pol{margin:0}.wallgrid .pol img{display:block;aspect-ratio:4/5;object-fit:cover;height:auto}
 .pol{break-inside:avoid;margin:0 0 30px;background:#f4f1ea;padding:10px 10px 46px;border-radius:20px;position:relative;cursor:zoom-in;rotate:var(--rot,0deg);box-shadow:0 18px 40px rgba(0,0,0,.5);transition:rotate .5s var(--spring),transform .5s var(--spring),box-shadow .4s}
 .pol::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:26px;translate:-50% 0;rotate:var(--trot,-3deg);background:rgba(233,227,214,.6);box-shadow:0 2px 5px rgba(0,0,0,.2);z-index:2}
 .pol:hover,.pol:focus-visible{rotate:0deg;transform:translateY(-8px) scale(1.02);box-shadow:0 34px 70px rgba(0,0,0,.6);z-index:3}
@@ -419,7 +420,7 @@ dialog.book[open] form{animation:slap .6s var(--spring)}
   .frame{width:min(300px,70vw);order:1;margin-top:70px}
   .flashsheet:nth-child(2){margin-top:0}
   .flashsheet .top{grid-template-columns:1fr}
-  .wallgrid{columns:2 150px;column-gap:14px}
+  .wallgrid{grid-template-columns:1fr 1fr;gap:14px}
   .pol{padding:6px 6px 34px;margin-bottom:18px}
   .pol figcaption span:first-child{font-size:18px}
   .pol figcaption span:last-child{display:none}
@@ -627,13 +628,18 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
 
 /* ===================== v4: review fixes (marketer + designer + QA) ===================== */
 /* background: animated violet and blue light orbs */
-.wall{background:radial-gradient(90vmax 70vmax at 80% 0%,#15123a 0%,transparent 70%),radial-gradient(80vmax 60vmax at 0% 100%,#0a1a2e 0%,transparent 70%),#07070b;background-size:cover;background-position:center;filter:none;overflow:hidden}
-.wall::before,.wall::after{content:"";position:absolute;width:80vmax;height:80vmax;border-radius:50%;pointer-events:none;will-change:transform}
-.wall::before{left:-25vmax;top:-30vmax;background:radial-gradient(circle,rgba(109,92,255,.55) 0%,rgba(109,92,255,.18) 35%,transparent 65%);animation:orbA 26s ease-in-out infinite alternate}
-.wall::after{right:-30vmax;bottom:-35vmax;background:radial-gradient(circle,rgba(43,181,255,.42) 0%,rgba(43,181,255,.12) 38%,transparent 66%);animation:orbB 32s ease-in-out infinite alternate}
-@keyframes orbA{0%{transform:translate(0,0) scale(1)}50%{transform:translate(28vw,22vh) scale(1.15)}100%{transform:translate(10vw,48vh) scale(.92)}}
-@keyframes orbB{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-30vw,-18vh) scale(1.1)}100%{transform:translate(-12vw,-45vh) scale(.95)}}
-@media (prefers-reduced-motion:reduce){.wall::before,.wall::after{animation:none}}
+.wall{background:linear-gradient(180deg,rgba(8,6,18,.5),rgba(8,6,18,.74)),url(img/mural.jpg) center/cover,linear-gradient(135deg,#3a2a99,#123a66);background-blend-mode:normal,luminosity,normal;filter:saturate(1.15);overflow:hidden}
+@media (max-width:900px){.wall{background-image:linear-gradient(180deg,rgba(8,6,18,.5),rgba(8,6,18,.74)),url(img/mural_tall.jpg),linear-gradient(135deg,#3a2a99,#123a66)}}
+.wall::before,.wall::after,.wall i{content:"";position:absolute;border-radius:50%;pointer-events:none;will-change:transform;mix-blend-mode:screen}
+.wall::before{width:80vmax;height:80vmax;left:-25vmax;top:-30vmax;background:radial-gradient(circle,rgba(124,108,255,.7) 0%,rgba(124,108,255,.22) 35%,transparent 65%);animation:orbA 22s ease-in-out infinite alternate}
+.wall::after{width:80vmax;height:80vmax;right:-30vmax;bottom:-35vmax;background:radial-gradient(circle,rgba(49,196,255,.55) 0%,rgba(49,196,255,.16) 38%,transparent 66%);animation:orbB 27s ease-in-out infinite alternate}
+.wall i:nth-child(1){width:55vmax;height:55vmax;left:35%;top:30%;background:radial-gradient(circle,rgba(200,92,255,.45) 0%,rgba(200,92,255,.12) 40%,transparent 66%);animation:orbC 19s ease-in-out infinite alternate}
+.wall i:nth-child(2){inset:-50% auto -50% -60%;width:40%;border-radius:0;rotate:18deg;background:linear-gradient(90deg,transparent,rgba(180,170,255,.10) 45%,rgba(220,230,255,.16) 50%,rgba(180,170,255,.10) 55%,transparent);animation:sweep 14s linear infinite}
+@keyframes orbA{0%{transform:translate(0,0) scale(1)}50%{transform:translate(28vw,22vh) scale(1.2)}100%{transform:translate(10vw,48vh) scale(.9)}}
+@keyframes orbB{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-30vw,-18vh) scale(1.15)}100%{transform:translate(-12vw,-45vh) scale(.95)}}
+@keyframes orbC{0%{transform:translate(0,0) scale(.9)}50%{transform:translate(-35vw,-20vh) scale(1.2)}100%{transform:translate(20vw,10vh) scale(1)}}
+@keyframes sweep{0%{transform:translateX(0)}60%,100%{transform:translateX(320vw)}}
+@media (prefers-reduced-motion:reduce){.wall::before,.wall::after,.wall i{animation:none}}
 .overlay{background:radial-gradient(70vmax 60vmax at 90% 0%,rgba(109,92,255,.45),transparent 70%),radial-gradient(70vmax 60vmax at 0% 100%,rgba(43,181,255,.3),transparent 70%),#07070b}
 #masters::before{display:none}
 
@@ -923,6 +929,8 @@ footer a.privacy-link{display:inline-block;padding:8px 0}
 
 /* ---------- round 6 ---------- */
 .api-only{display:none}html.api .api-only{display:block}
+html:not(.api) .book label.f,html:not(.api) .book .consent,html:not(.api) .book .ig-hint,html:not(.api) #viaIg{display:none!important}html.api .bot-note{display:none}
+.bot-note{font-size:17px;line-height:1.5;color:var(--text);margin:6px 0 4px}
 html.api .book .consent,html.api .book .ig-hint{display:none}
 .consent-box{margin-top:14px;font:13px/1.45 var(--f-mono);color:var(--dim);display:none;gap:10px;align-items:flex-start}
 html.api .consent-box{display:flex}
@@ -945,7 +953,7 @@ html.api .consent-box{display:flex}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
 <a data-k="page.1" class="skip" href="#main" data-en="Skip to content">К содержанию</a>
 <div class="ink-wipe" aria-hidden="true"><img data-k="page.2" src="img/logo.webp" alt="" width="900" height="624"></div>
-<div class="wall" aria-hidden="true"></div>
+<div class="wall" aria-hidden="true"><i></i><i></i></div>
 <div class="shade" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="vhs-lines" aria-hidden="true"></div>
@@ -1217,7 +1225,7 @@ html.api .consent-box{display:flex}
       <div>
         <h2 data-k="cover.1" class="poster split" data-en="Old tattoo <span class='hand h-note'>you don't like?</span>">Старая тату <span class="hand h-note">не нравится?</span></h2>
         <p data-k="cover.2" class="lead" data-en="Cover-ups and scar work are our speciality. Send a daylight photo of the area and we'll suggest sketch options.">Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны при дневном свете, предложим варианты эскиза.</p>
-        <div class="btns"><a data-k="cover.3" class="btn" data-contact="telegram" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Send a photo">Прислать фото</a><a data-k="cover.4" class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a></div>
+        <div class="btns"><a data-k="cover.3" class="btn" data-contact="telegram" href="https://t.me/inkside_bot?start=cover" target="_blank" rel="noopener" data-en="Send a photo">Прислать фото</a><a data-k="cover.4" class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a></div>
       </div>
       <img data-k="img_cover" src="img/o9886.webp" alt="Перекрытие старой тату на руке: до и после" data-en-alt="Cover-up of an old arm tattoo: before and after" loading="lazy" width="1100" height="1112">
     </div>
@@ -1245,7 +1253,7 @@ html.api .consent-box{display:flex}
       <div>
         <h2 data-k="gift.1" class="poster" style="font-size:clamp(52px,6.4vw,110px)" data-en="A tattoo <span class='hand h-note'>as a gift</span>">Тату <span class="hand h-note">в подарок</span></h2>
         <p class="lead" style="margin:22px 0 30px" data-k="gift" data-en="A certificate for any amount. The person picks the idea and the date. Popular before New Year.">Сертификат на любую сумму. Человек сам выбирает идею и дату. Особенно популярно перед Новым годом.</p>
-        <a data-k="gift.2" class="btn magnet" href="https://t.me/+375445111912" target="_blank" rel="noopener" data-en="Order a certificate">Заказать сертификат</a>
+        <a data-k="gift.2" class="btn magnet" href="https://t.me/inkside_bot?start=gift" target="_blank" rel="noopener" data-en="Order a certificate">Заказать сертификат</a>
       </div>
       <div class="gcard" aria-hidden="true"><img data-k="gift.3" src="img/logo.webp" alt="" width="900" height="624"><div><small data-en="GIFT CERTIFICATE">ПОДАРОЧНЫЙ СЕРТИФИКАТ</small><div class="sum">300 BYN</div></div></div>
     </div>
@@ -1270,7 +1278,7 @@ html.api .consent-box{display:flex}
     <div class="last-card sheet">
       <h2 data-k="last.1" class="poster split" data-en="Still thinking? <span class='hand h-note'>just ask</span>">Ещё думаете? <span class="hand h-note">просто спросите</span></h2>
       <p data-k="last.2" class="lead" data-en="Describe the idea in two words. The artist will honestly tell you whether it suits you and how much it costs.">Напишите идею в двух словах. Мастер честно скажет, подойдёт ли она вам и сколько будет стоить.</p>
-      <div class="btns"><button data-k="last.3" class="btn" data-book data-en="Get my price">Узнать цену моей тату</button><a data-k="last.4" class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a><a data-k="last.5" class="btn dark" data-contact="telegram" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a></div>
+      <div class="btns"><button data-k="last.3" class="btn" data-book data-en="Get my price">Узнать цену моей тату</button><a data-k="last.4" class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a><a data-k="last.5" class="btn dark" data-contact="telegram" href="https://t.me/inkside_bot?start=site" target="_blank" rel="noopener">Telegram</a></div>
     </div>
   </div>
 </section>
@@ -1283,7 +1291,7 @@ html.api .consent-box{display:flex}
       <dl>
         <div><dt data-k="contact.3" data-en="phone">телефон</dt><dd><a data-k="contact.4" class="mark" href="tel:+375445111912">+375 (44) 511-19-12</a></dd></div>
         <div><dt data-k="contact.5" data-en="hours">часы</dt><dd data-k="hours" data-en="daily 11:00-23:00, by prior appointment">ежедневно 11:00-23:00, по&nbsp;предварительной записи</dd></div>
-        <div><dt data-k="contact.6" data-en="write">написать</dt><dd class="chan"><a data-k="contact.7" class="mark" href="https://t.me/+375445111912" target="_blank" rel="noopener">Telegram</a><a data-k="contact.8" class="mark" href="viber://chat?number=%2B375445111912">Viber</a><a data-k="contact.9" class="mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a></dd></div>
+        <div><dt data-k="contact.6" data-en="write">написать</dt><dd class="chan"><a data-k="contact.7" class="mark" href="https://t.me/inkside_bot?start=site" target="_blank" rel="noopener">Telegram</a><a data-k="contact.8" class="mark" href="viber://chat?number=%2B375445111912">Viber</a><a data-k="contact.9" class="mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram</a></dd></div>
       </dl>
     </div>
     <div class="geo sheet" id="geo">
@@ -1312,6 +1320,7 @@ html.api .consent-box{display:flex}
     <fieldset class="on"><legend data-en="Where?">Где будет тату?</legend><div class="tiles"><label><input type="radio" name="zone" value="рука"><span><b>01</b><i class="tt" data-en="Arm">Рука</i><em data-en="shoulder, forearm">плечо, предплечье</em></span></label><label><input type="radio" name="zone" value="нога"><span><b>02</b><i class="tt" data-en="Leg">Нога</i><em data-en="thigh, calf">бедро, голень</em></span></label><label><input type="radio" name="zone" value="спина"><span><b>03</b><i class="tt" data-en="Back">Спина</i><em data-en="shoulder blades, full back">лопатки, вся спина</em></span></label><label><input type="radio" name="zone" value="грудь / рёбра"><span><b>04</b><i class="tt" data-en="Chest / ribs">Грудь / рёбра</i><em data-en="sensitive area">чувствительная зона</em></span></label><label><input type="radio" name="zone" value="шея / кисть"><span><b>05</b><i class="tt" data-en="Neck / hand">Шея / кисть</i><em data-en="visible">на виду</em></span></label><label><input type="radio" name="zone" value="перекрытие старой тату"><span><b>06</b><i class="tt" data-en="Cover-up">Перекрытие</i><em data-en="old tattoo or scar">старая тату или шрам</em></span></label></div></fieldset>
     <fieldset><legend data-en="How big?">Какой размер?</legend><div class="tiles"><label><input type="radio" name="bsize" value="до 5 см"><span><b>01</b><i class="tt" data-en="Up to 5 cm">До 5 см</i><em data-en="from 180 BYN">от 180 BYN</em></span></label><label><input type="radio" name="bsize" value="5-10 см"><span><b>02</b><i class="tt" data-en="5-10 cm">5-10 см</i><em data-en="from 330 BYN">от 330 BYN</em></span></label><label><input type="radio" name="bsize" value="10-20 см"><span><b>03</b><i class="tt" data-en="10-20 cm">10-20 см</i><em data-en="from 480 BYN">от 480 BYN</em></span></label><label><input type="radio" name="bsize" value="рукав / большая зона"><span><b>04</b><i class="tt" data-en="Sleeve / large">Рукав / большая</i><em data-en="session from 930 BYN">сеанс от 930 BYN</em></span></label><label><input type="radio" name="bsize" value="пока не знаю"><span><b>05</b><i class="tt" data-en="Not sure">Не знаю</i><em data-en="we decide at the consultation">решим на консультации</em></span></label></div></fieldset>
     <fieldset><legend data-en="Name and idea">Имя и идея</legend>
+      <p class="bot-note" data-en="Two short questions left: your idea and how to reach you. The INKSIDE bot opens in Telegram, press Start and it continues from here.">Осталось 2 коротких вопроса: идея и как с вами связаться. Откроется бот INKSIDE в Telegram, нажмите «Start», и он продолжит с этого места.</p>
       <label class="f"><span data-en="Your name">Ваше имя</span><input class="t" name="name" autocomplete="name" required></label>
       <label class="f"><span data-en="The idea in a few words">Идея в двух словах</span><textarea name="idea" required></textarea></label>
       <label class="f api-only"><span data-en="Phone for contact">Телефон для связи</span><input class="t" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+375 29 123-45-67"></label>
@@ -1335,7 +1344,7 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 const desk=()=>innerWidth>900;
-const TG='https://t.me/+375445111912',IG='https://ig.me/m/inkside.minsk';
+const TG='https://t.me/inkside_bot',IG='https://ig.me/m/inkside.minsk';
 /* ---------- analytics: paste IDs to enable (Meta Pixel / Yandex Metrika) ---------- */
 const CFG={metaPixel:'',ymCounter:'',api:''}; // api: e.g. 'https://api.inkside.by' (server in Belarus)
 function loadAnalytics(){
@@ -1361,7 +1370,7 @@ const S=window.SITE||{},P={min:+S.p_min||180,hour:+S.p_hour||150,sketch:+S.p_ske
     el.innerHTML=esc(v).replace(/\n/g,'<br>');if(S[k+'_en'])el.dataset.en=esc(S[k+'_en']).replace(/\n/g,'<br>')});
   if(S.p_min)put('p_min',P.min+' BYN');if(S.p_hour)put('p_hour',P.hour+' BYN');if(S.p_sketch)put('p_sketch','от '+P.sketch+' BYN','from '+P.sketch+' BYN');
   if(S.open)put('hours',`ежедневно ${HO[0]}:00-${HO[1]}:00, по предварительной записи`,`daily ${HO[0]}:00-${HO[1]}:00, by prior appointment`);
-  if(S.bg)$('.wall').style.backgroundImage=`url("${esc(S.bg)}")`;
+  if(S.bg){const w=$('.wall');w.style.backgroundImage=`linear-gradient(180deg,rgba(8,6,18,.45),rgba(8,6,18,.7)),url("${esc(S.bg)}")`;w.style.backgroundBlendMode='normal';w.style.backgroundSize='cover'}
   String(S.off||'').split(',').filter(Boolean).forEach(id=>{const sec=document.getElementById(id);if(sec)sec.hidden=true;$$(`a[href="#${id}"]`).forEach(a=>a.hidden=true)});
   const CAT={bw:['ч/б','b&amp;g'],color:['цвет','colour'],big:['рукава','sleeves'],graphic:['графика','graphic'],cover:['перекрытие','cover-up'],fix:['коррекция','correction']};
   const hid=new Set(String(S.hidden||'').split(',').filter(Boolean));$$('.pol[data-id]').forEach(f=>hid.has(f.dataset.id)&&f.remove());
@@ -1387,7 +1396,7 @@ if(seg){const t=seg[lang]||seg.ru;$$('[data-seg]').forEach(el=>{const k=el.datas
   const cta=$('.hero .btns .btn');if(cta&&t.cta)cta.textContent=t.cta;
   if(t.cap)$('.hero-photos .a figcaption').textContent=t.cap;if(t.img==='w19'){$('.hero-photos .a').classList.add('contain');$('.hero-mob').classList.add('cover')}if(t.c&&!MOB)$('.hero-photos .c img').src=`img/${t.c}.webp`;
   if(t.href){const l=$('.hero .btns .link');l.setAttribute('href',t.href);l.textContent=lang==='en'?'See cover-ups ↓':'Смотреть перекрытия ↓'}
-  if(t.tg&&cta){const mc=$('.hero .micro');if(mc)mc.style.display='none';const n=cta.cloneNode(true);n.removeAttribute('data-book');cta.replaceWith(n);n.addEventListener('click',()=>{track('Lead',{value:180,currency:'BYN',content_name:'cover'});track('Contact',{method:'telegram'});send(t.tg)})}}
+  if(t.tg&&cta){const mc=$('.hero .micro');if(mc)mc.style.display='none';const n=cta.cloneNode(true);n.removeAttribute('data-book');cta.replaceWith(n);n.addEventListener('click',()=>{track('Lead',{value:180,currency:'BYN',content_name:'cover'});track('Contact',{method:'telegram'});send(null,null,'cover')})}}
 $$('[data-en-alt]').forEach(el=>{if(lang==='en')el.alt=el.dataset.enAlt});
 if(lang==='en'){
   const AL={'Главное меню':'Main menu','INKSIDE, наверх':'INKSIDE, back to top','Меню':'Menu','Записаться на сеанс':'Book a session','Фильтр работ':'Works filter','Просмотр работы':'Work preview','Закрыть':'Close','Калькулятор стоимости':'Price calculator','Запись на сеанс':'Book a session','Политика конфиденциальности':'Privacy policy','Вид карты':'Map view','Глобус с отметкой студии INKSIDE в Минске':'Globe with INKSIDE studio in Minsk','Карта: Минск, пер. Макаёнка 4':'Map: Minsk, Makayonka lane 4','Крупные работы':'Large works','Как рождается тату':'How a tattoo is made'};
@@ -1468,7 +1477,7 @@ $$('[data-ink]').forEach(a=>a.addEventListener('click',e=>{
 /* ---------- booking: 3-step brief -> Telegram message ---------- */
 const book=$('#book'),bf=$('#bookForm'),sets=$$('fieldset',bf);let step=0;
 function show(i){step=i;sets.forEach((f,k)=>f.classList.toggle('on',k===i));$('#stepnum').textContent=`0${i+1} / 03`;$$('.bk-bar i').forEach((b,k)=>b.classList.toggle('on',k<=i));$('#back').style.visibility=i?'visible':'hidden';
-  $('#next').textContent=i===2?(CFG.api?(lang==='en'?'Send request →':'Отправить заявку →'):(lang==='en'?'Send to Telegram →':'Отправить в Telegram →')):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
+  $('#next').textContent=i===2?(CFG.api?(lang==='en'?'Send request →':'Отправить заявку →'):(lang==='en'?'Continue in Telegram →':'Продолжить в Telegram →')):(lang==='en'?'Next →':'Дальше →');$('#viaIg').style.display=i===2?'':'none';$$('.ig-hint,.consent',bf).forEach(e=>e.style.display=i===2?'':'none');if(i===2)setTimeout(()=>bf.name.focus(),80);$('#bookErr').textContent=''}
 $$('[data-book]').forEach(b=>b.addEventListener('click',()=>{menu(false);bf.reset();show(0);book.showModal();track('InitiateCheckout',{content_name:'booking'})}));
 $('.x',bf).onclick=()=>book.close();
 book.addEventListener('click',e=>{if(e.target===book)book.close()});
@@ -1480,6 +1489,7 @@ bf.onsubmit=e=>{
   e.preventDefault();
   const need=lang==='en'?'Please pick an option':'Выберите вариант';
   if(step<2){if(!$('input:checked',sets[step])){$('#bookErr').textContent=need;return}show(step+1);return}
+  if(!CFG.api){send(null,null,bookStart());track('Lead',{value:180,currency:'BYN'});book.close();return}
   if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
   if(CFG.api){
     const ph=bf.phone.value.trim();
@@ -1492,11 +1502,11 @@ bf.onsubmit=e=>{
       kind:bf.dataset.kind||'',source:bf.dataset.src||'site',utm:utmTag,lang,consent:true,website:bf.website.value})})
     .then(r=>r.json()).then(r=>{if(!r.ok)throw r;track('Lead',{value:180,currency:'BYN'});book.close();
       toast(lang==='en'?`Request #${r.id} sent. The artist will contact you soon.`:`Заявка #${r.id} отправлена. Мастер скоро свяжется с вами.`)})
-    .catch(()=>{send(bookMsg());book.close()})   // backend down: never lose the request
+    .catch(()=>{send(null,null,bookStart());book.close()})   // backend down: never lose the request
     .finally(()=>{$('#next').disabled=false;delete bf.dataset.kind;delete bf.dataset.src});
     return;
   }
-  send(bookMsg());track('Lead',{value:180,currency:'BYN'});
+  send(null,null,bookStart());track('Lead',{value:180,currency:'BYN'});
   book.close();
 };
 function withUtm(msg){return utmTag?msg+(lang==='en'?` (source: ${utmTag})`:` (источник: ${utmTag})`):msg}
@@ -1504,9 +1514,13 @@ function bookMsg(){const z=$('input[name=zone]:checked',bf),sz=$('input[name=bsi
   return lang==='en'?`Hi! My name is ${n}. I want a tattoo: ${idea}. Placement: ${z?z.nextElementSibling.querySelector('.tt').textContent:'-'}. Size: ${sz?sz.nextElementSibling.querySelector('.tt').textContent:'-'}. What's the price and free dates?`
     :`Здравствуйте! Меня зовут ${n}. Хочу тату: ${idea}. Место: ${z?z.value:'-'}. Размер: ${sz?sz.value:'-'}. Подскажите цену и свободные даты?`}
 function toast(t){const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.classList.add('on'),20);setTimeout(()=>{d.classList.remove('on');setTimeout(()=>d.remove(),400)},4200)}
-function send(msg,via){msg=withUtm(msg);if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
-  if(via==='ig')toast(lang==='en'?'Request text copied. Paste it into the Instagram chat.':'Текст заявки скопирован. Вставьте его в чат Instagram.');
-  window.open(via==='ig'?IG:TG+'?text='+encodeURIComponent(msg),'_blank','noopener')}
+function send(msg,via,start){
+  if(via==='ig'){msg=withUtm(msg);if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
+    toast(lang==='en'?'Request text copied. Paste it into the Instagram chat.':'Текст заявки скопирован. Вставьте его в чат Instagram.');return window.open(IG,'_blank','noopener')}
+  // Telegram start parameter: only A-Z a-z 0-9 _ - and up to 64 chars; the ad source rides along
+  const src=(UTM.get('utm_source')||'').replace(/[^A-Za-z0-9]/g,'').slice(0,20);
+  window.open(TG+'?start='+(start||'site')+(src?'_'+src:''),'_blank','noopener')}
+function bookStart(){const ix=n=>$$(`input[name=${n}]`,bf).findIndex(x=>x.checked);return 'b'+Math.max(ix('zone'),0)+Math.max(ix('bsize'),0)}
 $('#viaIg').onclick=()=>{if(step<2){show(step+1);return}if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
   send(bookMsg(),'ig');track('Lead',{value:180,currency:'BYN'});track('Contact',{method:'instagram'});book.close()};
 const channel=h=>/t\.me/.test(h)?'telegram':/ig\.me|instagram/.test(h)?'instagram':/^viber/.test(h)?'viber':/^tel/.test(h)?'phone':'other';
@@ -1532,7 +1546,7 @@ form.onchange=()=>{calc();track('CalculatorUse',{},false)};
 form.onsubmit=e=>{e.preventDefault();const p=n=>form.querySelector(`[name=${n}]:checked`).nextElementSibling.textContent;
   if(CFG.api){bf.reset();show(2);bf.idea.value=(lang==='en'?'Calculator: ':'Калькулятор: ')+`${p('size')}, ${p('kind')}, ${p('place')}, ${$('#sum').textContent}`;bf.dataset.kind=p('kind');bf.dataset.src='calc';book.showModal();return}
   track('Lead',{value:180,currency:'BYN'});
-  send(lang==='en'?`Hi! I want a tattoo: size ${p('size')}, style ${p('kind')}, placement ${p('place')}. The calculator shows ${$('#sum').textContent}. Any free dates?`:`Здравствуйте! Хочу тату: размер ${p('size')}, стиль ${p('kind')}, место ${p('place')}. Калькулятор показал ${$('#sum').textContent}. Подскажите свободные даты?`)};
+  send(null,null,'calc')};
 
 /* ---------- portfolio filter + lightbox ---------- */
 function filter(f){
