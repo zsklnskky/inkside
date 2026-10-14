@@ -1600,10 +1600,10 @@ form.onsubmit=e=>{e.preventDefault();const p=n=>form.querySelector(`[name=${n}]:
   send(null,null,'calc')};
 
 /* ---------- portfolio filter + lightbox ---------- */
-/* wall shows 6 works (one per style) until "all works" is opened; a style tab shows every work of that style */
-const grid=$('#grid'),moreBtn=$('#moreWorks');
-{const pols=$$('.pol',grid),pick=[];
-  for(const c of ['bw','color','big','graphic','cover','fix']){const w=pols.find(p=>!pick.includes(p)&&p.dataset.c.split(' ').includes(c));if(w)pick.push(w)}
+/* wall shows 6 chosen works until "all works" is opened (a hidden one is replaced by one per style); a style tab shows every work of that style */
+const grid=$('#grid'),moreBtn=$('#moreWorks'),FEATURED=['9','15','10','24','5','12'];
+{const pols=$$('.pol',grid),pick=FEATURED.map(id=>pols.find(p=>p.dataset.id===id)).filter(Boolean);
+  for(const c of ['bw','color','big','graphic','cover','fix']){if(pick.length>=6)break;const w=pols.find(p=>!pick.includes(p)&&p.dataset.c.split(' ').includes(c));if(w)pick.push(w)}
   for(const p of pols)if(pick.length<6&&!pick.includes(p))pick.push(p);
   pick.reverse().forEach(p=>grid.prepend(p));pols.forEach(p=>p.classList.toggle('extra',!pick.includes(p)))}
 function setMore(open){grid.classList.toggle('all',open);moreBtn.setAttribute('aria-expanded',open);
