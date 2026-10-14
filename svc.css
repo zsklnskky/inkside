@@ -1,0 +1,70 @@
+/* service landing pages (/perekrytie-tatu/, /realizm/ ...): light, same brand as the main page */
+:root{--ink:#0b0b0c;--acc:#e8a33a;--acc-l:#f6c56e;--on-acc:#170f04;--text:#f2f0eb;--dim:#c9c6bf;--mute:#8f8b84;
+  --glass:rgba(255,255,255,.045);--edge:rgba(255,255,255,.14);--r:20px;
+  --f-poster:"Dela Gothic One",Impact,sans-serif;--f-body:Onest,system-ui,sans-serif;--f-mono:"PT Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--text);font:400 17px/1.65 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:clip;
+  background-image:radial-gradient(60vmax 40vmax at 90% -10%,rgba(232,163,58,.13),transparent 60%),radial-gradient(50vmax 40vmax at -10% 40%,rgba(255,255,255,.04),transparent 60%)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc-l);outline-offset:3px}
+::selection{background:var(--acc);color:var(--on-acc)}
+.wrap{width:min(1040px,100% - 32px);margin-inline:auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+.top .logo img{width:118px}
+.tel{font:600 15px var(--f-mono);text-decoration:none;padding:10px 14px;border:1px solid var(--edge);border-radius:999px;white-space:nowrap}
+.crumbs{font:13px/1.5 var(--f-mono);color:var(--mute);margin:8px 0 18px}
+.crumbs a{text-decoration:none}.crumbs a:hover{color:var(--acc-l)}
+.card{background:var(--glass);border:1px solid var(--edge);border-radius:var(--r);padding:clamp(20px,4vw,40px);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.eyebrow{font:13px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc-l);margin-bottom:12px}
+h1,h2{font-family:var(--f-poster);font-weight:400;text-transform:uppercase;line-height:1.05;letter-spacing:.01em}
+h1{font-size:clamp(30px,7vw,64px);overflow-wrap:anywhere}
+h2{font-size:clamp(21px,4vw,32px);margin-bottom:14px}
+h3{font-size:18px;margin-bottom:4px}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--dim);margin:16px 0 24px;max-width:720px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 22px;border-radius:999px;background:var(--acc);color:var(--on-acc);font:600 16px var(--f-body);text-decoration:none;transition:background .2s}
+.btn:hover{background:var(--acc-l)}
+.btn.dark{background:transparent;color:var(--text);border:1px solid var(--edge)}
+.btn.dark:hover{border-color:var(--acc);color:var(--acc-l);background:transparent}
+.micro{font:13px var(--f-mono);color:var(--mute);margin-top:12px}
+main section{margin-top:22px}
+.block p+p,.block p+ul,.block ul+p,.block p+ol,.block ol+p{margin-top:12px}
+.block ul,.block ol{padding-left:22px}
+.block li+li{margin-top:8px}
+.block li::marker{color:var(--acc)}
+.block a:not(.btn){color:var(--acc-l)}
+.two{display:grid;gap:22px}
+@media (min-width:760px){.two{grid-template-columns:1fr 1fr}.two section{margin-top:0}.two{margin-top:22px}}
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:760px){.gal{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.gal figure{border-radius:14px;overflow:hidden;background:#151517;border:1px solid var(--edge)}
+.gal img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.gal figcaption{font:12px/1.35 var(--f-mono);color:var(--dim);padding:8px 10px}
+.price{width:100%;border-collapse:collapse;font-size:16px}
+.price td{padding:11px 0;border-bottom:1px dashed var(--edge);vertical-align:top}
+.price td:last-child{text-align:right;font:600 16px var(--f-mono);color:var(--acc-l);white-space:nowrap;padding-left:12px}
+.price caption{text-align:left;font:13px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-bottom:6px}
+.price+.price{margin-top:22px}
+.note{font-size:15px;color:var(--mute);margin-top:14px}
+.faq details{border-bottom:1px dashed var(--edge)}
+.faq summary{cursor:pointer;list-style:none;padding:15px 30px 15px 0;font-weight:600;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font:400 24px var(--f-mono);color:var(--acc)}
+.faq details[open] summary::after{content:"-"}
+.faq details p{padding:0 0 16px;color:var(--dim)}
+.gift{display:grid;place-items:center;aspect-ratio:1.6;max-width:420px;border-radius:18px;padding:24px;margin-top:20px;
+  background:linear-gradient(135deg,#1d1a14,#0f0f10 55%,#2a1f0c);border:1px solid rgba(232,163,58,.45);text-align:center}
+.gift img{width:120px;margin:0 auto 10px}
+.gift small{display:block;font:12px var(--f-mono);letter-spacing:.18em;color:var(--mute)}
+.gift b{display:block;font:400 clamp(26px,6vw,38px) var(--f-poster);color:var(--acc-l);margin-top:6px}
+.contact dl{display:grid;gap:10px;margin-top:6px}
+.contact dt{font:12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.contact dd a{color:var(--text)}
+.svc{display:flex;flex-wrap:wrap;gap:8px}
+.svc a{font-size:15px;text-decoration:none;padding:9px 14px;border:1px solid var(--edge);border-radius:999px}
+.svc a:hover{border-color:var(--acc);color:var(--acc-l)}
+.svc a[aria-current]{background:var(--acc);color:var(--on-acc);border-color:var(--acc)}
+footer{margin-top:40px;padding:26px 0 40px;border-top:1px dashed var(--edge);font:13px/1.6 var(--f-mono);color:var(--mute)}
+footer a{color:var(--dim)}
