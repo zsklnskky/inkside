@@ -1396,6 +1396,16 @@ function track(ev,params={},std=true){try{if(window.fbq)std?fbq('track',ev,param
 const UTM=new URLSearchParams(location.search);
 if(CFG.api)document.documentElement.classList.add('api');
 const utmTag=['utm_source','utm_campaign'].map(k=>UTM.get(k)).filter(Boolean).join(' / ');
+/* ad attribution: kept 30 days, rides to the bot in the /start parameter as <kind>_<source>[-<campaign>] (Telegram allows A-Z a-z 0-9 _ -, 64 chars) */
+const ATTR=(()=>{const cl=v=>(v||'').replace(/[^A-Za-z0-9]/g,'').slice(0,16);
+  let src=cl(UTM.get('utm_source'));const cmp=cl(UTM.get('utm_campaign'));
+  if(!src)src=UTM.get('fbclid')?'fbads':UTM.get('gclid')?'googleads':UTM.get('yclid')?'yaads':'';
+  if(!src&&document.referrer){try{const h=new URL(document.referrer).hostname;if(!/inkside\.by$|github\.io$/.test(h))
+    src='org'+(/instagram/.test(h)?'ig':/facebook|fb\./.test(h)?'fb':/google/.test(h)?'google':/yandex|ya\.ru/.test(h)?'ya':/tiktok/.test(h)?'tiktok':/vk\.com/.test(h)?'vk':/t\.me|telegram/.test(h)?'tg':'web')}catch(e){}}
+  let a=src?src+(cmp?'-'+cmp:''):'';
+  try{const s=JSON.parse(localStorage.getItem('attr')||'null');if(a)localStorage.setItem('attr',JSON.stringify({a,t:Date.now()}));else if(s&&Date.now()-s.t<30*864e5)a=s.a}catch(e){}
+  return a})();
+$$('a[href^="https://t.me/inkside_bot"]').forEach(l=>{if(!ATTR)return;const u=new URL(l.href);u.searchParams.set('start',(u.searchParams.get('start')||'site')+'_'+ATTR);l.href=u.href});
 const STAR='<svg viewBox="0 0 24 24"><use href="#star"/></svg>';
 
 /* ---------- content edited by the artists in the Telegram bot (window.SITE from /api/content.js) ---------- */
@@ -1560,9 +1570,7 @@ function toast(t){const d=document.createElement('div');d.className='toast';d.se
 function send(msg,via,start){
   if(via==='ig'){msg=withUtm(msg);if(navigator.clipboard)navigator.clipboard.writeText(msg).catch(()=>{});
     toast(lang==='en'?'Request text copied. Paste it into the Instagram chat.':'Текст заявки скопирован. Вставьте его в чат Instagram.');return window.open(IG,'_blank','noopener')}
-  // Telegram start parameter: only A-Z a-z 0-9 _ - and up to 64 chars; the ad source rides along
-  const src=(UTM.get('utm_source')||'').replace(/[^A-Za-z0-9]/g,'').slice(0,20);
-  window.open(TG+'?start='+(start||'site')+(src?'_'+src:''),'_blank','noopener')}
+  window.open(TG+'?start='+(start||'site')+(ATTR?'_'+ATTR:''),'_blank','noopener')}
 function bookStart(){const ix=n=>$$(`input[name=${n}]`,bf).findIndex(x=>x.checked);return 'b'+Math.max(ix('zone'),0)+Math.max(ix('bsize'),0)}
 $('#viaIg').onclick=()=>{if(step<2){show(step+1);return}if(!bf.name.value.trim()||!bf.idea.value.trim()){$('#bookErr').textContent=lang==='en'?'Name and idea, please':'Укажите имя и идею';return}
   send(bookMsg(),'ig');track('Lead',{value:180,currency:'BYN'});track('Contact',{method:'instagram'});book.close()};
