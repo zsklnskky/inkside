@@ -16,10 +16,16 @@
 <link rel="canonical" href="https://inkside.by/">
 <link rel="alternate" hreflang="ru" href="https://inkside.by/">
 <link rel="alternate" hreflang="en" href="https://inkside.by/?lang=en">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="img/mural.jpg" media="(min-width:901px)">
-<link rel="preload" as="image" href="img/mural_tall.jpg" media="(max-width:900px)">
-<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Ruslan+Display&family=Rubik+Glitch&family=Onest:wght@400;500;600;700&family=PT+Mono&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="image" href="img/mural.webp" media="(min-width:901px)" fetchpriority="low">
+<link rel="preload" as="image" href="img/mural_tall.webp" media="(max-width:900px)" fetchpriority="low">
+<link rel="expect" href="#mq" blocking="render"><!-- first frame only once the whole hero is parsed: a half-parsed hero re-centred later and gave CLS 0.39 -->
+<!-- fonts: the stylesheet is added right after the first paint (photo and layout come first, text shows in the fallback until then); the hero intro (fx) waits for it -->
+<noscript><style>.wallgrid.pre .pol{display:block!important}</style><link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Ruslan+Display&family=Rubik+Glitch&family=Onest:wght@400;500;600;700&family=PT+Mono&display=swap" rel="stylesheet"></noscript>
+<script>window.FONTS_CSS='https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Ruslan+Display&family=Rubik+Glitch&family=Onest:wght@400;500;600;700&family=PT+Mono&display=swap';
+(function(){var done=0,go=function(){if(done++)return;var l=document.createElement('link');l.id='gf';l.rel='stylesheet';l.href=FONTS_CSS;l.onload=l.onerror=function(){window.__gf=1};document.head.appendChild(l)},T=window.PerformanceObserver&&PerformanceObserver.supportedEntryTypes||[];
+if(T.indexOf('paint')<0)go();else{new PerformanceObserver(go).observe({type:'paint',buffered:true});setTimeout(go,3000)}})();
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro');setTimeout(function(){document.documentElement.classList.remove('intro')},8000)}</script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "TattooParlor", "@id": "https://inkside.by/#studio", "name": "INKSIDE", "alternateName": ["Инксайд", "INKSIDE Minsk", "Тату-студия INKSIDE"], "legalName": "ООО «Инк Тату»", "taxID": "193954480", "description": "Тату-студия в Минске: чёрно-белый и цветной реализм, рукава, перекрытие и коррекция старых тату, мини и fine line. Два мастера, опыт 8+ лет, бесплатная консультация.", "url": "https://inkside.by/", "image": "https://inkside.by/img/og.jpg", "logo": "https://inkside.by/img/logo.webp", "telephone": "+375445111912", "address": {"@type": "PostalAddress", "streetAddress": "пер. Макаёнка 4, пом. 64", "addressLocality": "Минск", "postalCode": "220114", "addressCountry": "BY"}, "geo": {"@type": "GeoCoordinates", "latitude": 53.9134, "longitude": 27.5946}, "areaServed": {"@type": "City", "name": "Минск"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "11:00", "closes": "23:00"}], "priceRange": "180-930 BYN", "currenciesAccepted": "BYN", "sameAs": ["https://www.instagram.com/inkside.minsk/", "https://t.me/inkside_bot"], "employee": [{"@type": "Person", "name": "Надежда", "jobTitle": "Тату-мастер", "sameAs": ["https://www.instagram.com/st.nadya_tattoo/", "https://www.tiktok.com/@st.nadya_tattoo"]}, {"@type": "Person", "name": "Виталий", "jobTitle": "Тату-мастер", "sameAs": ["https://www.instagram.com/inkside.minsk/"]}], "makesOffer": [{"@type": "Offer", "name": "Тату до 1 часа работы", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 180, "priceCurrency": "BYN"}, "url": "https://inkside.by/ceny/"}, {"@type": "Offer", "name": "Каждый следующий час работы", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 150, "priceCurrency": "BYN"}, "url": "https://inkside.by/ceny/"}, {"@type": "Offer", "name": "Эскиз под клиента", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 40, "priceCurrency": "BYN"}, "url": "https://inkside.by/ceny/"}, {"@type": "Offer", "name": "Консультация", "price": 0, "priceCurrency": "BYN", "url": "https://inkside.by/ceny/"}, {"@type": "Offer", "name": "Мини тату до 5 см", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 180, "priceCurrency": "BYN"}, "url": "https://inkside.by/mini-tatu/"}, {"@type": "Offer", "name": "Тату 5-10 см", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 330, "priceCurrency": "BYN"}, "url": "https://inkside.by/ceny/"}, {"@type": "Offer", "name": "Тату 10-20 см", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 480, "priceCurrency": "BYN"}, "url": "https://inkside.by/ceny/"}, {"@type": "Offer", "name": "Рукав или большая работа, сеанс", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 930, "priceCurrency": "BYN"}, "url": "https://inkside.by/rukav/"}, {"@type": "Offer", "name": "Перекрытие старой тату", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 180, "priceCurrency": "BYN"}, "url": "https://inkside.by/perekrytie-tatu/"}, {"@type": "Offer", "name": "Подарочный сертификат на тату на любую сумму", "url": "https://inkside.by/sertifikat/"}]}
 </script>
@@ -105,7 +111,9 @@ a.mark:hover,.mark.on{background-size:100% 100%}
 .btns{display:flex;flex-wrap:wrap;gap:22px;align-items:center}
 
 /* ---------- loader + ink transition ---------- */
-.ink-wipe{position:fixed;inset:0;z-index:480;pointer-events:none;background:var(--ink);clip-path:circle(150% at 50% 50%)}
+.ink-wipe{position:fixed;inset:0;z-index:480;pointer-events:none;background:var(--ink);clip-path:circle(150% at 50% 50%);display:none}
+/* until the intro timeline takes over (html.intro is set in <head>, never with reduced motion) */
+.intro #h1 .row,.intro .hero-sheet .lead,.intro .hero-sheet .btns,.intro .hero-photos .polaroid,.intro .stamp{visibility:hidden}
 .ink-wipe img{position:absolute;left:50%;top:50%;width:min(380px,70vw);translate:-50% -50%}
 
 /* ---------- nav ---------- */
@@ -243,6 +251,8 @@ a.mark:hover,.mark.on{background-size:100% 100%}
 .pol figcaption span:last-child{font:12px var(--f-mono);color:#6a655d}
 .pol.out{display:none}
 .wallgrid:not(.all):not(.filtered) .pol.extra{display:none}
+/* before the script picks the featured six: show only the default picks, so lazy photos further down are not fetched with the first screen */
+.wallgrid.pre .pol:not([data-id="9"],[data-id="15"],[data-id="10"],[data-id="24"],[data-id="5"],[data-id="12"]){display:none}
 #works .more{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
 .more{display:flex;justify-content:center;margin-top:30px}
 
@@ -631,8 +641,8 @@ dialog.book[open] form{animation:bkin .45s var(--out)}
 
 /* ===================== v4: review fixes (marketer + designer + QA) ===================== */
 /* background: animated violet and blue light orbs */
-.wall{background:linear-gradient(180deg,rgba(10,8,5,.42),rgba(10,8,5,.62)),url(img/mural.jpg) 60% 40%/cover,#3b2d1b;background-blend-mode:normal,luminosity,normal;filter:contrast(1.06);overflow:hidden}
-@media (max-width:900px){.wall{background-image:linear-gradient(180deg,rgba(10,8,5,.42),rgba(10,8,5,.62)),url(img/mural_tall.jpg),none;background-position:center 30%}}
+.wall{background:linear-gradient(180deg,rgba(10,8,5,.42),rgba(10,8,5,.62)),url(img/mural.webp) 60% 40%/cover,#3b2d1b;background-blend-mode:normal,luminosity,normal;filter:contrast(1.06);overflow:hidden}
+@media (max-width:900px){.wall{background-image:linear-gradient(180deg,rgba(10,8,5,.42),rgba(10,8,5,.62)),url(img/mural_tall.webp),none;background-position:center 30%}}
 .wall .embers b{position:absolute;left:var(--x);bottom:-20px;width:var(--s);height:var(--s);border-radius:50%;background:#ffd28a;box-shadow:0 0 8px 2px rgba(255,170,60,.85),0 0 22px 6px rgba(255,120,30,.35);animation:ember var(--t) linear infinite;animation-delay:var(--dl);opacity:0}
 @keyframes ember{0%{transform:translate(0,0);opacity:0}10%{opacity:1}50%{transform:translate(var(--dx),-55vh)}85%{opacity:.8}100%{transform:translate(calc(var(--dx) * -.5),-110vh);opacity:0}}
 @media (max-width:700px){.wall .embers b:nth-child(2n){display:none}}
@@ -789,7 +799,7 @@ dialog.privacy::backdrop{background:rgba(5,5,6,.85);backdrop-filter:blur(6px)}
 .contact{align-items:start}
 .addr dl{margin-top:28px!important}
 .tracklist .cass span{white-space:nowrap}
-.frame::before{content:"";position:absolute;inset:14px;border-radius:18px;background:url(img/stencil_w17.png) center/cover;opacity:.15;pointer-events:none}
+.frame::before{content:"";position:absolute;inset:14px;border-radius:18px;background:url(img/s/stencil_w17-340.png) center/cover;opacity:.15;pointer-events:none}
 @media (max-width:760px){
   .reel .track .slide{height:auto;width:82vw;aspect-ratio:3/4}
   .slide .tag{left:12px;bottom:16px}
@@ -999,7 +1009,7 @@ html.api .consent-box{display:flex}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="water" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".011 .017" numOctaves="2" seed="7"><animate attributeName="baseFrequency" dur="16s" values=".011 .017;.016 .012;.011 .017" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="70" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
 <a data-k="page.1" class="skip" href="#main" data-en="Skip to content">К содержанию</a>
-<div class="ink-wipe" aria-hidden="true"><img data-k="page.2" src="img/logo.webp" alt="" width="900" height="624"></div>
+<div class="ink-wipe" aria-hidden="true"><img data-k="page.2" loading="lazy" src="img/logo.webp" alt="" width="900" height="624"></div>
 <div class="wall" aria-hidden="true"><i></i><i></i><span class="embers"><b style="--x:45.4%;--s:5px;--t:18.4s;--dl:-15.6s;--dx:-6px"></b><b style="--x:84.1%;--s:3px;--t:11.0s;--dl:-10.2s;--dx:16px"></b><b style="--x:78.1%;--s:2px;--t:13.9s;--dl:-2.8s;--dx:5px"></b><b style="--x:87.5%;--s:2px;--t:15.5s;--dl:-7.9s;--dx:-6px"></b><b style="--x:72.9%;--s:3px;--t:15.9s;--dl:-16.6s;--dx:-52px"></b><b style="--x:5.4%;--s:3px;--t:15.6s;--dl:-15.6s;--dx:-21px"></b><b style="--x:58.7%;--s:3px;--t:14.7s;--dl:-12.8s;--dx:-0px"></b><b style="--x:65.6%;--s:4px;--t:16.2s;--dl:-8.1s;--dx:6px"></b><b style="--x:91.4%;--s:2px;--t:16.8s;--dl:-6.3s;--dx:-32px"></b><b style="--x:29.7%;--s:2px;--t:15.2s;--dl:-2.2s;--dx:-47px"></b><b style="--x:29.9%;--s:2px;--t:19.5s;--dl:-16.9s;--dx:-60px"></b><b style="--x:22.1%;--s:2px;--t:14.2s;--dl:-19.6s;--dx:-12px"></b><b style="--x:9.0%;--s:3px;--t:17.6s;--dl:-5.4s;--dx:-50px"></b><b style="--x:33.9%;--s:4px;--t:17.3s;--dl:-2.4s;--dx:-30px"></b><b style="--x:11.7%;--s:2px;--t:14.1s;--dl:-9.7s;--dx:22px"></b><b style="--x:20.1%;--s:5px;--t:11.1s;--dl:-14.6s;--dx:-44px"></b><b style="--x:63.8%;--s:2px;--t:13.3s;--dl:-19.8s;--dx:-60px"></b><b style="--x:85.0%;--s:5px;--t:12.3s;--dl:-17.7s;--dx:-35px"></b><b style="--x:39.9%;--s:5px;--t:16.1s;--dl:-2.0s;--dx:59px"></b><b style="--x:22.5%;--s:3px;--t:9.1s;--dl:-12.2s;--dx:40px"></b><b style="--x:39.1%;--s:2px;--t:10.0s;--dl:-11.7s;--dx:-31px"></b><b style="--x:59.7%;--s:3px;--t:15.8s;--dl:-2.5s;--dx:10px"></b><b style="--x:81.9%;--s:3px;--t:18.5s;--dl:-3.7s;--dx:-42px"></b><b style="--x:89.2%;--s:5px;--t:11.7s;--dl:-3.8s;--dx:29px"></b><b style="--x:92.3%;--s:3px;--t:16.6s;--dl:-7.8s;--dx:-2px"></b><b style="--x:9.5%;--s:2px;--t:10.1s;--dl:-0.8s;--dx:56px"></b></span></div>
 <div class="shade" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -1009,25 +1019,25 @@ html.api .consent-box{display:flex}
 
 <nav class="nav" aria-label="Главное меню">
   <div class="bar sheet">
-    <a href="#top" data-ink aria-label="INKSIDE, наверх"><img data-k="nav.1" class="logo-s" src="img/mono.webp" alt="" width="38" height="38"></a>
+    <a href="#top" data-ink aria-label="INKSIDE, наверх"><img data-k="nav.1" class="logo-s" src="img/mono.webp" srcset="img/s/mono-96.webp 96w, img/mono.webp 144w" sizes="38px" alt="" width="38" height="38"></a>
     <ul>
       <li>
         <button aria-expanded="false" aria-controls="dd-works"><span data-k="nav.2" data-en="Works">Работы</span><i class="caret"></i></button>
         <div class="drop" id="dd-works">
-          <a href="#works" data-ink data-go="bw"><img data-k="nav.3" loading="lazy" src="img/w01.webp" alt="" width="1050" height="1400"><span><b data-k="nav.4" data-en="Black &amp; grey">Ч/б реализм</b><small data-k="nav.5" data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
-          <a href="#works" data-ink data-go="color"><img data-k="nav.6" loading="lazy" src="img/w13.webp" alt="" width="1054" height="1400"><span><b data-k="nav.7" data-en="Colour">Цвет</b><small data-k="nav.8" data-en="colour realism">цветной реализм</small></span></a>
-          <a href="#works" data-ink data-go="big"><img data-k="nav.9" loading="lazy" src="img/w05.webp" alt="" width="1050" height="1400"><span><b data-k="nav.10" data-en="Sleeves">Рукава</b><small data-k="nav.11" data-en="legs, backs">ноги, спины</small></span></a>
-          <a href="#works" data-ink data-go="graphic"><img data-k="nav.12" loading="lazy" src="img/w15.webp" alt="" width="1100" height="1129"><span><b data-k="nav.13" data-en="Graphic">Графика</b><small data-k="nav.14" data-en="mini, ornament">мини, орнамент</small></span></a>
-          <a href="#works" data-ink data-go="cover"><img data-k="nav.15" src="img/o2408.webp" alt=""><span><b data-k="nav.16" data-en="Cover-ups">Перекрытие</b><small data-k="nav.17" data-en="old tattoos">старых татуировок</small></span></a>
-          <a href="#works" data-ink data-go="fix"><img data-k="nav.18" src="img/o2399.webp" alt=""><span><b data-k="nav.19" data-en="Correction">Коррекция</b><small data-k="nav.20" data-en="old work">старых работ</small></span></a>
+          <a href="#works" data-ink data-go="bw"><img data-k="nav.3" loading="lazy" src="img/w01.webp" srcset="img/s/w01-480.webp 480w, img/s/w01-900.webp 900w, img/w01.webp 1050w" sizes="72px" alt="" width="1050" height="1400"><span><b data-k="nav.4" data-en="Black &amp; grey">Ч/б реализм</b><small data-k="nav.5" data-en="portraits, owls, angels">портреты, совы, ангелы</small></span></a>
+          <a href="#works" data-ink data-go="color"><img data-k="nav.6" loading="lazy" src="img/w13.webp" srcset="img/s/w13-480.webp 480w, img/s/w13-900.webp 900w, img/w13.webp 1054w" sizes="72px" alt="" width="1054" height="1400"><span><b data-k="nav.7" data-en="Colour">Цвет</b><small data-k="nav.8" data-en="colour realism">цветной реализм</small></span></a>
+          <a href="#works" data-ink data-go="big"><img data-k="nav.9" loading="lazy" src="img/w05.webp" srcset="img/s/w05-480.webp 480w, img/w05.webp 1050w" sizes="72px" alt="" width="1050" height="1400"><span><b data-k="nav.10" data-en="Sleeves">Рукава</b><small data-k="nav.11" data-en="legs, backs">ноги, спины</small></span></a>
+          <a href="#works" data-ink data-go="graphic"><img data-k="nav.12" loading="lazy" src="img/w15.webp" srcset="img/s/w15-480.webp 480w, img/s/w15-900.webp 900w, img/w15.webp 1100w" sizes="72px" alt="" width="1100" height="1129"><span><b data-k="nav.13" data-en="Graphic">Графика</b><small data-k="nav.14" data-en="mini, ornament">мини, орнамент</small></span></a>
+          <a href="#works" data-ink data-go="cover"><img data-k="nav.15" loading="lazy" src="img/o2408.webp" srcset="img/s/o2408-480.webp 480w, img/s/o2408-900.webp 900w, img/o2408.webp 1100w" sizes="72px" alt=""><span><b data-k="nav.16" data-en="Cover-ups">Перекрытие</b><small data-k="nav.17" data-en="old tattoos">старых татуировок</small></span></a>
+          <a href="#works" data-ink data-go="fix"><img data-k="nav.18" loading="lazy" src="img/o2399.webp" srcset="img/s/o2399-480.webp 480w, img/s/o2399-900.webp 900w, img/o2399.webp 1100w" sizes="72px" alt=""><span><b data-k="nav.19" data-en="Correction">Коррекция</b><small data-k="nav.20" data-en="old work">старых работ</small></span></a>
           <span data-k="nav.21" class="hand" data-en="all works are ours, no stock">все работы наши, без стоков ✦</span>
         </div>
       </li>
       <li>
         <button aria-expanded="false" aria-controls="dd-masters"><span data-k="nav.22" data-en="Artists">Мастера</span><i class="caret"></i></button>
         <div class="drop narrow" id="dd-masters">
-          <a href="#masters" data-ink><img data-k="nav.23" loading="lazy" src="img/nadezhda.webp" alt="" width="788" height="1400"><span><b data-k="nav.24" data-en="Nadezhda">Надежда</b><small data-k="nav.25" data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
-          <a href="#masters" data-ink><img data-k="nav.26" loading="lazy" src="img/vitaliy.webp" alt="" width="787" height="1400"><span><b data-k="nav.27" data-en="Vitaliy">Виталий</b><small data-k="nav.28" data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
+          <a href="#masters" data-ink><img data-k="nav.23" loading="lazy" src="img/nadezhda.webp" srcset="img/s/nadezhda-480.webp 480w, img/nadezhda.webp 788w" sizes="72px" alt="" width="788" height="1400"><span><b data-k="nav.24" data-en="Nadezhda">Надежда</b><small data-k="nav.25" data-en="micro-realism, colour">микрореализм, цвет</small></span></a>
+          <a href="#masters" data-ink><img data-k="nav.26" loading="lazy" src="img/vitaliy.webp" srcset="img/s/vitaliy-480.webp 480w, img/vitaliy.webp 787w" sizes="72px" alt="" width="787" height="1400"><span><b data-k="nav.27" data-en="Vitaliy">Виталий</b><small data-k="nav.28" data-en="realism, cover-ups">реализм, перекрытия</small></span></a>
         </div>
       </li>
       <li><a data-k="nav.29" href="#prices" data-ink data-en="Prices">Цены</a></li>
@@ -1061,12 +1071,12 @@ html.api .consent-box{display:flex}
   <div class="wrap">
     <div class="hero-sheet sheet"><span class="sheen" aria-hidden="true"></span><span class="water" aria-hidden="true"><i></i></span>
       <script>var Q=new URLSearchParams(location.search).get('s'),M={mini:'w15',sleeve:'w02',cover:'w19'},MOB=innerWidth<=900;window.__heroImg=function(i,def,mob){if(mob===MOB)i.src="img/"+((M[Q])||def)+".webp"}</script>
-      <figure class="hero-mob" aria-hidden="true"><script>if(!Q||!M[Q])document.currentScript.parentElement.classList.add("logo-only")</script><img data-k="top.1" class="mob-logo" src="img/logo.webp" alt="" width="900" height="624"><img data-k="top.2" onerror="this.remove()" data-hero="o3316" data-mob="1" alt="" width="780" height="1040" fetchpriority="high"><script>__heroImg(document.currentScript.previousElementSibling,"o3316",true)</script></figure>
-      <div class="chromelogo"><img data-k="top.3" src="img/logo.webp" alt="INKSIDE" width="900" height="624" fetchpriority="high"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
+      <figure class="hero-mob" aria-hidden="true"><script>if(!Q||!M[Q])document.currentScript.parentElement.classList.add("logo-only")</script><img data-k="top.1" class="mob-logo" loading="lazy" src="img/logo.webp" srcset="img/s/logo-240.webp 240w, img/s/logo-480.webp 480w, img/logo.webp 900w" sizes="132px" alt="" width="900" height="624"><img data-k="top.2" onerror="this.remove()" data-hero="o3316" data-mob="1" alt="" width="780" height="1040" fetchpriority="high"><script>__heroImg(document.currentScript.previousElementSibling,"o3316",true)</script></figure>
+      <div class="chromelogo"><img data-k="top.3" loading="lazy" src="img/logo.webp" alt="INKSIDE" width="900" height="624"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
       <p id="promo" class="promo" data-k="promo" hidden></p>
       <h1 class="poster" id="h1">
         <span data-k="top.14" class="h1-kicker" data-en="INKSIDE tattoo studio in Minsk">Тату-студия INKSIDE в Минске</span>
-        <span class="row"><span data-k="top.4" data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.jpg" muted loop playsinline preload="none" aria-hidden="true" data-lazyplay></video></span></span>
+        <span class="row"><span data-k="top.4" data-en="A tattoo" data-seg="h1a">Тату,</span><span class="vidword"><video src="img/process.mp4?v=2" poster="img/poster.webp" muted loop playsinline preload="none" aria-hidden="true" data-lazyplay></video></span></span>
         <span class="row"><span data-k="top.5" data-en="you won't" data-seg="h1b">за которую</span></span>
         <span class="row"><span data-k="top.6" data-en="regret" data-seg="h1c">не стыдно</span></span>
         <span class="row"><span data-k="top.7" class="hand" data-en="even in 10 years ✦" data-seg="h1d">и через 10 лет ✦</span></span>
@@ -1111,44 +1121,44 @@ html.api .consent-box{display:flex}
         <button data-k="works.8" class="tab" aria-pressed="false" data-f="fix" data-en="Correction">Коррекция</button>
       </div>
     </div>
-    <div class="wallgrid" id="grid">
-      <figure class="pol" data-id="1" role="button" data-c="graphic" tabindex="0"><img src="img/o9871.webp" alt="Графика тату: кинжал" loading="lazy" width="955" height="1278"><figcaption><span data-en="dagger">кинжал</span><span data-en="graphic">графика</span></figcaption></figure>
-      <figure class="pol" data-id="2" role="button" data-c="graphic" tabindex="0"><img src="img/o9870.webp" alt="Графика тату: колонна" loading="lazy" width="1068" height="1400"><figcaption><span data-en="column">колонна</span><span data-en="graphic">графика</span></figcaption></figure>
-      <figure class="pol" data-id="3" role="button" data-c="graphic" tabindex="0"><img src="img/o9869.webp" alt="Графика тату: ангел" loading="lazy" width="1062" height="1400"><figcaption><span data-en="angel">ангел</span><span data-en="graphic">графика</span></figcaption></figure>
-      <figure class="pol" data-id="4" role="button" data-c="graphic" tabindex="0"><img src="img/o9867.webp" alt="Графика тату: кисть" loading="lazy" width="1081" height="1400"><figcaption><span data-en="hand">кисть</span><span data-en="graphic">графика</span></figcaption></figure>
-      <figure class="pol" data-id="5" role="button" data-c="cover" tabindex="0"><img src="img/o2411.webp" alt="Перекрытие старой тату рукавом" loading="lazy" width="1100" height="1112"><figcaption><span data-en="sleeve">рукав</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
-      <figure class="pol" data-id="6" role="button" data-c="cover" tabindex="0"><img src="img/o2408.webp" alt="Перекрытие старой тату: череп" loading="lazy" width="1100" height="1112"><figcaption><span data-en="skull">череп</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
-      <figure class="pol" data-id="7" role="button" data-c="cover" tabindex="0"><img src="img/o2407.webp" alt="Перекрытие старой тату: спартанец" loading="lazy" width="1100" height="1110"><figcaption><span data-en="spartan">спартанец</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
-      <figure class="pol" data-id="8" role="button" data-c="cover" tabindex="0"><img src="img/o2406.webp" alt="Перекрытие старой тату: портрет" loading="lazy" width="1100" height="1106"><figcaption><span data-en="portrait">портрет</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
-      <figure class="pol" data-id="9" role="button" data-c="bw big" tabindex="0"><img src="img/o3387.webp" alt="Тату рукава, ч/б реализм" loading="lazy" width="1050" height="1400"><figcaption><span data-en="sleeves">Рукава</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="10" role="button" data-c="bw big" tabindex="0"><img src="img/o3547.webp" alt="Тату рукав, ч/б реализм" loading="lazy" width="1050" height="1400"><figcaption><span data-en="sleeve">Рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="11" role="button" data-c="bw big" tabindex="0"><img src="img/o9817.webp" alt="Тату рукав, ч/б реализм" loading="lazy" width="1009" height="1335"><figcaption><span data-en="sleeve">Рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="12" role="button" data-c="bw" tabindex="0"><img src="img/o9816.webp" alt="Ч/б тату: спартанец" loading="lazy" width="848" height="1166"><figcaption><span data-en="spartan">Спартанец</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="13" role="button" data-c="bw" tabindex="0"><img src="img/o3382.webp" alt="Ч/б тату: ворон" loading="lazy" width="688" height="917"><figcaption><span data-en="raven">Ворон</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="14" role="button" data-c="bw" tabindex="0"><img src="img/o9848.webp" alt="Ч/б тату: портрет" loading="lazy" width="882" height="1169"><figcaption><span data-en="portrait">Портрет</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="15" role="button" data-c="color" tabindex="0"><img src="img/o9845.webp" alt="Цветная тату: гиена" loading="lazy" width="906" height="1239"><figcaption><span data-en="hyena">Гиена</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="16" role="button" data-c="color" tabindex="0"><img src="img/o9846.webp" alt="Цветная тату: горилла" loading="lazy" width="819" height="1086"><figcaption><span data-en="gorilla">Горилла</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="17" role="button" data-c="color" tabindex="0"><img src="img/o9849.webp" alt="Цветная тату: гейша" loading="lazy" width="853" height="1138"><figcaption><span data-en="geisha">Гейша</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="18" role="button" data-c="color" tabindex="0"><img src="img/o9850.webp" alt="Цветная тату: клинок" loading="lazy" width="833" height="1136"><figcaption><span data-en="blade">Клинок</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="19" role="button" data-c="color" tabindex="0"><img src="img/o9851.webp" alt="Цветная тату: Веном" loading="lazy" width="855" height="1106"><figcaption><span data-en="venom">Веном</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="20" role="button" data-c="color" tabindex="0"><img src="img/o9853.webp" alt="Цветная тату: феникс" loading="lazy" width="1085" height="1400"><figcaption><span data-en="phoenix">Феникс</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="21" role="button" data-c="color" tabindex="0"><img src="img/o9856.webp" alt="Цветная тату: герб" loading="lazy" width="1047" height="1400"><figcaption><span data-en="crest">Герб</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="22" role="button" data-c="color" tabindex="0"><img src="img/o9868.webp" alt="Цветная тату: череп" loading="lazy" width="1069" height="1400"><figcaption><span data-en="skull">Череп</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="23" role="button" data-c="bw" tabindex="0"><img src="img/w01.webp" alt="Чёрно-белый реализм: женский портрет" loading="lazy" width="1050" height="1400"><figcaption><span data-en="portrait">портрет</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="24" role="button" data-c="color" tabindex="0"><img src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy" width="1054" height="1400"><figcaption><span data-en="colour">в цвете</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="25" role="button" data-c="bw big" tabindex="0"><img src="img/w02.webp" alt="Тату на ногу целиком, ч/б" loading="lazy" width="1050" height="1400"><figcaption><span data-en="full leg">нога целиком</span><span data-en="2 days">2 дня</span></figcaption></figure>
-      <figure class="pol" data-id="26" role="button" data-c="bw" tabindex="0"><img src="img/w17.webp" alt="Ч/б тату: ангел в короне" loading="lazy" width="1050" height="1400"><figcaption><span data-en="angel">ангел</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="27" role="button" data-c="color" tabindex="0"><img src="img/w04.webp" alt="Цветная тату: лягушка и цветы" loading="lazy" width="926" height="992"><figcaption><span data-en="frog &amp; flowers">лягушка</span><span data-en="colour">цвет</span></figcaption></figure>
-      <figure class="pol" data-id="28" role="button" data-c="bw big" tabindex="0"><img src="img/o9844.webp" alt="Тату рукав с космонавтом" loading="lazy" width="1071" height="1400"><figcaption><span data-en="astronaut">космонавт</span><span data-en="sleeve">рукав</span></figcaption></figure>
-      <figure class="pol" data-id="29" role="button" data-c="graphic" tabindex="0"><img src="img/w15.webp" alt="Графика: колонна и геометрия" loading="lazy" width="1100" height="1129"><figcaption><span data-en="graphic">графика</span><span data-en="lines">линии</span></figcaption></figure>
-      <figure class="pol" data-id="30" role="button" data-c="bw" tabindex="0"><img src="img/w07.webp" alt="Ч/б тату: сова на плече" loading="lazy" width="1058" height="1400"><figcaption><span data-en="owl">сова</span><span data-en="shoulder">плечо</span></figcaption></figure>
-      <figure class="pol" data-id="31" role="button" data-c="fix" tabindex="0"><img src="img/o2399.webp" alt="Коррекция: тату на груди и плече до и после" loading="lazy" width="1100" height="994"><figcaption><span data-en="before / after">до / после</span><span data-en="correction">коррекция</span></figcaption></figure>
-      <figure class="pol" data-id="32" role="button" data-c="bw big" tabindex="0"><img src="img/w16.webp" alt="Тату рукав с кораблём" loading="lazy" width="1050" height="1400"><figcaption><span data-en="ship">корабль</span><span data-en="sleeve">рукав</span></figcaption></figure>
-      <figure class="pol" data-id="33" role="button" data-c="bw" tabindex="0"><img src="img/w20.webp" alt="Ч/б реализм на предплечье" loading="lazy" width="1100" height="1251"><figcaption><span data-en="forearm">предплечье</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="34" role="button" data-c="bw big" tabindex="0"><img src="img/w14.webp" alt="Тёмный тату рукав, ч/б" loading="lazy" width="1050" height="1400"><figcaption><span data-en="dark sleeve">тёмный рукав</span><span data-en="sleeve">рукав</span></figcaption></figure>
-      <figure class="pol" data-id="35" role="button" data-c="bw" tabindex="0"><img src="img/w08.webp" alt="Ч/б тату: сова, деталь" loading="lazy" width="720" height="1280"><figcaption><span data-en="owl detail">сова, деталь</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="36" role="button" data-c="bw big" tabindex="0"><img src="img/w05.webp" alt="Тату рукав целиком, ч/б" loading="lazy" width="1050" height="1400"><figcaption><span data-en="full sleeve">рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
-      <figure class="pol" data-id="37" role="button" data-c="graphic" tabindex="0"><img src="img/sketch.webp" alt="Эскиз тату на планшете" loading="lazy" width="1100" height="1192"><figcaption><span data-en="the sketch">эскиз</span><span data-en="custom">под вас</span></figcaption></figure>
+    <div class="wallgrid pre" id="grid">
+      <figure class="pol" data-id="1" role="button" data-c="graphic" tabindex="0"><img src="img/o9871.webp" srcset="img/s/o9871-480.webp 480w, img/o9871.webp 955w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Графика тату: кинжал" loading="lazy" width="955" height="1278"><figcaption><span data-en="dagger">кинжал</span><span data-en="graphic">графика</span></figcaption></figure>
+      <figure class="pol" data-id="2" role="button" data-c="graphic" tabindex="0"><img src="img/o9870.webp" srcset="img/s/o9870-480.webp 480w, img/s/o9870-900.webp 900w, img/o9870.webp 1068w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Графика тату: колонна" loading="lazy" width="1068" height="1400"><figcaption><span data-en="column">колонна</span><span data-en="graphic">графика</span></figcaption></figure>
+      <figure class="pol" data-id="3" role="button" data-c="graphic" tabindex="0"><img src="img/o9869.webp" srcset="img/s/o9869-480.webp 480w, img/s/o9869-900.webp 900w, img/o9869.webp 1062w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Графика тату: ангел" loading="lazy" width="1062" height="1400"><figcaption><span data-en="angel">ангел</span><span data-en="graphic">графика</span></figcaption></figure>
+      <figure class="pol" data-id="4" role="button" data-c="graphic" tabindex="0"><img src="img/o9867.webp" srcset="img/s/o9867-480.webp 480w, img/s/o9867-900.webp 900w, img/o9867.webp 1081w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Графика тату: кисть" loading="lazy" width="1081" height="1400"><figcaption><span data-en="hand">кисть</span><span data-en="graphic">графика</span></figcaption></figure>
+      <figure class="pol" data-id="5" role="button" data-c="cover" tabindex="0"><img src="img/o2411.webp" srcset="img/s/o2411-480.webp 480w, img/s/o2411-900.webp 900w, img/o2411.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Перекрытие старой тату рукавом" loading="lazy" width="1100" height="1112"><figcaption><span data-en="sleeve">рукав</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
+      <figure class="pol" data-id="6" role="button" data-c="cover" tabindex="0"><img src="img/o2408.webp" srcset="img/s/o2408-480.webp 480w, img/s/o2408-900.webp 900w, img/o2408.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Перекрытие старой тату: череп" loading="lazy" width="1100" height="1112"><figcaption><span data-en="skull">череп</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
+      <figure class="pol" data-id="7" role="button" data-c="cover" tabindex="0"><img src="img/o2407.webp" srcset="img/s/o2407-480.webp 480w, img/s/o2407-900.webp 900w, img/o2407.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Перекрытие старой тату: спартанец" loading="lazy" width="1100" height="1110"><figcaption><span data-en="spartan">спартанец</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
+      <figure class="pol" data-id="8" role="button" data-c="cover" tabindex="0"><img src="img/o2406.webp" srcset="img/s/o2406-480.webp 480w, img/s/o2406-900.webp 900w, img/o2406.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Перекрытие старой тату: портрет" loading="lazy" width="1100" height="1106"><figcaption><span data-en="portrait">портрет</span><span data-en="cover-up">перекрытие</span></figcaption></figure>
+      <figure class="pol" data-id="9" role="button" data-c="bw big" tabindex="0"><img src="img/o3387.webp" srcset="img/s/o3387-480.webp 480w, img/s/o3387-900.webp 900w, img/o3387.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тату рукава, ч/б реализм" loading="lazy" width="1050" height="1400"><figcaption><span data-en="sleeves">Рукава</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="10" role="button" data-c="bw big" tabindex="0"><img src="img/o3547.webp" srcset="img/s/o3547-480.webp 480w, img/s/o3547-900.webp 900w, img/o3547.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тату рукав, ч/б реализм" loading="lazy" width="1050" height="1400"><figcaption><span data-en="sleeve">Рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="11" role="button" data-c="bw big" tabindex="0"><img src="img/o9817.webp" srcset="img/s/o9817-480.webp 480w, img/o9817.webp 1009w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тату рукав, ч/б реализм" loading="lazy" width="1009" height="1335"><figcaption><span data-en="sleeve">Рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="12" role="button" data-c="bw" tabindex="0"><img src="img/o9816.webp" srcset="img/s/o9816-480.webp 480w, img/o9816.webp 848w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Ч/б тату: спартанец" loading="lazy" width="848" height="1166"><figcaption><span data-en="spartan">Спартанец</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="13" role="button" data-c="bw" tabindex="0"><img src="img/o3382.webp" srcset="img/s/o3382-480.webp 480w, img/o3382.webp 688w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Ч/б тату: ворон" loading="lazy" width="688" height="917"><figcaption><span data-en="raven">Ворон</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="14" role="button" data-c="bw" tabindex="0"><img src="img/o9848.webp" srcset="img/s/o9848-480.webp 480w, img/o9848.webp 882w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Ч/б тату: портрет" loading="lazy" width="882" height="1169"><figcaption><span data-en="portrait">Портрет</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="15" role="button" data-c="color" tabindex="0"><img src="img/o9845.webp" srcset="img/s/o9845-480.webp 480w, img/o9845.webp 906w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: гиена" loading="lazy" width="906" height="1239"><figcaption><span data-en="hyena">Гиена</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="16" role="button" data-c="color" tabindex="0"><img src="img/o9846.webp" srcset="img/s/o9846-480.webp 480w, img/o9846.webp 819w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: горилла" loading="lazy" width="819" height="1086"><figcaption><span data-en="gorilla">Горилла</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="17" role="button" data-c="color" tabindex="0"><img src="img/o9849.webp" srcset="img/s/o9849-480.webp 480w, img/o9849.webp 853w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: гейша" loading="lazy" width="853" height="1138"><figcaption><span data-en="geisha">Гейша</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="18" role="button" data-c="color" tabindex="0"><img src="img/o9850.webp" srcset="img/s/o9850-480.webp 480w, img/o9850.webp 833w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: клинок" loading="lazy" width="833" height="1136"><figcaption><span data-en="blade">Клинок</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="19" role="button" data-c="color" tabindex="0"><img src="img/o9851.webp" srcset="img/s/o9851-480.webp 480w, img/o9851.webp 855w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: Веном" loading="lazy" width="855" height="1106"><figcaption><span data-en="venom">Веном</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="20" role="button" data-c="color" tabindex="0"><img src="img/o9853.webp" srcset="img/s/o9853-480.webp 480w, img/s/o9853-900.webp 900w, img/o9853.webp 1085w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: феникс" loading="lazy" width="1085" height="1400"><figcaption><span data-en="phoenix">Феникс</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="21" role="button" data-c="color" tabindex="0"><img src="img/o9856.webp" srcset="img/s/o9856-480.webp 480w, img/s/o9856-900.webp 900w, img/o9856.webp 1047w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: герб" loading="lazy" width="1047" height="1400"><figcaption><span data-en="crest">Герб</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="22" role="button" data-c="color" tabindex="0"><img src="img/o9868.webp" srcset="img/s/o9868-480.webp 480w, img/s/o9868-900.webp 900w, img/o9868.webp 1069w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: череп" loading="lazy" width="1069" height="1400"><figcaption><span data-en="skull">Череп</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="23" role="button" data-c="bw" tabindex="0"><img src="img/w01.webp" srcset="img/s/w01-480.webp 480w, img/s/w01-900.webp 900w, img/w01.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Чёрно-белый реализм: женский портрет" loading="lazy" width="1050" height="1400"><figcaption><span data-en="portrait">портрет</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="24" role="button" data-c="color" tabindex="0"><img src="img/w13.webp" srcset="img/s/w13-480.webp 480w, img/s/w13-900.webp 900w, img/w13.webp 1054w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветной реализм: девушка с красной вуалью" loading="lazy" width="1054" height="1400"><figcaption><span data-en="colour">в цвете</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="25" role="button" data-c="bw big" tabindex="0"><img src="img/w02.webp" srcset="img/s/w02-480.webp 480w, img/w02.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тату на ногу целиком, ч/б" loading="lazy" width="1050" height="1400"><figcaption><span data-en="full leg">нога целиком</span><span data-en="2 days">2 дня</span></figcaption></figure>
+      <figure class="pol" data-id="26" role="button" data-c="bw" tabindex="0"><img src="img/w17.webp" srcset="img/s/w17-480.webp 480w, img/w17.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Ч/б тату: ангел в короне" loading="lazy" width="1050" height="1400"><figcaption><span data-en="angel">ангел</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="27" role="button" data-c="color" tabindex="0"><img src="img/w04.webp" srcset="img/s/w04-480.webp 480w, img/w04.webp 926w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Цветная тату: лягушка и цветы" loading="lazy" width="926" height="992"><figcaption><span data-en="frog &amp; flowers">лягушка</span><span data-en="colour">цвет</span></figcaption></figure>
+      <figure class="pol" data-id="28" role="button" data-c="bw big" tabindex="0"><img src="img/o9844.webp" srcset="img/s/o9844-480.webp 480w, img/s/o9844-900.webp 900w, img/o9844.webp 1071w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тату рукав с космонавтом" loading="lazy" width="1071" height="1400"><figcaption><span data-en="astronaut">космонавт</span><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="pol" data-id="29" role="button" data-c="graphic" tabindex="0"><img src="img/w15.webp" srcset="img/s/w15-480.webp 480w, img/s/w15-900.webp 900w, img/w15.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Графика: колонна и геометрия" loading="lazy" width="1100" height="1129"><figcaption><span data-en="graphic">графика</span><span data-en="lines">линии</span></figcaption></figure>
+      <figure class="pol" data-id="30" role="button" data-c="bw" tabindex="0"><img src="img/w07.webp" srcset="img/s/w07-480.webp 480w, img/w07.webp 1058w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Ч/б тату: сова на плече" loading="lazy" width="1058" height="1400"><figcaption><span data-en="owl">сова</span><span data-en="shoulder">плечо</span></figcaption></figure>
+      <figure class="pol" data-id="31" role="button" data-c="fix" tabindex="0"><img src="img/o2399.webp" srcset="img/s/o2399-480.webp 480w, img/s/o2399-900.webp 900w, img/o2399.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Коррекция: тату на груди и плече до и после" loading="lazy" width="1100" height="994"><figcaption><span data-en="before / after">до / после</span><span data-en="correction">коррекция</span></figcaption></figure>
+      <figure class="pol" data-id="32" role="button" data-c="bw big" tabindex="0"><img src="img/w16.webp" srcset="img/s/w16-480.webp 480w, img/w16.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тату рукав с кораблём" loading="lazy" width="1050" height="1400"><figcaption><span data-en="ship">корабль</span><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="pol" data-id="33" role="button" data-c="bw" tabindex="0"><img src="img/w20.webp" srcset="img/s/w20-480.webp 480w, img/s/w20-900.webp 900w, img/w20.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Ч/б реализм на предплечье" loading="lazy" width="1100" height="1251"><figcaption><span data-en="forearm">предплечье</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="34" role="button" data-c="bw big" tabindex="0"><img src="img/w14.webp" srcset="img/s/w14-480.webp 480w, img/w14.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тёмный тату рукав, ч/б" loading="lazy" width="1050" height="1400"><figcaption><span data-en="dark sleeve">тёмный рукав</span><span data-en="sleeve">рукав</span></figcaption></figure>
+      <figure class="pol" data-id="35" role="button" data-c="bw" tabindex="0"><img src="img/w08.webp" srcset="img/s/w08-480.webp 480w, img/w08.webp 720w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Ч/б тату: сова, деталь" loading="lazy" width="720" height="1280"><figcaption><span data-en="owl detail">сова, деталь</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="36" role="button" data-c="bw big" tabindex="0"><img src="img/w05.webp" srcset="img/s/w05-480.webp 480w, img/w05.webp 1050w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Тату рукав целиком, ч/б" loading="lazy" width="1050" height="1400"><figcaption><span data-en="full sleeve">рукав</span><span data-en="b&amp;g">ч/б</span></figcaption></figure>
+      <figure class="pol" data-id="37" role="button" data-c="graphic" tabindex="0"><img src="img/sketch.webp" srcset="img/s/sketch-480.webp 480w, img/sketch.webp 1100w" sizes="(max-width:900px) 42vw, min(30vw,430px)" alt="Эскиз тату на планшете" loading="lazy" width="1100" height="1192"><figcaption><span data-en="the sketch">эскиз</span><span data-en="custom">под вас</span></figcaption></figure>
     </div>
     <div class="more"><button class="btn" type="button" id="moreWorks" aria-controls="grid" aria-expanded="false"></button><a data-k="works.9" class="btn dark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener" data-en="More on Instagram">Ещё в Instagram</a></div>
   </div>
@@ -1210,8 +1220,8 @@ html.api .consent-box{display:flex}
         <div class="st sheet"><span data-k="process.11" class="n">04</span><h3 data-k="process.12" data-en="Healed">Заживление</h3><p data-k="process.13" data-en="A day-by-day aftercare plan. Send a photo in a month and we check the result.">План ухода по дням. Через месяц присылаете фото, мы проверяем результат.</p></div>
       </div>
       <div class="frame" aria-hidden="true">
-        <img data-k="process.14" loading="lazy" class="layer photo" src="img/w17.webp" alt="" width="1050" height="1400">
-        <img data-k="process.15" loading="lazy" class="layer stencil" src="img/stencil_w17.png" alt="" width="1050" height="1400">
+        <img data-k="process.14" loading="lazy" class="layer photo" src="img/w17.webp" srcset="img/s/w17-680.webp 680w, img/w17.webp 1050w" sizes="(max-width:900px) 64vw, 490px" alt="" width="1050" height="1400">
+        <img data-k="process.15" loading="lazy" class="layer stencil" src="img/stencil_w17.png" srcset="img/s/stencil_w17-680.png 680w, img/stencil_w17.png 1050w" sizes="(max-width:900px) 64vw, 490px" alt="" width="1050" height="1400">
         <span class="healed" data-en="HEALED">ЗАЖИЛО</span>
         <span class="bar"><i></i></span>
       </div>
@@ -1236,7 +1246,7 @@ html.api .consent-box{display:flex}
     <div class="masters">
       <article class="flashsheet">
         <div class="top">
-          <figure class="ph"><img data-k="img_nadya" src="img/nadezhda.webp" alt="Мастер Надежда" loading="lazy" width="788" height="1400"><figcaption data-k="masters.2">Nadya</figcaption></figure>
+          <figure class="ph"><img data-k="img_nadya" src="img/nadezhda.webp" srcset="img/s/nadezhda-480.webp 480w, img/nadezhda.webp 788w" sizes="(max-width:900px) 74vw, 200px" alt="Мастер Надежда" loading="lazy" width="788" height="1400"><figcaption data-k="masters.2">Nadya</figcaption></figure>
           <div>
             <h3 data-k="masters.3" data-en="Nadezhda">Надежда</h3>
             <span data-k="masters.4" class="hand" data-en="fine lines &amp; colour">тонкие линии и цвет</span>
@@ -1244,12 +1254,12 @@ html.api .consent-box{display:flex}
           </div>
         </div>
         <p data-k="bio_nadya" data-en="Turns a vague idea into a clean, careful sketch. Good choice for a first tattoo.">Превращает размытую идею в чистый аккуратный эскиз. Хороший выбор для первой тату.</p>
-        <div class="works"><img data-k="masters.12" src="img/w13.webp" alt="Цветной реализм: девушка с красной вуалью" loading="lazy" width="1054" height="1400"><img data-k="masters.13" src="img/w15.webp" alt="Графика: колонна и геометрия" loading="lazy" width="1100" height="1129"><img data-k="masters.14" src="img/w01.webp" alt="Ч/б реализм: женский портрет" loading="lazy" width="736" height="865"></div>
+        <div class="works"><img data-k="masters.12" src="img/w13.webp" srcset="img/s/w13-480.webp 480w, img/s/w13-900.webp 900w, img/w13.webp 1054w" sizes="(max-width:900px) 24vw, 186px" alt="Цветной реализм: девушка с красной вуалью" loading="lazy" width="1054" height="1400"><img data-k="masters.13" src="img/w15.webp" srcset="img/s/w15-480.webp 480w, img/s/w15-900.webp 900w, img/w15.webp 1100w" sizes="(max-width:900px) 24vw, 186px" alt="Графика: колонна и геометрия" loading="lazy" width="1100" height="1129"><img data-k="masters.14" src="img/w01.webp" srcset="img/s/w01-480.webp 480w, img/s/w01-900.webp 900w, img/w01.webp 1050w" sizes="(max-width:900px) 24vw, 186px" alt="Ч/б реализм: женский портрет" loading="lazy" width="736" height="865"></div>
         <span class="go-row"><a data-k="masters.15" class="go mark" href="https://www.instagram.com/st.nadya_tattoo/" target="_blank" rel="noopener">Instagram @st.nadya_tattoo</a><a data-k="masters.16" class="go mark" href="https://www.tiktok.com/@st.nadya_tattoo" target="_blank" rel="noopener">TikTok @st.nadya_tattoo</a></span>
       </article>
       <article class="flashsheet">
         <div class="top">
-          <figure class="ph"><img data-k="img_vitaliy" src="img/vitaliy.webp" alt="Мастер Виталий" loading="lazy" width="787" height="1400"><figcaption data-k="masters.17">Vitaliy</figcaption></figure>
+          <figure class="ph"><img data-k="img_vitaliy" src="img/vitaliy.webp" srcset="img/s/vitaliy-480.webp 480w, img/vitaliy.webp 787w" sizes="(max-width:900px) 74vw, 200px" alt="Мастер Виталий" loading="lazy" width="787" height="1400"><figcaption data-k="masters.17">Vitaliy</figcaption></figure>
           <div>
             <h3 data-k="masters.18" data-en="Vitaliy">Виталий</h3>
             <span data-k="masters.19" class="hand" data-en="realism &amp; sleeves">реализм и рукава</span>
@@ -1257,7 +1267,7 @@ html.api .consent-box{display:flex}
           </div>
         </div>
         <p data-k="bio_vitaliy" data-en="Takes on large projects and difficult cover-ups of old tattoos.">Берётся за крупные проекты и сложные перекрытия старых татуировок.</p>
-        <div class="works"><img data-k="masters.24" src="img/w20.webp" alt="Ч/б реализм на предплечье" loading="lazy" width="1100" height="1251"><img data-k="masters.25" src="img/w08.webp" alt="Ч/б тату: сова" loading="lazy" width="720" height="1280"><img data-k="masters.26" src="img/w14.webp" alt="Тёмный тату рукав" loading="lazy" width="1050" height="1400"></div>
+        <div class="works"><img data-k="masters.24" src="img/w20.webp" srcset="img/s/w20-480.webp 480w, img/s/w20-900.webp 900w, img/w20.webp 1100w" sizes="(max-width:900px) 24vw, 186px" alt="Ч/б реализм на предплечье" loading="lazy" width="1100" height="1251"><img data-k="masters.25" src="img/w08.webp" srcset="img/s/w08-480.webp 480w, img/w08.webp 720w" sizes="(max-width:900px) 24vw, 186px" alt="Ч/б тату: сова" loading="lazy" width="720" height="1280"><img data-k="masters.26" src="img/w14.webp" srcset="img/s/w14-480.webp 480w, img/w14.webp 1050w" sizes="(max-width:900px) 24vw, 186px" alt="Тёмный тату рукав" loading="lazy" width="1050" height="1400"></div>
         <span class="go-row"><a data-k="masters.27" class="go mark" href="https://www.instagram.com/inkside.minsk/" target="_blank" rel="noopener">Instagram @inkside.minsk</a></span>
       </article>
     </div>
@@ -1274,7 +1284,7 @@ html.api .consent-box{display:flex}
         <p data-k="cover.2" class="lead" data-en="Cover-ups and scar work are our speciality. Send a daylight photo of the area and we'll suggest sketch options.">Перекрытия старых тату и шрамов - наша специализация. Пришлите фото зоны при дневном свете, предложим варианты эскиза.</p>
         <div class="btns"><a data-k="cover.3" class="btn" data-contact="telegram" href="https://t.me/inkside_bot?start=cover" target="_blank" rel="noopener" data-en="Send a photo">Прислать фото</a><a data-k="cover.4" class="btn dark" data-contact="instagram" href="https://ig.me/m/inkside.minsk" target="_blank" rel="noopener">Instagram Direct</a></div>
       </div>
-      <img data-k="img_cover" src="img/o9886.webp" alt="Перекрытие старой тату на руке: до и после" data-en-alt="Cover-up of an old arm tattoo: before and after" loading="lazy" width="1100" height="1112">
+      <img data-k="img_cover" src="img/o9886.webp" srcset="img/s/o9886-480.webp 480w, img/s/o9886-900.webp 900w, img/o9886.webp 1100w" sizes="(max-width:900px) 78vw, 485px" alt="Перекрытие старой тату на руке: до и после" data-en-alt="Cover-up of an old arm tattoo: before and after" loading="lazy" width="1100" height="1112">
     </div>
   </div>
 </section>
@@ -1302,7 +1312,7 @@ html.api .consent-box{display:flex}
         <p class="lead" style="margin:22px 0 30px" data-k="gift" data-en="A certificate for any amount. The person picks the idea and the date. Popular before New Year.">Сертификат на любую сумму. Человек сам выбирает идею и дату. Особенно популярно перед Новым годом.</p>
         <a data-k="gift.2" class="btn magnet" href="https://t.me/inkside_bot?start=gift" target="_blank" rel="noopener" data-en="Order a certificate">Заказать сертификат</a>
       </div>
-      <div class="gcard" aria-hidden="true"><img data-k="gift.3" src="img/logo.webp" alt="" width="900" height="624"><div><small data-en="GIFT CERTIFICATE">ПОДАРОЧНЫЙ СЕРТИФИКАТ</small><div class="sum">300 BYN</div></div></div>
+      <div class="gcard" aria-hidden="true"><img data-k="gift.3" src="img/logo.webp" srcset="img/s/logo-240.webp 240w, img/s/logo-480.webp 480w, img/logo.webp 900w" sizes="(max-width:900px) 132px, 205px" alt="" width="900" height="624"><div><small data-en="GIFT CERTIFICATE">ПОДАРОЧНЫЙ СЕРТИФИКАТ</small><div class="sum">300 BYN</div></div></div>
     </div>
   </div>
 </section>
@@ -1382,12 +1392,13 @@ html.api .consent-box{display:flex}
   </form>
 </dialog>
 
-<script src="api/content.js"></script><!-- texts, prices and photos edited by the admins in the Telegram bot -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous"></script>
+<script src="api/content.js" defer></script><!-- texts, prices and photos edited by the admins in the Telegram bot -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" defer></script>
 <script>
+addEventListener('DOMContentLoaded',()=>{ // runs after the deferred libraries above, so they never hold back the first paint
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
@@ -1423,7 +1434,7 @@ const S=window.SITE||{},P={min:+S.p_min||180,hour:+S.p_hour||150,sketch:+S.p_ske
   const put=(k,ru,en)=>{const el=$(`[data-k="${k}"]`);if(!el)return;el.textContent=ru;if(en)el.dataset.en=esc(en)};
   // any text or photo marked data-k can be replaced from the bot; a new line in the text becomes a line break
   $$('[data-k]').forEach(el=>{const k=el.dataset.k,v=S[k];if(v==null||/^p_|^hours$/.test(k))return;
-    if(el.tagName==='IMG'){if(el.dataset.hero&&!el.getAttribute('src'))return;el.onload=()=>{el.width=el.naturalWidth;el.height=el.naturalHeight};el.src=v;return}
+    if(el.tagName==='IMG'){if(el.dataset.hero&&!el.getAttribute('src'))return;el.onload=()=>{el.width=el.naturalWidth;el.height=el.naturalHeight};el.removeAttribute('srcset');el.src=v;return}
     if(k==='promo')el.hidden=!v;
     el.innerHTML=esc(v).replace(/\n/g,'<br>');if(S[k+'_en'])el.dataset.en=esc(S[k+'_en']).replace(/\n/g,'<br>')});
   if(S.p_min)put('p_min',P.min+' BYN');if(S.p_hour)put('p_hour',P.hour+' BYN');if(S.p_sketch)put('p_sketch','от '+P.sketch+' BYN','from '+P.sketch+' BYN');
@@ -1614,7 +1625,7 @@ const grid=$('#grid'),moreBtn=$('#moreWorks'),FEATURED=['9','15','10','24','5','
 {const pols=$$('.pol',grid),pick=FEATURED.map(id=>pols.find(p=>p.dataset.id===id)).filter(Boolean);
   for(const c of ['bw','color','big','graphic','cover','fix']){if(pick.length>=6)break;const w=pols.find(p=>!pick.includes(p)&&p.dataset.c.split(' ').includes(c));if(w)pick.push(w)}
   for(const p of pols)if(pick.length<6&&!pick.includes(p))pick.push(p);
-  pick.reverse().forEach(p=>grid.prepend(p));pols.forEach(p=>p.classList.toggle('extra',!pick.includes(p)))}
+  pick.reverse().forEach(p=>grid.prepend(p));pols.forEach(p=>p.classList.toggle('extra',!pick.includes(p)));grid.classList.remove('pre')}
 function setMore(open){grid.classList.toggle('all',open);moreBtn.setAttribute('aria-expanded',open);
   const n=$$('.pol',grid).length;moreBtn.textContent=open?(lang==='en'?'Show less':'Свернуть'):(lang==='en'?`All works (${n})`:`Все работы (${n})`);
   moreBtn.hidden=n<=6||grid.classList.contains('filtered')}
@@ -1727,9 +1738,10 @@ if(fine&&!reduce){
     draw(now);raf=visible?requestAnimationFrame(loop):0;
   }
   function start(){if(!raf&&dots&&visible)raf=requestAnimationFrame(loop)}
+  const io0=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;io0.disconnect(); // dots load when the globe gets near, not with the first screen
   fetch('img/land.json').then(r=>r.json()).then(d=>{dots=d;size();
     if(reduce){lon0=MINSK[1];lat0=44;zoom=1;draw(performance.now());return}
-    start()});
+    start()})},{rootMargin:'800px'});io0.observe(box);
   addEventListener('resize',()=>{size();dots&&reduce&&draw(performance.now())});
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;
     if(visible&&!box.dataset.intro&&window.gsap&&!reduce){box.dataset.intro=1;
@@ -1748,7 +1760,8 @@ if(fine&&!reduce){
   });
 })();
 
-if(!reduce)addEventListener('load',()=>$$('video[data-lazyplay]').forEach(v=>{v.preload='auto';v.play().catch(()=>{})}));
+// the 1.2 MB clip starts with the hero intro (after the first paint and the fonts), not with the photo the page opens on
+const playVids=()=>{if(!reduce)$$('video[data-lazyplay]').forEach(v=>{v.preload='auto';v.play().catch(()=>{})})};
 /* floating vinyl hides over content it would cover */
 (function(){const st=$('.stamp'),seen=new Set();
   const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target));st.classList.toggle('is-hidden',seen.size>0||book.open)},{threshold:.05});
@@ -1760,19 +1773,19 @@ function fx(){
 if(window.gsap&&!reduce){
   gsap.registerPlugin(ScrollTrigger,SplitText);
   calc();
-  // loader: ink circle opens, then hero assembles
-  const intro=gsap.timeline({delay:.15});
-  intro.to(wipe,{clipPath:'circle(0% at 50% 50%)',duration:1.1,ease:'power4.inOut'})
-       .set(wipe,{display:'none'})
-       .from('.hero-sheet',{y:60,rotate:-2,opacity:0,duration:1,ease:'expo.out'},'-=.55');
+  // hero assembles; the sheet itself (with the LCP photo) is painted at once, no full-screen loader in front of it
+  const intro=gsap.timeline({delay:.05});
   const h1=SplitText.create('#h1 .row > span:not(.vidword):not(.hand)',{type:'words,chars',mask:'chars'});
-  intro.from(h1.chars,{yPercent:110,duration:.9,stagger:.025,ease:'expo.out'},'-=.7')
+  intro.from(h1.chars,{yPercent:110,duration:.9,stagger:.025,ease:'expo.out'})
        .from('.vidword',{scale:0,rotate:-30,duration:.8,ease:'back.out(2)'},'-=.6')
        .from('#h1 .hand',{opacity:0,x:-20,rotate:-20,duration:.7,ease:'back.out(2)'},'-=.5')
        .from('.hero-sheet .lead,.hero-sheet .btns',{y:24,opacity:0,stagger:.1,duration:.7,ease:'power3.out'},'-=.5')
        .from('.hero-photos .polaroid',{y:-120,scale:1.25,rotate:i=>[-22,18,30][i],opacity:0,duration:.9,stagger:.14,ease:'back.out(1.4)'},'-=.9')
        .from('.stamp',{scale:0,rotate:-180,duration:.9,ease:'back.out(1.8)'},'-=.4');
+  document.documentElement.classList.remove('intro'); // from() tweens above already hold the start state
 
+  // the scroll scenes are set up in small tasks after the hero intro starts, so the page stays responsive while loading
+  const steps=[()=>{
   // parallax on the graffiti wall + hero photos drift
   gsap.to('.wall',{yPercent:-6,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:true}});
   gsap.to('.hero-photos .a',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
@@ -1785,12 +1798,14 @@ if(window.gsap&&!reduce){
   const mq=$('#mq');let mx=0,dir=-1;
   gsap.ticker.add(()=>{const v=lenis?lenis.velocity:0;if(v)dir=v>0?-1:1;mx+=dir*(1.2+Math.min(Math.abs(v),40)*.25);const w=mq.scrollWidth/2;if(mx<=-w)mx+=w;if(mx>0)mx-=w;mq.style.transform=`translateX(${mx}px)`});
 
+  },()=>{
   // headings: masked char rise, outline words fill in
-  $$('.split').forEach(h=>{const s=SplitText.create(h,{type:'words,chars',mask:'words'});
-    gsap.from(s.chars,{yPercent:115,rotate:6,duration:1,stagger:.018,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 85%'}})});
+  },...$$('.split').map(h=>()=>{const s=SplitText.create(h,{type:'words,chars',mask:'words'});
+    gsap.from(s.chars,{yPercent:115,rotate:6,duration:1,stagger:.018,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 85%'}})}),()=>{
   $$('h2 .hand').forEach(n=>gsap.from(n,{opacity:0,scale:.4,rotate:-30,duration:.8,ease:'back.out(2.2)',scrollTrigger:{trigger:n,start:'top 85%'}}));
   $$('.outline').forEach(o=>gsap.to(o,{color:'#f2f0eb',duration:1.2,ease:'power2.out',scrollTrigger:{trigger:o,start:'top 70%'}}));
 
+  },()=>{
   // horizontal reel: one work per screen
   const mmH=gsap.matchMedia();
   mmH.add('(min-width: 901px)',()=>{
@@ -1802,6 +1817,7 @@ if(window.gsap&&!reduce){
     });
   });
 
+  },()=>{
   // stencil scene: stencil draws, ink fills, healed stamp slams
   const sts=$$('.st'),fr='.frame';
   if(innerWidth>900){
@@ -1821,6 +1837,7 @@ if(window.gsap&&!reduce){
   gsap.to(fr+' .bar i',{scaleX:1,ease:'none',scrollTrigger:{trigger:'.stencil-scene',start:'top top',end:'bottom bottom',scrub:true}});
   }
 
+  },()=>{
   // polaroids slap onto the wall
   ScrollTrigger.batch('.pol',{start:'top 92%',once:true,onEnter:b=>{gsap.killTweensOf(b);gsap.fromTo(b,{y:-80,scale:innerWidth>900?1.06:1,rotate:()=>innerWidth>900?gsap.utils.random(-6,6):0,opacity:0},{y:0,scale:1,rotate:0,opacity:1,duration:.8,stagger:.08,ease:'back.out(1.6)',clearProps:'opacity,transform'})}});
 
@@ -1829,6 +1846,7 @@ if(window.gsap&&!reduce){
   $$('[data-count]').forEach(el=>{const to=parseInt(el.textContent)||+el.dataset.count,suf=el.textContent.replace(/[0-9]/g,'');const o={v:0};
     ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>gsap.to(o,{v:to,duration:1.4,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)+suf,onComplete:()=>{const r=el.getBoundingClientRect();burst(r.right,r.top+20,8)}})})});
 
+  },()=>{
   // masters: sheets drop in, photo polaroid lands
   $$('.flashsheet').forEach((f,i)=>gsap.from(f,{y:120,rotate:innerWidth>900?(i?8:-8):0,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:f,start:'top 85%'}}));
   $$('.flashsheet .works img').forEach(im=>gsap.from(im,{scale:0,rotate:30,duration:.6,ease:'back.out(2.4)',scrollTrigger:{trigger:im,start:'top 92%'}}));
@@ -1838,12 +1856,14 @@ if(window.gsap&&!reduce){
   gsap.from('.tracklist .tr',{opacity:0,x:-24,stagger:.1,duration:.45,delay:.35,ease:'power3.out',scrollTrigger:{trigger:'.tracklist',start:'top 85%'}});
   gsap.from('.calc',{x:80,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.calc',start:'top 85%'}});
 
+  },()=>{
   // aftercare: dotted line fills, stars pop, stamp slams
   gsap.to('.care-line .fill',{scaleX:1,ease:'none',scrollTrigger:{trigger:'.care-line',start:'top 75%',end:'bottom 55%',scrub:true}});
   $$('.cday').forEach((d,i)=>gsap.from(d,{y:50,opacity:0,duration:.8,delay:i*.08,ease:'expo.out',scrollTrigger:{trigger:'.care-line',start:'top 80%'}}));
   $$('.cday .dot').forEach(d=>gsap.from(d,{scale:0,rotate:-180,duration:.7,ease:'back.out(2.5)',scrollTrigger:{trigger:d,start:'top 80%'}}));
   gsap.from('#healedStamp',{scale:3,opacity:0,rotate:-30,duration:.45,ease:'back.out(2.2)',scrollTrigger:{trigger:'#healedStamp',start:'top 88%',onEnter:()=>{const r=$('#healedStamp').getBoundingClientRect();setTimeout(()=>burst(r.left+r.width/2,r.top+r.height/2,12),350)}}});
 
+  },()=>{
   // generic panels: rise with a slight tilt (each family gets its own entrance above)
   $$('.gift,.faq,.addr,.geo').forEach(el=>gsap.from(el,{y:70,rotate:1.5,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
   gsap.from('.gcard',{rotate:-30,x:120,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.gcard',start:'top 85%'}});
@@ -1854,13 +1874,17 @@ if(window.gsap&&!reduce){
   // active nav link
   $$('main section[id]').forEach(s=>ScrollTrigger.create({trigger:s,start:'top 50%',end:'bottom 50%',onToggle:t=>{if(t.isActive)$$('.nav ul a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+s.id))}}));
 
+  }];
+  (function run(){const f=steps.shift();if(!f){ScrollTrigger.refresh();return}f();setTimeout(run,0)})();
   addEventListener('load',()=>ScrollTrigger.refresh());
 }else{
-  wipe.style.display='none';calc();
+  document.documentElement.classList.remove('intro');calc();
 }
 }
 // load the display faces explicitly (incl. the symbol subset with ●): SplitText must measure real glyphs
-(document.fonts?Promise.all(['400 1em "Dela Gothic One"','400 1em "Ruslan Display"','400 1em Onest','400 1em "PT Mono"','400 1em "Rubik Glitch"','600 1em Onest','700 1em Onest'].map(f=>document.fonts.load(f,"АЁЯаёя Az09●=^"))).then(()=>document.fonts.ready):Promise.resolve()).catch(()=>{}).then(()=>new Promise(r=>{const t0=performance.now();(function c(){document.fonts.status!=='loading'||performance.now()-t0>3000?r():setTimeout(c,40)})()})).then(fx);
+new Promise(r=>{const t0=performance.now();(function c(){window.__gf||performance.now()-t0>4000?r():setTimeout(c,40)})()}) // the font stylesheet (added after the first paint) has loaded
+.then(()=>document.fonts?Promise.all(['400 1em "Dela Gothic One"','400 1em "Ruslan Display"','400 1em Onest','400 1em "PT Mono"','400 1em "Rubik Glitch"','600 1em Onest','700 1em Onest'].map(f=>document.fonts.load(f,"АЁЯаёя Az09●=^"))).then(()=>document.fonts.ready):Promise.resolve()).catch(()=>{}).then(()=>new Promise(r=>{const t0=performance.now();(function c(){document.fonts.status!=='loading'||performance.now()-t0>3000?r():setTimeout(c,40)})()})).then(()=>{fx();playVids()});
+});
 </script>
 </body>
 </html>
