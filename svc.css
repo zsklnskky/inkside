@@ -68,3 +68,12 @@ main section{margin-top:22px}
 .svc a[aria-current]{background:var(--acc);color:var(--on-acc);border-color:var(--acc)}
 footer{margin-top:40px;padding:26px 0 40px;border-top:1px dashed var(--edge);font:13px/1.6 var(--f-mono);color:var(--mute)}
 footer a{color:var(--dim)}
+.svc b{width:100%;font:400 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.svc+.svc{margin-top:18px}
+.hero.has-ph{display:grid;gap:20px;align-items:start}
+.hero .ph img,.master .ph img{width:160px;aspect-ratio:3/4;object-fit:cover;border-radius:14px;border:1px solid var(--edge)}
+@media (min-width:760px){.hero.has-ph{grid-template-columns:1fr 220px}.hero.has-ph .ph{order:2}.hero .ph img{width:220px}}
+.master .ph{display:block;margin-bottom:14px}
+.master h2 a{text-decoration:none;color:inherit}
+.map{border-radius:14px;overflow:hidden;border:1px solid var(--edge);aspect-ratio:4/3;max-height:420px;width:100%}
+.map iframe{width:100%;height:100%;border:0;display:block}
