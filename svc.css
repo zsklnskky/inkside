@@ -152,9 +152,9 @@ h2 .h-note{font-size:max(.44em,20px)}
 
 /* ---------- facts strip ---------- */
 .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:var(--r);overflow:hidden;background:var(--glass);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--edge)}
-.fact{padding:clamp(24px,3vw,40px) clamp(16px,2vw,28px);border-right:1px dashed rgba(255,255,255,.22);min-width:0}
+.fact{padding:clamp(24px,3vw,40px) clamp(16px,2vw,28px);border-right:1px dashed rgba(255,255,255,.22);min-width:0;container-type:inline-size}
 .fact:last-child{border-right:0}
-.fact b{display:block;white-space:nowrap;font:400 clamp(38px,4.6vw,84px)/.95 var(--f-poster);background:linear-gradient(180deg,#fff 0%,#9a9a9a 45%,#f5f5f5 52%,#6a6a6a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #000);font-variant-numeric:tabular-nums}
+.fact b{display:block;white-space:nowrap;font:400 min(84px,19cqw)/.95 var(--f-poster);background:linear-gradient(180deg,#fff 0%,#9a9a9a 45%,#f5f5f5 52%,#6a6a6a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #000);font-variant-numeric:tabular-nums}
 .fact:nth-child(2) b{background-image:linear-gradient(180deg,#f3c066,#e8a33a 50%,#f9d796 55%,#5a3a0e)}
 .fact span{display:block;margin-top:12px;color:var(--dim);font-size:15px;line-height:1.35;text-wrap:balance}
 
@@ -314,7 +314,7 @@ footer .wrap{display:grid;gap:14px;border-top:1px dashed var(--edge);padding-top
   .open-sign{padding:0 6px}
   .nav .bar{padding:6px 6px 6px 14px}
   .btn{font-size:13px;letter-spacing:.02em;padding:15px 16px}
-  .fact b{font-size:clamp(30px,10vw,44px)}
+  .fact b{font-size:min(44px,19cqw)}
   .fact span{font-size:13px}
   .contact dl div{grid-template-columns:1fr;gap:2px}
   .rel span{flex-direction:column;gap:2px;padding:10px 12px}
