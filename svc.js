@@ -125,9 +125,9 @@
       card.style.setProperty('--rx',x*22+'deg');card.style.setProperty('--ry',-y*16+'deg');card.style.setProperty('--gx',x*60+'%')});
       card.parentElement.addEventListener('pointerleave',()=>['--rx','--ry','--gx'].forEach(p=>card.style.removeProperty(p)))}}
 
-  // /kontakty/: the Google map loads on the first interaction (keeps the first screen light)
+  // /kontakty/: the Google map loads 1.2s after page load or on the first interaction (keeps the first paint light)
   const map=$('#map');if(map){const load=()=>{if(map.dataset.on)return;map.dataset.on=1;const f=document.createElement('iframe');
       f.title='Карта: Минск, пер. Макаёнка 4';f.src=map.dataset.src.replace(/&amp;/g,'&');f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;
       map.appendChild(f);setTimeout(()=>$('#mapFac')&&$('#mapFac').remove(),600);['scroll','pointerdown','keydown'].forEach(t=>removeEventListener(t,load))};
-    $('#mapFac').addEventListener('click',load);['scroll','pointerdown','keydown'].forEach(t=>addEventListener(t,load,{once:true,passive:true}))}
+    $('#mapFac').addEventListener('click',load);['scroll','pointerdown','keydown'].forEach(t=>addEventListener(t,load,{once:true,passive:true}));addEventListener('load',()=>setTimeout(load,1200))}
 })();
