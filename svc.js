@@ -8,29 +8,87 @@
   try{const s=JSON.parse(localStorage.getItem('attr')||'null');if(a)localStorage.setItem('attr',JSON.stringify({a,t:Date.now()}));else if(s&&Date.now()-s.t<30*864e5)a=s.a}catch(e){}
   if(a)document.querySelectorAll('a[href^="https://t.me/inkside_bot"]').forEach(l=>{const u=new URL(l.href);u.searchParams.set('start',(u.searchParams.get('start')||'site')+'_'+a);l.href=u.href})})();
 
-/* motion and live bits, same vocabulary as the main page */
-(()=>{const $=(q,c=document)=>c.querySelector(q),$$=(q,c=document)=>[...c.querySelectorAll(q)];
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+/* consent-gated Meta Pixel: same key and bar as index.html ("consent" = yes / no), so a choice on any page applies everywhere */
+(()=>{const PIXEL='3078632395869326',base=document.currentScript.src;
+  const load=()=>{!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',PIXEL);fbq('track','PageView')};
+  let c=null;try{c=localStorage.getItem('consent')}catch(e){}
+  if(c==='yes')load();
+  else if(!c){const b=document.createElement('div');b.className='cookie sheet';b.setAttribute('role','region');b.setAttribute('aria-label','Cookie');
+    b.innerHTML='<p>Мы используем cookie для обезличенной статистики посещений. <a href="'+new URL('privacy.html',base).href+'">Подробнее</a></p><button class="btn sm" data-c="yes">Хорошо</button><button class="btn sm dark" data-c="no">Нет</button>';
+    document.body.appendChild(b);b.onclick=e=>{const v=e.target.dataset.c;if(!v)return;try{localStorage.setItem('consent',v)}catch(x){}if(v==='yes')load();b.remove()}}
+  // events: booking bot = Lead; phone, Viber, Instagram Direct = Contact
+  document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(!a||!window.fbq)return;const h=a.href;
+    if(h.startsWith('https://t.me/inkside_bot'))fbq('track','Lead');
+    else if(/^(tel:|viber:)|^https:\/\/(ig\.me\/|(www\.)?instagram\.com\/direct)/.test(h))fbq('track','Contact')},true)})();
 
-  // mural behind everything: well after load, so its 150 KB never compete with the first screen; appears over the warm base
-  const wall=$('.wall');addEventListener('load',()=>setTimeout(()=>wall.classList.add('on'),2500));
+/* motion and live bits, same vocabulary as the main page */
+(()=>{const $=(q,c=document)=>c.querySelector(q),$$=(q,c=document)=>[...c.querySelectorAll(q)],H=document.documentElement;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches,lite=H.classList.contains('lite');
+  const base=document.currentScript.src;
+
+  // mural: a tiny blurred copy is in the CSS from the first paint; the full image fades over it once decoded, after load
+  const wall=$('.wall');addEventListener('load',()=>{const im=new Image();im.src=new URL('img/'+(innerWidth<=900?'mural_tall_b':'mural_b')+'.webp',base).href;
+    im.decode().then(()=>{wall.style.setProperty('--mural','url('+im.src+')');requestAnimationFrame(()=>wall.classList.add('on'))}).catch(()=>{})});
 
   // open / closed sign by Minsk time
   const sign=$('#openSign');if(sign){const h=+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Minsk',hour:'2-digit',hour12:false}).format(new Date())%24,open=h>=11&&h<23;
     sign.classList.toggle('closed',!open);$('b',sign).textContent=open?'ОТКРЫТО':'ЗАКРЫТО';$('span',sign).textContent=open?'до 23:00':'откроемся в 11:00'}
 
-  // reveal on scroll
+  // calm background switch (footer), stored like on the main page
+  const sw=$$('[data-calm]'),setSw=()=>sw.forEach(b=>b.setAttribute('aria-checked',H.classList.contains('calm')));setSw();
+  sw.forEach(b=>b.addEventListener('click',()=>{const on=H.classList.toggle('calm');try{localStorage.setItem('inkside_calm',on?'1':'0')}catch(e){}setSw()}));
+
+  // light / dark theme: key ink.theme, the new theme opens in a circle from the click point (View Transitions)
+  const tb=$$('.thm'),meta=$('meta[name=theme-color]');
+  const setT=l=>{if(l)H.dataset.theme='light';else delete H.dataset.theme;if(meta)meta.content=l?'#f3ede3':'#0b0b0c';tb.forEach(b=>b.setAttribute('aria-pressed',l))};
+  setT(H.dataset.theme==='light');
+  tb.forEach(b=>b.addEventListener('click',e=>{const l=H.dataset.theme!=='light';try{localStorage.setItem('ink.theme',l?'light':'dark')}catch(x){}
+    if(reduce||!document.startViewTransition){setT(l);return}
+    const x=e.clientX||innerWidth-40,y=e.clientY||40,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));H.classList.add('vt-theme');
+    const t=document.startViewTransition(()=>setT(l));
+    t.ready.then(()=>H.animate({clipPath:[`circle(0 at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:600,easing:'cubic-bezier(.22,1,.36,1)',pseudoElement:'::view-transition-new(root)'})).catch(()=>{});
+    t.finished.finally(()=>H.classList.remove('vt-theme'))}));
+
+  // reveal on scroll; sections off screen pause their CSS loops
   const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;x.target.classList.add('in');io.unobserve(x.target)}),{rootMargin:'0px 0px -8% 0px'});
   $$('.rv,h2.poster').forEach(el=>io.observe(el));
+  const idle=new IntersectionObserver(es=>es.forEach(x=>x.target.classList.toggle('off',!x.isIntersecting)));
+  $$('main>section,main>header').forEach(el=>idle.observe(el));
 
-  // nav hides on scroll down; vinyl CTA steps aside at the final call; mural drifts
+  // lazy images fade in when they arrive
+  $$('img[loading=lazy]').forEach(i=>{const ok=()=>i.classList.add('ok');i.complete?ok():(i.addEventListener('load',ok),i.addEventListener('error',ok))});
+
+  // galleries: "Показать ещё" opens the rest
+  $$('[data-more]').forEach(b=>b.addEventListener('click',()=>{$$('.cut',$('#'+b.dataset.more)).forEach(x=>{x.classList.remove('cut');x.classList.add('in')});b.setAttribute('aria-expanded','true');b.parentElement.remove()}));
+
+  // related strip: ~22 px/s auto-scroll, pause button (WCAG 2.2.2), holds while touched, mouse drag with inertia (touch swipes natively)
+  $$('.related').forEach(s=>{const g=$('.rl-g',s),b=$('.rl-pause',s),vp=$('.rl-vp',s),tr=$('.rl-track',s);if(!g||!b)return;
+    const dur=()=>tr.style.setProperty('--rl-dur',Math.max(30,g.scrollWidth/22)+'s');dur();addEventListener('load',dur);
+    const set=(p,save)=>{s.classList.toggle('paused',p);b.setAttribute('aria-pressed',p);b.setAttribute('aria-label',p?'Запустить прокрутку':'Остановить прокрутку');if(save)try{localStorage.setItem('ink.rl',p?'0':'1')}catch(e){}};
+    let saved=null;try{saved=localStorage.getItem('ink.rl')}catch(e){}if(saved==='0')set(true);
+    b.addEventListener('click',()=>set(!s.classList.contains('paused'),true));
+    let t,x0,s0,lx,lt,v=0,moved=0;
+    s.addEventListener('pointerdown',e=>{clearTimeout(t);s.classList.add('hold');if(e.pointerType!=='mouse'||e.button||!e.target.closest('.rl-vp'))return;
+      x0=lx=e.clientX;s0=vp.scrollLeft;lt=e.timeStamp;moved=0;v=0;
+      vp.onpointermove=m=>{const dx=m.clientX-x0;if(Math.abs(dx)>4&&!moved){moved=1;vp.setPointerCapture(m.pointerId)}v=(m.clientX-lx)/Math.max(1,m.timeStamp-lt);lx=m.clientX;lt=m.timeStamp;vp.scrollLeft=s0-dx}});
+    ['pointerup','pointercancel'].forEach(ev=>s.addEventListener(ev,()=>{if(vp.onpointermove){vp.onpointermove=null;
+        const glide=()=>{vp.scrollLeft-=v*16;v*=.92;if(Math.abs(v)>.05&&!reduce)requestAnimationFrame(glide)};if(moved)glide()}
+      t=setTimeout(()=>s.classList.remove('hold'),1500)}));
+    vp.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=0}},true);
+    vp.addEventListener('dragstart',e=>e.preventDefault())});
+
+  // nav hides on scroll down; vinyl CTA steps aside at the final call; mural drifts a little (not in lite)
   const nav=$('.nav'),stamp=$('.stamp'),last=$('.last-card');let y0=0,tick=0;
   addEventListener('scroll',()=>{if(tick)return;tick=requestAnimationFrame(()=>{tick=0;const y=scrollY;
     nav.classList.toggle('hide',y>y0&&y>400);y0=y;
     if(stamp&&last){const r=last.getBoundingClientRect();stamp.classList.toggle('is-hidden',r.top<innerHeight&&r.bottom>0)}
-    if(!reduce)wall.style.transform=`translate3d(0,${-y*.04}px,0)`})},{passive:true});
+    if(!reduce&&!lite)wall.style.transform=`translate3d(0,${-y*.02}px,0)`})},{passive:true});
 
   if(!fine||reduce)return;
+  // card spotlight (A4): one delegated listener, the card under the pointer gets --x/--y
+  const SPOT='.rl,.kd,.tl-c,.vs-c,.sheet:not(.bar)';
+  document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest(SPOT);if(!c)return;const r=c.getBoundingClientRect();
+    c.style.setProperty('--x',e.clientX-r.left+'px');c.style.setProperty('--y',e.clientY-r.top+'px')},{passive:true});
   // buttons: circle wipe from the cursor, magnets pull
   $$('.btn').forEach(b=>b.addEventListener('pointerenter',e=>{const r=b.getBoundingClientRect();b.style.setProperty('--bx',e.clientX-r.left+'px');b.style.setProperty('--by',e.clientY-r.top+'px')}));
   $$('.magnet').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.translate=`${(e.clientX-r.left-r.width/2)*.2}px ${(e.clientY-r.top-r.height/2)*.3}px`});b.addEventListener('pointerleave',()=>b.style.translate='')});
@@ -62,7 +120,7 @@
   // /ceny/: calculator, same formula as the main page; sleeve/leg = one ~6 h session
   const form=$('#calc');if(form){let shown=180;const v=n=>+$(`[name=${n}]:checked`,form).value;
     const calc=()=>{const h=v('size')===6?6:Math.max(1,Math.round(v('size')*v('kind')*v('place')*2)/2),sum=180+Math.ceil(h-1)*150;
-      tween($('#sum'),shown,sum,x=>'от '+x+' BYN');shown=sum;$('#hrs').textContent=`≈ ${String(h).replace('.',',')} ч работы${v('size')===6?' за сеанс':''}`};
+      const o=$('#sum');if(sum!==shown&&!reduce){o.classList.remove('bump');void o.offsetWidth;o.classList.add('bump')}tween(o,shown,sum,x=>'от '+x+' BYN');shown=sum;$('#hrs').textContent=`≈ ${String(h).replace('.',',')} ч работы${v('size')===6?' за сеанс':''}`};
     form.addEventListener('change',calc);form.addEventListener('submit',e=>e.preventDefault());calc()}
 
   // /uhod-za-tatu/: the line fills while the timeline passes the middle of the screen
@@ -92,7 +150,7 @@
     $('#msOut').textContent=b.textContent+': '+(m==='n'?'к Надежде.':m==='v'?'к Виталию.':'делают оба мастера.')};
 
   // /realizm/: filter + lightbox
-  groups.filter=b=>{const f=b.dataset.f;$$('#rzG .mz').forEach(a=>a.classList.toggle('off',f!=='all'&&a.dataset.c!==f))};
+  groups.filter=b=>{const f=b.dataset.f;$('#rzG').classList.toggle('f',f!=='all');$$('#rzG .mz').forEach(a=>a.classList.toggle('off',f!=='all'&&a.dataset.c!==f))};
   const lbx=$('#lbx');if(lbx){const im=$('img',lbx);$$('[data-lb]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();im.src=a.href;im.alt=$('img',a).alt;lbx.showModal()}));
     $('.lbx-x',lbx).onclick=()=>lbx.close();lbx.addEventListener('click',e=>{if(e.target===lbx)lbx.close()})}
 
