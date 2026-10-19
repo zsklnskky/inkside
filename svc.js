@@ -38,17 +38,6 @@
   const sw=$$('[data-calm]'),setSw=()=>sw.forEach(b=>b.setAttribute('aria-checked',H.classList.contains('calm')));setSw();
   sw.forEach(b=>b.addEventListener('click',()=>{const on=H.classList.toggle('calm');try{localStorage.setItem('inkside_calm',on?'1':'0')}catch(e){}setSw()}));
 
-  // light / dark theme: key ink.theme, the new theme opens in a circle from the click point (View Transitions)
-  const tb=$$('.thm'),meta=$('meta[name=theme-color]');
-  const setT=l=>{if(l)H.dataset.theme='light';else delete H.dataset.theme;if(meta)meta.content=l?'#f3ede3':'#0b0b0c';tb.forEach(b=>b.setAttribute('aria-pressed',l))};
-  setT(H.dataset.theme==='light');
-  tb.forEach(b=>b.addEventListener('click',e=>{const l=H.dataset.theme!=='light';try{localStorage.setItem('ink.theme',l?'light':'dark')}catch(x){}
-    if(reduce||!document.startViewTransition){setT(l);return}
-    const x=e.clientX||innerWidth-40,y=e.clientY||40,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));H.classList.add('vt-theme');
-    const t=document.startViewTransition(()=>setT(l));
-    t.ready.then(()=>H.animate({clipPath:[`circle(0 at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:600,easing:'cubic-bezier(.22,1,.36,1)',pseudoElement:'::view-transition-new(root)'})).catch(()=>{});
-    t.finished.finally(()=>H.classList.remove('vt-theme'))}));
-
   // reveal on scroll; sections off screen pause their CSS loops
   const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;x.target.classList.add('in');io.unobserve(x.target)}),{rootMargin:'0px 0px -8% 0px'});
   $$('.rv,h2.poster').forEach(el=>io.observe(el));
