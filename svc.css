@@ -421,3 +421,50 @@ html.lite .wall::before,html.lite .wall::after,html.lite .wall i{animation:none;
 .bl-top>*,.ms-top>*,.kt-top>*{max-width:900px}
 [hidden]{display:none!important}
 @media (max-width:600px){.pv-p h3{font-size:clamp(24px,7vw,30px);overflow-wrap:anywhere}.result output{font-size:clamp(36px,11vw,48px)}.pv-p{min-height:0}}
+/* motion set 2 (same vocabulary as the main page): answers to the visitor, no new loops */
+html{scroll-padding-top:88px}
+.sw-k{background:rgba(255,255,255,.12) linear-gradient(var(--acc),var(--acc)) no-repeat left/0% 100%;transition:background-size .45s var(--e-out)}
+.sw[aria-checked=true] .sw-k{background:rgba(255,255,255,.12) linear-gradient(var(--acc),var(--acc)) no-repeat left/100% 100%}
+.sw[aria-checked=true] .sw-k::after{background:var(--on-acc)}
+.sw-k::after{transition:translate .35s var(--spring),scale .18s var(--e-out),background .3s}
+.sw:active .sw-k::after{scale:1.18 .86}
+.tabs [role=tab]{background:linear-gradient(var(--acc),var(--acc)) no-repeat left/0% 100%;transition:color .3s,background-size .45s var(--e-out),transform .18s var(--e-out)}
+.tabs [role=tab][aria-selected=true]{background:linear-gradient(var(--acc),var(--acc)) no-repeat left/100% 100%}
+.tabs [role=tab]:active,.sw:active,.rl-pause:active,[data-group] button:active{transform:scale(.97)}
+.nav ul a,.svc-nav a,.crumbs a{position:relative}
+.nav ul a::after,.svc-nav a::after,.crumbs a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:1.5px;border-radius:2px;background:var(--acc-l);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--e-out);pointer-events:none}
+.nav ul a::after{left:14px;right:14px;bottom:8px}
+@media (hover:hover){.nav ul a:hover::after,.svc-nav a:hover::after,.crumbs a:hover::after{transform:scaleX(1);transform-origin:left}}
+.nav ul a:focus-visible::after,.svc-nav a:focus-visible::after,.crumbs a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+@property --sp{syntax:"<number>";inherits:false;initial-value:0}
+@supports (animation-timeline:scroll()){@media (prefers-reduced-motion:no-preference){
+  .stamp::before{content:"";position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:conic-gradient(var(--acc-l) calc(var(--sp) * 1turn),rgba(255,255,255,.1) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));animation:sp linear both;animation-timeline:scroll(root)}
+}}
+@keyframes sp{to{--sp:1}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:600;translate:-50% 20px;opacity:0;display:grid;gap:10px;max-width:min(520px,92vw);padding:14px 18px 0;overflow:hidden;border-radius:16px;background:#0b0b0c;border:1px solid var(--acc);color:#fff;font:15px/1.4 var(--f-body);box-shadow:0 20px 50px rgba(0,0,0,.6);transition:opacity .3s,translate .4s var(--e-out)}
+.toast.on{opacity:1;translate:-50% 0}
+.toast p{margin:0}
+.toast i{display:block;height:2px;margin:0 -18px;background:var(--acc);transform-origin:left;animation:drain 4s linear forwards}
+@keyframes drain{to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.toast i{animation-duration:6s}.stamp::before{display:none}}
+/* visually hidden heading (keeps H1 -> H2 -> H3 where the design has no section title) */
+.vh{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* cookie bar: one compact line, slides in after the first scroll, above the phone dock */
+.cookie{opacity:0;translate:0 16px;transition:opacity .35s var(--e-out),translate .45s var(--e-out)}
+.cookie.on{opacity:1;translate:0 0}
+@media (max-width:900px){.cookie{left:max(10px,env(safe-area-inset-left));right:max(10px,env(safe-area-inset-right));bottom:calc(84px + env(safe-area-inset-bottom));gap:6px;padding:6px 6px 6px 14px}.cookie p{font-size:12.5px}.cookie .btn{min-height:40px;padding:0 12px}}
+@media (prefers-reduced-motion:reduce){.cookie{translate:none}}
+/* the studio map is a real map now: no colour filter, so its marker stays visible */
+.map iframe{filter:none}
+/* print: dark text on white, page chrome hidden */
+@media print{
+  html,body{background:#fff!important;color:#000!important}
+  *,*::before,*::after{background:none!important;box-shadow:none!important;text-shadow:none!important;color:#000!important;-webkit-text-fill-color:#000!important;animation:none!important;transition:none!important;backdrop-filter:none!important;filter:none!important}
+  .wall,.shade,.grain,.nav,.dock,.stamp,.cookie,.related,.marquee,.skip,.toast,.prefs,.fnav,.btns,.btn,.prog,.map,.kt-map .map{display:none!important}
+  .rv,.cut,h2.poster .w>span{opacity:1!important;transform:none!important;clip-path:none!important}
+  details>*{display:block!important}details::details-content{content-visibility:visible!important;block-size:auto!important}
+  a{text-decoration:underline}
+  main{padding:0!important}
+  img{max-width:40%!important;break-inside:avoid}
+  section,.sheet{break-inside:avoid-page;border-color:#bbb!important}
+}

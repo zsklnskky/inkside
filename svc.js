@@ -14,12 +14,13 @@
   let c=null;try{c=localStorage.getItem('consent')}catch(e){}
   if(c==='yes')load();
   else if(!c){const b=document.createElement('div');b.className='cookie sheet';b.setAttribute('role','region');b.setAttribute('aria-label','Cookie');
-    b.innerHTML='<p>Мы используем cookie для обезличенной статистики посещений. <a href="'+new URL('privacy.html',base).href+'">Подробнее</a></p><button class="btn sm" data-c="yes">Хорошо</button><button class="btn sm dark" data-c="no">Нет</button>';
-    document.body.appendChild(b);b.onclick=e=>{const v=e.target.dataset.c;if(!v)return;try{localStorage.setItem('consent',v)}catch(x){}if(v==='yes')load();b.remove()}}
-  // events: booking bot = Lead; phone, Viber, Instagram Direct = Contact
+    b.innerHTML='<p>Cookie для статистики. <a href="'+new URL('privacy.html',base).href+'">Подробнее</a></p><button class="btn sm" data-c="yes">Хорошо</button><button class="btn sm dark" data-c="no">Нет</button>';
+    const show=()=>{if(b.isConnected)return;document.body.appendChild(b);requestAnimationFrame(()=>requestAnimationFrame(()=>b.classList.add('on')))};
+    addEventListener('scroll',show,{once:true,passive:true});setTimeout(show,12000);b.onclick=e=>{const v=e.target.dataset.c;if(!v)return;try{localStorage.setItem('consent',v)}catch(x){}if(v==='yes')load();b.remove()}}
+  // events: booking bot = InitiateCheckout; phone, Viber, Instagram Direct, personal Telegram = Contact
   document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(!a||!window.fbq)return;const h=a.href;
-    if(h.startsWith('https://t.me/inkside_bot'))fbq('track','Lead');
-    else if(/^(tel:|viber:)|^https:\/\/(ig\.me\/|(www\.)?instagram\.com\/direct)/.test(h))fbq('track','Contact')},true)})();
+    if(h.startsWith('https://t.me/inkside_bot'))fbq('track','InitiateCheckout');
+    else if(/^(tel:|viber:)|^https:\/\/(ig\.me\/|(www\.)?instagram\.com\/direct|t\.me\/)/.test(h))fbq('track','Contact')},true)})();
 
 /* motion and live bits, same vocabulary as the main page */
 (()=>{const $=(q,c=document)=>c.querySelector(q),$$=(q,c=document)=>[...c.querySelectorAll(q)],H=document.documentElement;
@@ -73,6 +74,12 @@
     if(stamp&&last){const r=last.getBoundingClientRect();stamp.classList.toggle('is-hidden',r.top<innerHeight&&r.bottom>0)}
     if(!reduce&&!lite)wall.style.transform=`translate3d(0,${-y*.02}px,0)`})},{passive:true});
 
+  // desktop: a click on the phone number also copies it, a toast with a timer bar confirms (as on the main page)
+  if(fine)$$('a[href^="tel:"]').forEach(a=>a.addEventListener('click',()=>{const n=a.getAttribute('href').slice(4);
+    navigator.clipboard&&navigator.clipboard.writeText(n).then(()=>{const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.innerHTML='<p></p><i></i>';
+      $('p',d).textContent='Номер скопирован: '+n;document.body.appendChild(d);setTimeout(()=>d.classList.add('on'),20);
+      $('i',d).onanimationend=()=>{d.classList.remove('on');setTimeout(()=>d.remove(),400)}}).catch(()=>{})}));
+
   if(!fine||reduce)return;
   // card spotlight (A4): one delegated listener, the card under the pointer gets --x/--y
   const SPOT='.rl,.kd,.tl-c,.vs-c,.sheet:not(.bar)';
@@ -109,7 +116,9 @@
   // /ceny/: calculator, same formula as the main page; sleeve/leg = one ~6 h session
   const form=$('#calc');if(form){let shown=180;const v=n=>+$(`[name=${n}]:checked`,form).value;
     const calc=()=>{const h=v('size')===6?6:Math.max(1,Math.round(v('size')*v('kind')*v('place')*2)/2),sum=180+Math.ceil(h-1)*150;
-      const o=$('#sum');if(sum!==shown&&!reduce){o.classList.remove('bump');void o.offsetWidth;o.classList.add('bump')}tween(o,shown,sum,x=>'от '+x+' BYN');shown=sum;$('#hrs').textContent=`≈ ${String(h).replace('.',',')} ч работы${v('size')===6?' за сеанс':''}`};
+      const o=$('#sum');if(sum!==shown&&!reduce){o.classList.remove('bump');void o.offsetWidth;o.classList.add('bump')}tween(o,shown,sum,x=>'от '+x+' BYN');shown=sum;$('#hrs').textContent=`≈ ${String(h).replace('.',',')} ч работы${v('size')===6?' за сеанс':''}`;
+      const go=$('#calcGo');if(go){const ix=n=>$$(`[name=${n}]`,form).findIndex(x=>x.checked)+1,u=new URL(go.href),st=u.searchParams.get('start')||'';
+        u.searchParams.set('start','c'+ix('size')+ix('kind')+ix('place')+st.replace(/^[^_]*/,''));go.href=u.href}};
     form.addEventListener('change',calc);form.addEventListener('submit',e=>e.preventDefault());calc()}
 
   // /uhod-za-tatu/: the line fills while the timeline passes the middle of the screen
