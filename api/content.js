@@ -1,1 +1,1 @@
-window.SITE={"works": [{"n": 101, "url": "works/w1.jpg", "cat": "bw", "caption": ""}]};
+window.SITE={"hidden": "101", "works": []};
