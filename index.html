@@ -26,8 +26,7 @@
 <script>(function(d){var h=d.documentElement,m=function(q){return matchMedia(q).matches},n=navigator,
 lite=m('(max-width:900px)')||m('(hover:none)')||(n.hardwareConcurrency||8)<=4||(n.deviceMemory||8)<=2||!!(n.connection&&n.connection.saveData);
 if(lite)h.classList.add('lite');h.classList.add('ifade');
-try{if(localStorage.getItem('ink.theme')==='light'){h.dataset.theme='light';d.querySelector('meta[name=theme-color]').content='#f3ede3'}}catch(e){}
-try{var c=localStorage.getItem('inkside_calm');if(c==='1'||(c===null&&m('(prefers-reduced-motion: reduce)')))h.classList.add('calm')}catch(e){}
+try{if(localStorage.getItem('inkside_calm')==='1')h.classList.add('calm')}catch(e){}
 if(!lite&&!m('(prefers-reduced-motion: reduce)')){h.classList.add('intro');setTimeout(function(){h.classList.remove('intro')},4000)}
 var LA='U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD',CY='U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116',
 lf=function(){if(lf.d||!window.FontFace)return;lf.d=1;var F=[['Dela Gothic One','dela-gothic-one-latin.woff2','400',1],['Onest','onest-latin.woff2','100 900',1],['PT Mono','pt-mono-cyrillic.woff2','400',0],['PT Mono','pt-mono-latin.woff2','400',1],['Ruslan Display','ruslan-display-cyrillic.woff2','400',0],['Ruslan Display','ruslan-display-latin.woff2','400',1],['Rubik Glitch','rubik-glitch-cyrillic.woff2','400',0],['Rubik Glitch','rubik-glitch-latin.woff2','400',1]].map(function(x){return new FontFace(x[0],'url(fonts/'+x[1]+') format("woff2")',{weight:x[2],display:'swap',unicodeRange:x[3]?LA:CY})});
@@ -1085,8 +1084,6 @@ html.lite .wall::before,html.lite .wall::after,html.lite .wall i{animation:none;
 html.lite .hero-sheet .sheen{animation:none}
 html.lite #mq{animation:mq 34s linear infinite}
 @keyframes mq{to{transform:translateX(-50%)}}
-html.lite main>section:not(#works):not(#prices){content-visibility:auto;contain-intrinsic-size:auto 900px}
-html.lite footer{content-visibility:auto;contain-intrinsic-size:auto 500px}
 /* lite reveal: CSS transition, started by an IntersectionObserver */
 html.lite .rv{opacity:0;transform:translateY(26px);transition:opacity .6s var(--out),transform .7s var(--out)}
 html.lite .rv.in{opacity:1;transform:none}
@@ -1115,7 +1112,7 @@ html.calm{--wall-blur:22px;--wall-sat:.45;--wall-bri:.6}
 .shade{background:radial-gradient(60% 40% at 50% 115%,rgba(232,163,58,.16),transparent 70%),radial-gradient(120% 90% at 50% 40%,rgba(0,0,0,.25) 0%,rgba(0,0,0,.68) 70%,rgba(0,0,0,.9) 100%)}
 .shade.heat{background:radial-gradient(60% 40% at 50% 112%,rgba(232,163,58,.26),transparent 70%),radial-gradient(120% 90% at 50% 40%,rgba(0,0,0,.25) 0%,rgba(0,0,0,.68) 70%,rgba(0,0,0,.9) 100%)}
 html.calm .wall::before,html.calm .wall::after,html.calm .wall i{animation-play-state:paused}
-html.calm .wall .embers{display:none}
+html.calm .wall .embers b:nth-child(n+4){display:none}
 
 /* 2.3 type: calmer scale, brand faces kept */
 body{line-height:1.65}
@@ -1176,6 +1173,11 @@ html.lite #mq{animation-duration:60s}
 @media (max-width:760px){#faq summary{font-size:16px}}
 
 .gift .lead{margin:16px 0 28px}
+/* phones: off-screen sections are skipped until needed, sized by their real phone heights (no 900px guess, so the page end does not move);
+   the script renders each one once while the page is idle, after which the browser remembers the exact height */
+html.lite main>section:not(#works):not(#prices){content-visibility:auto;contain-intrinsic-size:auto var(--cis,900px)}
+html.lite #process{--cis:1490px}html.lite #facts{--cis:326px}html.lite #masters{--cis:962px}html.lite #cover{--cis:645px}html.lite #care{--cis:1140px}
+html.lite #gift{--cis:500px}html.lite #faq{--cis:309px}html.lite #last{--cis:350px}html.lite #contact{--cis:1030px}html.lite .related{--cis:302px} /* content heights at 360-430px, padding excluded */
 /* care: link to the full plan */
 .more-link{display:inline-block;margin-top:28px;padding:10px 0;font:600 16px var(--f-body);color:#fff}
 .more-link+.healed-stamp{margin-left:24px}
@@ -1193,12 +1195,11 @@ html.lite #mq{animation-duration:60s}
 .rl-track{display:flex;gap:16px;width:max-content}
 .rl-g{display:flex;gap:16px;list-style:none;padding:8px 0 16px;flex:none;animation:rl var(--rl-dur,60s) linear infinite}
 @keyframes rl{to{transform:translateX(calc(-100% - 16px))}}
-.related:hover .rl-g,.related:focus-within .rl-g,.related.hold .rl-g,.related.paused .rl-g,html.calm .rl-g{animation-play-state:paused}
-.related.paused .rl-g,html.calm .rl-g{animation:none}
-.related.paused .rl-g[aria-hidden],html.calm .rl-g[aria-hidden]{display:none}
-.related.paused .rl-vp,html.calm .rl-vp{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-.related.paused .rl-g li,html.calm .rl-g li{scroll-snap-align:start}
-html.calm .rl-pause{display:none}
+.related:hover .rl-g,.related:focus-within .rl-g,.related.hold .rl-g,.related.paused .rl-g{animation-play-state:paused}
+.related.paused .rl-g{animation:none}
+.related.paused .rl-g[aria-hidden]{display:none}
+.related.paused .rl-vp{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.related.paused .rl-g li{scroll-snap-align:start}
 .rl{display:grid;gap:8px;width:220px;padding:8px 8px 14px;border-radius:var(--r);background:var(--tint);transition:transform .45s var(--spring),background .3s}
 .rl img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:14px;filter:grayscale(.4);transition:filter .4s,opacity .5s}
 .rl b{font:600 15px/1.25 var(--f-body);padding:0 6px;color:var(--text)}
@@ -1241,8 +1242,8 @@ footer .wrap{align-items:flex-start}
 @keyframes shine{to{transform:translateX(120%)}}
 @keyframes shine2{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
 /* A8 image fade-in (lazy images; class set in <head>, so without JS nothing is hidden) */
-html.ifade img[loading=lazy]{opacity:0;transition:opacity .5s}
-html.ifade img[loading=lazy].ok{opacity:1}
+html.ifade img[loading=lazy]:not(.layer){opacity:0;transition:opacity .5s}
+html.ifade img[loading=lazy]:not(.layer).ok{opacity:1} /* .layer: the process frame drives its own opacity */
 /* A9 page-to-page crossfade */
 @media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.28s}
@@ -1257,8 +1258,8 @@ html.lite .rv{transform:translateY(20px);transition:opacity var(--t-reveal) var(
 .rl-vp{touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
 .rl-vp:active{cursor:grabbing}
 .rl img{-webkit-user-drag:none}
-.related.paused .rl-g[aria-hidden],html.calm .rl-g[aria-hidden]{display:flex}
-.related.paused .rl-vp,html.calm .rl-vp{overflow:hidden;scroll-snap-type:none}
+.related.paused .rl-g[aria-hidden]{display:flex}
+.related.paused .rl-vp{overflow:hidden;scroll-snap-type:none}
 @media (prefers-reduced-motion:reduce){.rl-g[aria-hidden]{display:flex}.rl-vp{overflow:hidden;scroll-snap-type:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.rl-pause{display:none}}
 /* E3: one "swipe" nudge for the strip title */
 @media (prefers-reduced-motion:no-preference){.related .rl-h::after{content:"";display:inline-block;width:.9em;height:.9em;margin-left:.4em;vertical-align:-.08em;background:currentColor;opacity:.55;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;animation:nudge 2.2s cubic-bezier(.65,0,.35,1) 1s 2}}
@@ -1326,113 +1327,53 @@ html.ifade .wallgrid .pol.wait::before{opacity:1;animation:breathe 1.2s ease-in-
 @media (prefers-reduced-motion:reduce){.toast i{animation-duration:6s}}
 .outline{transition:color 1.2s var(--e-out)}
 .outline.filled{color:#f2f0eb}
+/* hero plaque as liquid glass (restored): caustics ripple under the content, the .sheen glint sweeps, the rim glistens.
+   Desktop with a real pointer only; phones, lite mode and reduced motion keep the static glass */
+@property --rim{syntax:"<angle>";inherits:false;initial-value:0deg}
+.hero-sheet .water{position:absolute;inset:0;border-radius:inherit;overflow:hidden;z-index:-1;pointer-events:none}
+.hero-sheet .water i{position:absolute;inset:-25%;opacity:.42;filter:url(#water);background:radial-gradient(28% 22% at 24% 30%,rgba(255,214,150,.55),transparent 70%),radial-gradient(22% 30% at 70% 62%,rgba(232,163,58,.5),transparent 70%),radial-gradient(18% 16% at 52% 20%,rgba(255,244,220,.45),transparent 70%),radial-gradient(26% 20% at 36% 82%,rgba(255,190,90,.4),transparent 70%);animation:caustic 22s ease-in-out infinite alternate;will-change:transform}
+.hero-sheet .water i::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 38% 42%,transparent 0 22px,rgba(255,226,170,.26) 25px,transparent 29px),repeating-radial-gradient(circle at 72% 30%,transparent 0 30px,rgba(255,200,120,.2) 33px,transparent 38px);mix-blend-mode:screen;animation:caustic 15s ease-in-out infinite alternate-reverse}
+.hero-sheet .water::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--rim),transparent 0deg,rgba(255,226,170,.9) 40deg,transparent 90deg,transparent 180deg,rgba(232,163,58,.8) 220deg,transparent 270deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rim 7s linear infinite}
+@keyframes caustic{0%{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(4%,-3%) rotate(8deg) scale(1.08)}100%{transform:translate(-4%,3%) rotate(-6deg) scale(1.03)}}
+@keyframes rim{to{--rim:360deg}}
+@media (max-width:700px){.hero-sheet .water i{filter:none;opacity:.34}.hero-sheet .water i::before{display:none}}
+@media (prefers-reduced-motion:reduce){.hero-sheet .water i{filter:none}.hero-sheet .water i::before{display:none}}
+.hero-sheet .water{display:none}
+@media (hover:hover) and (pointer:fine) and (min-width:901px) and (prefers-reduced-motion:no-preference){html:not(.lite) .hero-sheet .water{display:block}}
 
-/* ===================== round 11: light theme (opt-in, html[data-theme=light]; shared spec with the inner pages) ===================== */
-.theme-t{flex:none;width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--edge);border-radius:50%;color:var(--dim);transition:color .2s,border-color .2s}
-.theme-t:hover{color:var(--text)}
-.theme-t svg{width:20px;height:20px;transition:transform .4s var(--e-out)}
-.theme-t .core{fill:currentColor}
-.theme-t .rays{stroke:currentColor;stroke-width:2;stroke-linecap:round;transform-origin:12px 12px;transform:scale(0) rotate(-45deg);transition:transform .4s var(--e-out)}
-#moonm .mc{transition:transform .4s var(--e-out)}
-.overlay .prefs{flex-wrap:wrap}
-.overlay .theme-t{width:auto;height:auto;min-height:44px;border-radius:999px;padding:0 16px 0 12px;display:inline-flex;gap:10px;font:500 15px var(--f-body)}
-html.vt-theme::view-transition-old(root){animation:none}
-html.vt-theme::view-transition-new(root){animation:themeReveal .6s cubic-bezier(.22,1,.36,1)}
-@keyframes themeReveal{from{clip-path:circle(0 at var(--vx,50%) var(--vy,0))}to{clip-path:circle(150vmax at var(--vx,50%) var(--vy,0))}}
-html.theme-fade body,html.theme-fade .sheet,html.theme-fade footer{transition:background-color .3s,color .3s}
+/* process scene: starts black, the stencil draws, the healed tattoo fades in (desktop: GSAP scrub; lite/phones: one IntersectionObserver-driven pass) */
+.frame::before{opacity:0}
+.frame .stencil{clip-path:inset(0 0 100% 0)}
+.frame .photo{opacity:0}
+html.lite .stencil-scene{height:auto!important}
+html.lite .stencil-scene .pin{position:relative;height:auto;padding:70px 0}
+html.lite .stencil-scene .st{position:relative!important;top:auto!important;bottom:auto!important;opacity:1!important;transform:none!important;margin-bottom:12px}
+html.lite .steps-text{min-height:0!important}
+html.lite .frame .bar{display:none}
+@media (max-width:900px){.frame .photo{opacity:0}.frame .stencil{opacity:1;clip-path:inset(0 0 100% 0)!important}.frame .healed{opacity:0;transform:scale(1.6)}}
+html.lite .frame .stencil{transition:clip-path 1.6s cubic-bezier(.65,0,.35,1),opacity .9s ease 2.4s}
+html.lite .frame .photo{transition:opacity 1.1s ease 1.9s}
+html.lite .frame .healed{opacity:0;transform:scale(1.6);transition:opacity .4s ease 2.9s,transform .5s cubic-bezier(.34,1.56,.64,1) 2.9s}
+html.lite .frame.play .stencil{clip-path:inset(0 0 0 0)!important;opacity:0}
+html.lite .frame.play .photo{opacity:1}
+html.lite .frame.play .healed{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.frame .photo{opacity:1!important}.frame .stencil{display:none}.frame .healed{opacity:1!important;transform:none!important}}
 
-html[data-theme=light]{color-scheme:light;--text:#17120b;--dim:#4a4136;--mute:#6f655a;--edge:rgba(23,18,11,.10);--edge-hi:rgba(23,18,11,.22);--hair:1px solid rgba(23,18,11,.10);
-  --glass:rgba(255,255,255,.62);--tint:rgba(23,18,11,.04);--stencil-l:#a4620f;--lt-acc:#a4620f;--lt-acc-h:#8a5108;--lt-shadow:0 10px 30px rgba(60,40,10,.10)}
-html[data-theme=light] body{background:#f3ede3;color:var(--text)}
-html[data-theme=light] :focus-visible{outline-color:#a4620f}
-html[data-theme=light] .theme-t svg{transform:rotate(90deg)}
-html[data-theme=light] .theme-t .rays{transform:none}
-html[data-theme=light] #moonm .mc{transform:translate(9px,-9px)}
+/* FAQ: the "more" row looks like a question row; one star icon, same rotation for every row */
+.more-q>summary{display:flex;justify-content:space-between;align-items:center;gap:24px;margin:0;padding:18px 4px;min-height:0;border:0;border-bottom:var(--hair);border-radius:0;font:600 17px/1.35 var(--f-body)!important;color:var(--dim);text-transform:none;letter-spacing:0}
+.more-q>summary:hover{color:#fff;border-color:var(--edge)}
+.more-q[open]>summary{color:var(--stencil-l)}
+.more-q>.faq-list{margin-top:0;border-top:0}
+#faq summary .pm{width:18px;height:18px;flex:none;color:var(--red);opacity:.8;transform:none;transition:transform .45s var(--spring)}
+#faq details[open]>summary .pm{transform:rotate(90deg);opacity:1} /* a quarter turn keeps the same star shape */
+#faq .more-q{max-width:760px}
+@media (max-width:760px){.more-q>summary{font-size:16px!important}}
 
-/* background: faint mural, soft amber light, paper vignette */
-html[data-theme=light] .wall{background:#f3ede3}
-html[data-theme=light] .wall .mu{opacity:.14;filter:grayscale(1) sepia(.25)}
-html[data-theme=light] .wall::before,html[data-theme=light] .wall::after,html[data-theme=light] .wall i{mix-blend-mode:normal;opacity:.18}
-html[data-theme=light] .wall .embers b{background:#e8a33a;box-shadow:none;opacity:.5}
-html[data-theme=light] .shade,html[data-theme=light] .shade.heat{background:radial-gradient(120% 90% at 50% 40%,rgba(243,237,227,0) 0%,rgba(243,237,227,.85) 100%)}
-html[data-theme=light] .vhs-lines{display:none}
-html[data-theme=light] .grain{opacity:.04}
-
-/* surfaces: light glass */
-html[data-theme=light] .sheet,html[data-theme=light] .tracklist,html[data-theme=light] .cover-card,html[data-theme=light] .gift,html[data-theme=light] .addr,html[data-theme=light] .terms{background:rgba(255,255,255,.62);box-shadow:var(--lt-shadow)}
-html[data-theme=light] .flashsheet{background:rgba(255,255,255,.62)!important;color:var(--text)!important;box-shadow:var(--lt-shadow)}
-html[data-theme=light] .st,html[data-theme=light] .cday,html[data-theme=light] .terms dl>div,html[data-theme=light] .rl{background-color:rgba(255,255,255,.55)}
-html[data-theme=light] .hero-sheet{background:linear-gradient(160deg,rgba(255,246,230,.85),rgba(255,255,255,.66) 55%,rgba(250,240,224,.8));border-color:rgba(164,98,15,.22);box-shadow:var(--lt-shadow)}
-html[data-theme=light] .hero-sheet .sheen{opacity:.5}
-html[data-theme=light] .nav .bar{background:rgba(255,252,246,.78)}
-html[data-theme=light] .drop{background:rgba(255,252,246,.97)!important;color:var(--text);border-color:var(--edge)}
-html[data-theme=light] .drop small{color:var(--mute)}
-html[data-theme=light] .overlay{background:radial-gradient(70vmax 60vmax at 90% 0%,rgba(232,163,58,.3),transparent 70%),#f3ede3;color:var(--text)}
-html[data-theme=light] .overlay::before{background:none}
-html[data-theme=light] .dock{background:rgba(255,252,246,.95);border-color:var(--edge);box-shadow:0 12px 34px rgba(60,40,10,.18)}
-html[data-theme=light] .cookie{background:rgba(255,252,246,.96)}
-html.lite[data-theme=light] .nav .bar,html.lite[data-theme=light] .calc,html.lite[data-theme=light] .last-card,html.lite[data-theme=light] .tabs,html.lite[data-theme=light] .cookie{background:rgba(255,252,246,.95)}
-html.lite[data-theme=light] .hero-sheet{background:linear-gradient(160deg,#fff4e2,#fffaf2 55%,#f8eedd)}
-html[data-theme=light] footer{background:#ebe3d6;color:#4a4136}
-html[data-theme=light] .toast{background:#fffaf2;color:var(--text);border-color:#e8a33a;box-shadow:0 14px 34px rgba(60,40,10,.2)}
-
-/* text that was hard-coded light */
-html[data-theme=light] :is(.nav ul>li>a:hover,.nav ul>li>button:hover,.nav ul>li>button[aria-expanded=true],.nav ul>li>a.on,.lang:hover,.tab:hover,.btn.dark,.flashsheet .go,.more-link,.consent a,.consent-box a,.cookie a,.dock .on,.dock [aria-expanded=true],.more-q>summary:hover,.rl-pause:hover,.fnav>summary:hover,.sw[aria-checked=true],.ig-hint,.svc-nav b,.pol figcaption span:first-child){color:var(--text)}
-html[data-theme=light] .open-sign b{color:#17120b;text-shadow:none}
-html[data-theme=light] .open-sign.closed b{color:#a4620f;text-shadow:none}
-html[data-theme=light] .open-sign.closed span{color:#4a4136}
-html[data-theme=light] :is(.hand,.h-note,h2 .hand,.hero h1 .hand,#h1 .row .hand){color:#a4620f;text-shadow:none}
-html[data-theme=light] :is(.cday b,.terms dt,.tracklist .cass span,.rl small,.book .err,#h1 .h1-kicker,.st .n,.tracklist .tr i,.tiles span b,summary .pm,#faq summary .pm,.cday .dot,.marquee i){color:#a4620f}
-html[data-theme=light] .flashsheet ul li::before{color:#a4620f}
-html[data-theme=light] :is(.st .n,.tracklist .tr i){text-shadow:none}
-html[data-theme=light] .addr dt{color:var(--mute)}
-html[data-theme=light] h2.poster{text-shadow:1.5px 0 0 rgba(232,163,58,.45)}
-html[data-theme=light] #h1 .accent{background-image:linear-gradient(100deg,#c47d1c 10%,#8a5108 90%)}
-html[data-theme=light] .outline{-webkit-text-stroke-color:var(--text)}
-html[data-theme=light] .outline.filled{color:var(--text)}
-html[data-theme=light] .marquee span{-webkit-text-stroke-color:rgba(164,98,15,.7)}
-html[data-theme=light] .marquee{border-block-color:var(--edge)}
-/* chrome numbers become dark ink; the gift card stays a dark object */
-html[data-theme=light] :is(.fact b,.tracklist .tr b){background-image:linear-gradient(180deg,#2a2016 0%,#5a4a36 50%,#17120b 100%);filter:none}
-html[data-theme=light] .fact:nth-child(2) b{background-image:linear-gradient(180deg,#c47d1c,#8a5108)}
-html[data-theme=light] .gcard small{color:#c9c6bf}
-/* controls */
-html[data-theme=light] .btn.dark{background:rgba(23,18,11,.05);border-color:rgba(23,18,11,.28)}
-html[data-theme=light] .btn.dark::before{background:var(--red)}
-html[data-theme=light] .opts span{border-color:rgba(23,18,11,.18)}
-html[data-theme=light] .lang,html[data-theme=light] .theme-t,html[data-theme=light] .rl-pause,html[data-theme=light] .fnav>summary,html[data-theme=light] .more-q>summary{border-color:rgba(23,18,11,.18)}
-html[data-theme=light] .sw-k{background:rgba(23,18,11,.16)}
-html[data-theme=light] .chromelogo img,html[data-theme=light] .hero-mob .mob-logo{filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
-html[data-theme=light] .nav .logo-s{filter:invert(1) brightness(.35)}
-html[data-theme=light] .geo{background:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px) 0 0/18px 18px,#15120e;box-shadow:var(--lt-shadow)}
-/* photos: white polaroid frames, soft shadow */
-html[data-theme=light] :is(.pol,.polaroid,.flashsheet .ph){background:#fff;box-shadow:0 8px 24px rgba(60,40,10,.18)}
-html[data-theme=light] :is(.pol figcaption span:last-child,.polaroid figcaption,.flashsheet .ph figcaption){color:#4a4136}
-html[data-theme=light].ifade .wallgrid .pol::before{background:#e6dccd}
-/* globe and lightbox stay dark objects: keep their light labels */
-html[data-theme=light] .geo-tabs button{color:#c9c6bf}
-html[data-theme=light] .geo-tabs button[aria-pressed=true]{color:var(--on-acc)}
-html[data-theme=light] .geo-links a{color:#f2f0eb}
-html[data-theme=light] .geo-links a:hover{color:var(--ink)}
-/* booking, privacy */
-html[data-theme=light] dialog.book{color:var(--text)}
-html[data-theme=light] dialog.book::backdrop{background:rgba(243,237,227,.98)}
-html[data-theme=light] .bk-top,html[data-theme=light] .book .acts{background:#f3ede3;box-shadow:0 -18px 24px #f3ede3}
-html[data-theme=light] .bk-top{box-shadow:none}
-html[data-theme=light] .bk-bar i{background:rgba(23,18,11,.12)}
-html[data-theme=light] :is(.bk-tag,.book .x,.book .link){color:var(--text)}
-html[data-theme=light] .book .x{border-color:rgba(23,18,11,.25)}
-html[data-theme=light] .tiles span{border-color:rgba(23,18,11,.18);background:rgba(255,255,255,.7)}
-html[data-theme=light] .tiles label:hover span{border-color:var(--text);background:#fff}
-html[data-theme=light] .book input.t,html[data-theme=light] .book textarea{background:#fff;color:var(--text);border-color:rgba(23,18,11,.22)}
-html[data-theme=light] .ig-hint{background:rgba(232,163,58,.14)}
-html[data-theme=light] .pv{background:#fffaf2}
-html[data-theme=light] .pv .x{color:var(--text);border-color:var(--edge)}
-@media (prefers-reduced-motion:reduce){.theme-t svg,.theme-t .rays,#moonm .mc{transition:none}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><mask id="moonm"><rect width="24" height="24" fill="#fff"/><circle class="mc" cx="17" cy="7" r="6" fill="#000"/></mask><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="water" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".011 .017" numOctaves="2" seed="7"><animate attributeName="baseFrequency" dur="16s" values=".011 .017;.016 .012;.011 .017" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="70" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></symbol></svg>
 <a data-k="page.1" class="skip" href="#main" data-en="Skip to content">К содержанию</a>
 <div class="ink-wipe" aria-hidden="true"><img data-k="page.2" loading="lazy" src="img/logo.webp" alt="" width="900" height="624"></div>
 <div class="wall" aria-hidden="true"><i></i><i></i><b class="mu"></b><span class="embers"><b style="--x:45.4%;--s:5px;--t:18.4s;--dl:-15.6s;--dx:-6px"></b><b style="--x:84.1%;--s:3px;--t:11.0s;--dl:-10.2s;--dx:16px"></b><b style="--x:78.1%;--s:2px;--t:13.9s;--dl:-2.8s;--dx:5px"></b><b style="--x:87.5%;--s:2px;--t:15.5s;--dl:-7.9s;--dx:-6px"></b><b style="--x:72.9%;--s:3px;--t:15.9s;--dl:-16.6s;--dx:-52px"></b><b style="--x:5.4%;--s:3px;--t:15.6s;--dl:-15.6s;--dx:-21px"></b><b style="--x:58.7%;--s:3px;--t:14.7s;--dl:-12.8s;--dx:-0px"></b><b style="--x:65.6%;--s:4px;--t:16.2s;--dl:-8.1s;--dx:6px"></b><b style="--x:91.4%;--s:2px;--t:16.8s;--dl:-6.3s;--dx:-32px"></b><b style="--x:29.7%;--s:2px;--t:15.2s;--dl:-2.2s;--dx:-47px"></b><b style="--x:29.9%;--s:2px;--t:19.5s;--dl:-16.9s;--dx:-60px"></b><b style="--x:22.1%;--s:2px;--t:14.2s;--dl:-19.6s;--dx:-12px"></b><b style="--x:9.0%;--s:3px;--t:17.6s;--dl:-5.4s;--dx:-50px"></b><b style="--x:33.9%;--s:4px;--t:17.3s;--dl:-2.4s;--dx:-30px"></b><b style="--x:11.7%;--s:2px;--t:14.1s;--dl:-9.7s;--dx:22px"></b><b style="--x:20.1%;--s:5px;--t:11.1s;--dl:-14.6s;--dx:-44px"></b><b style="--x:63.8%;--s:2px;--t:13.3s;--dl:-19.8s;--dx:-60px"></b><b style="--x:85.0%;--s:5px;--t:12.3s;--dl:-17.7s;--dx:-35px"></b><b style="--x:39.9%;--s:5px;--t:16.1s;--dl:-2.0s;--dx:59px"></b><b style="--x:22.5%;--s:3px;--t:9.1s;--dl:-12.2s;--dx:40px"></b><b style="--x:39.1%;--s:2px;--t:10.0s;--dl:-11.7s;--dx:-31px"></b><b style="--x:59.7%;--s:3px;--t:15.8s;--dl:-2.5s;--dx:10px"></b><b style="--x:81.9%;--s:3px;--t:18.5s;--dl:-3.7s;--dx:-42px"></b><b style="--x:89.2%;--s:5px;--t:11.7s;--dl:-3.8s;--dx:29px"></b><b style="--x:92.3%;--s:3px;--t:16.6s;--dl:-7.8s;--dx:-2px"></b><b style="--x:9.5%;--s:2px;--t:10.1s;--dl:-0.8s;--dx:56px"></b></span></div>
@@ -1471,7 +1412,6 @@ html[data-theme=light] .pv .x{color:var(--text);border-color:var(--edge)}
     </ul>
     <div class="open-sign" id="openSign" aria-live="polite"><b>ОТКРЫТО</b><span>до 23:00</span></div>
     <button class="lang" id="lang" aria-label="Switch language">EN</button>
-    <button class="theme-t" type="button" data-theme-t aria-pressed="false" aria-label="Светлая тема"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="core" cx="12" cy="12" r="6" mask="url(#moonm)"/><g class="rays"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg></button>
     <button data-k="nav.32" class="btn sm" data-book data-en="Book">Записаться</button>
     <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="overlay"><span></span><span></span></button>
   </div>
@@ -1486,7 +1426,7 @@ html[data-theme=light] .pv .x{color:var(--text);border-color:var(--edge)}
   <a data-k="page.7" class="big" href="#faq" data-ink data-en="FAQ">Вопросы</a>
   <a data-k="page.8" class="big" href="#contact" data-ink data-en="Contact">Контакты</a>
   <div class="row"><button data-k="page.9" class="btn" data-book data-en="Book">Записаться</button><a data-k="page.10" class="btn dark" href="tel:+375445111912" data-en="Call">Позвонить</a></div>
-  <div class="prefs"><button type="button" role="switch" aria-checked="false" class="sw" data-calm><span class="sw-k" aria-hidden="true"></span><span data-k="page.11" data-en="Calm background">Спокойный фон</span></button><button class="theme-t" type="button" data-theme-t aria-pressed="false" aria-label="Светлая тема"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="core" cx="12" cy="12" r="6" mask="url(#moonm)"/><g class="rays"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg><span data-k="page.48" data-en="Theme">Тема</span></button></div>
+  <div class="prefs"><button type="button" role="switch" aria-checked="false" class="sw" data-calm><span class="sw-k" aria-hidden="true"></span><span data-k="page.11" data-en="Calm background">Спокойный фон</span></button></div>
 </div>
 
 <button class="stamp" data-book aria-label="Записаться на сеанс">
@@ -1497,7 +1437,7 @@ html[data-theme=light] .pv .x{color:var(--text);border-color:var(--edge)}
 <main id="main">
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-sheet sheet"><span class="sheen" aria-hidden="true"></span>
+    <div class="hero-sheet sheet"><span class="sheen" aria-hidden="true"></span><span class="water" aria-hidden="true"><i></i></span>
       <script>var Q=new URLSearchParams(location.search).get('s'),M={mini:'w15',sleeve:'w02',cover:'w19'},MOB=innerWidth<=900;window.__heroImg=function(i,def,mob){if(mob===MOB)i.src="img/"+((M[Q])||def)+".webp"}</script>
       <figure class="hero-mob" aria-hidden="true"><script>if(!Q||!M[Q])document.currentScript.parentElement.classList.add("logo-only")</script><img data-k="top.1" class="mob-logo" loading="lazy" src="img/logo.webp" srcset="img/s/logo-240.webp 240w, img/s/logo-480.webp 480w, img/logo.webp 900w" sizes="132px" alt="" width="900" height="624"><img data-k="top.2" onerror="this.remove()" data-hero="o3316" data-mob="1" alt="" width="780" height="1040" fetchpriority="high"><script>__heroImg(document.currentScript.previousElementSibling,"o3316",true)</script></figure>
       <div class="chromelogo"><img data-k="top.3" loading="lazy" src="img/logo.webp" alt="INKSIDE" width="900" height="624"><span class="spark"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></div>
@@ -1630,16 +1570,6 @@ html[data-theme=light] .pv .x{color:var(--text);border-color:var(--edge)}
         </div>
       </form>
     </div>
-    <div class="terms sheet" id="terms">
-      <h3 data-k="prices.31" data-en="Terms">Условия</h3>
-      <dl>
-        <div><dt data-k="prices.32" data-en="Payment">Оплата</dt><dd data-k="prices.33" data-en="Cash and bank card. Instalments are available, ask the artist for the terms.">Наличные и банковская карта. Есть рассрочка, условия уточните у мастера.</dd></div>
-        <div><dt data-k="prices.34" data-en="Deposit and rescheduling">Предоплата и перенос</dt><dd data-k="prices.35" data-en="A deposit is required when booking. You can reschedule or cancel without losing it no later than 48 hours before the session.">При записи нужна предоплата. Перенос или отмена без потери предоплаты - не позднее чем за 48 часов до сеанса.</dd></div>
-        <div><dt data-k="prices.36" data-en="Age">Возраст</dt><dd data-k="prices.37" data-en="From 16 with written permission from parents. From 18 with no extra documents.">С 16 лет - с письменного разрешения родителей. С 18 лет - без дополнительных документов.</dd></div>
-        <div class="wide"><dt data-k="prices.38" data-en="Sterility">Стерильность</dt><dd data-k="prices.39" data-en="A medical hot-air steriliser and professional disinfectants, single-use consumables, equipment wrapped in special protective film. Single-use needles are opened in front of you.">Медицинский воздушный стерилизатор и специализированная дезинфицирующая химия, одноразовые расходники, оборудование упаковывается в специальные защитные плёнки. Одноразовые иглы вскрываем при вас.</dd></div>
-        <div><dt data-k="prices.40" data-en="Touch-ups">Коррекция</dt><dd data-k="prices.41" data-en="Touch-ups are paid.">Коррекция платная.</dd></div>
-      </dl>
-    </div>
   </div>
 </section>
 
@@ -1760,7 +1690,7 @@ html[data-theme=light] .pv .x{color:var(--text);border-color:var(--edge)}
       <details><summary><span data-k="faq.4" data-en="Will fine lines blur?">Расплывутся ли тонкие линии?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-k="faq.5" data-en="With the right depth and spacing - no. That's why the artist adapts the sketch to size and placement.">При правильной глубине и расстоянии между деталями - нет. Поэтому мастер подгоняет эскиз под размер и место.</p></details>
       <details><summary><span data-k="faq.6" data-en="How do I book?">Как записаться?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-k="faq.7" data-en="Press &quot;Book&quot;: the INKSIDE bot opens in Telegram. Or call +375 44 511-19-12.">Нажмите «Записаться»: откроется бот INKSIDE в Telegram. Или позвоните +375 44 511-19-12.</p></details>
     </div>
-    <details class="more-q"><summary><span data-k="faq.12" data-en="More questions · 6">Ещё вопросы · 6</span></summary><div class="faq-list">
+    <details class="more-q"><summary><span data-k="faq.12" data-en="More questions · 6">Ещё вопросы · 6</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><div class="faq-list">
       <details><summary><span data-k="faq.8" data-en="Can you cover an old tattoo or a scar?">Можно перекрыть старую тату или шрам?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-k="faq.9" data-en="Yes, it's one of our specialities. Send a daylight photo of the area and we'll suggest options.">Да, это наша специализация. Пришлите фото зоны при дневном свете, предложим варианты.</p></details>
       <details><summary><span data-k="faq.10" data-en="How to prepare?">Как подготовиться к сеансу?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-k="faq.11" data-en="Sleep well, eat before you come, no alcohol the day before. Wear clothes that open the area.">Выспаться, поесть перед сеансом, без алкоголя накануне. Одежда, которая открывает зону.</p></details>
       <details><summary><span data-k="faq.13" data-en="Can I pay in instalments?">Можно ли в рассрочку?</span><span class="pm"><svg viewBox="0 0 24 24"><use href="#star"/></svg></span></summary><p data-k="faq.14" data-en="Yes, instalments are available, ask the artist for the terms. You can pay in cash or by bank card.">Да, есть рассрочка, условия уточните у мастера. Оплата наличными или банковской картой.</p></details>
@@ -2216,15 +2146,6 @@ if(fine&&!reduce){
 const playVids=()=>{if(!reduce)$$('video[data-lazyplay]').forEach(v=>{v.preload='auto';v.play().catch(()=>{})})};
 new IntersectionObserver(es=>$('.hero').classList.toggle('off',!es[0].isIntersecting)).observe($('.hero'));
 
-/* ---------- light / dark theme: circular reveal from the click point ---------- */
-{const H=document.documentElement,meta=$('meta[name=theme-color]'),btns=$$('[data-theme-t]');
-  const sync=()=>{const l=H.dataset.theme==='light';btns.forEach(b=>{b.setAttribute('aria-pressed',l);b.setAttribute('aria-label',l?(lang==='en'?'Dark theme':'Тёмная тема'):(lang==='en'?'Light theme':'Светлая тема'))});meta.content=l?'#f3ede3':'#0b0b0c'};sync();
-  const apply=t=>{if(t==='light')H.dataset.theme='light';else delete H.dataset.theme;try{localStorage.setItem('ink.theme',t)}catch(e){}sync()};
-  btns.forEach(b=>b.addEventListener('click',e=>{const t=H.dataset.theme==='light'?'dark':'light';
-    if(reduce){apply(t);return}
-    if(!document.startViewTransition){H.classList.add('theme-fade');apply(t);setTimeout(()=>H.classList.remove('theme-fade'),400);return}
-    const r=b.getBoundingClientRect();H.style.setProperty('--vx',(e.clientX||r.left+r.width/2)+'px');H.style.setProperty('--vy',(e.clientY||r.top+r.height/2)+'px');
-    H.classList.add('vt-theme');const vt=document.startViewTransition(()=>apply(t));vt.finished.finally(()=>H.classList.remove('vt-theme'))}))}
 /* ---------- calm background switch (shared key with the inner pages) ---------- */
 {const H=document.documentElement,sync=()=>$$('[data-calm]').forEach(x=>x.setAttribute('aria-checked',H.classList.contains('calm')));sync();
   $$('[data-calm]').forEach(b=>b.addEventListener('click',()=>{const on=H.classList.toggle('calm');try{localStorage.setItem('inkside_calm',on?'1':'0')}catch(e){}sync()}))}
@@ -2233,7 +2154,7 @@ $$('.related').forEach(s=>{const vp=$('.rl-vp',s),tr=$('.rl-track',s),g=$('.rl-g
   const c=g.cloneNode(true);c.setAttribute('aria-hidden','true');c.inert=true;$$('a',c).forEach(a=>a.tabIndex=-1);g.after(c); // loop copy: skipped by keyboard and screen readers
   const H=document.documentElement;let x=0,v=0,w=0,on=false,raf=0,idle=0,last=0,drag=null,moved=false,hold=0,hover=false;
   const size=()=>{w=g.offsetWidth+16};addEventListener('resize',()=>on&&size()); // measured only once on screen: reading layout here would wake the lazy photos
-  const auto=()=>!s.classList.contains('paused')&&!H.classList.contains('calm')&&!reduce&&!hover&&!drag&&performance.now()>hold;
+  const auto=()=>!s.classList.contains('paused')&&!reduce&&!hover&&!drag&&performance.now()>hold;
   const wrap=()=>{if(w){x%=w;if(x>0)x-=w}};
   const frame=t=>{const dt=Math.min(50,t-(last||t));last=t;
     if(!drag){if(Math.abs(v)>.02){x+=v*dt;v*=Math.pow(.92,dt/16)}else{v=0;if(auto())x-=.022*dt}} // ~22px/s, inertia after a throw
@@ -2372,7 +2293,7 @@ if(window.gsap&&!reduce){
   // receipt prints out of the slot
   gsap.from('.tracklist',{y:20,opacity:0,filter:'blur(6px)',duration:.7,ease:'expo.out',clearProps:'filter',scrollTrigger:{trigger:'.tracklist',start:'top 85%'}});
   gsap.from('.tracklist .tr',{opacity:0,y:12,stagger:.06,duration:.45,delay:.25,ease:'power3.out',scrollTrigger:{trigger:'.tracklist',start:'top 85%'}});
-  gsap.from('.calc,.terms',{y:20,opacity:0,filter:'blur(6px)',duration:.7,stagger:.06,ease:'expo.out',clearProps:'filter',scrollTrigger:{trigger:'.calc',start:'top 85%'}});
+  gsap.from('.calc',{y:20,opacity:0,filter:'blur(6px)',duration:.7,stagger:.06,ease:'expo.out',clearProps:'filter',scrollTrigger:{trigger:'.calc',start:'top 85%'}});
 
   },()=>{
   // aftercare: dotted line fills, stars pop, stamp slams
@@ -2401,12 +2322,16 @@ if(window.gsap&&!reduce){
 }
 /* lite (phones, touch, weak CPUs) and reduced motion: no GSAP. Nav hides on scroll, panels fade in by CSS */
 function liteFx(){
+  // pre-render each skipped section once in idle time, so its remembered height is exact before anyone scrolls there
+  addEventListener('load',()=>setTimeout(()=>{const q=$$('main>section').filter(x=>getComputedStyle(x).contentVisibility==='auto'),idle=window.requestIdleCallback||(f=>setTimeout(f,60));
+    (function step(){const x=q.shift();if(!x)return;idle(()=>{x.style.contentVisibility='visible';requestAnimationFrame(()=>requestAnimationFrame(()=>{x.style.contentVisibility='';step()}))},{timeout:1500})})()},1200));
+  {const f=$('.frame');if(f&&!reduce){const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){f.classList.add('play');o.disconnect()}},{threshold:.55});o.observe(f)}}
   document.documentElement.classList.remove('intro');calc();
   let y0=0,tk=0;addEventListener('scroll',()=>{if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const y=scrollY;nav.classList.toggle('hide',y>y0&&y>500&&!overlay.classList.contains('open'));y0=y})},{passive:true});
   if(reduce||!('IntersectionObserver' in window))return;
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});
   // below the works wall only: nothing on the first screen is ever hidden, and no layout reads here
-  $$('main section:not(#works) h2.poster,.tracklist,.calc,.terms,.st,.flashsheet,.cover-card,.cday,.gift,.faq,.more-q,.last-card,.addr,.geo,.related .rl-vp').forEach(el=>{el.classList.add('rv');io.observe(el)});
+  $$('main section:not(#works) h2.poster,.tracklist,.calc,.st,.flashsheet,.cover-card,.cday,.gift,.faq,.more-q,.last-card,.addr,.geo,.related .rl-vp').forEach(el=>{el.classList.add('rv');io.observe(el)});
 }
 const LIBS=[['gsap@3.13.0/dist/gsap.min.js','sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc'],['gsap@3.13.0/dist/ScrollTrigger.min.js','sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh'],
   ['gsap@3.13.0/dist/SplitText.min.js','sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q'],['lenis@1.1.13/dist/lenis.min.js','sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed']];
