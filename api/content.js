@@ -1,1 +1,1 @@
-window.SITE={"hidden": "2,101", "works": []};
+window.SITE={"hidden": "101", "works": []};
